@@ -10,7 +10,7 @@ git = $(BIN)bin/git
 subversion = $(BIN)bin/svn
 gsl = $(BIN)lib/libgsl.la
 mpi = $(BIN)lib/libmpi.la
-xorg = $(BIN)bin/X
+xorg = /root/xorg.conf.new
 xfce = $(BIN)bin/startxfce4
 glut = $(BIN)lib/libfreeglut.la
 edit = $(BIN)bin/nedit
@@ -50,13 +50,14 @@ $(gcc): $(CC) /etc/mk.conf
 	cd $(PORTS)lang/gcc48 && $(MAKE)
 
 $(git): $(CC) /etc/mk.conf
-	cd $(PORTS)devel/git && $(MAKE)
+	cd $(PORTS)devel/git-base && $(MAKE)
+	cd $(PORTS)devel/git-docs && $(MAKE)
 
 $(subversion): $(CC) /etc/mk.conf
-	cd $(PORTS)devel/subversion && $(MAKE)
+	cd $(PORTS)devel/subversion-base && $(MAKE)
 
 $(gsl): $(CC) /etc/mk.conf
-	cd $(PORTS)devel/gsl && $(MAKE)
+	cd $(PORTS)math/gsl && $(MAKE)
 
 $(mpi): $(CC) /etc/mk.conf
 	cd $(PORTS)parallel/mpi-ch && $(MAKE)
