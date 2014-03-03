@@ -45,97 +45,97 @@ $(PORTS):
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 
-$(portmaster): $(CC) /etc/mk.conf
+$(portmaster): $(CC)
 	cd $(PORTS)/ports-mgmt/portmaster && make install clean
 
-$(automake): $(CC) /etc/mk.conf
+$(automake): $(CC)
 	cd $(PORTS)devel/automake && $(MAKE)
 
-$(gcc): $(CC) /etc/mk.conf
+$(gcc): $(CC)
 	cd $(PORTS)lang/gcc48 && $(MAKE)
 
-$(git): $(CC) /etc/mk.conf
+$(git): $(CC)
 	cd $(PORTS)devel/git && $(MAKE)
 
-$(subversion): $(CC) /etc/mk.conf
+$(subversion): $(CC)
 	cd $(PORTS)devel/subversion && $(MAKE)
 
-$(gsl): $(CC) /etc/mk.conf
+$(gsl): $(CC)
 	cd $(PORTS)math/gsl && $(MAKE)
 
-$(vboxguest): $(CC) /etc/mk.conf
+$(vboxguest): $(CC)
 	cd $(PORTS)emulators/virtualbox-ose-additions && $(MAKE)
 	echo "vboxguest_enable=YES" >> /etc/rc.conf
 	echo "vboxservice_enable=YES" >> /etc/rc.conf
-	reboot
+	-reboot
 
-$(xorg): $(CC) /etc/mk.conf
+$(xorg): $(CC)
 	cd $(PORTS)x11/xorg-minimal && $(MAKE)
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
-$(xfce): $(CC) /etc/mk.conf
+$(xfce): $(CC)
 	cd $(PORTS)x11-wm/xfce4 && $(MAKE)
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
 	echo "gdm_enable=YES" >> /etc/rc.conf
-	reboot
+	-reboot
 
-$(glut): $(CC) /etc/mk.conf
+$(glut): $(CC)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
-$(edit): $(CC) /etc/mk.conf
+$(edit): $(CC)
 	cd $(PORTS)editors/nedit && $(MAKE)
 	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/mk.conf
 	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
 
-$(math): $(CC) /etc/mk.conf
+$(math): $(CC)
 	cd $(PORTS)math/galculator && $(MAKE)
 	cd $(PORTS)math/maxima && $(MAKE)
 
-$(debug): $(CC) /etc/mk.conf
+$(debug): $(CC)
 	cd $(PORTS)devel/valgrind && $(MAKE)
 	cd $(PORTS)devel/ddd && $(MAKE)
 
-$(diff): $(CC) /etc/mk.conf
+$(diff): $(CC)
 	cd $(PORTS)textproc/meld && $(MAKE)
 
-$(latex): $(CC) /etc/mk.conf
+$(latex): $(CC)
 	cd $(PORTS)print/latex-beamer && $(MAKE)
 
-$(pdf): $(CC) /etc/mk.conf
+$(pdf): $(CC)
 	cd $(PORTS)graphics/evince && $(MAKE)
 
-$(doxygen): $(CC) /etc/mk.conf
+$(doxygen): $(CC)
 	cd $(PORTS)devel/doxygen && $(MAKE)
 
-$(firefox): $(CC) /etc/mk.conf
+$(firefox): $(CC)
 	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
 
-$(thunderbird): $(CC) /etc/mk.conf
+$(thunderbird): $(CC)
 	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
 
-$(graphics): $(CC) /etc/mk.conf
+$(graphics): $(CC)
 	cd $(PORTS)graphics/gimp/stable && $(MAKE)
 	cd $(PORTS)graphics/ufraw && $(MAKE)
 
-$(multimedia): $(CC) /etc/mk.conf
-	cd $(PORTS)x11/xfce4/parole && $(MAKE)
+$(multimedia): $(CC)
+	cd $(PORTS)multimedia/xfce4-parole && $(MAKE)
 
-$(office): $(CC) /etc/mk.conf
+$(office): $(CC)
 	cd $(PORTS)editors/libreoffice && $(MAKE)
 
-$(screensaver): $(CC) /etc/mk.conf
+$(screensaver): $(CC)
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
 
-$(xfceplugins): $(CC) /etc/mk.conf
+$(xfceplugins): $(CC)
 	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
 
-$(flash): $(CC) /etc/mk.conf
+$(flash): $(CC)
 	cd $(PORTS)www/gnash && $(MAKE)
 
 clean:

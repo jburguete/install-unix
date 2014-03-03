@@ -20,19 +20,19 @@ diff = $(BIN)bin/meld
 latex = $(BIN)bin/latex
 pdf = $(BIN)bin/evince
 doxygen = $(BIN)bin/doxygen
-firefox = $(BIN)bin/firefox
-thunderbird = $(BIN)bin/thunderbird
+browser = $(BIN)bin/firefox
+mail = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
-multimedia = $(BIN)bin/parole
+multimedia = $(BIN)bin/totem
 screensaver = $(BIN)bin/xscreensaver
 office = $(BIN)bin/loffice
 xfceplugins = $(BIN)bin/xfce4-screenshooter
-spamassassin =
+spamassassin = $(BIN)bin/spamassassin
 flash = $(BIN)bin/gnash
 
 all: $(PORTS) /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
 	$(mpi) $(xorg) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) \
-	$(pdf) $(doxygen) $(firefox) $(thunderbird) $(graphics) $(multimedia) \
+	$(pdf) $(doxygen) $(browser) $(mail) $(graphics) $(multimedia) \
 	$(office) $(screensaver) $(xfceplugins) $(spamassassin) $(flash)
 
 $(PORTS):
@@ -43,26 +43,26 @@ $(PORTS):
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 
-$(automake): $(CC) /etc/mk.conf
+$(automake): $(CC)
 	cd $(PORTS)devel/automake && $(MAKE)
 
-$(gcc): $(CC) /etc/mk.conf
+$(gcc): $(CC)
 	cd $(PORTS)lang/gcc48 && $(MAKE)
 
-$(git): $(CC) /etc/mk.conf
+$(git): $(CC)
 	cd $(PORTS)devel/git-base && $(MAKE)
 	cd $(PORTS)devel/git-docs && $(MAKE)
 
-$(subversion): $(CC) /etc/mk.conf
+$(subversion): $(CC)
 	cd $(PORTS)devel/subversion-base && $(MAKE)
 
-$(gsl): $(CC) /etc/mk.conf
+$(gsl): $(CC)
 	cd $(PORTS)math/gsl && $(MAKE)
 
-$(mpi): $(CC) /etc/mk.conf
+$(mpi): $(CC)
 	cd $(PORTS)parallel/mpi-ch && $(MAKE)
 
-$(xorg): $(CC) /etc/mk.conf
+$(xorg): $(CC)
 	echo "X11_TYPE=modular" >> /etc/mk.conf
 	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
@@ -73,60 +73,64 @@ $(xorg): $(CC) /etc/mk.conf
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
-$(xfce): $(CC) /etc/mk.conf
-	cd $(PORTS)meta/xfce && $(MAKE)
+$(xfce): $(CC)
+	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
 
-$(glut): $(CC) /etc/mk.conf
+$(glut): $(CC)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
-$(edit): $(CC) /etc/mk.conf
+$(edit): $(CC)
 	cd $(PORTS)editors/nedit && $(MAKE)
-	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
+	cd $(PORTS)editors/vim-gtk2 $(MAKE)
 
-$(math): $(CC) /etc/mk.conf
+$(math): $(CC)
 	cd $(PORTS)math/galculator && $(MAKE)
 	cd $(PORTS)math/maxima && $(MAKE)
 
-$(debug): $(CC) /etc/mk.conf
+$(debug): $(CC)
 	cd $(PORTS)devel/ddd && $(MAKE)
 
-$(diff): $(CC) /etc/mk.conf
-	cd $(PORTS)textproc/meld && $(MAKE)
+$(diff): $(CC)
+	cd $(PORTS)devel/meld && $(MAKE)
 
-$(latex): $(CC) /etc/mk.conf
-	cd $(PORTS)print/latex-beamer && $(MAKE)
+$(latex): $(CC)
+	cd $(PORTS)print/tex-beamer && $(MAKE)
 
-$(pdf): $(CC) /etc/mk.conf
-	cd $(PORTS)graphics/evince && $(MAKE)
+$(pdf): $(CC)
+	cd $(PORTS)print/evince && $(MAKE)
 
-$(doxygen): $(CC) /etc/mk.conf
+$(doxygen): $(CC)
 	cd $(PORTS)devel/doxygen && $(MAKE)
 
-$(firefox): $(CC) /etc/mk.conf
-	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
+$(browser): $(CC)
+	cd $(PORTS)www/firefox-l10n && $(MAKE)
 
-$(thunderbird): $(CC) /etc/mk.conf
-	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
+$(mail): $(CC)
+	cd $(PORTS)mail/thunderbird-l10n && $(MAKE)
 
-$(graphics): $(CC) /etc/mk.conf
-	cd $(PORTS)graphics/gimp/stable && $(MAKE)
-	cd $(PORTS)graphics/ufraw && $(MAKE)
+$(graphics): $(CC)
+	cd $(PORTS)graphics/gimp && $(MAKE)
+	cd $(PORTS)graphics/gimp-ufraw && $(MAKE)
 
-$(multimedia): $(CC) /etc/mk.conf
-	cd $(PORTS)x11/xfce4/parole && $(MAKE)
+$(multimedia): $(CC)
+	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
+	cd $(PORTS)multimedia/totem && $(MAKE)
 
-$(office): $(CC) /etc/mk.conf
+$(office): $(CC)
 	cd $(PORTS)editors/libreoffice && $(MAKE)
 
-$(screensaver): $(CC) /etc/mk.conf
+$(screensaver): $(CC)
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
 
-$(xfceplugins): $(CC) /etc/mk.conf
+$(xfceplugins): $(CC)
 	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
 
-$(flash): $(CC) /etc/mk.conf
+$(spamassassin): $(CC)
+	cd $(PORTS)mail/spamassassin && $(MAKE)
+
+$(flash): $(CC)
 	cd $(PORTS)www/gnash && $(MAKE)
