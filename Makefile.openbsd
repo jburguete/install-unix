@@ -1,8 +1,8 @@
 MAKE = make install && make clean=depends
-CC = /usr/bin/gcc
-CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
 PORTS = /usr/ports/
 BIN = /usr/local/
+CC = /usr/bin/gcc
+CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
 automake = $(BIN)bin/automake-1.13
 gcc = $(BIN)bin/egcc
 git = $(BIN)bin/git
@@ -15,6 +15,9 @@ edit = $(BIN)bin/nedit
 math = $(BIN)bin/maxima
 debug = $(BIN)bin/ddd
 diff = $(BIN)bin/meld
+latex = $(BIN)bin/latex
+pdf = $(BIN)bin/evince
+doxygen = $(BIN)bin/doxygen
 firefox = $(BIN)bin/firefox
 thunderbird = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
@@ -26,8 +29,8 @@ spamassassin =
 flash = $(BIN)bin/gnash
 
 all: /usr/ports /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
-	$(mpi) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) \
-	$(firefox) $(thunderbird) $(graphics) $(multimedia) $(office) \
+	$(mpi) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) $(pdf) \
+	$(doxygen) $(firefox) $(thunderbird) $(graphics) $(multimedia) $(office) \
 	$(screensaver) $(xfceplugins) $(spamassassin) $(flash)
 
 /usr/ports:
@@ -74,6 +77,15 @@ $(debug): $(CC) /etc/mk.conf
 
 $(diff): $(CC) /etc/mk.conf
 	cd $(PORTS)textproc/meld && $(MAKE)
+
+$(latex): $(CC) /etc/mk.conf
+	cd $(PORTS)print/latex-beamer && $(MAKE)
+
+$(pdf): $(CC) /etc/mk.conf
+	cd $(PORTS)graphics/evince && $(MAKE)
+
+$(doxygen): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/doxygen && $(MAKE)
 
 $(firefox): $(CC) /etc/mk.conf
 	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
