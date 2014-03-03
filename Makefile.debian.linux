@@ -1,0 +1,111 @@
+MAKE = aptitude install
+BIN = /usr/
+automake = $(BIN)bin/automake
+gcc = $(BIN)bin/gcc
+git = $(BIN)bin/git
+subversion = $(BIN)bin/svn
+devel = $(BIN)lib/libgsl.la
+vboxguest = $(BIN)lib/libvboxguest.la
+xorg = $(BIN)bin/X
+xfce = $(BIN)bin/startxfce4
+glut = $(BIN)lib/libfreeglut.la
+edit = $(BIN)bin/nedit
+math = $(BIN)bin/maxima
+debug = $(BIN)bin/ddd
+diff = $(BIN)bin/meld
+latex = $(BIN)bin/latex
+pdf = $(BIN)bin/evince
+doxygen = $(BIN)bin/doxygen
+browser = $(BIN)bin/iceweasel-l10n-es-es
+mail = $(BIN)bin/icedove-l10n-es-es
+graphics = $(BIN)bin/ufraw
+multimedia = $(BIN)bin/parole
+screensaver = $(BIN)bin/xscreensaver
+office = $(BIN)bin/loffice
+xfceplugins = $(BIN)bin/xfce4-screenshooter
+spamassassin = $(BIN)bin/spamassassin
+flash = $(BIN)bin/gnash
+
+all: $(automake) $(gcc) $(git) $(subversion) $(devel) $(vboxguest) $(xorg) \
+	$(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) $(pdf) \
+	$(doxygen) $(browser) $(mail) $(graphics) $(multimedia) $(office) \
+	$(screensaver) $(xfceplugins) $(spamassassin) $(flash)
+
+$(automake):
+	$(MAKE) automake
+
+$(gcc):
+	$(MAKE) gcc
+
+$(git):
+	$(MAKE) git
+
+$(subversion):
+	$(MAKE) subversion
+
+$(devel):
+	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev mpich libmpich-dev \
+		libgsl0-dev
+
+$(vboxguest):
+	$(MAKE) virtualbox-guest-{dkms,utils,x11}
+
+$(xorg):
+	$(MAKE) xserver-xorg-{input-{kbd,mouse},video-vesa} xorg
+	X -configure
+	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+
+$(xfce):
+	$(MAKE) xfce4 gdm
+
+$(glut):
+	$(MAKE) libgkt2.0-dev libgtk-3-dev freeglut3-dev
+
+$(edit):
+	$(MAKE) nedit vim-gtk
+
+$(math):
+	$(MAKE) gnome-calculator xmaxima
+
+$(debug):
+	$(MAKE) valgrind ddd
+
+$(diff):
+	$(MAKE) meld
+
+$(latex):
+	$(MAKE) latex-beamer
+
+$(pdf):
+	$(MAKE) evince
+
+$(doxygen):
+	$(MAKE) doxygen
+
+$(firefox):
+	$(MAKE) iceweasel-l10n-es-es
+
+$(mail):
+	$(MAKE) icedove-l10n-es-es
+
+$(graphics):
+	$(MAKE) gimp gimp-dcraw
+
+$(multimedia):
+	$(MAKE) parole
+
+$(office):
+	$(MAKE) libreoffice
+
+$(screensaver):
+	$(MAKE) xscreensaver
+
+$(xfceplugins):
+	$(MAKE) \
+		xfce4-{{cpugraph,netload,systemload,weather,xkb}-plugin,screenshooter}
+
+$(flash):
+	$(MAKE) gnash
+
+clean:
+	aptitude clean
