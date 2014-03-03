@@ -2,7 +2,7 @@ install-unix
 ============
 
 A set of Makefiles to install some useful applications on different UNIX type
-systems.
+systems guest in Virtualbox.
 
 Building instructions
 ---------------------

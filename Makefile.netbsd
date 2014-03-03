@@ -1,16 +1,15 @@
-MAKE = portmaster
-PORTS = /usr/ports/
-BIN = /usr/local/
-CC = /usr/bin/clang
+MAKE = make install && make clean-depends clean
+PORTS = /usr/pkgsrc/
+BIN = /usr/pkg/
+CC = /usr/bin/gcc
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-portmaster = $(BIN)sbin/portmaster
 automake = $(BIN)bin/automake
-gcc = $(BIN)bin/gcc48
+gcc = $(BIN)bin/gcc
 git = $(BIN)bin/git
 subversion = $(BIN)bin/svn
 gsl = $(BIN)lib/libgsl.la
-vboxguest = $(BIN)lib/libvboxguest.la
+mpi = $(BIN)lib/libmpi.la
 xorg = $(BIN)bin/X
 xfce = $(BIN)bin/startxfce4
 glut = $(BIN)lib/libfreeglut.la
@@ -28,25 +27,21 @@ multimedia = $(BIN)bin/parole
 screensaver = $(BIN)bin/xscreensaver
 office = $(BIN)bin/loffice
 xfceplugins = $(BIN)bin/xfce4-screenshooter
-spamassassin = $(BIN)bin/spamassassin
+spamassassin =
 flash = $(BIN)bin/gnash
 
-all: $(PORTS) /etc/mk.conf $(portmaster) $(automake) $(gcc) $(git) \
-	$(subversion) $(gsl) $(vboxguest) $(xorg) $(xfce) $(glut) $(nedit) \
-	$(math) $(debug) $(diff) $(latex) $(pdf) $(doxygen) $(firefox) \
-	$(thunderbird) $(graphics) $(multimedia) $(office) $(screensaver) \
-	$(xfceplugins) $(spamassassin) $(flash)
+all: $(PORTS) /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
+	$(mpi) $(xorg) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) \
+	$(pdf) $(doxygen) $(firefox) $(thunderbird) $(graphics) $(multimedia) \
+	$(office) $(screensaver) $(xfceplugins) $(spamassassin) $(flash)
 
 $(PORTS):
-	portsnap fetch extract
+	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -rpkgsrc-2013Q4 -P pkgsrc
 
 /etc/mk.conf:
 	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
-
-$(portmaster): $(CC) /etc/mk.conf
-	cd $(PORTS)/ports-mgmt/portmaster && make install clean
 
 $(automake): $(CC) /etc/mk.conf
 	cd $(PORTS)devel/automake && $(MAKE)
@@ -61,32 +56,30 @@ $(subversion): $(CC) /etc/mk.conf
 	cd $(PORTS)devel/subversion && $(MAKE)
 
 $(gsl): $(CC) /etc/mk.conf
-	cd $(PORTS)math/gsl && $(MAKE)
+	cd $(PORTS)devel/gsl && $(MAKE)
 
-$(vboxguest): $(CC) /etc/mk.conf
-	cd $(PORTS)emulators/virtualbox-ose-additions && $(MAKE)
-	echo "vboxguest_enable=YES" >> /etc/rc.conf
-	echo "vboxservice_enable=YES" >> /etc/rc.conf
-	reboot
+$(mpi): $(CC) /etc/mk.conf
+	cd $(PORTS)parallel/mpi-ch && $(MAKE)
 
 $(xorg): $(CC) /etc/mk.conf
-	cd $(PORTS)x11/xorg-minimal && $(MAKE)
+	echo "X11_TYPE=modular" >> /etc/mk.conf
+	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
+	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
+	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
+	cd $(PORTS)x11/xf86-input-keyboard && $(MAKE)
+	cd $(PORTS)x11/xf86-input-mouse && $(MAKE)
+	cd $(PORTS)x11/xf86-video-vesa && $(MAKE)
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
 $(xfce): $(CC) /etc/mk.conf
-	cd $(PORTS)x11-wm/xfce4 && $(MAKE)
-	echo "hald_enable=YES" >> /etc/rc.conf
-	echo "dbus_enable=YES" >> /etc/rc.conf
-	echo "gdm_enable=YES" >> /etc/rc.conf
-	reboot
+	cd $(PORTS)meta/xfce && $(MAKE)
 
 $(glut): $(CC) /etc/mk.conf
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
 $(edit): $(CC) /etc/mk.conf
 	cd $(PORTS)editors/nedit && $(MAKE)
-	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/mk.conf
 	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
 
 $(math): $(CC) /etc/mk.conf
@@ -94,7 +87,6 @@ $(math): $(CC) /etc/mk.conf
 	cd $(PORTS)math/maxima && $(MAKE)
 
 $(debug): $(CC) /etc/mk.conf
-	cd $(PORTS)devel/valgrind && $(MAKE)
 	cd $(PORTS)devel/ddd && $(MAKE)
 
 $(diff): $(CC) /etc/mk.conf
@@ -137,6 +129,3 @@ $(xfceplugins): $(CC) /etc/mk.conf
 
 $(flash): $(CC) /etc/mk.conf
 	cd $(PORTS)www/gnash && $(MAKE)
-
-clean:
-	portmaster --clean-distfiles -y
