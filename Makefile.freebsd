@@ -1,0 +1,142 @@
+MAKE = portmaster
+PORTS = /usr/ports/
+BIN = /usr/local/
+CC = /usr/bin/clang
+CPUTYPE = -march=native -mfpmath=sse -msse3
+CFLAGS = -O2 -fno-strict-aliasing
+portmaster = $(BIN)sbin/portmaster
+automake = $(BIN)bin/automake
+gcc = $(BIN)bin/gcc
+git = $(BIN)bin/git
+subversion = $(BIN)bin/svn
+gsl = $(BIN)lib/libgsl.la
+vboxguest = $(BIN)lib/libvboxguest.la
+xorg = $(BIN)bin/X
+xfce = $(BIN)bin/startxfce4
+glut = $(BIN)lib/libfreeglut.la
+edit = $(BIN)bin/nedit
+math = $(BIN)bin/maxima
+debug = $(BIN)bin/ddd
+diff = $(BIN)bin/meld
+latex = $(BIN)bin/latex
+pdf = $(BIN)bin/evince
+doxygen = $(BIN)bin/doxygen
+firefox = $(BIN)bin/firefox
+thunderbird = $(BIN)bin/thunderbird
+graphics = $(BIN)bin/ufraw
+multimedia = $(BIN)bin/parole
+screensaver = $(BIN)bin/xscreensaver
+office = $(BIN)bin/loffice
+xfceplugins = $(BIN)bin/xfce4-screenshooter
+spamassassin = $(BIN)bin/spamassassin
+flash = $(BIN)bin/gnash
+
+all: /usr/ports /etc/mk.conf $(portmaster) $(automake) $(gcc) $(git) \
+	$(subversion) $(gsl) $(vboxguest) $(xorg) $(xfce) $(glut) $(nedit) \
+	$(math) $(debug) $(diff) $(latex) $(pdf) $(doxygen) $(firefox) \
+	$(thunderbird) $(graphics) $(multimedia) $(office) $(screensaver) \
+	$(xfceplugins) $(spamassassin) $(flash)
+
+/usr/ports:
+	portsnap fetch extract
+
+/etc/mk.conf:
+	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
+	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
+	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
+
+$(portmaster): $(CC) /etc/mk.conf
+	cd $(PORTS)/ports-mgmt/portmaster && make install clean
+
+$(automake): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/automake && $(MAKE)
+
+$(gcc): $(CC) /etc/mk.conf
+	cd $(PORTS)lang/gcc48 && $(MAKE)
+
+$(git): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/git && $(MAKE)
+
+$(subversion): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/subversion && $(MAKE)
+
+$(gsl): $(CC) /etc/mk.conf
+	cd $(PORTS)math/gsl && $(MAKE)
+
+$(vboxguest): $(CC) /etc/mk.conf
+	cd $(PORTS)emulators/virtualbox-ose-additions && $(MAKE)
+	echo "vboxguest_enable=YES" >> /etc/rc.conf
+	echo "vboxservice_enable=YES" >> /etc/rc.conf
+	reboot
+
+$(xorg): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xorg-minimal && $(MAKE)
+	X -configure
+	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+
+$(xfce): $(CC) /etc/mk.conf
+	cd $(PORTS)x11-wm/xfce4 && $(MAKE)
+	echo "hald_enable=YES" >> /etc/rc.conf
+	echo "dbus_enable=YES" >> /etc/rc.conf
+	echo "gdm_enable=YES" >> /etc/rc.conf
+	reboot
+
+$(glut): $(CC) /etc/mk.conf
+	cd $(PORTS)graphics/freeglut && $(MAKE)
+
+$(edit): $(CC) /etc/mk.conf
+	cd $(PORTS)editors/nedit && $(MAKE)
+	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/mk.conf
+	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
+
+$(math): $(CC) /etc/mk.conf
+	cd $(PORTS)math/galculator && $(MAKE)
+	cd $(PORTS)math/maxima && $(MAKE)
+
+$(debug): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/valgrind && $(MAKE)
+	cd $(PORTS)devel/ddd && $(MAKE)
+
+$(diff): $(CC) /etc/mk.conf
+	cd $(PORTS)textproc/meld && $(MAKE)
+
+$(latex): $(CC) /etc/mk.conf
+	cd $(PORTS)print/latex-beamer && $(MAKE)
+
+$(pdf): $(CC) /etc/mk.conf
+	cd $(PORTS)graphics/evince && $(MAKE)
+
+$(doxygen): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/doxygen && $(MAKE)
+
+$(firefox): $(CC) /etc/mk.conf
+	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
+
+$(thunderbird): $(CC) /etc/mk.conf
+	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
+
+$(graphics): $(CC) /etc/mk.conf
+	cd $(PORTS)graphics/gimp/stable && $(MAKE)
+	cd $(PORTS)graphics/ufraw && $(MAKE)
+
+$(multimedia): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xfce4/parole && $(MAKE)
+
+$(office): $(CC) /etc/mk.conf
+	cd $(PORTS)editors/libreoffice && $(MAKE)
+
+$(screensaver): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xscreensaver && $(MAKE)
+
+$(xfceplugins): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
+
+$(flash): $(CC) /etc/mk.conf
+	cd $(PORTS)www/gnash && $(MAKE)
+
+clean:
+	portmaster --clean-distfiles -y

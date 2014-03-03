@@ -1,0 +1,105 @@
+MAKE = make install && make clean=depends
+CC = /usr/bin/gcc
+CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
+PORTS = /usr/ports/
+BIN = /usr/local/
+automake = $(BIN)bin/automake-1.13
+gcc = $(BIN)bin/egcc
+git = $(BIN)bin/git
+subversion = $(BIN)bin/svn
+gsl = $(BIN)lib/libgsl.la
+mpi = $(BIN)lib/libmpi.la
+xfce = $(BIN)bin/startxfce4
+glut = $(BIN)lib/libfreeglut.la
+edit = $(BIN)bin/nedit
+math = $(BIN)bin/maxima
+debug = $(BIN)bin/ddd
+diff = $(BIN)bin/meld
+firefox = $(BIN)bin/firefox
+thunderbird = $(BIN)bin/thunderbird
+graphics = $(BIN)bin/ufraw
+multimedia = $(BIN)bin/parole
+screensaver = $(BIN)bin/xscreensaver
+office = $(BIN)bin/loffice
+xfceplugins = $(BIN)bin/xfce4-screenshooter
+spamassassin =
+flash = $(BIN)bin/gnash
+
+all: /usr/ports /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
+	$(mpi) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) \
+	$(firefox) $(thunderbird) $(graphics) $(multimedia) $(office) \
+	$(screensaver) $(xfceplugins) $(spamassassin) $(flash)
+
+/usr/ports:
+	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_4 -P ports
+
+/etc/mk.conf:
+	echo "CFLAGS+=$(CFLAGS)" > /etc/mk.conf
+	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
+
+$(automake): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/automake/1.13 && $(MAKE)
+
+$(gcc): $(CC) /etc/mk.conf
+	cd $(PORTS)lang/gcc/4.8 && $(MAKE)
+
+$(git): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/git && $(MAKE)
+
+$(subversion): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/subversion && $(MAKE)
+
+$(gsl): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/gsl && $(MAKE)
+
+$(mpi): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/openmpi && $(MAKE)
+
+$(xfce): $(CC) /etc/mk.conf
+	cd $(PORTS)meta/xfce && $(MAKE)
+
+$(glut): $(CC) /etc/mk.conf
+	cd $(PORTS)graphics/freeglut && $(MAKE)
+
+$(edit): $(CC) /etc/mk.conf
+	cd $(PORTS)editors/nedit && $(MAKE)
+	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
+
+$(math): $(CC) /etc/mk.conf
+	cd $(PORTS)math/galculator && $(MAKE)
+	cd $(PORTS)math/maxima && $(MAKE)
+
+$(debug): $(CC) /etc/mk.conf
+	cd $(PORTS)devel/ddd && $(MAKE)
+
+$(diff): $(CC) /etc/mk.conf
+	cd $(PORTS)textproc/meld && $(MAKE)
+
+$(firefox): $(CC) /etc/mk.conf
+	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
+
+$(thunderbird): $(CC) /etc/mk.conf
+	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
+
+$(graphics): $(CC) /etc/mk.conf
+	cd $(PORTS)graphics/gimp/stable && $(MAKE)
+	cd $(PORTS)graphics/ufraw && $(MAKE)
+
+$(multimedia): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xfce4/parole && $(MAKE)
+
+$(office): $(CC) /etc/mk.conf
+	cd $(PORTS)editors/libreoffice && $(MAKE)
+
+$(screensaver): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xscreensaver && $(MAKE)
+
+$(xfceplugins): $(CC) /etc/mk.conf
+	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
+
+$(flash): $(CC) /etc/mk.conf
+	cd $(PORTS)www/gnash && $(MAKE)
