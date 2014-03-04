@@ -1,8 +1,9 @@
-MAKE = make install && make clean-depends clean
+MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
+pkgtools = $(BASE)bin/lintpkgsrc
 compilers = $(BASE)gcc48/bin/gcc
 repositories = $(BASE)bin/svn
 x = $(BASE)sbin/gdm
@@ -24,8 +25,8 @@ spam = $(BASE)bin/spamassassin
 flash = $(BASE)bin/gnash
 
 all: \
-	$(PORTS) \
 	/etc/mk.conf \
+	$(pkgtools) \
 	$(compilers) \
 	$(repositories) \
 	$(x) \
@@ -46,15 +47,17 @@ all: \
 	$(spam) \
 	$(flash)
 
-$(PORTS):
-	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -rpkgsrc-2013Q4 -P pkgsrc
-
 /etc/mk.conf:
 	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "X11_TYPE=modular" >> /etc/mk.conf
 	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
+
+$(pkgtools):
+	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -rpkgsrc-2013Q4 -P pkgsrc
+	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
+	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
 
 $(compilers):
 	cd $(PORTS)devel/automake && $(MAKE)
@@ -107,7 +110,10 @@ $(diff):
 	cd $(PORTS)devel/meld && $(MAKE)
 
 $(pdf):
-	cd $(PORTS)print/tex-beamer && $(MAKE)
+	cd $(PORTS)print/teTeX3-texmf && $(MAKE)
+	cd $(PORTS)graphics/tex-pst-pdf && $(MAKE)
+	cd $(PORTS)print/tex-babel && $(MAKE)
+	cd $(PORTS)print/tex-elsarticle && $(MAKE)
 	cd $(PORTS)print/evince && $(MAKE)
 
 $(doxygen):
@@ -122,6 +128,7 @@ $(mail):
 	cd $(PORTS)mail/thunderbird-l10n && $(MAKE)
 
 $(graphics):
+	cd $(PORTS)graphics/ImageMagick && $(MAKE)
 	cd $(PORTS)graphics/gimp && $(MAKE)
 	cd $(PORTS)graphics/gimp-ufraw && $(MAKE)
 
@@ -130,7 +137,7 @@ $(multimedia):
 	cd $(PORTS)multimedia/totem && $(MAKE)
 
 $(office):
-	cd $(PORTS)editors/libreoffice && $(MAKE)
+	cd $(PORTS)misc/libreoffice4 && $(MAKE)
 
 $(screensaver):
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
@@ -148,3 +155,6 @@ $(spam):
 
 $(flash):
 	cd $(PORTS)graphics/gnash && $(MAKE)
+
+clean:
+	lintpkgsrc -or && pkg_distinst --delete
