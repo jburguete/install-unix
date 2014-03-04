@@ -7,7 +7,8 @@ systems guest in Virtualbox.
 Building instructions
 ---------------------
 
-You have only to type as root:
+When you have installed the basic operative system, you have only to type as
+root:
 
 > make
 

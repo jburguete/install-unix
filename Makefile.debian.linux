@@ -1,89 +1,84 @@
 MAKE = aptitude install
-BIN = /usr/
-automake = $(BIN)bin/automake
-gcc = $(BIN)bin/gcc
-git = $(BIN)bin/git
-subversion = $(BIN)bin/svn
-devel = $(BIN)lib/libgsl.la
-vboxguest = $(BIN)lib/libvboxguest.la
-xorg = $(BIN)bin/X
-xfce = $(BIN)bin/startxfce4
-glut = $(BIN)lib/libfreeglut.la
-edit = $(BIN)bin/nedit
-math = $(BIN)bin/maxima
-debug = $(BIN)bin/ddd
-diff = $(BIN)bin/meld
-latex = $(BIN)bin/latex
-pdf = $(BIN)bin/evince
-doxygen = $(BIN)bin/doxygen
-browser = $(BIN)bin/iceweasel-l10n-es-es
-mail = $(BIN)bin/icedove-l10n-es-es
-graphics = $(BIN)bin/ufraw
-multimedia = $(BIN)bin/parole
-screensaver = $(BIN)bin/xscreensaver
-office = $(BIN)bin/loffice
-xfceplugins = $(BIN)bin/xfce4-screenshooter
-spamassassin = $(BIN)bin/spamassassin
-flash = $(BIN)bin/gnash
+BASE = /usr/
+LIB = /usr/lib/x86_64-linux-gnu/
+compilers = $(BASE)bin/gfortran
+repositories = $(BASE)bin/svn
+x = /etc/X11/xorg.conf
+libraries = $(BASE)lib/libgsl.la
+glut = $(LIB)/libglut.so.3
+edit = $(BASE)bin/nedit
+math = $(BASE)bin/xmaxima
+debug = $(BASE)bin/ddd
+diff = $(BASE)bin/meld
+pdf = $(BASE)bin/evince
+doxygen = $(BASE)bin/doxygen
+browser = $(BASE)bin/iceweasel
+mail = $(BASE)bin/icedove
+graphics = $(BASE)lib/gimp/2.0/plug-ins/rawphoto
+multimedia = $(BASE)bin/parole
+screensaver = $(BASE)bin/xscreensaver
+office = $(BASE)bin/loffice
+xplugins = $(BASE)bin/xfce4-screenshooter
+spam = $(BASE)bin/spamassassin
+flash = $(BASE)bin/gnash
 
-all: $(automake) $(gcc) $(git) $(subversion) $(devel) $(vboxguest) $(xorg) \
-	$(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) $(pdf) \
-	$(doxygen) $(browser) $(mail) $(graphics) $(multimedia) $(office) \
-	$(screensaver) $(xfceplugins) $(spamassassin) $(flash)
+all: \
+	$(compilers) \
+	$(repositories) \
+	$(x) \
+	$(libraries) \
+	$(editors) \
+	$(debug) \
+	$(math) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(office) \
+	$(screensaver) \
+	$(xplugins) \
+	$(spam) \
+	$(flash)
 
-$(automake):
-	$(MAKE) automake
+$(compilers):
+	$(MAKE) automake gcc gfortran
 
-$(gcc):
-	$(MAKE) gcc
+$(repositories):
+	$(MAKE) git subversion
 
-$(git):
-	$(MAKE) git
-
-$(subversion):
-	$(MAKE) subversion
-
-$(devel):
-	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev mpich libmpich-dev \
-		libgsl0-dev
-
-$(vboxguest):
-	$(MAKE) virtualbox-guest-{dkms,utils,x11}
-
-$(xorg):
-	$(MAKE) xserver-xorg-{input-{kbd,mouse},video-vesa} xorg
+$(x):
+	$(MAKE) virtualbox-guest-{dkms,utils,x11} \
+		xserver-xorg-{input-{kbd,mouse},video-vesa} xorg xfce4 gdm3
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
-$(xfce):
-	$(MAKE) xfce4 gdm
+$(libraries):
+	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev mpich libmpich-dev \
+		libgsl0-dev libgkt2.0-dev libgtk-3-dev freeglut3-dev
 
-$(glut):
-	$(MAKE) libgkt2.0-dev libgtk-3-dev freeglut3-dev
-
-$(edit):
+$(editors):
 	$(MAKE) nedit vim-gtk
+
+$(debug):
+	$(MAKE) valgrind valgrind-mpi ddd
 
 $(math):
 	$(MAKE) gnome-calculator xmaxima
 
-$(debug):
-	$(MAKE) valgrind ddd
-
 $(diff):
 	$(MAKE) meld
 
-$(latex):
-	$(MAKE) latex-beamer
-
 $(pdf):
-	$(MAKE) evince
+	$(MAKE) latex-beamer evince
 
 $(doxygen):
 	$(MAKE) doxygen
 
-$(firefox):
-	$(MAKE) iceweasel-l10n-es-es
+$(browser):
+	$(MAKE) iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
 	$(MAKE) icedove-l10n-es-es
@@ -100,9 +95,12 @@ $(office):
 $(screensaver):
 	$(MAKE) xscreensaver
 
-$(xfceplugins):
+$(xplugins):
 	$(MAKE) \
 		xfce4-{{cpugraph,netload,systemload,weather,xkb}-plugin,screenshooter}
+
+$(spam):
+	$(MAKE) spamassassin
 
 $(flash):
 	$(MAKE) gnash

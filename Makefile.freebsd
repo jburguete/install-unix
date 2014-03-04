@@ -1,41 +1,54 @@
 MAKE = portmaster
 PORTS = /usr/ports/
-BIN = /usr/local/
-CC = /usr/bin/clang
+BASE = /usr/local/
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-portmaster = $(BIN)sbin/portmaster
-automake = $(BIN)bin/automake
-gcc = $(BIN)bin/gcc48
-git = $(BIN)bin/git
-subversion = $(BIN)bin/svn
-gsl = $(BIN)lib/libgsl.la
-vboxguest = $(BIN)lib/libvboxguest.la
-xorg = $(BIN)bin/X
-xfce = $(BIN)bin/startxfce4
-glut = $(BIN)lib/libfreeglut.la
-edit = $(BIN)bin/nedit
-math = $(BIN)bin/maxima
-debug = $(BIN)bin/ddd
-diff = $(BIN)bin/meld
-latex = $(BIN)bin/latex
-pdf = $(BIN)bin/evince
-doxygen = $(BIN)bin/doxygen
-firefox = $(BIN)bin/firefox
-thunderbird = $(BIN)bin/thunderbird
-graphics = $(BIN)bin/ufraw
-multimedia = $(BIN)bin/parole
-screensaver = $(BIN)bin/xscreensaver
-office = $(BIN)bin/loffice
-xfceplugins = $(BIN)bin/xfce4-screenshooter
-spamassassin = $(BIN)bin/spamassassin
-flash = $(BIN)bin/gnash
+portmaster = $(BASE)sbin/portmaster
+compilers = $(BASE)bin/gcc48
+repositories = $(BASE)bin/svn
+vboxguest = $(BASE)lib/libvboxguest.la
+x = $(BASE)sbin/gdm3
+libraries = $(BASE)lib/libfreeglut.la
+editors = $(BASE)bin/nedit
+debug = $(BASE)bin/ddd
+math = $(BASE)bin/maxima
+diff = $(BASE)bin/meld
+latex = $(BASE)bin/latex
+pdf = $(BASE)bin/evince
+doxygen = $(BASE)bin/doxygen
+firefox = $(BASE)bin/firefox
+thunderbird = $(BASE)bin/thunderbird
+graphics = $(BASE)bin/ufraw
+multimedia = $(BASE)bin/parole
+screensaver = $(BASE)bin/xscreensaver
+office = $(BASE)bin/loffice
+xfceplugins = $(BASE)bin/xfce4-screenshooter
+spam = $(BASE)bin/spamassassin
+flash = $(BASE)bin/gnash
 
-all: $(PORTS) /etc/mk.conf $(portmaster) $(automake) $(gcc) $(git) \
-	$(subversion) $(gsl) $(vboxguest) $(xorg) $(xfce) $(glut) $(nedit) \
-	$(math) $(debug) $(diff) $(latex) $(pdf) $(doxygen) $(firefox) \
-	$(thunderbird) $(graphics) $(multimedia) $(office) $(screensaver) \
-	$(xfceplugins) $(spamassassin) $(flash)
+all: \
+	$(PORTS) \
+	/etc/mk.conf \
+	$(portmaster) \
+	$(compilers) \
+	$(repositories) \
+	$(x) \
+	$(libraries) \
+	$(editors) \
+	$(debug) \
+	$(math) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(office) \
+	$(screensaver) \
+	$(xplugins) \
+	$(spam) \
+	$(flash)
 
 $(PORTS):
 	portsnap fetch extract
@@ -45,98 +58,84 @@ $(PORTS):
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 
-$(portmaster): $(CC)
+$(portmaster):
 	cd $(PORTS)/ports-mgmt/portmaster && make install clean
 
-$(automake): $(CC)
-	cd $(PORTS)devel/automake && $(MAKE)
+$(compilers):
+	$(MAKE) devel/automake lang/gcc48
 
-$(gcc): $(CC)
-	cd $(PORTS)lang/gcc48 && $(MAKE)
+$(repositories):
+	$(MAKE) devel/git devel/subversion
 
-$(git): $(CC)
-	cd $(PORTS)devel/git && $(MAKE)
-
-$(subversion): $(CC)
-	cd $(PORTS)devel/subversion && $(MAKE)
-
-$(gsl): $(CC)
-	cd $(PORTS)math/gsl && $(MAKE)
-
-$(vboxguest): $(CC)
-	cd $(PORTS)emulators/virtualbox-ose-additions && $(MAKE)
+$(vboxguest):
+	$(MAKE) emulators/virtualbox-ose-additions
 	echo "vboxguest_enable=YES" >> /etc/rc.conf
 	echo "vboxservice_enable=YES" >> /etc/rc.conf
-	-reboot
+	echo "Please: reboot the computer to make effective the changes"
+	read
 
-$(xorg): $(CC)
-	cd $(PORTS)x11/xorg-minimal && $(MAKE)
+$(x): $(vboxguest)
+	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm3
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
-
-$(xfce): $(CC)
-	cd $(PORTS)x11-wm/xfce4 && $(MAKE)
+	echo "exec startxfce4" > /root/.xinitrc
+	ln -s /root/.xinitrc /root/.xsession
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
 	echo "gdm_enable=YES" >> /etc/rc.conf
-	-reboot
+	echo "Please: reboot the computer to make effective the changes"
+	read
 
-$(glut): $(CC)
-	cd $(PORTS)graphics/freeglut && $(MAKE)
+$(libraries):
+	$(MAKE) math/gsl graphics/freeglut
 
-$(edit): $(CC)
-	cd $(PORTS)editors/nedit && $(MAKE)
+$(editors):
 	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/mk.conf
-	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
+	$(MAKE) editors/vim-gtk2 editors/nedit
 
-$(math): $(CC)
-	cd $(PORTS)math/galculator && $(MAKE)
-	cd $(PORTS)math/maxima && $(MAKE)
+$(debug):
+	$(MAKE) devel/valgrind devel/ddd
 
-$(debug): $(CC)
-	cd $(PORTS)devel/valgrind && $(MAKE)
-	cd $(PORTS)devel/ddd && $(MAKE)
+$(math):
+	$(MAKE) math/galculator math/maxima
 
-$(diff): $(CC)
-	cd $(PORTS)textproc/meld && $(MAKE)
+$(diff):
+	$(MAKE) textproc/meld
 
-$(latex): $(CC)
-	cd $(PORTS)print/latex-beamer && $(MAKE)
+$(pdf):
+	$(MAKE) print/latex-beamer graphics/evince
 
-$(pdf): $(CC)
-	cd $(PORTS)graphics/evince && $(MAKE)
+$(doxygen):
+	$(MAKE) devel/doxygen
 
-$(doxygen): $(CC)
-	cd $(PORTS)devel/doxygen && $(MAKE)
+$(browser):
+	$(MAKE) www/firefox www/firefox-i18n
 
-$(firefox): $(CC)
-	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
+$(mail):
+	$(MAKE) mail/thunderbird mail/thunderbird-i18n
 
-$(thunderbird): $(CC)
-	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
+$(graphics):
+	$(MAKE) graphics/gimp graphics/ufraw
 
-$(graphics): $(CC)
-	cd $(PORTS)graphics/gimp/stable && $(MAKE)
-	cd $(PORTS)graphics/ufraw && $(MAKE)
+$(multimedia):
+	$(MAKE) multimedia/xfce4-parole
 
-$(multimedia): $(CC)
-	cd $(PORTS)multimedia/xfce4-parole && $(MAKE)
+$(office):
+	$(MAKE) editors/libreoffice
 
-$(office): $(CC)
-	cd $(PORTS)editors/libreoffice && $(MAKE)
+$(screensaver):
+	$(MAKE) x11/xscreensaver
 
-$(screensaver): $(CC)
-	cd $(PORTS)x11/xscreensaver && $(MAKE)
+$(xplugins):
+	$(MAKE) sysutils/xfce4-cpugraph-plugin sysutils/xfce4-netload-plugin \
+		sysutils/xfce4-systemload-plugin misc/xfce4-weather-plugin \
+		sysutils/xfce4-xkb-plugin graphics/xfce4-screenshooter
 
-$(xfceplugins): $(CC)
-	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
+$(spam):
+	$(MAKE) mail/spamassassin
 
-$(flash): $(CC)
-	cd $(PORTS)www/gnash && $(MAKE)
+$(flash):
+	$(MAKE) graphics/gnash
 
 clean:
 	portmaster --clean-distfiles -y

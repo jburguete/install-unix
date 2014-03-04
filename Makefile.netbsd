@@ -1,39 +1,50 @@
 MAKE = make install && make clean-depends clean
 PORTS = /usr/pkgsrc/
-BIN = /usr/pkg/
-CC = /usr/bin/gcc
+BASE = /usr/pkg/
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-automake = $(BIN)bin/automake
-gcc = $(BIN)bin/gcc
-git = $(BIN)bin/git
-subversion = $(BIN)bin/svn
-gsl = $(BIN)lib/libgsl.la
-mpi = $(BIN)lib/libmpi.la
-xorg = /root/xorg.conf.new
-xfce = $(BIN)bin/startxfce4
-glut = $(BIN)lib/libfreeglut.la
-edit = $(BIN)bin/nedit
-math = $(BIN)bin/maxima
-debug = $(BIN)bin/ddd
-diff = $(BIN)bin/meld
-latex = $(BIN)bin/latex
-pdf = $(BIN)bin/evince
-doxygen = $(BIN)bin/doxygen
-browser = $(BIN)bin/firefox
-mail = $(BIN)bin/thunderbird
-graphics = $(BIN)bin/ufraw
-multimedia = $(BIN)bin/totem
-screensaver = $(BIN)bin/xscreensaver
-office = $(BIN)bin/loffice
-xfceplugins = $(BIN)bin/xfce4-screenshooter
-spamassassin = $(BIN)bin/spamassassin
-flash = $(BIN)bin/gnash
+compilers = $(BASE)bin/gcc
+repositories = $(BASE)bin/svn
+x = $(BASE)sbin/gdm
+libraries = $(BASE)lib/libfreeglut.la
+editors = $(BASE)bin/nedit
+debug = $(BASE)bin/ddd
+math = $(BASE)bin/maxima
+diff = $(BASE)bin/meld
+pdf = $(BASE)bin/evince
+doxygen = $(BASE)bin/doxygen
+browser = $(BASE)bin/firefox
+mail = $(BASE)bin/thunderbird
+graphics = $(BASE)bin/ufraw
+multimedia = $(BASE)bin/totem
+screensaver = $(BASE)bin/xscreensaver
+office = $(BASE)bin/loffice
+xfceplugins = $(BASE)bin/xfce4-screenshooter
+spam = $(BASE)bin/spamassassin
+flash = $(BASE)bin/gnash
 
-all: $(PORTS) /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
-	$(mpi) $(xorg) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) \
-	$(pdf) $(doxygen) $(browser) $(mail) $(graphics) $(multimedia) \
-	$(office) $(screensaver) $(xfceplugins) $(spamassassin) $(flash)
+all: \
+	$(PORTS) \
+	/etc/mk.conf \
+	$(compilers) \
+	$(repositories) \
+	$(x) \
+	$(libraries) \
+	$(editors) \
+	$(debug) \
+	$(math) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(office) \
+	$(screensaver) \
+	$(xplugins) \
+	$(spam) \
+	$(flash)
 
 $(PORTS):
 	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -rpkgsrc-2013Q4 -P pkgsrc
@@ -43,26 +54,16 @@ $(PORTS):
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 
-$(automake): $(CC)
+$(compilers):
 	cd $(PORTS)devel/automake && $(MAKE)
-
-$(gcc): $(CC)
 	cd $(PORTS)lang/gcc48 && $(MAKE)
 
-$(git): $(CC)
+$(repositories):
 	cd $(PORTS)devel/git-base && $(MAKE)
 	cd $(PORTS)devel/git-docs && $(MAKE)
-
-$(subversion): $(CC)
 	cd $(PORTS)devel/subversion-base && $(MAKE)
 
-$(gsl): $(CC)
-	cd $(PORTS)math/gsl && $(MAKE)
-
-$(mpi): $(CC)
-	cd $(PORTS)parallel/mpi-ch && $(MAKE)
-
-$(xorg): $(CC)
+$(x):
 	echo "X11_TYPE=modular" >> /etc/mk.conf
 	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
@@ -72,65 +73,75 @@ $(xorg): $(CC)
 	cd $(PORTS)x11/xf86-video-vesa && $(MAKE)
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
-
-$(xfce): $(CC)
 	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
+	cd $(PORTS)x11/gdm && $(MAKE)
+	ln -s $(BASE)share/examples/rc.d/hal /etc
+	ln -s $(BASE)share/examples/rc.d/dbus /etc
+	ln -s $(BASE)share/examples/rc.d/gdm /etc
+	echo "hal_enable=YES" >> /etc/rc.conf
+	echo "dbus_enable=YES" >> /etc/rc.conf
+	echo "gdm_enable=YES" >> /etc/rc.conf
+	echo "Please: reboot the computer to make effective the changes"
+	read
 
-$(glut): $(CC)
+$(libraries):
+	cd $(PORTS)math/gsl && $(MAKE)
+	cd $(PORTS)parallel/mpi-ch && $(MAKE)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
-$(edit): $(CC)
+$(editors):
 	cd $(PORTS)editors/nedit && $(MAKE)
 	cd $(PORTS)editors/vim-gtk2 $(MAKE)
 
-$(math): $(CC)
+$(debug):
+	cd $(PORTS)devel/ddd && $(MAKE)
+
+$(math):
 	cd $(PORTS)math/galculator && $(MAKE)
 	cd $(PORTS)math/maxima && $(MAKE)
 
-$(debug): $(CC)
-	cd $(PORTS)devel/ddd && $(MAKE)
-
-$(diff): $(CC)
+$(diff):
 	cd $(PORTS)devel/meld && $(MAKE)
 
-$(latex): $(CC)
+$(pdf):
 	cd $(PORTS)print/tex-beamer && $(MAKE)
-
-$(pdf): $(CC)
 	cd $(PORTS)print/evince && $(MAKE)
 
-$(doxygen): $(CC)
+$(doxygen):
 	cd $(PORTS)devel/doxygen && $(MAKE)
 
-$(browser): $(CC)
+$(browser):
+	cd $(PORTS)www/firefox && $(MAKE)
 	cd $(PORTS)www/firefox-l10n && $(MAKE)
 
-$(mail): $(CC)
+$(mail):
+	cd $(PORTS)mail/thunderbird && $(MAKE)
 	cd $(PORTS)mail/thunderbird-l10n && $(MAKE)
 
-$(graphics): $(CC)
+$(graphics):
 	cd $(PORTS)graphics/gimp && $(MAKE)
 	cd $(PORTS)graphics/gimp-ufraw && $(MAKE)
 
-$(multimedia): $(CC)
+$(multimedia):
 	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
 	cd $(PORTS)multimedia/totem && $(MAKE)
 
-$(office): $(CC)
+$(office):
 	cd $(PORTS)editors/libreoffice && $(MAKE)
 
-$(screensaver): $(CC)
+$(screensaver):
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
 
-$(xfceplugins): $(CC)
-	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
+$(xplugins):
+	cd $(PORTS)sysutils/xfce4-cpugraph-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-netload-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
+	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
+	cd $(PORTS)graphics/xfce4-screenshooter && $(MAKE)
 
-$(spamassassin): $(CC)
+$(spam):
 	cd $(PORTS)mail/spamassassin && $(MAKE)
 
-$(flash): $(CC)
-	cd $(PORTS)www/gnash && $(MAKE)
+$(flash):
+	cd $(PORTS)graphics/gnash && $(MAKE)

@@ -1,37 +1,51 @@
 MAKE = make install && make clean=depends
 PORTS = /usr/ports/
 BIN = /usr/local/
-CC = /usr/bin/gcc
 CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
-automake = $(BIN)bin/automake-1.13
-gcc = $(BIN)bin/egcc
-git = $(BIN)bin/git
-subversion = $(BIN)bin/svn
-gsl = $(BIN)lib/libgsl.la
-mpi = $(BIN)lib/libmpi.la
-xfce = $(BIN)bin/startxfce4
-glut = $(BIN)lib/libfreeglut.la
-edit = $(BIN)bin/nedit
-math = $(BIN)bin/maxima
+compilers = $(BIN)bin/egcc
+repositories = $(BIN)bin/svn
+x = $(BIN)bin/startxfce4
+libraries = $(BIN)lib/libfreeglut.la
+editors = $(BIN)bin/nedit
 debug = $(BIN)bin/ddd
+math = $(BIN)bin/maxima
 diff = $(BIN)bin/meld
 latex = $(BIN)bin/latex
 pdf = $(BIN)bin/evince
 doxygen = $(BIN)bin/doxygen
-firefox = $(BIN)bin/firefox
-thunderbird = $(BIN)bin/thunderbird
+browser = $(BIN)bin/firefox
+mail = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
 multimedia = $(BIN)bin/parole
 screensaver = $(BIN)bin/xscreensaver
 office = $(BIN)bin/loffice
-xfceplugins = $(BIN)bin/xfce4-screenshooter
-spamassassin =
+xplugins = $(BIN)bin/xfce4-screenshooter
+spam =
 flash = $(BIN)bin/gnash
 
-all: /usr/ports /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
-	$(mpi) $(xfce) $(glut) $(nedit) $(math) $(debug) $(diff) $(latex) $(pdf) \
-	$(doxygen) $(firefox) $(thunderbird) $(graphics) $(multimedia) $(office) \
-	$(screensaver) $(xfceplugins) $(spamassassin) $(flash)
+all: \
+	$(PORTS) \
+	/etc/mk.conf \
+	$(compilers) \
+	$(repositories) \
+	$(x) \
+	$(libraries) \
+	$(editors) \
+	$(debug) \
+	$(math) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(office) \
+	$(screensaver) \
+	$(xplugins) \
+	$(spam) \
+	$(flash)
+
 
 /usr/ports:
 	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_4 -P ports
@@ -40,78 +54,70 @@ all: /usr/ports /etc/mk.conf $(automake) $(gcc) $(git) $(subversion) $(gsl) \
 	echo "CFLAGS+=$(CFLAGS)" > /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 
-$(automake): $(CC)
+$(compilers):
 	cd $(PORTS)devel/automake/1.13 && $(MAKE)
-
-$(gcc): $(CC)
 	cd $(PORTS)lang/gcc/4.8 && $(MAKE)
 
-$(git): $(CC)
+$(repositories):
 	cd $(PORTS)devel/git && $(MAKE)
-
-$(subversion): $(CC)
 	cd $(PORTS)devel/subversion && $(MAKE)
 
-$(gsl): $(CC)
-	cd $(PORTS)devel/gsl && $(MAKE)
-
-$(mpi): $(CC)
-	cd $(PORTS)devel/openmpi && $(MAKE)
-
-$(xfce): $(CC)
+$(x):
 	cd $(PORTS)meta/xfce && $(MAKE)
+	echo "exec startxfce4" > /root/.initrc
 
-$(glut): $(CC)
+$(libraries):
+	cd $(PORTS)devel/gsl && $(MAKE)
+	cd $(PORTS)devel/openmpi && $(MAKE)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
-$(edit): $(CC)
-	cd $(PORTS)editors/nedit && $(MAKE)
+$(editors):
 	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
+	cd $(PORTS)editors/nedit && $(MAKE)
 
-$(math): $(CC)
+$(debug):
+	cd $(PORTS)devel/ddd && $(MAKE)
+
+$(math):
 	cd $(PORTS)math/galculator && $(MAKE)
 	cd $(PORTS)math/maxima && $(MAKE)
 
-$(debug): $(CC)
-	cd $(PORTS)devel/ddd && $(MAKE)
-
-$(diff): $(CC)
+$(diff):
 	cd $(PORTS)textproc/meld && $(MAKE)
 
-$(latex): $(CC)
+$(pdf):
 	cd $(PORTS)print/latex-beamer && $(MAKE)
-
-$(pdf): $(CC)
 	cd $(PORTS)graphics/evince && $(MAKE)
 
-$(doxygen): $(CC)
+$(doxygen):
 	cd $(PORTS)devel/doxygen && $(MAKE)
 
-$(firefox): $(CC)
+$(browser):
 	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
 
-$(thunderbird): $(CC)
+$(mail):
 	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
 
-$(graphics): $(CC)
+$(graphics):
 	cd $(PORTS)graphics/gimp/stable && $(MAKE)
 	cd $(PORTS)graphics/ufraw && $(MAKE)
 
-$(multimedia): $(CC)
+$(multimedia):
 	cd $(PORTS)x11/xfce4/parole && $(MAKE)
 
-$(office): $(CC)
+$(office):
 	cd $(PORTS)editors/libreoffice && $(MAKE)
 
-$(screensaver): $(CC)
+$(screensaver):
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
 
-$(xfceplugins): $(CC)
+$(xfceplugins):
 	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-xkb && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
 
-$(flash): $(CC)
+$(flash):
 	cd $(PORTS)www/gnash && $(MAKE)
