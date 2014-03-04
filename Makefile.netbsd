@@ -53,6 +53,8 @@ $(PORTS):
 	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
 	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
+	echo "X11_TYPE=modular" >> /etc/mk.conf
+	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
 
 $(compilers):
 	cd $(PORTS)devel/automake && $(MAKE)
@@ -64,7 +66,6 @@ $(repositories):
 	cd $(PORTS)devel/subversion-base && $(MAKE)
 
 $(x):
-	echo "X11_TYPE=modular" >> /etc/mk.conf
 	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
@@ -92,7 +93,6 @@ $(libraries):
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
 $(editors):
-	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
 	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
 	cd $(PORTS)editors/nedit && $(MAKE)
 
