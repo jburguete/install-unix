@@ -3,7 +3,7 @@ PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-compilers = $(BASE)bin/gcc
+compilers = $(BASE)gcc48/bin/gcC
 repositories = $(BASE)bin/svn
 x = $(BASE)sbin/gdm
 libraries = $(BASE)lib/libfreeglut.la
@@ -78,9 +78,9 @@ $(x):
 	ln -s $(BASE)share/examples/rc.d/hal /etc
 	ln -s $(BASE)share/examples/rc.d/dbus /etc
 	ln -s $(BASE)share/examples/rc.d/gdm /etc
-	echo "hal_enable=YES" >> /etc/rc.conf
-	echo "dbus_enable=YES" >> /etc/rc.conf
-	echo "gdm_enable=YES" >> /etc/rc.conf
+	echo "hal=YES" >> /etc/rc.conf
+	echo "dbus=YES" >> /etc/rc.conf
+	echo "gdm=YES" >> /etc/rc.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
