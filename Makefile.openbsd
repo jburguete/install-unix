@@ -46,9 +46,9 @@ all: \
 	$(spam) \
 	$(flash)
 
-
-/usr/ports:
+$(PORTS):
 	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_4 -P ports
+	#cd /usr && cvs -qd anoncvs@openbsd.cs.fau.de:/cvs get -rOPENBSD_5_4 -P ports
 
 /etc/mk.conf:
 	echo "CFLAGS+=$(CFLAGS)" > /etc/mk.conf
@@ -60,11 +60,12 @@ $(compilers):
 
 $(repositories):
 	cd $(PORTS)devel/git && $(MAKE)
-	cd $(PORTS)devel/subversion && $(MAKE)
+	cd $(PORTS)devel/subversion && FLAVOR=no_bindings $(MAKE)
 
 $(x):
 	cd $(PORTS)meta/xfce && $(MAKE)
-	echo "exec startxfce4" > /root/.initrc
+	echo "exec startxfce4" > /root/.xinitrc
+	ln -s /root/.xinitrc /root/.xsession
 
 $(libraries):
 	cd $(PORTS)devel/gsl && $(MAKE)
@@ -72,7 +73,7 @@ $(libraries):
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
 $(editors):
-	cd $(PORTS)editors/vim && FLAVORS=gtk2 $(MAKE)
+	cd $(PORTS)editors/vim && FLAVOR=gtk2 $(MAKE)
 	cd $(PORTS)editors/nedit && $(MAKE)
 
 $(debug):
@@ -86,7 +87,7 @@ $(diff):
 	cd $(PORTS)textproc/meld && $(MAKE)
 
 $(pdf):
-	cd $(PORTS)print/latex-beamer && $(MAKE)
+	cd $(PORTS)print/texlive/texmf && $(MAKE)
 	cd $(PORTS)graphics/evince && $(MAKE)
 
 $(doxygen):
