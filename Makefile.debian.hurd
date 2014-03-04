@@ -54,6 +54,7 @@ $(x):
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "Modify /etc/X11/xorg.conf"
+	echo "In Section \"InputDevice\""
 	echo "Add Option \"XkbOptions\" \"terminate:ctrl_alt_bkspace\""
 	read
 	vi /etc/X11/xorg.conf
