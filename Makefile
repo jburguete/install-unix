@@ -7,6 +7,8 @@ all:
 		make -f Makefile.freebsd; \
 	else if test `uname -s` == "Linux"; then \
 		make -f Makefile.debian.linux; \
+	else if test `uname -s` == "kfreebsd"; then \
+		make -f Makefile.debian.kfreebsd; \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi
+	fi fi fi fi fi

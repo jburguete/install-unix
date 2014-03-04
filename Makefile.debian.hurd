@@ -4,22 +4,23 @@ LIB = /usr/lib/x86_64-linux-gnu/
 compilers = $(BASE)bin/gfortran
 repositories = $(BASE)bin/svn
 x = /etc/X11/xorg.conf
-libraries = $(LIB)/libglut.so.3
+libraries = $(BASE)lib/libgsl.la
+glut = $(LIB)/libglut.so.3
 edit = $(BASE)bin/nedit
 math = $(BASE)bin/xmaxima
 debug = $(BASE)bin/ddd
 diff = $(BASE)bin/meld
 pdf = $(BASE)bin/evince
 doxygen = $(BASE)bin/doxygen
-browser = $(BASE)bin/iceweasel
-mail = $(BASE)bin/icedove
-graphics = $(BASE)lib/gimp/2.0/plug-ins/rawphoto
-multimedia = $(BASE)bin/parole
+browser = $(BASE)bin/w3m
+mail =
+graphics =
+multimedia =
 screensaver = $(BASE)bin/xscreensaver
-office = $(BASE)bin/loffice
-xplugins = $(BASE)bin/xfce4-screenshooter
-spam = $(BASE)bin/spamassassin
-flash = $(BASE)bin/gnash
+office =
+xplugins =
+spam =
+flash =
 
 all: \
 	$(compilers) \
@@ -49,20 +50,23 @@ $(repositories):
 	$(MAKE) git subversion
 
 $(x):
-	$(MAKE) virtualbox-guest-{dkms,utils,x11} \
-		xserver-xorg-{input-{kbd,mouse},video-vesa} xorg xfce4 gdm3
+	$(MAKE) xserver-xorg-{input-{kbd,mouse},video-vesa} xorg icewm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+	echo "Modify /etc/X11/xorg.conf"
+	echo "Add Option \"XkbOptions\" \"terminate:ctrl_alt_bkspace\""
+	read
+	vi /etc/X11/xorg.conf
 
 $(libraries):
-	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev mpich libmpich-dev \
-		libgsl0-dev libgkt2.0-dev libgtk-3-dev freeglut3-dev
+	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev libgsl0-dev \
+		libgkt2.0-dev freeglut3-dev
 
 $(editors):
 	$(MAKE) nedit vim-gtk
 
 $(debug):
-	$(MAKE) valgrind valgrind-mpi ddd
+	$(MAKE) ddd
 
 $(math):
 	$(MAKE) gnome-calculator xmaxima
@@ -77,32 +81,10 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
-
-$(mail):
-	$(MAKE) icedove-l10n-es-es
-
-$(graphics):
-	$(MAKE) gimp gimp-dcraw
-
-$(multimedia):
-	$(MAKE) parole
-
-$(office):
-	$(MAKE) libreoffice
+	$(MAKE) w3m
 
 $(screensaver):
 	$(MAKE) xscreensaver
-
-$(xplugins):
-	$(MAKE) \
-		xfce4-{{cpugraph,netload,systemload,weather,xkb}-plugin,screenshooter}
-
-$(spam):
-	$(MAKE) spamassassin
-
-$(flash):
-	$(MAKE) gnash
 
 clean:
 	aptitude clean

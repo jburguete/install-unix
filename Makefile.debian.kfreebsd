@@ -1,11 +1,10 @@
 MAKE = aptitude install
 BASE = /usr/
-LIB = /usr/lib/x86_64-linux-gnu/
+LIB = /usr/lib/x86_64-kfreebsd-gnu/
 compilers = $(BASE)bin/gfortran
 repositories = $(BASE)bin/svn
 x = /etc/X11/xorg.conf
-libraries = $(BASE)lib/libgsl.la
-glut = $(LIB)/libglut.so.3
+libraries = $(LIB)/libglut.so.3
 edit = $(BASE)bin/nedit
 math = $(BASE)bin/xmaxima
 debug = $(BASE)bin/ddd
