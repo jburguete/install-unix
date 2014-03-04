@@ -3,7 +3,7 @@ PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-compilers = $(BASE)gcc48/bin/gcC
+compilers = $(BASE)gcc48/bin/gcc
 repositories = $(BASE)bin/svn
 x = $(BASE)sbin/gdm
 libraries = $(BASE)lib/libfreeglut.la
@@ -74,6 +74,8 @@ $(x):
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
+	echo "exec startxfce4" > /root/.xinitrc
+	ln -s /root/.xinitrc /root/.xsession
 	cd $(PORTS)x11/gdm && $(MAKE)
 	ln -s $(BASE)share/examples/rc.d/hal /etc
 	ln -s $(BASE)share/examples/rc.d/dbus /etc
@@ -90,8 +92,9 @@ $(libraries):
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
 $(editors):
+	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
+	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
 	cd $(PORTS)editors/nedit && $(MAKE)
-	cd $(PORTS)editors/vim-gtk2 $(MAKE)
 
 $(debug):
 	cd $(PORTS)devel/ddd && $(MAKE)
