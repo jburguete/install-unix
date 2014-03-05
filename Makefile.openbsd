@@ -112,7 +112,7 @@ $(office):
 $(screensaver):
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
 
-$(xfceplugins):
+$(xplugins):
 	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
 	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
