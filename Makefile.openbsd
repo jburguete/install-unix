@@ -71,6 +71,8 @@ $(x):
 	cd $(PORTS)meta/xfce && $(MAKE)
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -s /root/.xinitrc /root/.xsession
+#	cd $(PORTS)x11/gnome/gdm && $(MAKE)
+#	echo "/usr/local/sbin/gdm &" >> /etc/rc.local
 
 $(xutils):
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
