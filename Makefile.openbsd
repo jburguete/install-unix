@@ -4,8 +4,9 @@ BIN = /usr/local/
 CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
 compilers = $(BIN)bin/egcc
 repositories = $(BIN)bin/svn
-x = $(BIN)bin/startxfce4
 libraries = $(BIN)lib/libglut.la
+x = $(BIN)bin/startxfce4
+xutils = $(BIN)bin/xfce4-screenshooter
 editors = $(BIN)bin/nedit
 debug = $(BIN)bin/ddd
 math = $(BIN)bin/maxima
@@ -17,9 +18,7 @@ browser = $(BIN)bin/firefox
 mail = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
 multimedia = $(BIN)bin/parole
-screensaver = $(BIN)bin/xscreensaver
 office = $(BIN)bin/loffice
-xplugins = $(BIN)bin/xfce4-screenshooter
 spam =
 flash = $(BIN)bin/gnash
 
@@ -28,8 +27,9 @@ all: \
 	/etc/mk.conf \
 	$(compilers) \
 	$(repositories) \
-	$(x) \
 	$(libraries) \
+	$(x) \
+	$(xutils) \
 	$(editors) \
 	$(debug) \
 	$(math) \
@@ -42,7 +42,6 @@ all: \
 	$(multimedia) \
 	$(office) \
 	$(screensaver) \
-	$(xplugins) \
 	$(spam) \
 	$(flash)
 
@@ -62,15 +61,24 @@ $(repositories):
 	cd $(PORTS)devel/git && $(MAKE)
 	cd $(PORTS)devel/subversion && FLAVOR=no_bindings $(MAKE)
 
+$(libraries):
+	cd $(PORTS)devel/gsl && $(MAKE)
+	cd $(PORTS)devel/openmpi && $(MAKE)
+	cd $(PORTS)graphics/freeglut && $(MAKE)
+
 $(x):
 	cd $(PORTS)meta/xfce && $(MAKE)
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -s /root/.xinitrc /root/.xsession
 
-$(libraries):
-	cd $(PORTS)devel/gsl && $(MAKE)
-	cd $(PORTS)devel/openmpi && $(MAKE)
-	cd $(PORTS)graphics/freeglut && $(MAKE)
+$(xutils):
+	cd $(PORTS)x11/xscreensaver && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-xkb && $(MAKE)
+	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
 
 $(editors):
 	cd $(PORTS)editors/vim && FLAVOR=gtk2 $(MAKE)
@@ -108,18 +116,7 @@ $(multimedia):
 	cd $(PORTS)x11/xfce4/parole && $(MAKE)
 
 $(office):
-	cd $(PORTS)editors/libreoffice && $(MAKE)
-
-$(screensaver):
-	cd $(PORTS)x11/xscreensaver && $(MAKE)
-
-$(xplugins):
-	cd $(PORTS)x11/xfce4/xfce4-cpugraph && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-netload && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-systemload && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-weather && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-xkb && $(MAKE)
-	cd $(PORTS)x11/xfce4/xfce4-screenshooter && $(MAKE)
+	cd $(PORTS)editors/libreoffice && FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
 
 $(flash):
 	cd $(PORTS)www/gnash && $(MAKE)

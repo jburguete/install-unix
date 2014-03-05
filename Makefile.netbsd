@@ -6,8 +6,9 @@ CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BASE)bin/lintpkgsrc
 compilers = $(BASE)gcc48/bin/gcc
 repositories = $(BASE)bin/svn
-x = $(BASE)sbin/gdm
 libraries = $(BASE)lib/libfreeglut.la
+x = $(BASE)sbin/gdm
+xutils = $(BASE)bin/xfce4-screenshooter
 editors = $(BASE)bin/nedit
 debug = $(BASE)bin/ddd
 math = $(BASE)bin/maxima
@@ -18,9 +19,7 @@ browser = $(BASE)bin/firefox
 mail = $(BASE)bin/thunderbird
 graphics = $(BASE)bin/ufraw
 multimedia = $(BASE)bin/totem
-screensaver = $(BASE)bin/xscreensaver
 office = $(BASE)bin/loffice
-xfceplugins = $(BASE)bin/xfce4-screenshooter
 spam = $(BASE)bin/spamassassin
 flash = $(BASE)bin/gnash
 
@@ -29,8 +28,9 @@ all: \
 	$(pkgtools) \
 	$(compilers) \
 	$(repositories) \
-	$(x) \
 	$(libraries) \
+	$(x) \
+	$(xutils) \
 	$(editors) \
 	$(debug) \
 	$(math) \
@@ -42,8 +42,6 @@ all: \
 	$(graphics) \
 	$(multimedia) \
 	$(office) \
-	$(screensaver) \
-	$(xplugins) \
 	$(spam) \
 	$(flash)
 
@@ -68,6 +66,11 @@ $(repositories):
 	cd $(PORTS)devel/git-docs && $(MAKE)
 	cd $(PORTS)devel/subversion-base && $(MAKE)
 
+$(libraries):
+	cd $(PORTS)math/gsl && $(MAKE)
+	cd $(PORTS)parallel/mpi-ch && $(MAKE)
+	cd $(PORTS)graphics/freeglut && $(MAKE)
+
 $(x):
 	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
@@ -90,10 +93,14 @@ $(x):
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
-$(libraries):
-	cd $(PORTS)math/gsl && $(MAKE)
-	cd $(PORTS)parallel/mpi-ch && $(MAKE)
-	cd $(PORTS)graphics/freeglut && $(MAKE)
+$(xutils):
+	cd $(PORTS)x11/xscreensaver && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-cpugraph-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-netload-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
+	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
+	cd $(PORTS)graphics/xfce4-screenshooter && $(MAKE)
 
 $(editors):
 	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
@@ -138,17 +145,6 @@ $(multimedia):
 
 $(office):
 	cd $(PORTS)misc/libreoffice4 && $(MAKE)
-
-$(screensaver):
-	cd $(PORTS)x11/xscreensaver && $(MAKE)
-
-$(xplugins):
-	cd $(PORTS)sysutils/xfce4-cpugraph-plugin && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-netload-plugin && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
-	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
-	cd $(PORTS)graphics/xfce4-screenshooter && $(MAKE)
 
 $(spam):
 	cd $(PORTS)mail/spamassassin && $(MAKE)

@@ -24,8 +24,9 @@ flash = $(BASE)bin/gnash
 all: \
 	$(compilers) \
 	$(repositories) \
-	$(x) \
 	$(libraries) \
+	$(x) \
+	$(xutils) \
 	$(editors) \
 	$(debug) \
 	$(math) \
@@ -37,8 +38,6 @@ all: \
 	$(graphics) \
 	$(multimedia) \
 	$(office) \
-	$(screensaver) \
-	$(xplugins) \
 	$(spam) \
 	$(flash)
 
@@ -48,15 +47,19 @@ $(compilers):
 $(repositories):
 	$(MAKE) git subversion
 
+$(libraries):
+	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev mpich libmpich-dev \
+		libgsl0-dev libgkt2.0-dev libgtk-3-dev freeglut3-dev
+
 $(x):
 	$(MAKE) virtualbox-guest-{dkms,utils,x11} \
 		xserver-xorg-{input-{kbd,mouse},video-vesa} xorg xfce4 gdm3
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
-$(libraries):
-	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev mpich libmpich-dev \
-		libgsl0-dev libgkt2.0-dev libgtk-3-dev freeglut3-dev
+$(xutils):
+	$(MAKE) xscreensaver \
+		xfce4-{{cpugraph,netload,systemload,weather,xkb}-plugin,screenshooter}
 
 $(editors):
 	$(MAKE) nedit vim-gtk
@@ -90,13 +93,6 @@ $(multimedia):
 
 $(office):
 	$(MAKE) libreoffice
-
-$(screensaver):
-	$(MAKE) xscreensaver
-
-$(xplugins):
-	$(MAKE) \
-		xfce4-{{cpugraph,netload,systemload,weather,xkb}-plugin,screenshooter}
 
 $(spam):
 	$(MAKE) spamassassin
