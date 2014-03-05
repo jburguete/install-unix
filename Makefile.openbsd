@@ -100,6 +100,7 @@ $(mail):
 	cd $(PORTS)mail/thunderbird-i18n/es-ES && $(MAKE)
 
 $(graphics):
+	cd $(PORTS)graphics/ImageMagick && $(MAKE)
 	cd $(PORTS)graphics/gimp/stable && $(MAKE)
 	cd $(PORTS)graphics/ufraw && $(MAKE)
 
