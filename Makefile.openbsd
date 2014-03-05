@@ -55,9 +55,10 @@ $(PORTS):
 
 $(compilers):
 	cd $(PORTS)devel/automake/1.13 && $(MAKE)
-	cd $(PORTS)lang/gcc/4.8 && $(MAKE)
+	cd $(PORTS)lang/gcc/4.6 && $(MAKE)
 
 $(repositories):
+	cd $(PORTS)net/wget && $(MAKE)
 	cd $(PORTS)devel/git && $(MAKE)
 	cd $(PORTS)devel/subversion && FLAVOR=no_bindings $(MAKE)
 
