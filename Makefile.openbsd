@@ -5,7 +5,7 @@ CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
 compilers = $(BIN)bin/egcc
 repositories = $(BIN)bin/svn
 x = $(BIN)bin/startxfce4
-libraries = $(BIN)lib/libfreeglut.la
+libraries = $(BIN)lib/libglut.la
 editors = $(BIN)bin/nedit
 debug = $(BIN)bin/ddd
 math = $(BIN)bin/maxima
@@ -80,14 +80,14 @@ $(debug):
 	cd $(PORTS)devel/ddd && $(MAKE)
 
 $(math):
-	cd $(PORTS)math/galculator && $(MAKE)
+	cd $(PORTS)x11/gnome/calculator && $(MAKE)
 	cd $(PORTS)math/maxima && $(MAKE)
 
 $(diff):
 	cd $(PORTS)textproc/meld && $(MAKE)
 
 $(pdf):
-	cd $(PORTS)print/texlive/texmf && $(MAKE)
+	cd $(PORTS)print/texlive/texmf && SUBPACKAGE="-full" $(MAKE)
 	cd $(PORTS)graphics/evince && $(MAKE)
 
 $(doxygen):
