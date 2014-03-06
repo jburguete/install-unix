@@ -86,7 +86,7 @@ $(mail):
 	$(MAKE) icedove-l10n-es-es
 
 $(graphics):
-	$(MAKE) gimp gimp-dcraw
+	$(MAKE) imagemagick gimp gimp-dcraw
 
 $(multimedia):
 	$(MAKE) parole
@@ -99,6 +99,10 @@ $(spam):
 
 $(flash):
 	$(MAKE) gnash
+
+update:
+	aptitude update
+	aptitude upgrade
 
 clean:
 	aptitude clean

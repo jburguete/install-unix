@@ -1,6 +1,7 @@
 MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
+RELEASE = pkgsrc-2013Q4
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BASE)bin/lintpkgsrc
@@ -8,7 +9,7 @@ compilers = $(BASE)gcc48/bin/gcc
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libfreeglut.la
 x = $(BASE)sbin/gdm
-xutils = $(BASE)bin/xfce4-screenshooter
+xutils = $(BASE)libexec/xfce4/panel-plugins/xfce4-screenshooter-plugin
 editors = $(BASE)bin/nedit
 debug = $(BASE)bin/ddd
 math = $(BASE)bin/maxima
@@ -19,7 +20,7 @@ browser = $(BASE)bin/firefox
 mail = $(BASE)bin/thunderbird
 graphics = $(BASE)bin/ufraw
 multimedia = $(BASE)bin/totem
-office = $(BASE)bin/loffice
+office = $(BASE)bin/soffice
 spam = $(BASE)bin/spamassassin
 flash = $(BASE)bin/gnash
 
@@ -53,7 +54,7 @@ all: \
 	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
 
 $(pkgtools):
-	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -rpkgsrc-2013Q4 -P pkgsrc
+	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -r$(RELEASE) -P pkgsrc
 	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
 	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
 
@@ -100,7 +101,7 @@ $(xutils):
 	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
 	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
 	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
-	cd $(PORTS)graphics/xfce4-screenshooter && $(MAKE)
+	cd $(PORTS)x11/xfce4-screenshooter-plugin && $(MAKE)
 
 $(editors):
 	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
@@ -150,7 +151,12 @@ $(spam):
 	cd $(PORTS)mail/spamassassin && $(MAKE)
 
 $(flash):
-	cd $(PORTS)graphics/gnash && $(MAKE)
+	cd $(PORTS)multimedia/gnash && $(MAKE)
+
+update:
+	cd $(PORTS) && cvs up -r$(RELEASE) -dP
+	lintpkgsrc -i
 
 clean:
 	lintpkgsrc -or && pkg_distinst --delete
+	rm -rf $(PORTS)*/*/work

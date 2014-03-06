@@ -25,8 +25,9 @@ flash =
 all: \
 	$(compilers) \
 	$(repositories) \
-	$(x) \
 	$(libraries) \
+	$(x) \
+	$(xutils) \
 	$(editors) \
 	$(debug) \
 	$(math) \
@@ -38,8 +39,6 @@ all: \
 	$(graphics) \
 	$(multimedia) \
 	$(office) \
-	$(screensaver) \
-	$(xplugins) \
 	$(spam) \
 	$(flash)
 
@@ -48,6 +47,10 @@ $(compilers):
 
 $(repositories):
 	$(MAKE) git subversion
+
+$(libraries):
+	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev libgsl0-dev \
+		libgkt2.0-dev freeglut3-dev
 
 $(x):
 	$(MAKE) xserver-xorg-{input-{kbd,mouse},video-vesa} xorg icewm
@@ -59,9 +62,8 @@ $(x):
 	read
 	vi /etc/X11/xorg.conf
 
-$(libraries):
-	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev libgsl0-dev \
-		libgkt2.0-dev freeglut3-dev
+$(xutils):
+	$(MAKE) xscreensaver
 
 $(editors):
 	$(MAKE) nedit vim-gtk
@@ -84,8 +86,9 @@ $(doxygen):
 $(browser):
 	$(MAKE) w3m
 
-$(screensaver):
-	$(MAKE) xscreensaver
+update:
+	aptitude update
+	aptitude upgrade
 
 clean:
 	aptitude clean
