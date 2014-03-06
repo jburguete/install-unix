@@ -52,6 +52,7 @@ all: \
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 	echo "X11_TYPE=modular" >> /etc/mk.conf
 	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
+	echo "ACCEPTABLE_LICENSES+=lame-license" >> /etc/mk.conf
 
 $(pkgtools):
 	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -r$(RELEASE) -P pkgsrc
