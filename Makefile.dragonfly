@@ -1,5 +1,5 @@
 MAKE = portmaster
-PORTS = /usr/ports/
+PORTS = /usr/dports/
 BASE = /usr/local/
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
@@ -50,7 +50,7 @@ all: \
 	$(flash)
 
 $(PORTS):
-	portsnap fetch extract
+	git clone git@github.com:DragonFlyBSD/DPorts.git $(PORTS)
 
 /etc/mk.conf:
 	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
@@ -134,10 +134,7 @@ $(flash):
 	$(MAKE) graphics/gnash
 
 update:
-	freebsd-update fetch
-	freebsd-update install
-	portsnap fetch update
-	portmaster -L | grep New
+	cd $(PORTS) && git pull origin master
 
 clean:
 	portmaster --clean-distfiles -y
