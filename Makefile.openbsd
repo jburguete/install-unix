@@ -18,9 +18,9 @@ browser = $(BIN)bin/firefox
 mail = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
 multimedia = $(BIN)bin/parole
-office = $(BIN)bin/loffice
-spam =
+spam = $(BIN)libexec/milter-spamd
 flash = $(BIN)bin/gnash
+office = $(BIN)bin/loffice
 
 all: \
 	$(PORTS) \
@@ -40,10 +40,10 @@ all: \
 	$(mail) \
 	$(graphics) \
 	$(multimedia) \
-	$(office) \
 	$(screensaver) \
 	$(spam) \
-	$(flash)
+	$(flash) \
+	$(office) \
 
 $(PORTS):
 	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_4 -P ports
@@ -118,8 +118,11 @@ $(graphics):
 $(multimedia):
 	cd $(PORTS)x11/xfce4/parole && $(MAKE)
 
-$(office):
-	cd $(PORTS)editors/libreoffice && FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
+$(spam):
+	cd $(PORTS)mail/milter-spamd && $(MAKE)
 
 $(flash):
 	cd $(PORTS)www/gnash && $(MAKE)
+
+$(office):
+	cd $(PORTS)editors/libreoffice && FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
