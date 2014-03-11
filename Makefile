@@ -9,7 +9,7 @@ all:
 		make -f Makefile.dragonfly; \
 	else if test `uname -s` = "Linux"; then \
 		make -f Makefile.debian.linux; \
-	else if test `uname -s` = "kfreebsd"; then \
+	else if test `uname -s` = "GNU/kFreeBSD"; then \
 		make -f Makefile.debian.kfreebsd; \
 	else if test `uname -s` = "GNU"; then \
 		make -f Makefile.debian.hurd; \

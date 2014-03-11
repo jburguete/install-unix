@@ -13,7 +13,7 @@ pdf = $(BASE)bin/evince
 doxygen = $(BASE)bin/doxygen
 browser = $(BASE)bin/iceweasel
 mail = $(BASE)bin/icedove
-graphics = $(BASE)lib/gimp/2.0/plug-ins/rawphoto
+graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
 multimedia = $(BASE)bin/parole
 screensaver = $(BASE)bin/xscreensaver
 office = $(BASE)bin/loffice
@@ -73,7 +73,7 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) latex-beamer evince
+	$(MAKE) latex-beamer texlive-latex-extra texlive-publishers evince
 
 $(doxygen):
 	$(MAKE) doxygen
@@ -85,7 +85,7 @@ $(mail):
 	$(MAKE) icedove-l10n-es-es
 
 $(graphics):
-	$(MAKE) imagemagick gimp gimp-dcraw
+	$(MAKE) imagemagick gimp gimp-ufraw
 
 $(multimedia):
 	$(MAKE) parole

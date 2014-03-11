@@ -72,7 +72,7 @@ $(math):
 	$(MAKE) xmaxima
 
 $(pdf):
-	$(MAKE) latex-beamer
+	$(MAKE) latex-beamer texlive-latex-extra texlive-publishers xpdf
 
 $(doxygen):
 	$(MAKE) doxygen
