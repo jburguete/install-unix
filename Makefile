@@ -11,7 +11,7 @@ all:
 		make -f Makefile.debian.linux; \
 	else if test `uname -s` = "kfreebsd"; then \
 		make -f Makefile.debian.kfreebsd; \
-	else if test `uname -s` = "Hurd"; then \
+	else if test `uname -s` = "GNU"; then \
 		make -f Makefile.debian.hurd; \
 	else \
 		echo "Unknown operative system"; \
