@@ -1,4 +1,4 @@
-MAKE = portmaster
+MAKE = env DISABLE_VULNERABILITIES=yes portmaster
 PORTS = /usr/dports/
 BASE = /usr/local/
 CPUTYPE = -march=native -mfpmath=sse -msse3
@@ -6,7 +6,7 @@ CFLAGS = -O2 -fno-strict-aliasing
 portmaster = $(BASE)sbin/portmaster
 compilers = $(BASE)bin/gcc48
 repositories = $(BASE)bin/svn
-libraries = $(BASE)lib/libfreeglut.la
+libraries = $(BASE)lib/libglut.la
 vboxguest = $(BASE)lib/libvboxguest.la
 x = $(BASE)sbin/gdm3
 xutils = $(BASE)bin/xfce4-screenshooter
@@ -67,15 +67,8 @@ $(compilers):
 $(repositories):
 	$(MAKE) devel/git devel/subversion
 
-$(vboxguest):
-	$(MAKE) emulators/virtualbox-ose-additions
-	echo "vboxguest_enable=YES" >> /etc/rc.conf
-	echo "vboxservice_enable=YES" >> /etc/rc.conf
-	echo "Please: reboot the computer to make effective the changes"
-	read
-
-$(x): $(vboxguest)
-	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm3
+$(x):
+	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
