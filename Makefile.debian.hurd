@@ -8,11 +8,11 @@ libraries = $(LIB)/libglut.so.3
 edit = $(BASE)bin/nedit
 math = $(BASE)bin/xmaxima
 debug = $(BASE)bin/ddd
-pdf = $(BASE)bin/pdflatex
+pdf = $(BASE)bin/xpdf
 doxygen = $(BASE)bin/doxygen
 browser = $(BASE)bin/w3m
 mail =
-graphics =
+graphics = $(BASE)bin/imagemagick
 multimedia =
 screensaver = $(BASE)bin/xscreensaver
 office =
@@ -79,6 +79,9 @@ $(doxygen):
 
 $(browser):
 	$(MAKE) w3m
+
+$(graphics):
+	$(MAKE) imagemagick
 
 update:
 	aptitude update
