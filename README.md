@@ -23,7 +23,8 @@ Currently the following UNIX type systems are supported:
 * FreeBSD 10.0
 * NetBSD 6.1.3
 * OpenBSD 5.4
-* DragonFlyBSD 3.6.1 (ongoing)
+* DragonFlyBSD 3.6.1
+* OpenIndiana 151a8 Server
 
 Other versions of these operative systems can be work but it has not been
 tested.
