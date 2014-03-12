@@ -13,6 +13,8 @@ all:
 		make -f Makefile.debian.kfreebsd; \
 	else if test `uname -s` = "GNU"; then \
 		make -f Makefile.debian.hurd; \
+	else if test `uname -s` = "SunOS"; then \
+		make -f Makefile.openindiana; \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi
