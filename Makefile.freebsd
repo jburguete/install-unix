@@ -1,12 +1,12 @@
 MAKE = portmaster
 PORTS = /usr/ports/
 BASE = /usr/local/
-CPUTYPE = -march=native -mfpmath=sse -msse3
+CPUTYPE = native -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 portmaster = $(BASE)sbin/portmaster
 compilers = $(BASE)bin/gcc48
 repositories = $(BASE)bin/svn
-libraries = $(BASE)lib/libfreeglut.la
+libraries = $(BASE)lib/libglut.la
 vboxguest = $(BASE)lib/libvboxguest.la
 x = $(BASE)sbin/gdm3
 xutils = $(BASE)bin/xfce4-screenshooter
@@ -27,7 +27,7 @@ flash = $(BASE)bin/gnash
 
 all: \
 	$(PORTS) \
-	/etc/mk.conf \
+	/etc/make.conf \
 	$(portmaster) \
 	$(compilers) \
 	$(repositories) \
@@ -52,11 +52,11 @@ all: \
 $(PORTS):
 	portsnap fetch extract
 
-/etc/mk.conf:
-	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
-	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
-	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
-	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/mk.conf
+/etc/make.conf:
+	echo "CPUTYPE=$(CPUTYPE)" > /etc/make.conf
+	echo "CFLAGS+=$(CFLAGS)" >> /etc/make.conf
+	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/make.conf
+	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/make.conf
 
 $(portmaster):
 	cd $(PORTS)/ports-mgmt/portmaster && make install clean
