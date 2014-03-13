@@ -7,7 +7,7 @@ portmaster = $(BASE)sbin/portmaster
 compilers = $(BASE)bin/gcc48
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libglut.la
-vboxguest = $(BASE)lib/libvboxguest.la
+vboxguest = $(BASE)sbin/VBoxService
 x = $(BASE)sbin/gdm3
 xutils = $(BASE)bin/xfce4-screenshooter
 editors = $(BASE)bin/nedit
@@ -75,7 +75,7 @@ $(vboxguest):
 	read
 
 $(x): $(vboxguest)
-	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm3
+	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
