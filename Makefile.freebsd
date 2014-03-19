@@ -8,7 +8,7 @@ compilers = $(BASE)bin/gcc48
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libglut.la
 vboxguest = $(BASE)sbin/VBoxService
-x = $(BASE)sbin/gdm3
+x = $(BASE)sbin/gdm
 xutils = $(BASE)bin/xfce4-screenshooter
 editors = $(BASE)bin/nedit
 debug = $(BASE)bin/ddd
@@ -17,8 +17,8 @@ diff = $(BASE)bin/meld
 latex = $(BASE)bin/latex
 pdf = $(BASE)bin/evince
 doxygen = $(BASE)bin/doxygen
-firefox = $(BASE)bin/firefox
-thunderbird = $(BASE)bin/thunderbird
+browser = $(BASE)bin/firefox
+mail = $(BASE)bin/thunderbird
 graphics = $(BASE)bin/ufraw
 multimedia = $(BASE)bin/parole
 office = $(BASE)bin/loffice
@@ -33,6 +33,7 @@ all: \
 	$(repositories) \
 	$(libraries) \
 	$(x) \
+	$(xutils) \
 	$(editors) \
 	$(debug) \
 	$(math) \
@@ -45,7 +46,6 @@ all: \
 	$(multimedia) \
 	$(office) \
 	$(screensaver) \
-	$(xplugins) \
 	$(spam) \
 	$(flash)
 
@@ -88,17 +88,25 @@ $(x): $(vboxguest)
 
 $(xutils):
 	$(MAKE) x11/xscreensaver \
-		sysutils/xfce4-{cpugraph,{net,system}load,xkb}-plugin \
-		misc/xfce4-weather-plugin graphics/xfce4-screenshooter
+		sysutils/xfce4-cpugraph-plugin \
+		sysutils/xfce4-netload-plugin \
+		sysutils/xfce4-systemload-plugin \
+		deskutils/xfce4-xkb-plugin \
+		misc/xfce4-weather-plugin \
+		x11/xfce4-screenshooter-plugin
 
 $(libraries):
 	$(MAKE) math/gsl graphics/freeglut
 
 $(editors):
-	$(MAKE) editors/vim-gtk2 editors/nedit
+	$(MAKE) editors/vim editors/nedit
 
 $(debug):
 	$(MAKE) devel/valgrind devel/ddd
+	echo "fdesc /dev/fd fdescfs rw 0 0" >> /etc/fstab
+	echo "proc /proc procfs rw 0 0" >> /etc/fstab
+	mount fdesc
+	mount proc
 
 $(math):
 	$(MAKE) math/galculator math/maxima
