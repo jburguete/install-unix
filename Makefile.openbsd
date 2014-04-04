@@ -105,6 +105,7 @@ $(doxygen):
 	cd $(PORTS)devel/doxygen && $(MAKE)
 
 $(browser):
+	cd $(PORTS)net/wget && $(MAKE)
 	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
 
 $(mail):
