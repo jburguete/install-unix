@@ -129,8 +129,8 @@ $(flash):
 	cd $(PORTS)www/gnash && $(MAKE)
 
 $(office):
-	cd $(PORTS)editors/libreoffice && FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
+	cd $(PORTS)editors/libreoffice && export FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
 
 update:
-	cd /usr/ports cvs -q up -rOPENBSD_5_5 -Pd
+	cd /usr/ports && cvs -q up -rOPENBSD_5_5 -Pd
 	/usr/ports/infrastructure/bin/out-of-date
