@@ -1,7 +1,7 @@
 MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
-RELEASE = pkgsrc-2013Q4
+RELEASE = pkgsrc-2014Q1
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BASE)bin/lintpkgsrc
@@ -42,9 +42,9 @@ all: \
 	$(mail) \
 	$(graphics) \
 	$(multimedia) \
-	$(office) \
 	$(spam) \
-	$(flash)
+	$(flash) \
+	$(office)
 
 /etc/mk.conf:
 	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
@@ -55,7 +55,8 @@ all: \
 	echo "ACCEPTABLE_LICENSES+=lame-license" >> /etc/mk.conf
 
 $(pkgtools):
-	cd /usr && cvs -qd anoncvs@anoncvs.netbsd.org:/cvs get -r$(RELEASE) -P pkgsrc
+	cd /usr && cvs -z3 -qd anoncvs@anoncvs.NetBSD.org:/cvsroot checkout -r$(RELEASE) -P pkgsrc
+	cd $(PORTS)bootstrap && ./bootstrap
 	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
 	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
 
@@ -145,14 +146,14 @@ $(multimedia):
 	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
 	cd $(PORTS)multimedia/totem && $(MAKE)
 
-$(office):
-	cd $(PORTS)misc/libreoffice4 && $(MAKE)
-
 $(spam):
 	cd $(PORTS)mail/spamassassin && $(MAKE)
 
 $(flash):
 	cd $(PORTS)multimedia/gnash && $(MAKE)
+
+$(office):
+	cd $(PORTS)misc/libreoffice4 && $(MAKE)
 
 update:
 	cd $(PORTS) && cvs up -r$(RELEASE) -dP
