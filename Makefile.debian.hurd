@@ -50,7 +50,8 @@ $(libraries):
 		libgtk2.0-dev freeglut3-dev
 
 $(x):
-	$(MAKE) xserver-xorg-{input-{kbd,mouse},video-vesa} xorg icewm
+	$(MAKE) xserver-xorg-input-kbd xserver-xorg-input-mouse \
+		xserver-xorg-video-vesa xorg icewm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "Modify /etc/X11/xorg.conf"
