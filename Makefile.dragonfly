@@ -8,7 +8,7 @@ compilers = $(BASE)bin/gcc49
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libglut.la
 vboxguest = $(BASE)lib/libvboxguest.la
-x = $(BASE)sbin/gdm3
+x = $(BASE)sbin/gdm
 xutils = $(BASE)bin/xfce4-screenshooter
 editors = $(BASE)bin/nedit
 debug = $(BASE)bin/ddd
@@ -69,11 +69,12 @@ $(repositories):
 	$(MAKE) devel/git devel/subversion
 
 $(x):
-	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm
+	$(MAKE) x11/xorg-minimal x11-wm/xfce4 security/gnome-keyring x11/gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -s /root/.xinitrc /root/.xsession
+	echo "moused_enable=YES" >> /etc/rc.conf
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
 	echo "gdm_enable=YES" >> /etc/rc.conf
@@ -89,7 +90,7 @@ $(libraries):
 	$(MAKE) math/gsl graphics/freeglut
 
 $(editors):
-	$(MAKE) editors/vim-gtk2 editors/nedit
+	$(MAKE) editors/vim editors/nedit
 
 $(debug):
 	$(MAKE) devel/valgrind devel/ddd
