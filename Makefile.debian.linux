@@ -4,6 +4,7 @@ LIB = /usr/lib/x86_64-linux-gnu/
 compilers = $(BASE)bin/gfortran
 repositories = $(BASE)bin/svn
 x = /etc/X11/xorg.conf
+xutils = $(BASE)bin/xfce4-screenshooter
 libraries = $(LIB)/libglut.so.3
 edit = $(BASE)bin/nedit
 math = $(BASE)bin/xmaxima
@@ -15,9 +16,7 @@ browser = $(BASE)bin/iceweasel
 mail = $(BASE)bin/icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
 multimedia = $(BASE)bin/parole
-screensaver = $(BASE)bin/xscreensaver
 office = $(BASE)bin/loffice
-xutils = $(BASE)bin/xfce4-screenshooter
 spam = $(BASE)bin/spamassassin
 flash = $(BASE)bin/gnash
 
@@ -27,9 +26,9 @@ all: \
 	$(libraries) \
 	$(x) \
 	$(xutils) \
-	$(editors) \
-	$(debug) \
+	$(edit) \
 	$(math) \
+	$(debug) \
 	$(diff) \
 	$(pdf) \
 	$(doxygen) \
@@ -63,14 +62,14 @@ $(xutils):
 		xfce4-systemload-plugin xfce4-weather-plugin xfce4-xkb-plugin \
 		xfce4-terminal xfce4-screenshooter
 
-$(editors):
+$(edit):
 	$(MAKE) nedit vim-gtk
-
-$(debug):
-	$(MAKE) valgrind valgrind-mpi ddd
 
 $(math):
 	$(MAKE) gnome-calculator xmaxima
+
+$(debug):
+	$(MAKE) valgrind valgrind-mpi ddd
 
 $(diff):
 	$(MAKE) meld
