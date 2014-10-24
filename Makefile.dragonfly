@@ -10,9 +10,9 @@ libraries = $(BASE)lib/libglut.la
 vboxguest = $(BASE)lib/libvboxguest.la
 x = $(BASE)sbin/gdm
 xutils = $(BASE)bin/xfce4-screenshooter
-editors = $(BASE)bin/nedit
+edit = $(BASE)bin/nedit
+math = $(BASE)bin/galculator
 debug = $(BASE)bin/ddd
-math = $(BASE)bin/maxima
 diff = $(BASE)bin/meld
 latex = $(BASE)bin/latex
 pdf = $(BASE)bin/evince
@@ -33,9 +33,9 @@ all: \
 	$(repositories) \
 	$(libraries) \
 	$(x) \
-	$(editors) \
-	$(debug) \
+	$(edit) \
 	$(math) \
+	$(debug) \
 	$(diff) \
 	$(pdf) \
 	$(doxygen) \
@@ -87,22 +87,22 @@ $(xutils):
 		misc/xfce4-weather-plugin graphics/xfce4-screenshooter
 
 $(libraries):
-	$(MAKE) math/gsl graphics/freeglut
+	$(MAKE) math/gsl x11-toolkits/gtk30 graphics/freeglut
 
-$(editors):
+$(edit):
 	$(MAKE) editors/vim editors/nedit
 
-$(debug):
-	$(MAKE) devel/valgrind devel/ddd
-
 $(math):
-	$(MAKE) math/galculator math/maxima
+	$(MAKE) math/galculator # math/maxima
+
+$(debug):
+	$(MAKE) devel/ddd
 
 $(diff):
 	$(MAKE) textproc/meld
 
 $(pdf):
-	$(MAKE) print/latex-beamer graphics/evince
+	$(MAKE) print/texlive-texmf graphics/evince
 
 $(doxygen):
 	$(MAKE) devel/doxygen
