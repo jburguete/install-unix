@@ -1,11 +1,11 @@
 MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
-RELEASE = pkgsrc-2014Q1
+RELEASE = pkgsrc-2014Q3
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BASE)bin/lintpkgsrc
-compilers = $(BASE)gcc48/bin/gcc
+compilers = $(BASE)gcc49/bin/gcc
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libfreeglut.la
 x = $(BASE)sbin/gdm
@@ -62,7 +62,7 @@ $(pkgtools):
 
 $(compilers):
 	cd $(PORTS)devel/automake && $(MAKE)
-	cd $(PORTS)lang/gcc48 && $(MAKE)
+	cd $(PORTS)lang/gcc49 && $(MAKE)
 
 $(repositories):
 	cd $(PORTS)devel/git-base && $(MAKE)
