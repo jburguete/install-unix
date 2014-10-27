@@ -33,6 +33,7 @@ all: \
 	$(repositories) \
 	$(libraries) \
 	$(x) \
+	$(xutils) \
 	$(edit) \
 	$(math) \
 	$(debug) \
@@ -83,8 +84,12 @@ $(x):
 
 $(xutils):
 	$(MAKE) x11/xscreensaver \
-		sysutils/xfce4-{cpugraph,{net,system}load,xkb}-plugin \
-		misc/xfce4-weather-plugin graphics/xfce4-screenshooter
+		sysutils/xfce4-netload-plugin \
+		deskutils/xfce4-xkb-plugin \
+		misc/xfce4-weather-plugin \
+		x11/xfce4-screenshooter-plugin
+#		sysutils/xfce4-cpugraph-plugin \
+#		sysutils/xfce4-systemload-plugin \
 
 $(libraries):
 	$(MAKE) math/gsl x11-toolkits/gtk30 graphics/freeglut
