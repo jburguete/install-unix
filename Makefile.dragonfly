@@ -7,7 +7,6 @@ portmaster = $(BASE)sbin/portmaster
 compilers = $(BASE)bin/gcc49
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libglut.la
-vboxguest = $(BASE)lib/libvboxguest.la
 x = $(BASE)sbin/gdm
 xutils = $(BASE)bin/xfce4-screenshooter
 edit = $(BASE)bin/nedit
@@ -17,8 +16,8 @@ diff = $(BASE)bin/meld
 latex = $(BASE)bin/latex
 pdf = $(BASE)bin/evince
 doxygen = $(BASE)bin/doxygen
-firefox = $(BASE)bin/firefox
-thunderbird = $(BASE)bin/thunderbird
+browser = $(BASE)bin/firefox
+mail = $(BASE)bin/thunderbird
 graphics = $(BASE)bin/ufraw
 multimedia = $(BASE)bin/parole
 office = $(BASE)bin/loffice
@@ -46,7 +45,6 @@ all: \
 	$(multimedia) \
 	$(office) \
 	$(screensaver) \
-	$(xplugins) \
 	$(spam) \
 	$(flash)
 

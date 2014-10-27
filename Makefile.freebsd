@@ -4,7 +4,7 @@ BASE = /usr/local/
 CPUTYPE = native -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 portmaster = $(BASE)sbin/portmaster
-compilers = $(BASE)bin/gcc48
+compilers = $(BASE)bin/gcc49
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libglut.la
 vboxguest = $(BASE)sbin/VBoxService
@@ -62,7 +62,7 @@ $(portmaster):
 	cd $(PORTS)/ports-mgmt/portmaster && make install clean
 
 $(compilers):
-	$(MAKE) devel/automake lang/gcc48
+	$(MAKE) devel/automake lang/gcc49
 
 $(repositories):
 	$(MAKE) devel/git devel/subversion
