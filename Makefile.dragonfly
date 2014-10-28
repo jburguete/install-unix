@@ -111,7 +111,7 @@ $(doxygen):
 	$(MAKE) devel/doxygen
 
 $(browser):
-	$(MAKE) www/firefox www/firefox-i18n
+	$(MAKE) ftp/wget www/firefox www/firefox-i18n
 
 $(mail):
 	$(MAKE) mail/thunderbird mail/thunderbird-i18n

@@ -80,7 +80,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
+	$(MAKE) wget iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
 	$(MAKE) icedove-l10n-es-es

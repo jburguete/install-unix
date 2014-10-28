@@ -83,7 +83,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) w3m
+	$(MAKE) wget w3m
 
 $(graphics):
 	$(MAKE) imagemagick
