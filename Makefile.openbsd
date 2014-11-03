@@ -47,8 +47,8 @@ all: \
 	$(office) \
 
 $(PORTS):
-	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_5 -P ports
-	#cd /usr && cvs -qd anoncvs@openbsd.cs.fau.de:/cvs get -rOPENBSD_5_5 -P ports
+	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_6 -P ports
+	#cd /usr && cvs -qd anoncvs@openbsd.cs.fau.de:/cvs get -rOPENBSD_5_6 -P ports
 
 /etc/mk.conf:
 	echo "CFLAGS+=$(CFLAGS)" > /etc/mk.conf
@@ -58,7 +58,7 @@ $(automake):
 	cd $(PORTS)devel/automake/1.14 && $(MAKE)
 
 $(compilers): $(automake)
-	cd $(PORTS)lang/gcc/4.6 && $(MAKE)
+	cd $(PORTS)lang/gcc/4.9 && $(MAKE)
 
 $(repositories):
 	cd $(PORTS)net/wget && $(MAKE)
