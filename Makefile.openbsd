@@ -1,7 +1,7 @@
 MAKE = make install && make clean=depends
 PORTS = /usr/ports/
 BIN = /usr/local/
-CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing
+CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -I/usr/local/include
 automake = $(BIN)/bin/automake-1.14
 compilers = $(BIN)bin/egcc
 repositories = $(BIN)bin/svn
@@ -20,8 +20,8 @@ mail = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
 multimedia = $(BIN)bin/parole
 spam = $(BIN)libexec/milter-spamd
-flash = $(BIN)bin/gnash
 office = $(BIN)bin/loffice
+flash = $(BIN)bin/gnash
 
 all: \
 	$(PORTS) \
@@ -43,8 +43,8 @@ all: \
 	$(multimedia) \
 	$(screensaver) \
 	$(spam) \
-	$(flash) \
 	$(office) \
+	$(flash) \
 
 $(PORTS):
 	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_6 -P ports
@@ -132,5 +132,5 @@ $(office):
 	cd $(PORTS)editors/libreoffice && export FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
 
 update:
-	cd /usr/ports && cvs -q up -rOPENBSD_5_5 -Pd
+	cd /usr/ports && cvs -q up -rOPENBSD_5_6 -Pd
 	/usr/ports/infrastructure/bin/out-of-date
