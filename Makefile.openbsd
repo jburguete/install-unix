@@ -1,7 +1,7 @@
 MAKE = make install && make clean=depends
 PORTS = /usr/ports/
 BIN = /usr/local/
-CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -I/usr/local/include
+CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -I/usr/local/include -DBUILD_UNTESTED_NEDIT
 automake = $(BIN)/bin/automake-1.14
 compilers = $(BIN)bin/egcc
 repositories = $(BIN)bin/svn
@@ -58,7 +58,11 @@ $(automake):
 	cd $(PORTS)devel/automake/1.14 && $(MAKE)
 
 $(compilers): $(automake)
-	cd $(PORTS)lang/gcc/4.9 && $(MAKE)
+	cd $(PORTS)lang/gcc/4.8 && $(MAKE); \
+	env SUBPACKAGE="-f95" $(MAKE); \
+	env SUBPACKAGE="-c++" $(MAKE); \
+	env SUBPACKAGE="-estdc" $(MAKE); \
+	env SUBPACKAGE="-java" $(MAKE)
 
 $(repositories):
 	cd $(PORTS)net/wget && $(MAKE)
@@ -108,7 +112,6 @@ $(doxygen):
 	cd $(PORTS)devel/doxygen && $(MAKE)
 
 $(browser):
-	cd $(PORTS)net/wget && $(MAKE)
 	cd $(PORTS)www/firefox-i18n/es-ES && $(MAKE)
 
 $(mail):
