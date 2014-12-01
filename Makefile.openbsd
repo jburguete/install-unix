@@ -1,7 +1,11 @@
 MAKE = make install && make clean=depends
 PORTS = /usr/ports/
+BSDSRC = anoncvs@anoncvs.fr.openbsd.org:/cvs
+#BSDSRC = anoncvs@openbsd.cs.fau.de:/cvs
+BSDVERSION = OPENBSD_5_6
 BIN = /usr/local/
-CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -I/usr/local/include -DBUILD_UNTESTED_NEDIT
+INC = $(BIN)include/
+CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -DBUILD_UNTESTED_NEDIT
 automake = $(BIN)/bin/automake-1.14
 compilers = $(BIN)bin/egcc
 repositories = $(BIN)bin/svn
@@ -47,8 +51,7 @@ all: \
 	$(flash) \
 
 $(PORTS):
-	cd /usr && cvs -qd anoncvs@anoncvs.fr.openbsd.org:/cvs get -rOPENBSD_5_6 -P ports
-	#cd /usr && cvs -qd anoncvs@openbsd.cs.fau.de:/cvs get -rOPENBSD_5_6 -P ports
+	cd /usr && cvs -qd $(BSDSRC) get -r$(BSDVERSION) -P ports
 
 /etc/mk.conf:
 	echo "CFLAGS+=$(CFLAGS)" > /etc/mk.conf
@@ -58,8 +61,8 @@ $(automake):
 	cd $(PORTS)devel/automake/1.14 && $(MAKE)
 
 $(compilers): $(automake)
+	cd $(PORTS)lang/gfortran && $(MAKE)
 	cd $(PORTS)lang/gcc/4.8 && $(MAKE); \
-	env SUBPACKAGE="-f95" $(MAKE); \
 	env SUBPACKAGE="-c++" $(MAKE); \
 	env SUBPACKAGE="-estdc" $(MAKE); \
 	env SUBPACKAGE="-java" $(MAKE)
