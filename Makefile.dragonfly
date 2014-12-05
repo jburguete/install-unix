@@ -1,6 +1,7 @@
-MAKE = env DISABLE_VULNERABILITIES=yes portmaster
 PORTS = /usr/dports/
 BASE = /usr/local/
+MAKE = env DISABLE_VULNERABILITIES=yes $(BASE)sbin/portmaster
+MAKE2 = make install clean
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 portmaster = $(BASE)sbin/portmaster
@@ -65,7 +66,13 @@ $(compilers):
 	$(MAKE) devel/automake lang/gcc49
 
 $(repositories):
+	cd $(PORTS)textproc/docbook-xml && $(MAKE2)
 	$(MAKE) devel/git devel/subversion
+
+$(libraries):
+	$(MAKE) math/gsl net/mpich 
+	cd $(PORTS)sysutils/polkit && $(MAKE2)
+	$(MAKE) x11-toolkits/gtk30 graphics/freeglut
 
 $(x):
 	$(MAKE) x11/xorg-minimal x11-wm/xfce4 security/gnome-keyring x11/gdm
@@ -88,9 +95,6 @@ $(xutils):
 		x11/xfce4-screenshooter-plugin
 #		sysutils/xfce4-cpugraph-plugin \
 #		sysutils/xfce4-systemload-plugin \
-
-$(libraries):
-	$(MAKE) math/gsl x11-toolkits/gtk30 graphics/freeglut
 
 $(edit):
 	$(MAKE) editors/vim editors/nedit
