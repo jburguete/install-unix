@@ -1,18 +1,17 @@
 MAKE = pacman -S
-BASE = /usr/
-BASE2 = /mingw64/
-LIB = $(BASE2)lib
+BASE = /usr/bin/
+BASE2 = /mingw64/bin/
 MINGW = mingw64/mingw-w64-x86_64-
-compilers = $(BASE2)bin/gfortran.exe
-repositories = $(BASE)bin/svn.exe
-libraries = $(LIB)/libglut.a
-edit = $(BASE)bin/vim.exe
-debug = $(BASE)bin/gdb.exe
-diff = $(BASE2)bin/meld
-pdf = $(BASE2)bin/evince.exe
-doxygen = $(BASE)bin/doxygen.exe
-browser = $(BASE)bin/wget.exe
-graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
+compilers = $(BASE2)gfortran.exe
+repositories = $(BASE)svn.exe
+libraries = $(BASE)pkg-config.exe
+edit = $(BASE)vim.exe
+debug = $(BASE)gdb.exe
+diff = $(BASE2)meld
+pdf = $(BASE2)evince.exe
+doxygen = $(BASE)doxygen.exe
+browser = $(BASE)wget.exe
+graphics = $(BASE2)ufraw.exe
 
 all: \
 	$(compilers) \
@@ -34,7 +33,8 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) $(MINGW)libxml2 $(MINGW)glib2 $(MINGW)json-glib $(MINGW)sqlite3 \
-		$(MINGW)gsl $(MINGW)gettext $(MINGW)gtk2 $(MINGW)gtk3 $(MINGW)freeglut
+		$(MINGW)gsl $(MINGW)gettext $(MINGW)gtk2 $(MINGW)gtk3 $(MINGW)freeglut \
+		pkg-config
 
 $(edit):
 	$(MAKE) vim
