@@ -1,0 +1,64 @@
+MAKE = pacman -S
+BASE = /usr/bin/
+BASE2 = /mingw32/bin/
+MINGW = mingw32/mingw-w64-i686-
+compilers = $(BASE2)gfortran.exe
+repositories = $(BASE)svn.exe
+libraries = $(BASE)pkg-config.exe
+edit = $(BASE)vim.exe
+debug = $(BASE)gdb.exe
+diff = $(BASE2)meld
+pdf = $(BASE2)evince.exe
+doxygen = $(BASE)doxygen.exe
+browser = $(BASE)wget.exe
+graphics = $(BASE2)ufraw.exe
+
+all: \
+	$(compilers) \
+	$(repositories) \
+	$(libraries) \
+	$(edit) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(graphics)
+
+$(compilers):
+	$(MAKE) autoconf automake make $(MINGW)gcc $(MINGW)gcc-fortran
+
+$(repositories):
+	$(MAKE) git subversion
+
+$(libraries):
+	$(MAKE) $(MINGW)libxml2 $(MINGW)glib2 $(MINGW)json-glib $(MINGW)sqlite3 \
+		$(MINGW)gsl $(MINGW)gettext $(MINGW)gtk2 $(MINGW)gtk3 $(MINGW)freeglut \
+		pkg-config
+
+$(edit):
+	$(MAKE) vim
+
+$(debug):
+	$(MAKE) gdb
+
+$(diff):
+	$(MAKE) $(MINGW)meld3
+
+$(pdf):
+	$(MAKE) $(MINGW)evince
+
+$(doxygen):
+	$(MAKE) doxygen
+
+$(browser):
+	$(MAKE) wget
+
+$(graphics):
+	$(MAKE) $(MINGW)imagemagick $(MINGW)gimp $(MINGW)gimp-ufraw
+
+update:
+	pacman -Syu
+
+clean:
+	pacman -Sc
