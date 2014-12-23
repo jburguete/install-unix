@@ -86,7 +86,7 @@ $(browser):
 	$(MAKE) wget iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
-	$(MAKE) icedove-l10n-es-es
+	$(MAKE) icedove icedove-l10n-es-es
 
 $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw
