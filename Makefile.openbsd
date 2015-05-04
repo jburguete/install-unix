@@ -2,7 +2,7 @@ MAKE = make install && make clean=depends
 PORTS = /usr/ports/
 BSDSRC = anoncvs@anoncvs.fr.openbsd.org:/cvs
 #BSDSRC = anoncvs@openbsd.cs.fau.de:/cvs
-BSDVERSION = OPENBSD_5_6
+BSDVERSION = OPENBSD_5_7
 BIN = /usr/local/
 INC = $(BIN)include/
 CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -DBUILD_UNTESTED_NEDIT
@@ -138,5 +138,5 @@ $(office):
 	cd $(PORTS)editors/libreoffice && export FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
 
 update:
-	cd /usr/ports && cvs -q up -rOPENBSD_5_6 -Pd
+	cd /usr/ports && cvs -q up -r$(BSDVERSION) -Pd
 	/usr/ports/infrastructure/bin/out-of-date
