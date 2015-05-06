@@ -15,6 +15,14 @@ all:
 		make -f Makefile.debian.hurd; \
 	else if test `uname -s` = "SunOS"; then \
 		make -f Makefile.dyson; \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi
