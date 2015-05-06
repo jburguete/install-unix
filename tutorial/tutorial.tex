@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{listings}
 
 \newcommand{\FIG}[2]
 {
@@ -16,7 +17,7 @@
 \newcommand{\RED}[1] {\textcolor{red}{#1}}
 
 \title{Setting up a MSYS2 terminal with some useful compilers, libraries
-and tools on Microsoft Windows step by step}
+and tools on Microsoft Windows systems step by step}
 
 \author{Javier Burguete Tolosa}
 
@@ -44,8 +45,8 @@ access on the desktop.
 
 \begin{enumerate}
 
-\item Download MSYS2 installer (file \RED{mingw-get-setup.exe}) on \newline
-\RED{http://sourceforge.net/projects/mingw/files/Instaler}
+\item Download MSYS2 installer (file \RED{msys2-x86\_64-20150202.exe}) on
+\newline\RED{http://sourceforge.net/projects/msys2}
 
 \FIGURE{MSYS2-1.png.eps}
 
@@ -54,7 +55,7 @@ access on the desktop.
 
 \clearpage
 
-\item Click on the downloaded \RED{mingw-get-setup.exe} installer
+\item Click on the downloaded \RED{msys2-x86\_64-20150202.exe} installer
 \FIGURE{MSYS2-3.png.eps}
 
 \item Click on the \RED{Execute} button
@@ -62,83 +63,83 @@ access on the desktop.
 
 \clearpage
 
-\item Click on the \RED{Install} button
+\item Click on the \RED{Next} button
 \FIGURE{MSYS2-5.png.eps}
 
-\item Click on the \RED{Continue} button (WARNING! if you change the instalation
-directory you must change the /etc/fstab file on the MSYS system to work
-properly)
+\item Click on the \RED{Next} button
 \FIGURE{MSYS2-6.png.eps}
 
 \clearpage
 
-\item Click on the \RED{Continue} button
+\item Click on the \RED{Next} button
 \FIGURE{MSYS2-7.png.eps}
 
-\item Click only on the \RED{MSYS2-base} option (other options install 32 bits
-compilers that can interfere the 64 bits compilations)
+\item Click on the \RED{Finish} button
 \FIGURE{MSYS2-8.png.eps}
 
 \clearpage
 
-\item Click on the \RED{Apply Changes} menu option
-\FIGURE{MSYS2-9.png.eps}
-
-\item Click on the \RED{Apply} button
+\item Create a direct access of the
+\RED{C:$\backslash$msys64$\backslash$mingw64\_shell.bat} file sending it to the
+desktop
 \FIGURE{MSYS2-10.png.eps}
 
-\clearpage
-
-\item Click on the \RED{Close} button
-\FIGURE{MSYS2-11.png.eps}
-
-\item Create a direct access of the
-\RED{C:$\backslash$MinGW$\backslash$MSYS2$\backslash$1.0$\backslash$MSYS2.bat}
-file sending it to the desktop
+\item Select the new direct access and clicking on the right button and click on
+the \RED{Properties} menu option
 \FIGURE{MSYS2-12.png.eps}
 
 \clearpage
 
-\item Select the new direct access and clicking on the right button and click on
-the \RED{Properties} menu option
+\item Click on the \RED{Change icon} button
 \FIGURE{MSYS2-13.png.eps}
 
-\item Click on the \RED{Change icon} button
+\item Click on the \RED{Accept} button
 \FIGURE{MSYS2-14.png.eps}
 
 \clearpage
 
-\item Click on the \RED{Accept} button
+\item Click on the \RED{Check} button
 \FIGURE{MSYS2-15.png.eps}
 
-\item Click ont the \RED{Check} button
+\item Select the \RED{C:$\backslash$msys64$\backslash$msys2.ico} file and click
+on the \RED{Accept} button
 \FIGURE{MSYS2-16.png.eps}
 
 \clearpage
 
-\item Select the
-\RED{C:$\backslash$MinGW$\backslash$MSYS2$\backslash$1.0$\backslash$MSYS2.ico} (or
-\RED{C:$\backslash$MinGW$\backslash$MSYS2$\backslash$1.0$\backslash$m.ico}) file
-and click on the \RED{Accept} button
+\item Select the icon and click on the \RED{Accept} button
 \FIGURE{MSYS2-17.png.eps}
 
-\item Select the icon and click on the \RED{Accept} button
+\item Click on the \RED{Accept} button
 \FIGURE{MSYS2-18.png.eps}
 
 \clearpage
 
-\item Click on the \RED{Accept} button
+\item Select the direct access clicking on the right button and click on the
+\RED{Rename} menu option. Then change the label (i.e. MSYS2 64 bits)
 \FIGURE{MSYS2-19.png.eps}
 
-\item Select the direct access clicking on the right button and click on the
-\RED{Rename} menu option. Then change the label (i.e. MinGW 64 bits)
-\FIGURE{MSYS2-20.png.eps}
+\item Click on the direct access button and you have a MSYS2 (minimal Unix)
+terminal
+\FIGURE{MSYS2-21.png.eps}
 
 \clearpage
 
-\item Click on the direct access button and you have a MSYS (minimal Unix)
-terminal
-\FIGURE{MSYS2-21.png.eps}
+\item Install the required git and make tools by typing in the terminal:
+\begin{lstlisting}[language=bash,basicstyle=\scriptsize]
+$ pacman -S make git
+\end{lstlisting}
+and pressing Y in all questions.
+\FIGURE{MSYS2-23.png.eps}
+
+\item Install the tools by typing in the terminal:
+\begin{lstlisting}[language=bash,basicstyle=\scriptsize]
+$ git clone https://github.com/jburguete/install-unix.git
+$ cd install-unix
+$ make
+\end{lstlisting}
+and pressing yes or Y in all questions.
+\FIGURE{MSYS2-24.png.eps}
 
 \end{enumerate}
 

@@ -12,6 +12,9 @@ and make, you have only to type as root:
 
 > make
 
+On Microsoft Windows systems you can follow detailed instructions on the
+tutorial supplied.
+
 Supported UNIX type systems
 ---------------------------
 
