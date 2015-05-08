@@ -6,7 +6,7 @@ BSDVERSION = OPENBSD_5_7
 BIN = /usr/local/
 INC = $(BIN)include/
 CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -DBUILD_UNTESTED_NEDIT
-automake = $(BIN)/bin/automake-1.14
+automake = $(BIN)/bin/automake-1.15
 compilers = $(BIN)bin/egcc
 repositories = $(BIN)bin/svn
 libraries = $(BIN)lib/libglut.la
@@ -58,24 +58,25 @@ $(PORTS):
 	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
 
 $(automake): 
-	cd $(PORTS)devel/automake/1.14 && $(MAKE)
+	cd $(PORTS)devel/automake/1.15 && $(MAKE)
 
 $(compilers): $(automake)
-	cd $(PORTS)lang/gfortran && $(MAKE)
+	cd $(PORTS)net/wget && $(MAKE)
+	cd $(PORTS)distfiles && \
+	wget http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/gmp-5.0.2.tar.gz
 	cd $(PORTS)lang/gcc/4.8 && $(MAKE); \
 	env SUBPACKAGE="-c++" $(MAKE); \
-	env SUBPACKAGE="-estdc" $(MAKE); \
+	env SUBPACKAGE="-f95" $(MAKE); \
 	env SUBPACKAGE="-java" $(MAKE)
 
 $(repositories):
-	cd $(PORTS)net/wget && $(MAKE)
 	cd $(PORTS)devel/git && $(MAKE)
 	cd $(PORTS)devel/subversion && $(MAKE)
 
 $(libraries):
 	cd $(PORTS)devel/gsl && $(MAKE)
-	cd $(PORTS)devel/openmpi && $(MAKE)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
+#	cd $(PORTS)devel/openmpi && $(MAKE)
 
 $(x):
 	cd $(PORTS)meta/xfce && $(MAKE)
@@ -131,11 +132,11 @@ $(multimedia):
 $(spam):
 	cd $(PORTS)mail/milter-spamd && $(MAKE)
 
-$(flash):
-	cd $(PORTS)www/gnash && $(MAKE)
-
 $(office):
 	cd $(PORTS)editors/libreoffice && export FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
+
+$(flash):
+	cd $(PORTS)www/gnash && $(MAKE)
 
 update:
 	cd /usr/ports && cvs -q up -r$(BSDVERSION) -Pd
