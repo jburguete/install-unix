@@ -7,7 +7,7 @@ BIN = /usr/local/
 INC = $(BIN)include/
 CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -DBUILD_UNTESTED_NEDIT
 automake = $(BIN)/bin/automake-1.15
-compilers = $(BIN)bin/egcc
+compilers = $(BIN)bin/egfortran
 repositories = $(BIN)bin/svn
 libraries = $(BIN)lib/libglut.la
 x = $(BIN)bin/startxfce4
@@ -66,8 +66,7 @@ $(compilers): $(automake)
 	wget http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/gmp-5.0.2.tar.gz
 	cd $(PORTS)lang/gcc/4.8 && $(MAKE); \
 	env SUBPACKAGE="-c++" $(MAKE); \
-	env SUBPACKAGE="-f95" $(MAKE); \
-	env SUBPACKAGE="-java" $(MAKE)
+	env SUBPACKAGE="-f95" $(MAKE)
 
 $(repositories):
 	cd $(PORTS)devel/git && $(MAKE)
@@ -76,7 +75,7 @@ $(repositories):
 $(libraries):
 	cd $(PORTS)devel/gsl && $(MAKE)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
-#	cd $(PORTS)devel/openmpi && $(MAKE)
+	cd $(PORTS)devel/openmpi && $(MAKE)
 
 $(x):
 	cd $(PORTS)meta/xfce && $(MAKE)
@@ -133,7 +132,7 @@ $(spam):
 	cd $(PORTS)mail/milter-spamd && $(MAKE)
 
 $(office):
-	cd $(PORTS)editors/libreoffice && export FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
+	cd $(PORTS)editors/libreoffice && env FORCE_UNSAFE_CONFIGURE=1 $(MAKE)
 
 $(flash):
 	cd $(PORTS)www/gnash && $(MAKE)
