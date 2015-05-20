@@ -10,12 +10,12 @@ edit = $(BASE)bin/nedit
 math = $(BASE)bin/xmaxima
 debug = $(BASE)bin/ddd
 diff = $(BASE)bin/meld
-pdf = $(BASE)bin/pdflatex
+pdf = $(BASE)bin/evince
 doxygen = $(BASE)bin/doxygen
 browser = $(BASE)bin/iceweasel
 mail = $(BASE)bin/icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
-multimedia = $(BASE)bin/parole
+multimedia = $(BASE)bin/smplayer
 office = $(BASE)bin/loffice
 spam = $(BASE)bin/spamassassin
 flash = $(BASE)bin/gnash
@@ -77,7 +77,7 @@ $(diff):
 $(pdf):
 	$(MAKE) latex-beamer texlive-latex-extra texlive-publishers \
 		texlive-fonts-recommended texlive-lang-spanish texlive-lang-french \
-		texlive-lang-english texlive-lang-italian evince-gtk
+		texlive-lang-english texlive-lang-italian evince
 
 $(doxygen):
 	$(MAKE) doxygen
@@ -86,13 +86,13 @@ $(browser):
 	$(MAKE) wget iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
-	$(MAKE) icedove-l10n-es-es
+	$(MAKE) icedove icedove-l10n-es-es
 
 $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw
 
 $(multimedia):
-	$(MAKE) parole
+	$(MAKE) smplayer
 
 $(office):
 	$(MAKE) libreoffice
