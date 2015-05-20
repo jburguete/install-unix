@@ -53,7 +53,7 @@ $(libraries):
 
 $(x):
 	$(MAKE) xserver-xorg-input-kbd xserver-xorg-input-mouse \
-		xserver-xorg-video-vesa xorg xfce4 xdm
+		xserver-xorg-video-vesa xorg xfce4 lightdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
