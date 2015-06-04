@@ -1,7 +1,7 @@
 MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
-RELEASE = pkgsrc-2014Q3
+RELEASE = pkgsrc-2015Q1
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BASE)bin/lintpkgsrc
@@ -47,15 +47,18 @@ all: \
 	$(office)
 
 /etc/mk.conf:
-	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
-	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
-	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
+	echo "CPUFLAGS=$(CPUTYPE)" > /etc/mk.conf
+	echo "COPTS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
+	echo "CFLAGS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
+	echo "CXXFLAGS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
 	echo "X11_TYPE=modular" >> /etc/mk.conf
 	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
 	echo "ACCEPTABLE_LICENSES+=lame-license" >> /etc/mk.conf
 
-$(pkgtools):
+$(PORTS):
 	cd /usr && cvs -z3 -qd anoncvs@anoncvs.NetBSD.org:/cvsroot checkout -r$(RELEASE) -P pkgsrc
+
+$(pkgtools): $(PORTS)
 	cd $(PORTS)bootstrap && ./bootstrap
 	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
 	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
@@ -71,6 +74,8 @@ $(repositories):
 
 $(libraries):
 	cd $(PORTS)math/gsl && $(MAKE)
+	cd $(PORTS)lang/g95 && perl -pi -e s,^C,\#C,g /etc/mk.conf && $(MAKE) \
+		&& perl -pi -e s,^\#,,g /etc/mk.conf
 	cd $(PORTS)parallel/mpi-ch && $(MAKE)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
