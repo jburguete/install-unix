@@ -20,10 +20,10 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
-* Debian Hurd 8.0
-* Debian kFreeBSD 8.0
-* Debian Linux 8.0
-* DragonFlyBSD 4.0.5
+* Debian Hurd 8.1
+* Debian kFreeBSD 8.1
+* Debian Linux 8.1
+* DragonFlyBSD 4.0.6
 * Dyson kOpenSolaris (2014/10/8)
 * FreeBSD 10.1
 * Microsoft Windows 7 32 bits + MSYS2
@@ -32,5 +32,6 @@ Currently the following UNIX type systems are supported:
 * NetBSD 6.1.5
 * OpenBSD 5.7
 * OpenIndiana 151a8 Server
+* Xubuntu Linux 15.04
 
 Other versions of these operative systems can work but it has not been tested.
