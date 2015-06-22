@@ -2,12 +2,13 @@ PORTS = /usr/dports/
 BASE = /usr/local/
 MAKE = env DISABLE_VULNERABILITIES=yes $(BASE)sbin/portmaster
 MAKE2 = make install clean
-CPUTYPE = -march=native -mfpmath=sse -msse3
-CFLAGS = -O2 -fno-strict-aliasing
+CPUTYPE = native
+CFLAGS = -O2 -fno-strict-aliasing -march=native -mfpmath=sse -msse3
+CONF = /etc/make.conf
 portmaster = $(BASE)sbin/portmaster
 compilers = $(BASE)bin/gcc49
 repositories = $(BASE)bin/svn
-libraries = $(BASE)lib/libglut.la
+libraries = $(BASE)lib/libglut.so
 x = $(BASE)sbin/gdm
 xutils = $(BASE)bin/xfce4-screenshooter
 edit = $(BASE)bin/nedit
@@ -27,7 +28,7 @@ flash = $(BASE)bin/gnash
 
 all: \
 	$(PORTS) \
-	/etc/mk.conf \
+	$(CONF) \
 	$(portmaster) \
 	$(compilers) \
 	$(repositories) \
@@ -52,11 +53,11 @@ all: \
 $(PORTS):
 	git clone git@github.com:DragonFlyBSD/DPorts.git $(PORTS)
 
-/etc/mk.conf:
-	echo "CPUTYPE=$(CPUTYPE)" > /etc/mk.conf
-	echo "CFLAGS+=$(CFLAGS)" >> /etc/mk.conf
-	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/mk.conf
-	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/mk.conf
+$(CONF):
+	echo "CPUTYPE=$(CPUTYPE)" > $(CONF)
+	echo "CFLAGS+=$(CFLAGS)" >> $(CONF)
+	echo "CXXFLAGS+=$(CFLAGS)" >> $(CONF)
+	echo "ACCEPTABLE-LICENSES+=vim-license" >> $(CONF)
 
 $(portmaster):
 	cd $(PORTS)/ports-mgmt/pkg; make; make deinstall; make install clean
