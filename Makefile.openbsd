@@ -45,7 +45,6 @@ all: \
 	$(mail) \
 	$(graphics) \
 	$(multimedia) \
-	$(screensaver) \
 	$(spam) \
 	$(office) \
 	$(flash) \

@@ -6,13 +6,13 @@ CPUTYPE = native
 CFLAGS = -O2 -fno-strict-aliasing -march=native -mfpmath=sse -msse3
 CONF = /etc/make.conf
 portmaster = $(BASE)sbin/portmaster
-compilers = $(BASE)bin/gcc49
+compilers = $(BASE)bin/gcc5
 repositories = $(BASE)bin/svn
 libraries = $(BASE)lib/libglut.so
 x = $(BASE)sbin/gdm
 xutils = $(BASE)bin/xfce4-screenshooter
 edit = $(BASE)bin/nedit
-math = $(BASE)bin/galculator
+math = $(BASE)bin/xmaxima
 debug = $(BASE)bin/ddd
 diff = $(BASE)bin/meld
 latex = $(BASE)bin/latex
@@ -46,7 +46,6 @@ all: \
 	$(graphics) \
 	$(multimedia) \
 	$(office) \
-	$(screensaver) \
 	$(spam) \
 	$(flash)
 
@@ -64,7 +63,7 @@ $(portmaster):
 	cd $(PORTS)/ports-mgmt/portmaster && make install clean
 
 $(compilers):
-	$(MAKE) devel/automake lang/gcc49
+	$(MAKE) devel/automake lang/gcc5
 
 $(repositories):
 	cd $(PORTS)textproc/docbook-xml && $(MAKE2)
@@ -101,7 +100,7 @@ $(edit):
 	$(MAKE) editors/vim editors/nedit
 
 $(math):
-	$(MAKE) math/galculator # math/maxima
+	$(MAKE) math/galculator math/maxima
 
 $(debug):
 	$(MAKE) devel/ddd
