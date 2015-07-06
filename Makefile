@@ -8,13 +8,13 @@ all:
 	else if test `uname -s` = "DragonFly"; then \
 		make -f Makefile.dragonfly; \
 	else if test `uname -s` = "Linux"; then \
-		if test `lsb_release -i -s` = "Debian"; then \
-			make -f Makefile.debian.linux; \
-		else if test `lsb_release -i -s` = "Ubuntu"; then \
-			make -f Makefile.ubuntu.linux; \
+		if test `uname -m` = "x86_64"; then \
+			make -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make -f Makefile.msys2.32; \
 		else \
-			echo "Unknown Linux distribution"; \
-		fi fi \	
+			echo "Unknown Linux distribution:"; \
+		fi fi \
 	else if test `uname -s` = "GNU/kFreeBSD"; then \
 		make -f Makefile.debian.kfreebsd; \
 	else if test `uname -s` = "GNU"; then \
