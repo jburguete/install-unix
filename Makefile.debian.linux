@@ -1,24 +1,24 @@
 MAKE = aptitude install
 BASE = /usr/
-LIB = /usr/lib/arm-linux-gnueabihf/
-compilers = $(BASE)bin/gfortran
-repositories = $(BASE)bin/svn
-libraries = $(LIB)/libglut.so.3
+BIN = $(BASE)bin/
+compilers = $(BIN)gfortran
+repositories = $(BIN)svn
+libraries = $(BASE)include/GL/freeglut.h
 x = /etc/X11/xorg.conf
-xutils = $(BASE)bin/xfce4-screenshooter
-edit = $(BASE)bin/nedit
-math = $(BASE)bin/xmaxima
-debug = $(BASE)bin/ddd
-diff = $(BASE)bin/meld
-pdf = $(BASE)bin/evince
-doxygen = $(BASE)bin/doxygen
-browser = $(BASE)bin/firefox
-mail = $(BASE)bin/thunderbird
+xutils = $(BIN)xfce4-screenshooter
+edit = $(BIN)nedit
+math = $(BIN)xmaxima
+debug = $(BIN)ddd
+diff = $(BIN)meld
+pdf = $(BIN)evince
+doxygen = $(BIN)doxygen
+browser = $(BIN)iceweasel
+mail = $(BIN)icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
-multimedia = $(BASE)bin/parole
-office = $(BASE)bin/loffice
-spam = $(BASE)bin/spamassassin
-flash = $(BASE)bin/gnash
+multimedia = $(BIN)parole
+office = $(BIN)loffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
 
 all: \
 	$(compilers) \
@@ -48,7 +48,7 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
-		mpich2 libmpich2-dev libgsl0-dev libgtk2.0-dev libgtk-3-dev \
+		mpich libmpich-dev libgsl0-dev libgtk2.0-dev libgtk-3-dev \
 		freeglut3-dev
 
 $(x):
@@ -84,10 +84,10 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-locale-es xul-ext-adblock-plus
+	$(MAKE) wget iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
-	$(MAKE) thunderbird thunderbird-locale-es
+	$(MAKE) icedove icedove-l10n-es-es
 
 $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw
