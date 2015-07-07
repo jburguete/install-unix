@@ -1,9 +1,23 @@
 all:
 	if test `uname -s` = "Linux"; then \
 		if test `lsb_release -i -s` = "Debian"; then \
-			make -f Makefile.debian.linux; \
+			if test `uname -m` = "x86_64"; then \
+				make -f Makefile.debian.linux.amd64; \
+			else if test `uname -m` = "i686"; then \
+				make -f Makefile.debian.linux.i686; \
+			else \
+				echo "Unknown machine"; \
+			fi fi \
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
-			make -f Makefile.ubuntu.linux; \
+			if test `uname -m` = "x86_64"; then \
+				make -f Makefile.ubuntu.linux.amd64; \
+			else if test `uname -m` = "i686"; then \
+				make -f Makefile.ubuntu.linux.i686; \
+			else if test `uname -m` = "armv7l"; then \
+				make -f Makefile.ubuntu.linux.arm; \
+			else \
+				echo "Unknown machine"; \
+			fi fi fi \
 		else \
 			echo "Unknown Linux distribution:"; \
 		fi fi \
