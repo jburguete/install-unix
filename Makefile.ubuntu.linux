@@ -4,7 +4,7 @@ BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-x = /etc/X11/xorg.conf
+x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
 edit = $(BIN)nedit
 math = $(BIN)xmaxima
@@ -54,7 +54,7 @@ $(libraries):
 $(x):
 	$(MAKE) virtualbox-guest-dkms virtualbox-guest-utils \
 		virtualbox-guest-x11 xserver-xorg-input-kbd xserver-xorg-input-mouse \
-		xserver-xorg-video-vesa xorg xfce4 gdm3
+		xserver-xorg-video-vesa xorg xfce4 gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
