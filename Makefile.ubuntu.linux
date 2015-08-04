@@ -54,7 +54,7 @@ $(libraries):
 $(x):
 	$(MAKE) virtualbox-guest-dkms virtualbox-guest-utils \
 		virtualbox-guest-x11 xserver-xorg-input-kbd xserver-xorg-input-mouse \
-		xserver-xorg-video-vesa xorg xfce4 gdm
+		xserver-xorg-video-vesa xorg xfce4 lightdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
@@ -93,7 +93,7 @@ $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw
 
 $(multimedia):
-	$(MAKE) parole
+	$(MAKE) totem
 
 $(office):
 	$(MAKE) libreoffice
