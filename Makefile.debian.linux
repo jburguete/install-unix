@@ -4,7 +4,7 @@ BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-x = /etc/X11/xorg.conf
+x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
 edit = $(BIN)nedit
 math = $(BIN)xmaxima
@@ -61,7 +61,7 @@ $(x):
 $(xutils):
 	$(MAKE) xscreensaver xfce4-cpugraph-plugin xfce4-netload-plugin \
 		xfce4-systemload-plugin xfce4-weather-plugin xfce4-xkb-plugin \
-		xfce4-terminal xfce4-screenshooter
+		xfce4-cpufreq-plugin xfce4-terminal xfce4-screenshooter
 
 $(edit):
 	$(MAKE) nedit vim-gtk
