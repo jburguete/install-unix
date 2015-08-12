@@ -7,9 +7,11 @@ all:
 		else if test `lsb_release -i -s | sed 's/ project//g'` \
 			= "openSUSE"; then \
 			make -f Makefile.opensuse.linux; \
+		else if test `lsb_release -i -s` = "Fedora"; then \
+			make -f Makefile.fedora.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi \
+		fi fi fi fi \
 	else if test `uname -o` = "Msys"; then \
 		if test `uname -m` = "x86_64"; then \
 			make -f Makefile.msys2.64; \

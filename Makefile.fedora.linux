@@ -1,0 +1,94 @@
+MAKE = dnf install
+BASE = /usr/
+BIN = $(BASE)bin/
+VIRTUALBOXREPO = download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+compilers = $(BIN)gfortran
+repositories = $(BIN)svn
+libraries = $(BASE)include/GL/freeglut.h
+x = $(BASE)lib/VBoxGuestAdditions/vboxvideo_drv.o
+edit = $(BIN)nedit
+math = $(BIN)xmaxima
+debug = $(BIN)ddd
+diff = $(BIN)meld
+pdf = $(BIN)pdflatex
+doxygen = $(BIN)doxygen
+browser = $(BIN)firefox
+mail = $(BIN)thunderbird
+graphics = $(BASE)lib64/gimp/2.0/plug-ins/ufraw-gimp
+office = $(BIN)loffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
+
+all: \
+	$(compilers) \
+	$(repositories) \
+	$(libraries) \
+	$(x) \
+	$(edit) \
+	$(math) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(office) \
+	$(spam) \
+	$(flash)
+
+$(compilers):
+	$(MAKE) automake gcc gcc-c++ gcc-gfortran
+
+$(repositories):
+	$(MAKE) git subversion
+
+$(libraries):
+	$(MAKE) libxml2-devel glib2-devel json-glib-devel sqlite-devel \
+		openmpi-devel gsl-devel libpng-devel gtk3-devel freeglut-devel
+
+$(x):
+	dnf install dkms kernel-devel
+	echo "Insert VirtualBox Guest Additions CD-ROM"
+	echo "Run VBoxLinuxAdditions.run"
+	echo "Reboot"
+	read
+
+$(edit):
+	$(MAKE) nedit vim-X11
+
+$(math):
+	$(MAKE) maxima-gui
+
+$(debug):
+	$(MAKE) valgrind valgrind-openmpi ddd
+
+$(diff):
+	$(MAKE) meld
+
+$(pdf):
+	$(MAKE) texlive-beamer texlive-latex
+
+$(doxygen):
+	$(MAKE) doxygen doxygen-latex
+
+$(browser):
+	$(MAKE) firefox mozilla-adblockplus
+
+$(mail):
+	$(MAKE) thunderbird
+
+$(graphics):
+	$(MAKE) ImageMagick gimp ufraw-gimp
+
+$(office):
+	$(MAKE) libreoffice
+
+$(spam):
+	$(MAKE) spamassassin
+
+$(flash):
+	$(MAKE) gnash gnash-plugin
+
+update:
+	dnf update
