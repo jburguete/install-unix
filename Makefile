@@ -4,9 +4,12 @@ all:
 			make -f Makefile.debian.linux; \
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
 			make -f Makefile.ubuntu.linux; \
+		else if test `lsb_release -i -s | sed 's/ project//g'` \
+			= "openSUSE"; then \
+			make -f Makefile.opensuse.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi \
+		fi fi fi \
 	else if test `uname -o` = "Msys"; then \
 		if test `uname -m` = "x86_64"; then \
 			make -f Makefile.msys2.64; \

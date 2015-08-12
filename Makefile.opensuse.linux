@@ -1,0 +1,84 @@
+MAKE = zypper install
+BASE = /usr/
+BIN = $(BASE)bin/
+compilers = $(BIN)gfortran
+repositories = $(BIN)svn
+libraries = $(BASE)include/GL/freeglut.h
+xutils = $(BASE)lib64/xfce4/panel/plugins/libweather.so
+edit = $(BIN)gvim
+math = $(BIN)xmaxima
+debug = $(BIN)ddd
+diff = $(BIN)meld
+pdf = $(BIN)pdflatex
+doxygen = $(BIN)doxygen
+browser = $(BIN)adblock
+graphics = $(BASE)lib64/gimp/2.0/plug-ins/ufraw-gimp
+spam = $(BIN)spamassassin
+flash = $(BIN)flash-player
+
+all: \
+	$(compilers) \
+	$(repositories) \
+	$(libraries) \
+	$(xutils) \
+	$(edit) \
+	$(math) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(graphics) \
+	$(spam) \
+	$(flash)
+
+$(compilers):
+	$(MAKE) make automake gcc gcc-c++ gcc-fortran
+
+$(repositories):
+	$(MAKE) git-core subversion
+
+$(libraries):
+	$(MAKE) libxml2-devel glib2-devel json-glib-devel sqlite3-devel \
+		openmpi-devel gsl-devel libpng16-devel gtk-3-devel \
+		freeglut-devel
+
+$(xutils):
+	$(MAKE) xfce4-panel-plugin-cpugraph xfce4-panel-plugin-netload \
+		xfce4-panel-plugin-systemload xfce4-panel-plugin-weather
+
+$(edit):
+	$(MAKE) gvim
+
+$(math):
+	$(MAKE) maxima-xmaxima
+
+$(debug):
+	$(MAKE) valgrind ddd
+
+$(diff):
+	$(MAKE) meld
+
+$(pdf):
+	$(MAKE) latex-beamer texlive
+
+$(doxygen):
+	$(MAKE) doxygen
+
+$(browser):
+	$(MAKE) mozaddon-adblock_edge
+
+$(graphics):
+	$(MAKE) gimp-ufraw
+
+$(spam):
+	$(MAKE) spamassassin
+
+$(flash):
+	$(MAKE) flash-player
+
+update:
+	zypper patch
+
+upgrade:
+	zypper dist-upgrade
