@@ -25,6 +25,7 @@ Currently the following UNIX type systems are supported:
 * Debian Linux 8.1
 * DragonFlyBSD 4.2.4
 * Dyson kOpenSolaris (2014/10/8)
+* Fedora Linux 22
 * FreeBSD 10.1
 * Microsoft Windows 7 32 bits + MSYS2
 * Microsoft Windows 7 64 bits + MSYS2

@@ -15,7 +15,7 @@ doxygen = $(BIN)doxygen
 browser = $(BIN)firefox
 mail = $(BIN)thunderbird
 graphics = $(BASE)lib64/gimp/2.0/plug-ins/ufraw-gimp
-office = $(BIN)loffice
+office = $(BIN)libreoffice
 spam = $(BIN)spamassassin
 flash = $(BIN)gnash
 
