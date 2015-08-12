@@ -14,7 +14,7 @@ doxygen = $(BIN)doxygen
 browser = $(BIN)adblock
 graphics = $(BASE)lib64/gimp/2.0/plug-ins/ufraw-gimp
 spam = $(BIN)spamassassin
-flash = $(BIN)flash-player
+flash = $(BASE)lib64/browser-plugins/libflashplayer.so
 
 all: \
 	$(compilers) \
