@@ -24,7 +24,7 @@ mail = $(BIN)bin/thunderbird
 graphics = $(BIN)bin/ufraw
 multimedia = $(BIN)bin/parole
 spam = $(BIN)libexec/milter-spamd
-office = $(BIN)bin/loffice
+office = $(BIN)bin/libreoffice
 flash = $(BIN)bin/gnash
 
 all: \
