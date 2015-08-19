@@ -67,7 +67,7 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) texlive-beamer texlive-latex
+	$(MAKE) texlive-beamer texlive-adjustbox tex-preview texlive-latex
 
 $(doxygen):
 	$(MAKE) doxygen doxygen-latex
