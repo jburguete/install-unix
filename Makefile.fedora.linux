@@ -55,7 +55,7 @@ $(x):
 	read
 
 $(edit):
-	$(MAKE) nedit vim-X11
+	$(MAKE) vim-enhanced vim-X11 nedit 
 
 $(math):
 	$(MAKE) maxima-gui
