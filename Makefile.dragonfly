@@ -1,30 +1,31 @@
 PORTS = /usr/dports/
 BASE = /usr/local/
+BIN = $(BASE)bin/
 MAKE = env DISABLE_VULNERABILITIES=yes $(BASE)sbin/portmaster
 MAKE2 = make install clean
 CPUTYPE = native
 CFLAGS = -O2 -fno-strict-aliasing -march=native -mfpmath=sse -msse3
 CONF = /etc/make.conf
 portmaster = $(BASE)sbin/portmaster
-compilers = $(BASE)bin/gcc5
-repositories = $(BASE)bin/svn
-libraries = $(BASE)lib/libglut.so
+compilers = $(BIN)gcc5
+repositories = $(BIN)svn
+libraries = $(BASE)include/freeglut.h
 x = $(BASE)sbin/gdm
-xutils = $(BASE)bin/xfce4-screenshooter
-edit = $(BASE)bin/nedit
-math = $(BASE)bin/xmaxima
-debug = $(BASE)bin/ddd
-diff = $(BASE)bin/meld
-latex = $(BASE)bin/latex
-pdf = $(BASE)bin/evince
-doxygen = $(BASE)bin/doxygen
-browser = $(BASE)bin/firefox
-mail = $(BASE)bin/thunderbird
-graphics = $(BASE)bin/ufraw
-multimedia = $(BASE)bin/parole
-office = $(BASE)bin/loffice
-spam = $(BASE)bin/spamassassin
-flash = $(BASE)bin/gnash
+xutils = $(BIN)xfce4-screenshooter
+edit = $(BIN)nedit
+math = $(BIN)xmaxima
+debug = $(BIN)ddd
+diff = $(BIN)meld
+latex = $(BIN)latex
+pdf = $(BIN)evince
+doxygen = $(BIN)doxygen
+browser = $(BIN)firefox
+mail = $(BIN)thunderbird
+graphics = $(BIN)ufraw
+multimedia = $(BIN)parole
+office = $(BIN)loffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
 
 all: \
 	$(PORTS) \

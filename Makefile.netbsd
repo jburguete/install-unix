@@ -1,28 +1,29 @@
 MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
+BIN = $(BASE)bin/
 RELEASE = pkgsrc-2015Q1
 CPUTYPE = -march=native -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-pkgtools = $(BASE)bin/lintpkgsrc
+pkgtools = $(BIN)lintpkgsrc
 compilers = $(BASE)gcc49/bin/gcc
-repositories = $(BASE)bin/svn
-libraries = $(BASE)lib/libfreeglut.la
+repositories = $(BIN)svn
+libraries = $(BASE)include/freeglut.h
 x = $(BASE)sbin/gdm
 xutils = $(BASE)libexec/xfce4/panel-plugins/xfce4-screenshooter-plugin
-editors = $(BASE)bin/nedit
-debug = $(BASE)bin/ddd
-math = $(BASE)bin/maxima
-diff = $(BASE)bin/meld
-pdf = $(BASE)bin/evince
-doxygen = $(BASE)bin/doxygen
-browser = $(BASE)bin/firefox
-mail = $(BASE)bin/thunderbird
-graphics = $(BASE)bin/ufraw
-multimedia = $(BASE)bin/totem
-office = $(BASE)bin/soffice
-spam = $(BASE)bin/spamassassin
-flash = $(BASE)bin/gnash
+editors = $(BIN)nedit
+debug = $(BIN)ddd
+math = $(BIN)maxima
+diff = $(BIN)meld
+pdf = $(BIN)evince
+doxygen = $(BIN)doxygen
+browser = $(BIN)firefox
+mail = $(BIN)thunderbird
+graphics = $(BIN)ufraw
+multimedia = $(BIN)totem
+office = $(BIN)soffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
 
 all: \
 	/etc/mk.conf \
