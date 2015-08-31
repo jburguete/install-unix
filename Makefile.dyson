@@ -1,24 +1,25 @@
 MAKE = aptitude install
 BASE = /usr/
+BIN = $(BASE)bin/
 LIB = /usr/lib/x86_64-illumos/
-compilers = $(BASE)bin/gfortran
-repositories = $(BASE)bin/svn
-libraries = $(LIB)/libglut.so.3
+compilers = $(BIN)gfortran
+repositories = $(BIN)svn
+libraries = $(BASE)include/GL/freeglut.h
 x = /etc/X11/xorg.conf
-xutils = $(BASE)bin/xfce4-screenshooter
-edit = $(BASE)bin/nedit
-math = $(BASE)bin/xmaxima
-debug = $(BASE)bin/ddd
-diff = $(BASE)bin/meld
-pdf = $(BASE)bin/evince
-doxygen = $(BASE)bin/doxygen
-browser = $(BASE)bin/iceweasel
-mail = $(BASE)bin/icedove
+xutils = $(BIN)xfce4-screenshooter
+edit = $(BIN)nedit
+math = $(BIN)xmaxima
+debug = $(BIN)ddd
+diff = $(BIN)meld
+pdf = $(BIN)evince
+doxygen = $(BIN)doxygen
+browser = $(BIN)iceweasel
+mail = $(BIN)icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
-multimedia = $(BASE)bin/smplayer
-office = $(BASE)bin/loffice
-spam = $(BASE)bin/spamassassin
-flash = $(BASE)bin/gnash
+multimedia = $(BIN)smplayer
+office = $(BIN)loffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
 
 all: \
 	$(compilers) \
