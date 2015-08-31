@@ -16,7 +16,6 @@ edit = $(BIN)nedit
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
 diff = $(BIN)meld
-latex = $(BIN)latex
 pdf = $(BIN)evince
 doxygen = $(BIN)doxygen
 browser = $(BIN)firefox
