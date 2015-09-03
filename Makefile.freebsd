@@ -66,6 +66,9 @@ $(compilers):
 $(repositories):
 	$(MAKE) devel/git devel/subversion
 
+$(libraries):
+	$(MAKE) math/gsl graphics/freeglut
+
 $(vboxguest):
 	$(MAKE) emulators/virtualbox-ose-additions
 	echo "vboxguest_enable=YES" >> /etc/rc.conf
@@ -93,9 +96,6 @@ $(xutils):
 		deskutils/xfce4-xkb-plugin \
 		misc/xfce4-weather-plugin \
 		x11/xfce4-screenshooter-plugin
-
-$(libraries):
-	$(MAKE) math/gsl graphics/freeglut
 
 $(editors):
 	$(MAKE) editors/vim editors/nedit
