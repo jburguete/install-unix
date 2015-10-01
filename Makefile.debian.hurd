@@ -73,6 +73,9 @@ $(edit):
 $(debug):
 	$(MAKE) ddd
 
+$(diff):
+	$(MAKE) meld
+
 $(math):
 	$(MAKE) xmaxima
 
