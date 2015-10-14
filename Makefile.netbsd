@@ -2,8 +2,8 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-RELEASE = pkgsrc-2015Q1
-CPUTYPE = -march=native -mfpmath=sse -msse3
+RELEASE = pkgsrc-2015Q3
+CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BIN)lintpkgsrc
 compilers = $(BASE)gcc49/bin/gcc
@@ -70,7 +70,6 @@ $(compilers):
 
 $(repositories):
 	cd $(PORTS)devel/git-base && $(MAKE)
-	cd $(PORTS)devel/git-docs && $(MAKE)
 	cd $(PORTS)devel/subversion-base && $(MAKE)
 
 $(libraries):
