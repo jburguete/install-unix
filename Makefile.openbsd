@@ -63,7 +63,7 @@ $(compilers): $(automake)
 	cd $(PORTS)net/wget && $(MAKE)
 	cd $(PORTS)distfiles && \
 	wget http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/gmp-5.0.2.tar.gz
-	cd $(PORTS)lang/gcc/4.8 && $(MAKE); \
+	cd $(PORTS)lang/gcc/4.9 && $(MAKE); \
 	env SUBPACKAGE="-c++" $(MAKE); \
 	env SUBPACKAGE="-f95" $(MAKE)
 
