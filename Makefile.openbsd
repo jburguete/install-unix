@@ -2,7 +2,7 @@ MAKE = make install && make clean=depends
 PORTS = /usr/ports/
 BSDSRC = anoncvs@anoncvs.fr.openbsd.org:/cvs
 #BSDSRC = anoncvs@openbsd.cs.fau.de:/cvs
-BSDVERSION = OPENBSD_5_7
+BSDVERSION = OPENBSD_5_8
 BASE = /usr/local/
 INC = $(BASE)include/
 BIN = $(BASE)bin/
@@ -60,9 +60,17 @@ $(automake):
 	cd $(PORTS)devel/automake/1.15 && $(MAKE)
 
 $(compilers): $(automake)
+	echo "sysutils/coreutils fails being root in the configuration"
+	echo "I only know to solve this problem doing as root:"
+	echo "# cd /usr/ports/sysutils/coreutils; make"
+	echo "# chmod -R a+w /usr/ports/pobj/{locks,coreutils}"
+	echo "and as normal user:"
+	echo "$ cd /usr/ports/sysutils/coreutils && make"
+	echo "Then comment the following line in Makefile.openbsd"
+	read
 	cd $(PORTS)net/wget && $(MAKE)
 	cd $(PORTS)distfiles && \
-	wget http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/gmp-5.0.2.tar.gz
+	wget http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/gmp-5.0.2.tar.bz2
 	cd $(PORTS)lang/gcc/4.9 && $(MAKE); \
 	env SUBPACKAGE="-c++" $(MAKE); \
 	env SUBPACKAGE="-f95" $(MAKE)
