@@ -96,7 +96,7 @@ $(multimedia):
 	$(MAKE) smplayer
 
 $(office):
-	$(MAKE) libreoffice
+	$(MAKE) libreoffice libreoffice-l10n-es
 
 $(spam):
 	$(MAKE) spamassassin
