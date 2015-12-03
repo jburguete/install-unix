@@ -6,7 +6,7 @@ compilers = $(BASE2)gfortran.exe
 repositories = $(BASE)svn.exe
 libraries = $(BASE2)libfreeglut.dll
 edit = $(BASE)vim.exe
-debug = $(BASE)gdb.exe
+debug = $(BASE2)gdb.exe
 diff = $(BASE2)meld
 pdf = $(BASE2)evince.exe
 doxygen = $(BASE)doxygen.exe
@@ -40,7 +40,7 @@ $(edit):
 	$(MAKE) vim
 
 $(debug):
-	$(MAKE) gdb
+	$(MAKE) $(MINGW)gdb
 
 $(diff):
 	$(MAKE) $(MINGW)meld3
