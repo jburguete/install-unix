@@ -16,8 +16,8 @@ doxygen = $(BIN)doxygen
 browser = $(BIN)iceweasel
 mail = $(BIN)icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
-multimedia =
-office =
+multimedia = $(BIN)parole
+office = $(BIN)loffice
 spam = $(BIN)spamassassin
 flash =
 
@@ -98,6 +98,12 @@ $(mail):
 
 $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw
+
+$(multimedia):
+	$(MAKE) parole
+
+$(office):
+	$(MAKE) libreoffice
 
 $(spam):
 	$(MAKE) spamassassin
