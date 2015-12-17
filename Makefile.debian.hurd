@@ -7,7 +7,7 @@ repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
-edit = $(BIN)nedit
+edit = $(BIN)universalindentgui
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
 diff = $(BIN)meld
@@ -48,8 +48,8 @@ $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) libxml2-dev libglib2.0-dev libsqlite3-dev libgsl0-dev \
-		libgtk-3-dev freeglut3-dev
+	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
+		libgsl0-dev libgtk2.0-dev libgtk-3-dev freeglut3-dev
 
 $(x):
 	$(MAKE) xserver-xorg-input-kbd xserver-xorg-input-mouse \
@@ -71,16 +71,16 @@ $(xutils):
 		xfce4-terminal xfce4-screenshooter
 
 $(edit):
-	$(MAKE) nedit vim-gtk
+	$(MAKE) nedit vim-gtk universalindentgui
+
+$(math):
+	$(MAKE) gnome-calculator xmaxima
 
 $(debug):
 	$(MAKE) ddd
 
 $(diff):
 	$(MAKE) meld
-
-$(math):
-	$(MAKE) xmaxima
 
 $(pdf):
 	$(MAKE) latex-beamer texlive-latex-extra texlive-publishers \
@@ -91,7 +91,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
+	$(MAKE) wget iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
 	$(MAKE) icedove icedove-l10n-es-es
