@@ -5,7 +5,7 @@ LIB = /usr/lib/i386-gnu/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-x = /etc/X11/xorg.conf
+x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
 edit = $(BIN)nedit
 math = $(BIN)xmaxima
@@ -54,7 +54,10 @@ $(libraries):
 $(x):
 	$(MAKE) xserver-xorg-input-kbd xserver-xorg-input-mouse \
 		xserver-xorg-video-vesa xorg xfce4
+	sed -i 's/allowed_users=console/allowed_users=anybody/g' \
+		/etc/X11/Xwrapper.config
 	X -configure
+	sed -i 's/auto/OSMouse/g' xorg.conf.new
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "Modify /etc/X11/xorg.conf"
 	echo "In Section \"InputDevice\""
