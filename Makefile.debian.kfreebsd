@@ -7,7 +7,7 @@ repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = /etc/X11/xorg.conf
 xutils = $(BIN)xfce4-screenshooter
-edit = $(BIN)nedit
+edit = $(BIN)universalindentgui
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
 diff = $(BIN)meld
@@ -54,7 +54,7 @@ $(libraries):
 
 $(x):
 	$(MAKE) xserver-xorg-input-kbd xserver-xorg-input-mouse \
-		xserver-xorg-video-vesa xorg xfce4 xdm
+		xserver-xorg-video-vesa xorg xfce4 lightdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
@@ -65,7 +65,7 @@ $(xutils):
 		gstreamer0.10-pulseaudio xfce4-mixer xfce4-screenshooter
 
 $(edit):
-	$(MAKE) nedit vim-gtk
+	$(MAKE) nedit vim-gtk universalindentgui
 
 $(math):
 	$(MAKE) gnome-calculator xmaxima
