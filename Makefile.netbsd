@@ -2,15 +2,16 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
+SBIN = $(BASE)sbin/
 RELEASE = pkgsrc-2015Q3
 CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-pkgtools = $(BIN)lintpkgsrc
+pkgtools = $(SBIN)lintpkgsrc
 compilers = $(BASE)gcc49/bin/gcc
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BASE)sbin/gdm
-xutils = $(BASE)libexec/xfce4/panel-plugins/xfce4-screenshooter-plugin
+xutils = $(BIN)/xfce4-screenshooter
 editors = $(BIN)nedit
 debug = $(BIN)ddd
 math = $(BIN)maxima
@@ -80,6 +81,8 @@ $(libraries):
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 
 $(x):
+	cd $(PORTS)textproc/groff && $(MAKE)
+	ln -s /usr/pkg/bin/tbl /usr/bin/tbl
 	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
@@ -92,9 +95,9 @@ $(x):
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -s /root/.xinitrc /root/.xsession
 	cd $(PORTS)x11/gdm && $(MAKE)
-	ln -s $(BASE)share/examples/rc.d/hal /etc
-	ln -s $(BASE)share/examples/rc.d/dbus /etc
-	ln -s $(BASE)share/examples/rc.d/gdm /etc
+	ln -s $(BASE)share/examples/rc.d/hal /etc/rc.d
+	ln -s $(BASE)share/examples/rc.d/dbus /etc/rc.d
+	ln -s $(BASE)share/examples/rc.d/gdm /etc/rc.d
 	echo "hal=YES" >> /etc/rc.conf
 	echo "dbus=YES" >> /etc/rc.conf
 	echo "gdm=YES" >> /etc/rc.conf
@@ -108,7 +111,7 @@ $(xutils):
 	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
 	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
 	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
-	cd $(PORTS)x11/xfce4-screenshooter-plugin && $(MAKE)
+	cd $(PORTS)x11/xfce4-screenshooter && $(MAKE)
 
 $(editors):
 	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
