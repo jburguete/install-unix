@@ -2,11 +2,10 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-SBIN = $(BASE)sbin/
 RELEASE = pkgsrc-2015Q3
 CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
-pkgtools = $(SBIN)lintpkgsrc
+pkgtools = $(BIN)lintpkgsrc
 compilers = $(BASE)gcc49/bin/gcc
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
@@ -60,7 +59,7 @@ all: \
 $(PORTS):
 	cd /usr && cvs -z3 -qd anoncvs@anoncvs.NetBSD.org:/cvsroot checkout -r$(RELEASE) -P pkgsrc
 
-$(pkgtools): $(PORTS)
+$(pkgtools):
 	cd $(PORTS)bootstrap && ./bootstrap
 	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
 	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
@@ -132,6 +131,9 @@ $(pdf):
 	cd $(PORTS)graphics/tex-pst-pdf && $(MAKE)
 	cd $(PORTS)print/tex-babel && $(MAKE)
 	cd $(PORTS)print/tex-elsarticle && $(MAKE)
+	cd $(PORTS)print/tex-babel-spanish && $(MAKE)
+	cd $(PORTS)print/tex-adjustbox && $(MAKE)
+	cd $(PORTS)print/tex-collectbox && $(MAKE)
 	cd $(PORTS)print/evince && $(MAKE)
 
 $(doxygen):
