@@ -94,3 +94,6 @@ $(flash):
 
 update:
 	dnf update
+
+clean:
+	dnf clean all
