@@ -60,7 +60,8 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) latex-beamer texlive
+	$(MAKE) latex-beamer texlive texlive-xtab texlive-multirow texlive-sectsty \
+		texlive-tocloft
 
 $(doxygen):
 	$(MAKE) doxygen
