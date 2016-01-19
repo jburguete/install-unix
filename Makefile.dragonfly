@@ -137,6 +137,7 @@ $(flash):
 
 update:
 	cd $(PORTS) && git pull origin master
+	portmaster -L | grep New
 
 clean:
 	portmaster --clean-distfiles -y
