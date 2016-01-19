@@ -37,3 +37,83 @@ all:
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
+
+update:
+	if test `uname -s` = "Linux"; then \
+		if test `lsb_release -i -s` = "Debian"; then \
+			make update -f Makefile.debian.linux; \
+		else if test `lsb_release -i -s` = "Ubuntu"; then \
+			make update -f Makefile.ubuntu.linux; \
+		else if test `lsb_release -i -s | sed 's/ project//g'` \
+			= "openSUSE"; then \
+			make update -f Makefile.opensuse.linux; \
+		else if test `lsb_release -i -s` = "Fedora"; then \
+			make update -f Makefile.fedora.linux; \
+		else \
+			echo "Unknown Linux distribution:"; \
+		fi fi fi fi \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make update -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make update -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
+	else if test `uname -s` = "FreeBSD"; then \
+		make update -f Makefile.freebsd; \
+	else if test `uname -s` = "OpenBSD"; then \
+		make update -f Makefile.openbsd; \
+	else if test `uname -s` = "NetBSD"; then \
+		make update -f Makefile.netbsd; \
+	else if test `uname -s` = "DragonFly"; then \
+		make update -f Makefile.dragonfly; \
+	else if test `uname -s` = "GNU/kFreeBSD"; then \
+		make update -f Makefile.debian.kfreebsd; \
+	else if test `uname -s` = "GNU"; then \
+		make update -f Makefile.debian.hurd; \
+	else if test `uname -s` = "SunOS"; then \
+		make update -f Makefile.dyson; \
+	else \
+		echo "Unknown operative system"; \
+	fi fi fi fi fi fi fi fi fi
+
+clean:
+	if test `uname -s` = "Linux"; then \
+		if test `lsb_release -i -s` = "Debian"; then \
+			make clean -f Makefile.debian.linux; \
+		else if test `lsb_release -i -s` = "Ubuntu"; then \
+			make clean -f Makefile.ubuntu.linux; \
+		else if test `lsb_release -i -s | sed 's/ project//g'` \
+			= "openSUSE"; then \
+			make clean -f Makefile.opensuse.linux; \
+		else if test `lsb_release -i -s` = "Fedora"; then \
+			make clean -f Makefile.fedora.linux; \
+		else \
+			echo "Unknown Linux distribution:"; \
+		fi fi fi fi \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make clean -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make clean -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
+	else if test `uname -s` = "FreeBSD"; then \
+		make clean -f Makefile.freebsd; \
+	else if test `uname -s` = "OpenBSD"; then \
+		make clean -f Makefile.openbsd; \
+	else if test `uname -s` = "NetBSD"; then \
+		make clean -f Makefile.netbsd; \
+	else if test `uname -s` = "DragonFly"; then \
+		make clean -f Makefile.dragonfly; \
+	else if test `uname -s` = "GNU/kFreeBSD"; then \
+		make clean -f Makefile.debian.kfreebsd; \
+	else if test `uname -s` = "GNU"; then \
+		make clean -f Makefile.debian.hurd; \
+	else if test `uname -s` = "SunOS"; then \
+		make clean -f Makefile.dyson; \
+	else \
+		echo "Unknown operative system"; \
+	fi fi fi fi fi fi fi fi fi
