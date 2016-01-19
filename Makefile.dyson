@@ -106,6 +106,8 @@ $(flash):
 
 update:
 	aptitude update
+
+upgrade:
 	aptitude upgrade
 
 clean:
