@@ -39,8 +39,8 @@ $(repositories):
 	$(MAKE) git-core subversion
 
 $(libraries):
-	$(MAKE) libxml2-devel glib2-devel json-glib-devel sqlite3-devel \
-		openmpi-devel gsl-devel libpng16-devel gtk-3-devel \
+	$(MAKE) libxml2-devel glib2-devel json-glib-devel gettext-tools \
+		sqlite3-devel openmpi-devel gsl-devel libpng16-devel gtk3-devel \
 		freeglut-devel
 
 $(xutils):
@@ -82,3 +82,6 @@ update:
 
 upgrade:
 	zypper dist-upgrade
+
+clean:
+	zypper clean
