@@ -61,7 +61,8 @@ $(diff):
 
 $(pdf):
 	$(MAKE) latex-beamer texlive texlive-xtab texlive-multirow texlive-sectsty \
-		texlive-tocloft
+		texlive-tocloft texlive-elsarticle texlive-ascelike texlive-lineno \
+		texlive-pst-tools
 
 $(doxygen):
 	$(MAKE) doxygen
