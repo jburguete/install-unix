@@ -42,7 +42,7 @@ all: \
 #	$(flash)
 
 $(compilers):
-	$(MAKE) automake gcc gfortran
+	$(MAKE) automake g++ gfortran
 
 $(repositories):
 	$(MAKE) git subversion
@@ -67,7 +67,7 @@ $(edit):
 	$(MAKE) vim-gtk
 
 $(math):
-	$(MAKE) gnome-calculator xmaxima
+	$(MAKE) galculator xmaxima
 
 $(debug):
 	$(MAKE) ddd

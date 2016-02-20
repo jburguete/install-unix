@@ -41,7 +41,7 @@ all: \
 	$(flash)
 
 $(compilers):
-	$(MAKE) automake gcc gfortran
+	$(MAKE) automake g++ gfortran
 
 $(repositories):
 	$(MAKE) git subversion
@@ -67,7 +67,7 @@ $(edit):
 	$(MAKE) nedit vim-gtk universalindentgui
 
 $(math):
-	$(MAKE) gnome-calculator xmaxima
+	$(MAKE) galculator xmaxima
 
 $(debug):
 	$(MAKE) valgrind valgrind-mpi ddd

@@ -5,8 +5,8 @@ LIB = /usr/lib/x86_64-kfreebsd-gnu/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-x = /etc/X11/xorg.conf
-xutils = $(BIN)xfce4-screenshooter
+x = $(BASE)sbin/lightdm
+xutils = $(BIN)X11/xscreensaver
 edit = $(BIN)universalindentgui
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
@@ -42,7 +42,7 @@ all: \
 	$(flash)
 
 $(compilers):
-	$(MAKE) automake gcc gfortran
+	$(MAKE) automake g++ gfortran
 
 $(repositories):
 	$(MAKE) git subversion
@@ -68,7 +68,7 @@ $(edit):
 	$(MAKE) nedit vim-gtk universalindentgui
 
 $(math):
-	$(MAKE) gnome-calculator xmaxima
+	$(MAKE) galculator xmaxima
 
 $(debug):
 	$(MAKE) ddd
