@@ -37,7 +37,7 @@ all:
 			make -f Makefile.dyson; \
 		else \
 			make -f Makefile.openindiana; \
-		fi \	
+		fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
@@ -77,7 +77,11 @@ update:
 	else if test `uname -s` = "GNU"; then \
 		make update -f Makefile.debian.hurd; \
 	else if test `uname -s` = "SunOS"; then \
-		make update -f Makefile.dyson; \
+		if test `uname -v` = "4.3+8"; then \
+			make update -f Makefile.dyson; \
+		else \
+			make update -f Makefile.openindiana; \
+		fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
@@ -117,7 +121,11 @@ upgrade:
 	else if test `uname -s` = "GNU"; then \
 		make upgrade -f Makefile.debian.hurd; \
 	else if test `uname -s` = "SunOS"; then \
-		make upgrade -f Makefile.dyson; \
+		if test `uname -v` = "4.3+8"; then \
+			make upgrade -f Makefile.dyson; \
+		else \
+			make upgrade -f Makefile.openindiana; \
+		fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
@@ -157,7 +165,11 @@ clean:
 	else if test `uname -s` = "GNU"; then \
 		make clean -f Makefile.debian.hurd; \
 	else if test `uname -s` = "SunOS"; then \
-		make clean -f Makefile.dyson; \
+		if test `uname -v` = "4.3+8"; then \
+			make clean -f Makefile.dyson; \
+		else \
+			make clean -f Makefile.openindiana; \
+		fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
