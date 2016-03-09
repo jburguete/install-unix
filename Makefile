@@ -33,7 +33,11 @@ all:
 	else if test `uname -s` = "GNU"; then \
 		make -f Makefile.debian.hurd; \
 	else if test `uname -s` = "SunOS"; then \
-		make -f Makefile.dyson; \
+		if test `uname -v` = "4.3+8"; then \
+			make -f Makefile.dyson; \
+		else \
+			make -f Makefile.openindiana; \
+		fi \	
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
