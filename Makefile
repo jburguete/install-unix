@@ -12,14 +12,6 @@ all:
 		else \
 			echo "Unknown Linux distribution:"; \
 		fi fi fi fi \
-	else if test `uname -o` = "Msys"; then \
-		if test `uname -m` = "x86_64"; then \
-			make -f Makefile.msys2.64; \
-		else if test `uname -m` = "i686"; then \
-			make -f Makefile.msys2.32; \
-		else \
-			echo "Unknown operative system"; \
-		fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -38,6 +30,14 @@ all:
 		else \
 			make -f Makefile.openindiana; \
 		fi \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
@@ -56,14 +56,6 @@ update:
 		else \
 			echo "Unknown Linux distribution:"; \
 		fi fi fi fi \
-	else if test `uname -o` = "Msys"; then \
-		if test `uname -m` = "x86_64"; then \
-			make update -f Makefile.msys2.64; \
-		else if test `uname -m` = "i686"; then \
-			make update -f Makefile.msys2.32; \
-		else \
-			echo "Unknown operative system"; \
-		fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make update -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -82,6 +74,14 @@ update:
 		else \
 			make update -f Makefile.openindiana; \
 		fi \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make update -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make update -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
@@ -100,14 +100,6 @@ upgrade:
 		else \
 			echo "Unknown Linux distribution:"; \
 		fi fi fi fi \
-	else if test `uname -o` = "Msys"; then \
-		if test `uname -m` = "x86_64"; then \
-			make upgrade -f Makefile.msys2.64; \
-		else if test `uname -m` = "i686"; then \
-			make upgrade -f Makefile.msys2.32; \
-		else \
-			echo "Unknown operative system"; \
-		fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make upgrade -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -126,6 +118,14 @@ upgrade:
 		else \
 			make upgrade -f Makefile.openindiana; \
 		fi \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make upgrade -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make upgrade -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
@@ -144,14 +144,6 @@ clean:
 		else \
 			echo "Unknown Linux distribution:"; \
 		fi fi fi fi \
-	else if test `uname -o` = "Msys"; then \
-		if test `uname -m` = "x86_64"; then \
-			make clean -f Makefile.msys2.64; \
-		else if test `uname -m` = "i686"; then \
-			make clean -f Makefile.msys2.32; \
-		else \
-			echo "Unknown operative system"; \
-		fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make clean -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -170,6 +162,14 @@ clean:
 		else \
 			make clean -f Makefile.openindiana; \
 		fi \
+	else if test `uname -o` = "Msys"; then \
+		if test `uname -m` = "x86_64"; then \
+			make clean -f Makefile.msys2.64; \
+		else if test `uname -m` = "i686"; then \
+			make clean -f Makefile.msys2.32; \
+		else \
+			echo "Unknown operative system"; \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi
