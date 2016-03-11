@@ -4,10 +4,16 @@ BIN = $(BASE)bin/
 BIN2 = $(BASE2)bin/
 MAKE = pkg install
 MAKE2 = $(BIN2)pkgutil -y -i
-compilers = $(BIN)gcc
+compilers = $(BIN)pkg-config
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/freeglut.h
+libraries = $(BASE)include/GL/glew.h
 editors = $(BIN2)nedit
+math = $(BIN)gnuplot
+debug = $(BIN)gdb
+diff = $(BIN)meld
+pdf = $(BIN2)latex
+graphics = $(BIN)gimp
+office = $(BIN)loffice
 
 all: \
 	$(BIN2) \
@@ -15,6 +21,12 @@ all: \
 	$(repositories) \
 	$(libraries) \
 	$(editors) \
+	$(math) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(graphics) \
+	$(office)
 
 $(BIN2):
 	pkg set-publisher -G '*' -g http://sfe.opencsw.org/localhostoih localhostoih
@@ -28,7 +40,8 @@ $(BIN2):
 		ln -s $(REPOSITORIES)ssh-keygen; ln -s $(REPOSITORIES)ssh-keyscan;
 
 $(compilers):
-	$(MAKE) developer/build/autoconf developer/build/automake developer/gcc-49
+	$(MAKE) developer/build/autoconf developer/build/automake developer/gcc-49 \
+		system/header developer/build/pkg-config
 
 $(repositories):
 	$(MAKE) developer/versioning/git developer/versioning/subversion
@@ -36,11 +49,32 @@ $(repositories):
 $(libraries):
 	$(MAKE) library/desktop/json-glib library/mpich/gcc developer/gsl \
 		library/desktop/gtk2 library/desktop/gtk3 \
-		text/gnu-gettext sfe/x11/library/freeglut
+		text/gnu-gettext sfe/x11/library/freeglut sfe/library/libglew
 
 $(editors):
 	$(MAKE) editor/gvim
 	$(MAKE2) nedit
+
+$(math):
+	$(MAKE) runtime/sbcl image/gnuplot
+
+$(debug):
+	$(MAKE) developer/debug/valgrind developer/debug/gdb
+
+$(diff):
+	$(MAKE) meld
+
+$(pdf):
+	$(MAKE2) texlive texlive_latex_extra texlive_publishers \
+		texlive_fonts_recommended texlive_lang_spanish texlive_lang_french \
+		texlive_lang_italian
+
+$(graphics):
+	$(MAKE) image/imagemagick image/editor/gimp /image/editor/gimp/locale/es
+
+$(office):
+	$(MAKE) system/library/g++/boost@1.59.0-0.0.151.1.8 \
+		library/g++/icu@55.1-0.0.151.1.8 desktop/application/libreoffice4
 
 update:
 	pkg update
