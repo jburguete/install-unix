@@ -2,7 +2,7 @@ MAKE = make install && make clean=depends
 PORTS = /usr/ports/
 BSDSRC = anoncvs@anoncvs.fr.openbsd.org:/cvs
 #BSDSRC = anoncvs@openbsd.cs.fau.de:/cvs
-BSDVERSION = OPENBSD_5_8
+BSDVERSION = OPENBSD_5_9
 BASE = /usr/local/
 INC = $(BASE)include/
 BIN = $(BASE)bin/
