@@ -115,7 +115,7 @@ $(diff):
 	cd $(PORTS)textproc/meld && $(MAKE)
 
 $(pdf):
-	cd $(PORTS)print/texlive/texmf && SUBPACKAGE="-full" $(MAKE)
+	cd $(PORTS)print/texlive/texmf && env SUBPACKAGE="-full" $(MAKE)
 	cd $(PORTS)graphics/evince && $(MAKE)
 
 $(doxygen):
