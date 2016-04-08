@@ -10,7 +10,7 @@ CFLAGS = -march=native -mfpmath=sse -msse3 -O2 -fno-strict-aliasing -DBUILD_UNTE
 automake = $(BIN)automake-1.15
 compilers = $(BIN)egfortran
 repositories = $(BIN)svn
-libraries = $(INC)freeglut.h
+libraries = $(INC)GL/freeglut.h
 x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
 editors = $(BIN)nedit
