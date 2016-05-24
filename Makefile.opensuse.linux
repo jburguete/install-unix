@@ -62,7 +62,7 @@ $(diff):
 $(pdf):
 	$(MAKE) latex-beamer texlive texlive-xtab texlive-multirow texlive-sectsty \
 		texlive-tocloft texlive-elsarticle texlive-ascelike texlive-lineno \
-		texlive-pst-tools
+		texlive-pst-tools texlive-auto-pst-pdf texlive-tabu
 
 $(doxygen):
 	$(MAKE) doxygen
