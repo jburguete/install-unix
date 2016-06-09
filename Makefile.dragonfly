@@ -1,18 +1,13 @@
 PORTS = /usr/dports/
 BASE = /usr/local/
 BIN = $(BASE)bin/
-MAKE = env DISABLE_VULNERABILITIES=yes $(BASE)sbin/portmaster
-MAKE2 = make install clean
-CPUTYPE = native
-CFLAGS = -O2 -fno-strict-aliasing -march=native -mfpmath=sse -msse3
-CONF = /etc/make.conf
-portmaster = $(BASE)sbin/portmaster
+MAKE = pkg install
 compilers = $(BIN)gcc5
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BASE)sbin/gdm
 xutils = $(BIN)xfce4-screenshooter
-edit = $(BIN)nedit
+edit = $(BIN)universalindentgui
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
 diff = $(BIN)meld
@@ -27,9 +22,6 @@ spam = $(BIN)spamassassin
 flash = $(BIN)gnash
 
 all: \
-	$(PORTS) \
-	$(CONF) \
-	$(portmaster) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
@@ -47,35 +39,19 @@ all: \
 	$(multimedia) \
 	$(office) \
 	$(spam) \
-	$(flash)
-
-$(PORTS):
-	git clone git@github.com:DragonFlyBSD/DPorts.git $(PORTS)
-
-$(CONF):
-	echo "CPUTYPE=$(CPUTYPE)" > $(CONF)
-	echo "CFLAGS+=$(CFLAGS)" >> $(CONF)
-	echo "CXXFLAGS+=$(CFLAGS)" >> $(CONF)
-	echo "ACCEPTABLE-LICENSES+=vim-license" >> $(CONF)
-
-$(portmaster):
-	cd $(PORTS)/ports-mgmt/pkg; make; make deinstall; make install clean
-	cd $(PORTS)/ports-mgmt/portmaster && make install clean
+#	$(flash)
 
 $(compilers):
-	$(MAKE) devel/automake lang/gcc5
+	$(MAKE) automake gcc5
 
 $(repositories):
-	cd $(PORTS)textproc/docbook-xml && $(MAKE2)
-	$(MAKE) devel/git devel/subversion
+	$(MAKE) subversion
 
 $(libraries):
-	$(MAKE) math/gsl net/mpich 
-	cd $(PORTS)sysutils/polkit && $(MAKE2)
-	$(MAKE) x11-toolkits/gtk30 graphics/freeglut
+	$(MAKE) gsl mpich gtk3 freeglut
 
 $(x):
-	$(MAKE) x11/xorg-minimal x11-wm/xfce4 security/gnome-keyring x11/gdm
+	$(MAKE) xorg-minimal xfce4 gnome-keyring gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
@@ -88,56 +64,51 @@ $(x):
 	read
 
 $(xutils):
-	$(MAKE) x11/xscreensaver \
-		sysutils/xfce4-netload-plugin \
-		deskutils/xfce4-xkb-plugin \
-		misc/xfce4-weather-plugin \
-		x11/xfce4-screenshooter-plugin
-#		sysutils/xfce4-cpugraph-plugin \
-#		sysutils/xfce4-systemload-plugin \
+	$(MAKE) xscreensaver xfce4-netload-plugin xfce4-xkb-plugin \
+		xfce4-weather-plugin xfce4-screenshooter-plugin
 
 $(edit):
-	$(MAKE) editors/vim editors/nedit
+	$(MAKE) vim nedit universalindentgui
 
 $(math):
-	$(MAKE) math/galculator math/maxima
+	$(MAKE) galculator maxima
 
 $(debug):
-	$(MAKE) devel/ddd
+	$(MAKE) ddd
 
 $(diff):
-	$(MAKE) textproc/meld
+	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) print/texlive-texmf graphics/evince
+	$(MAKE) texlive-texmf evince
 
 $(doxygen):
-	$(MAKE) devel/doxygen
+	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) ftp/wget www/firefox www/firefox-i18n
+	$(MAKE) wget firefox firefox-i18n
 
 $(mail):
-	$(MAKE) mail/thunderbird mail/thunderbird-i18n
+	$(MAKE) thunderbird thunderbird-i18n
 
 $(graphics):
-	$(MAKE) graphics/gimp graphics/ufraw
+	$(MAKE) gimp ufraw
 
 $(multimedia):
-	$(MAKE) multimedia/xfce4-parole
+	$(MAKE) parole
 
 $(office):
-	$(MAKE) editors/libreoffice
+	$(MAKE) libreoffice
 
 $(spam):
-	$(MAKE) mail/spamassassin
+	$(MAKE) spamassassin
 
 $(flash):
-	$(MAKE) graphics/gnash
+	$(MAKE) gnash
 
 update:
-	cd $(PORTS) && git pull origin master
-	portmaster -L | grep New
+	pkg update
 
 clean:
-	portmaster --clean-distfiles -y
+	pkg autoremove
+	pkg clean
