@@ -72,7 +72,7 @@ $(debug):
 	$(MAKE) ddd 
 
 $(math):
-	$(MAKE) calculator maxima 
+	$(MAKE) gnome-calculator maxima 
 
 $(diff):
 	$(MAKE) meld 
