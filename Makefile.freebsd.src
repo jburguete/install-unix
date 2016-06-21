@@ -1,9 +1,13 @@
-MAKE = pkg install
+MAKE = portmaster
+PORTS = /usr/ports/
 BASE = /usr/local/
 BIN = $(BASE)bin/
+CPUTYPE = native
+CFLAGS = -O2 -msse3
+portmaster = $(BASE)sbin/portmaster
 compilers = $(BIN)gcc5
 repositories = $(BIN)svn
-libraries = $(BASE)include/gtk-3.0/gtk/gtk.h
+libraries = $(BASE)include/GL/freeglut.h
 vboxguest = $(BASE)sbin/VBoxService
 x = $(BASE)sbin/gdm
 xutils = $(BIN)xfce4-screenshooter
@@ -22,10 +26,12 @@ spam = $(BIN)spamassassin
 flash = $(BIN)gnash
 
 all: \
+	$(PORTS) \
+	/etc/make.conf \
+	$(portmaster) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
-	$(vboxguest) \
 	$(x) \
 	$(xutils) \
 	$(editors) \
@@ -42,24 +48,36 @@ all: \
 	$(spam) \
 	$(flash)
 
+$(PORTS):
+	portsnap fetch extract
+
+/etc/make.conf:
+	echo "CPUTYPE=$(CPUTYPE)" > /etc/make.conf
+	echo "CFLAGS+=$(CFLAGS)" >> /etc/make.conf
+	echo "CXXFLAGS+=$(CFLAGS)" >> /etc/make.conf
+	echo "ACCEPTABLE-LICENSES+=vim-license" >> /etc/make.conf
+
+$(portmaster):
+	cd $(PORTS)/ports-mgmt/portmaster && make install clean
+
 $(compilers):
-	$(MAKE) automake pkgconf gcc5
+	$(MAKE) devel/automake lang/gcc5
 
 $(repositories):
-	$(MAKE) git subversion
+	$(MAKE) devel/git devel/subversion
 
 $(libraries):
-	$(MAKE) gsl mpich freeglut glew glfw sdl2 gtk3
+	$(MAKE) math/gsl graphics/freeglut
 
 $(vboxguest):
-	$(MAKE) virtualbox-ose-additions
+	$(MAKE) emulators/virtualbox-ose-additions
 	echo "vboxguest_enable=YES" >> /etc/rc.conf
 	echo "vboxservice_enable=YES" >> /etc/rc.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
-$(x):
-	$(MAKE) xorg-minimal xfce4-desktop gdm
+$(x): $(vboxguest)
+	$(MAKE) x11/xorg-minimal x11-wm/xfce4 x11/gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
@@ -71,58 +89,62 @@ $(x):
 	read
 
 $(xutils):
-	$(MAKE) xscreensaver xfce4-cpugraph-plugin xfce4-netload-plugin \
-		xfce4-systemload-plugin xfce4-xkb-plugin xfce4-weather-plugin \
-		xfce4-screenshooter-plugin
+	$(MAKE) x11/xscreensaver \
+		sysutils/xfce4-cpugraph-plugin \
+		sysutils/xfce4-netload-plugin \
+		sysutils/xfce4-systemload-plugin \
+		deskutils/xfce4-xkb-plugin \
+		misc/xfce4-weather-plugin \
+		x11/xfce4-screenshooter-plugin
 
 $(editors):
-	$(MAKE) vim nedit
+	$(MAKE) editors/vim editors/nedit
 
 $(debug):
-	$(MAKE) valgrind ddd
+	$(MAKE) devel/valgrind devel/ddd
 	echo "fdesc /dev/fd fdescfs rw 0 0" >> /etc/fstab
 	echo "proc /proc procfs rw 0 0" >> /etc/fstab
 	mount fdesc
 	mount proc
 
 $(math):
-	$(MAKE) galculator maxima
+	$(MAKE) math/galculator math/maxima
 
 $(diff):
-	$(MAKE) meld
+	$(MAKE) textproc/meld
 
 $(pdf):
-	$(MAKE) latex-beamer evince
+	$(MAKE) print/latex-beamer graphics/evince
 
 $(doxygen):
-	$(MAKE) doxygen
+	$(MAKE) devel/doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-i18n xpi-adblock_plus
+	$(MAKE) ftp/wget www/firefox www/firefox-i18n
 
 $(mail):
-	$(MAKE) thunderbird thunderbird-i18n
+	$(MAKE) mail/thunderbird mail/thunderbird-i18n
 
 $(graphics):
-	$(MAKE) gimp ufraw
+	$(MAKE) graphics/gimp graphics/ufraw
 
 $(multimedia):
-	$(MAKE) parole
+	$(MAKE) multimedia/xfce4-parole
 
 $(office):
-	$(MAKE) libreoffice es-libreoffice
+	$(MAKE) editors/libreoffice
 
 $(spam):
-	$(MAKE) spamassassin
+	$(MAKE) mail/spamassassin
 
 $(flash):
-	$(MAKE) gnash
+	$(MAKE) graphics/gnash
 
 update:
 	freebsd-update fetch
 	freebsd-update install
-	pkg update
+	portsnap fetch update
+	portmaster -L | grep New
 
 clean:
-	pkg autoremove
-	pkg clean
+	portmaster --clean-distfiles -y
