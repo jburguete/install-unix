@@ -3,7 +3,7 @@ BASE = /usr/
 BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/freeglut.h
+libraries = $(BASE)include/SDL2/SDL.h
 x = $(BASE)sbin/lightdm
 xutils = $(BIN)X11/xscreensaver
 edit = $(BIN)universalindentgui
@@ -49,12 +49,12 @@ $(repositories):
 $(libraries):
 	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
 		mpich libmpich-dev libgsl0-dev libgtk2.0-dev libgtk-3-dev \
-		freeglut3-dev
+		freeglut3-dev libglew-dev libglfw3-dev libsdl2-dev
 
 $(x):
 	$(MAKE) virtualbox-guest-dkms virtualbox-guest-utils \
 		virtualbox-guest-x11 xserver-xorg-input-kbd xserver-xorg-input-mouse \
-		xserver-xorg-video-vesa xorg xfce4 lightgdm
+		xserver-xorg-video-vesa xorg xfce4 lightdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 
