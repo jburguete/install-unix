@@ -1,0 +1,174 @@
+MAKE = make && make install clean-depends clean
+PORTS = /usr/pkgsrc/
+BASE = /usr/pkg/
+BIN = $(BASE)bin/
+RELEASE = pkgsrc-2015Q3
+CPUTYPE = -march=core2 -mfpmath=sse -msse3
+CFLAGS = -O2 -fno-strict-aliasing
+pkgtools = $(BIN)lintpkgsrc
+compilers = $(BASE)gcc49/bin/gcc
+repositories = $(BIN)svn
+libraries = $(BASE)include/GL/freeglut.h
+x = $(BASE)sbin/gdm
+xutils = $(BIN)/xfce4-screenshooter
+editors = $(BIN)nedit
+debug = $(BIN)ddd
+math = $(BIN)maxima
+diff = $(BIN)meld
+pdf = $(BIN)evince
+doxygen = $(BIN)doxygen
+browser = $(BIN)firefox
+mail = $(BIN)thunderbird
+graphics = $(BIN)ufraw
+multimedia = $(BIN)totem
+office = $(BIN)soffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
+
+all: \
+	/etc/mk.conf \
+	$(pkgtools) \
+	$(compilers) \
+	$(repositories) \
+	$(libraries) \
+	$(x) \
+	$(xutils) \
+	$(editors) \
+	$(debug) \
+	$(math) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(spam) \
+	$(flash) \
+	$(office)
+
+/etc/mk.conf:
+	echo "CPUFLAGS=$(CPUTYPE)" > /etc/mk.conf
+	echo "COPTS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
+	echo "CFLAGS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
+	echo "CXXFLAGS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
+	echo "X11_TYPE=modular" >> /etc/mk.conf
+	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
+	echo "ACCEPTABLE_LICENSES+=lame-license" >> /etc/mk.conf
+
+$(PORTS):
+	cd /usr && cvs -z3 -qd anoncvs@anoncvs.NetBSD.org:/cvsroot checkout -r$(RELEASE) -P pkgsrc
+
+$(pkgtools):
+	cd $(PORTS)bootstrap && ./bootstrap
+	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
+	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
+
+$(compilers):
+	cd $(PORTS)devel/automake && $(MAKE)
+	cd $(PORTS)lang/gcc49 && $(MAKE)
+
+$(repositories):
+	cd $(PORTS)devel/git-base && $(MAKE)
+	cd $(PORTS)devel/subversion-base && $(MAKE)
+
+$(libraries):
+	cd $(PORTS)math/gsl && $(MAKE)
+	cd $(PORTS)lang/g95 && perl -pi -e s,^C,\#C,g /etc/mk.conf && $(MAKE) \
+		&& perl -pi -e s,^\#,,g /etc/mk.conf
+	cd $(PORTS)parallel/mpi-ch && $(MAKE)
+	cd $(PORTS)graphics/freeglut && $(MAKE)
+
+$(x):
+	cd $(PORTS)textproc/groff && $(MAKE)
+	ln -s /usr/pkg/bin/tbl /usr/bin/tbl
+	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
+	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
+	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
+	cd $(PORTS)x11/xf86-input-keyboard && $(MAKE)
+	cd $(PORTS)x11/xf86-input-mouse && $(MAKE)
+	cd $(PORTS)x11/xf86-video-vesa && $(MAKE)
+	X -configure
+	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
+	echo "exec startxfce4" > /root/.xinitrc
+	ln -s /root/.xinitrc /root/.xsession
+	cd $(PORTS)x11/gdm && $(MAKE)
+	ln -s $(BASE)share/examples/rc.d/hal /etc/rc.d
+	ln -s $(BASE)share/examples/rc.d/dbus /etc/rc.d
+	ln -s $(BASE)share/examples/rc.d/gdm /etc/rc.d
+	echo "hal=YES" >> /etc/rc.conf
+	echo "dbus=YES" >> /etc/rc.conf
+	echo "gdm=YES" >> /etc/rc.conf
+	echo "Please: reboot the computer to make effective the changes"
+	read
+
+$(xutils):
+	cd $(PORTS)x11/xscreensaver && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-cpugraph-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-netload-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
+	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
+	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
+	cd $(PORTS)x11/xfce4-screenshooter && $(MAKE)
+
+$(editors):
+	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
+	cd $(PORTS)editors/nedit && $(MAKE)
+
+$(debug):
+	cd $(PORTS)devel/ddd && $(MAKE)
+
+$(math):
+	cd $(PORTS)math/galculator && $(MAKE)
+	cd $(PORTS)math/maxima && $(MAKE)
+
+$(diff):
+	cd $(PORTS)devel/meld && $(MAKE)
+
+$(pdf):
+	cd $(PORTS)print/teTeX3-texmf && $(MAKE)
+	cd $(PORTS)graphics/tex-pst-pdf && $(MAKE)
+	cd $(PORTS)print/tex-babel && $(MAKE)
+	cd $(PORTS)print/tex-elsarticle && $(MAKE)
+	cd $(PORTS)print/tex-babel-spanish && $(MAKE)
+	cd $(PORTS)print/tex-adjustbox && $(MAKE)
+	cd $(PORTS)print/tex-collectbox && $(MAKE)
+	cd $(PORTS)print/evince && $(MAKE)
+
+$(doxygen):
+	cd $(PORTS)devel/doxygen && $(MAKE)
+
+$(browser):
+	cd $(PORTS)www/firefox && $(MAKE)
+	cd $(PORTS)www/firefox-l10n && $(MAKE)
+
+$(mail):
+	cd $(PORTS)mail/thunderbird && $(MAKE)
+	cd $(PORTS)mail/thunderbird-l10n && $(MAKE)
+
+$(graphics):
+	cd $(PORTS)graphics/ImageMagick && $(MAKE)
+	cd $(PORTS)graphics/gimp && $(MAKE)
+	cd $(PORTS)graphics/gimp-ufraw && $(MAKE)
+
+$(multimedia):
+	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
+	cd $(PORTS)multimedia/totem && $(MAKE)
+
+$(spam):
+	cd $(PORTS)mail/spamassassin && $(MAKE)
+
+$(flash):
+	cd $(PORTS)multimedia/gnash && $(MAKE)
+
+$(office):
+	cd $(PORTS)misc/libreoffice4 && $(MAKE)
+
+update:
+	cd $(PORTS) && cvs up -r$(RELEASE) -dP
+	lintpkgsrc -i
+
+clean:
+	lintpkgsrc -or && pkg_distinst --delete
+	rm -rf $(PORTS)*/*/work

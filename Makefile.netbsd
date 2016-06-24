@@ -1,11 +1,6 @@
-MAKE = make && make install clean-depends clean
-PORTS = /usr/pkgsrc/
+MAKE = pkgin install
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-RELEASE = pkgsrc-2015Q3
-CPUTYPE = -march=core2 -mfpmath=sse -msse3
-CFLAGS = -O2 -fno-strict-aliasing
-pkgtools = $(BIN)lintpkgsrc
 compilers = $(BASE)gcc49/bin/gcc
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
@@ -26,8 +21,6 @@ spam = $(BIN)spamassassin
 flash = $(BIN)gnash
 
 all: \
-	/etc/mk.conf \
-	$(pkgtools) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
@@ -47,56 +40,28 @@ all: \
 	$(flash) \
 	$(office)
 
-/etc/mk.conf:
-	echo "CPUFLAGS=$(CPUTYPE)" > /etc/mk.conf
-	echo "COPTS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
-	echo "CFLAGS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
-	echo "CXXFLAGS+=$(CPUTYPE) $(CFLAGS)" >> /etc/mk.conf
-	echo "X11_TYPE=modular" >> /etc/mk.conf
-	echo "ACCEPTABLE_LICENSES+=vim-license" >> /etc/mk.conf
-	echo "ACCEPTABLE_LICENSES+=lame-license" >> /etc/mk.conf
-
-$(PORTS):
-	cd /usr && cvs -z3 -qd anoncvs@anoncvs.NetBSD.org:/cvsroot checkout -r$(RELEASE) -P pkgsrc
-
-$(pkgtools):
-	cd $(PORTS)bootstrap && ./bootstrap
-	cd $(PORTS)pkgtools/pkg_distinst && $(MAKE)
-	cd $(PORTS)pkgtools/lintpkgsrc && $(MAKE)
-
 $(compilers):
-	cd $(PORTS)devel/automake && $(MAKE)
-	cd $(PORTS)lang/gcc49 && $(MAKE)
+	$(MAKE) automake pkg-config gcc49
 
 $(repositories):
-	cd $(PORTS)devel/git-base && $(MAKE)
-	cd $(PORTS)devel/subversion-base && $(MAKE)
+	$(MAKE) git-base subversion-base
 
 $(libraries):
-	cd $(PORTS)math/gsl && $(MAKE)
-	cd $(PORTS)lang/g95 && perl -pi -e s,^C,\#C,g /etc/mk.conf && $(MAKE) \
-		&& perl -pi -e s,^\#,,g /etc/mk.conf
-	cd $(PORTS)parallel/mpi-ch && $(MAKE)
-	cd $(PORTS)graphics/freeglut && $(MAKE)
+	$(MAKE) gsl json-glib mpich glew glfw SDL2 freeglut
 
 $(x):
-	cd $(PORTS)textproc/groff && $(MAKE)
-	ln -s /usr/pkg/bin/tbl /usr/bin/tbl
-	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
-	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
-	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
-	cd $(PORTS)x11/xf86-input-keyboard && $(MAKE)
-	cd $(PORTS)x11/xf86-input-mouse && $(MAKE)
-	cd $(PORTS)x11/xf86-video-vesa && $(MAKE)
+	$(MAKE) modular-xorg-server modular-xorg-apps modular-xorg-fonts \
+		xf86-input-keyboard xf86-input-mouse xf86-video-vesa \
+		randrproto
 	X -configure
-	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
-	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
+	ln -sf /root/xorg.conf.new /etc/X11/xorg.conf
+	$(MAKE) xfce4
 	echo "exec startxfce4" > /root/.xinitrc
-	ln -s /root/.xinitrc /root/.xsession
-	cd $(PORTS)x11/gdm && $(MAKE)
-	ln -s $(BASE)share/examples/rc.d/hal /etc/rc.d
-	ln -s $(BASE)share/examples/rc.d/dbus /etc/rc.d
-	ln -s $(BASE)share/examples/rc.d/gdm /etc/rc.d
+	ln -sf /root/.xinitrc /root/.xsession
+	$(MAKE) gdm
+	ln -sf $(BASE)share/examples/rc.d/hal /etc/rc.d
+	ln -sf $(BASE)share/examples/rc.d/dbus /etc/rc.d
+	ln -sf $(BASE)share/examples/rc.d/gdm /etc/rc.d
 	echo "hal=YES" >> /etc/rc.conf
 	echo "dbus=YES" >> /etc/rc.conf
 	echo "gdm=YES" >> /etc/rc.conf
@@ -104,71 +69,54 @@ $(x):
 	read
 
 $(xutils):
-	cd $(PORTS)x11/xscreensaver && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-cpugraph-plugin && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-netload-plugin && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-systemload-plugin && $(MAKE)
-	cd $(PORTS)misc/xfce4-weather-plugin && $(MAKE)
-	cd $(PORTS)sysutils/xfce4-xkb-plugin && $(MAKE)
-	cd $(PORTS)x11/xfce4-screenshooter && $(MAKE)
+	$(MAKE) xscreensaver xfce4-cpugraph-plugin xfce4-netload-plugin \
+		xfce4-systemload-plugin xfce4-weather-plugin xfce4-xkb-plugin \
+		xfce4-screenshooter
 
 $(editors):
-	cd $(PORTS)editors/vim-gtk2 && $(MAKE)
-	cd $(PORTS)editors/nedit && $(MAKE)
+	$(MAKE) vim-gtk2 nedit
 
 $(debug):
-	cd $(PORTS)devel/ddd && $(MAKE)
+	$(MAKE) ddd
 
 $(math):
-	cd $(PORTS)math/galculator && $(MAKE)
-	cd $(PORTS)math/maxima && $(MAKE)
+	$(MAKE) galculator maxima
 
 $(diff):
-	cd $(PORTS)devel/meld && $(MAKE)
+	$(MAKE) meld
 
 $(pdf):
-	cd $(PORTS)print/teTeX3-texmf && $(MAKE)
-	cd $(PORTS)graphics/tex-pst-pdf && $(MAKE)
-	cd $(PORTS)print/tex-babel && $(MAKE)
-	cd $(PORTS)print/tex-elsarticle && $(MAKE)
-	cd $(PORTS)print/tex-babel-spanish && $(MAKE)
-	cd $(PORTS)print/tex-adjustbox && $(MAKE)
-	cd $(PORTS)print/tex-collectbox && $(MAKE)
-	cd $(PORTS)print/evince && $(MAKE)
+	$(MAKE) teTeX-texmf tex-pst-pdf tex-babel tex-elsarticle \
+		tex-babel-spanish tex-adjustbox tex-collectbox evince
 
 $(doxygen):
-	cd $(PORTS)devel/doxygen && $(MAKE)
+	$(MAKE) doxygen
 
 $(browser):
-	cd $(PORTS)www/firefox && $(MAKE)
-	cd $(PORTS)www/firefox-l10n && $(MAKE)
+	$(MAKE) firefox firefox-l10n
 
 $(mail):
-	cd $(PORTS)mail/thunderbird && $(MAKE)
-	cd $(PORTS)mail/thunderbird-l10n && $(MAKE)
+	$(MAKE) thuderbird thunderbird-l10n
 
 $(graphics):
-	cd $(PORTS)graphics/ImageMagick && $(MAKE)
-	cd $(PORTS)graphics/gimp && $(MAKE)
-	cd $(PORTS)graphics/gimp-ufraw && $(MAKE)
+	$(MAKE) ImageMagick gimp gimp-ufraw
 
 $(multimedia):
-	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
-	cd $(PORTS)multimedia/totem && $(MAKE)
+	$(MAKE) gst-plugins0.10-pulse totem
 
 $(spam):
-	cd $(PORTS)mail/spamassassin && $(MAKE)
+	$(MAKE) spamassassin
 
 $(flash):
-	cd $(PORTS)multimedia/gnash && $(MAKE)
+	$(MAKE) gnash
 
 $(office):
-	cd $(PORTS)misc/libreoffice4 && $(MAKE)
+	$(MAKE) libreoffice4
 
 update:
-	cd $(PORTS) && cvs up -r$(RELEASE) -dP
-	lintpkgsrc -i
+	pkgin update
+	pkgin upgrade
 
 clean:
-	lintpkgsrc -or && pkg_distinst --delete
-	rm -rf $(PORTS)*/*/work
+	pkgin autoremove
+	pkgin clean
