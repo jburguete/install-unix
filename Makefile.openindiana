@@ -49,7 +49,8 @@ $(repositories):
 $(libraries):
 	$(MAKE) library/desktop/json-glib library/mpich/gcc developer/gsl \
 		library/desktop/gtk2 library/desktop/gtk3 \
-		text/gnu-gettext sfe/x11/library/freeglut sfe/library/libglew
+		text/gnu-gettext sfe/x11/library/freeglut sfe/library/libglew \
+		library/openmpi/gcc
 
 $(editors):
 	$(MAKE) editor/gvim
