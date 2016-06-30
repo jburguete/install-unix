@@ -20,7 +20,7 @@ all:
 		export PKG_PATH=http://ftp.fr.openbsd.org/pub/OpenBSD/5.9/packages/amd64/; \
 		make -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
-		make -f Makefile.netbsd; \
+		make -f Makefile.netbsd.src; \
 	else if test `uname -s` = "DragonFly"; then \
 		make -f Makefile.dragonfly; \
 	else if test `uname -s` = "GNU/kFreeBSD"; then \
@@ -67,7 +67,7 @@ update:
 		export PKG_PATH=http://ftp.fr.openbsd.org/pub/OpenBSD/5.9/packages/amd64/; \
 		make update -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
-		make update -f Makefile.netbsd; \
+		make update -f Makefile.netbsd.src; \
 	else if test `uname -s` = "DragonFly"; then \
 		make update -f Makefile.dragonfly; \
 	else if test `uname -s` = "GNU/kFreeBSD"; then \
@@ -114,7 +114,7 @@ upgrade:
 		export PKG_PATH=http://ftp.fr.openbsd.org/pub/OpenBSD/5.9/packages/amd64/; \
 		make upgrade -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
-		make upgrade -f Makefile.netbsd; \
+		make upgrade -f Makefile.netbsd.src; \
 	else if test `uname -s` = "DragonFly"; then \
 		make upgrade -f Makefile.dragonfly; \
 	else if test `uname -s` = "GNU/kFreeBSD"; then \
@@ -160,7 +160,7 @@ clean:
 	else if test `uname -s` = "OpenBSD"; then \
 		make clean -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
-		make clean -f Makefile.netbsd; \
+		make clean -f Makefile.netbsd.src; \
 	else if test `uname -s` = "DragonFly"; then \
 		make clean -f Makefile.dragonfly; \
 	else if test `uname -s` = "GNU/kFreeBSD"; then \

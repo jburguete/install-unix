@@ -2,11 +2,11 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-RELEASE = pkgsrc-2015Q3
+RELEASE = pkgsrc-2016Q1
 CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BIN)lintpkgsrc
-compilers = $(BASE)gcc49/bin/gcc
+compilers = $(BASE)gcc5/bin/gcc
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BASE)sbin/gdm
@@ -66,22 +66,25 @@ $(pkgtools):
 
 $(compilers):
 	cd $(PORTS)devel/automake && $(MAKE)
-	cd $(PORTS)lang/gcc49 && $(MAKE)
+	cd $(PORTS)lang/gcc5 && $(MAKE)
 
 $(repositories):
 	cd $(PORTS)devel/git-base && $(MAKE)
 	cd $(PORTS)devel/subversion-base && $(MAKE)
 
 $(libraries):
+	cd $(PORTS)textproc/json-glib && $(MAKE)
 	cd $(PORTS)math/gsl && $(MAKE)
 	cd $(PORTS)lang/g95 && perl -pi -e s,^C,\#C,g /etc/mk.conf && $(MAKE) \
 		&& perl -pi -e s,^\#,,g /etc/mk.conf
 	cd $(PORTS)parallel/mpi-ch && $(MAKE)
 	cd $(PORTS)graphics/freeglut && $(MAKE)
+	cd $(PORTS)graphics/glew && $(MAKE)
+	cd $(PORTS)fonts/freefont-ttf && $(MAKE)
 
 $(x):
 	cd $(PORTS)textproc/groff && $(MAKE)
-	ln -s /usr/pkg/bin/tbl /usr/bin/tbl
+	ln -sf /usr/pkg/bin/gtbl /usr/bin/tbl
 	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
@@ -89,14 +92,14 @@ $(x):
 	cd $(PORTS)x11/xf86-input-mouse && $(MAKE)
 	cd $(PORTS)x11/xf86-video-vesa && $(MAKE)
 	X -configure
-	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+	ln -sf /root/xorg.conf.new /etc/X11/xorg.conf
 	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
 	echo "exec startxfce4" > /root/.xinitrc
-	ln -s /root/.xinitrc /root/.xsession
+	ln -sf /root/.xinitrc /root/.xsession
 	cd $(PORTS)x11/gdm && $(MAKE)
-	ln -s $(BASE)share/examples/rc.d/hal /etc/rc.d
-	ln -s $(BASE)share/examples/rc.d/dbus /etc/rc.d
-	ln -s $(BASE)share/examples/rc.d/gdm /etc/rc.d
+	ln -sf $(BASE)share/examples/rc.d/hal /etc/rc.d
+	ln -sf $(BASE)share/examples/rc.d/dbus /etc/rc.d
+	ln -sf $(BASE)share/examples/rc.d/gdm /etc/rc.d
 	echo "hal=YES" >> /etc/rc.conf
 	echo "dbus=YES" >> /etc/rc.conf
 	echo "gdm=YES" >> /etc/rc.conf
@@ -104,6 +107,7 @@ $(x):
 	read
 
 $(xutils):
+	cd $(PORTS)graphics/gle && $(MAKE)
 	cd $(PORTS)x11/xscreensaver && $(MAKE)
 	cd $(PORTS)sysutils/xfce4-cpugraph-plugin && $(MAKE)
 	cd $(PORTS)sysutils/xfce4-netload-plugin && $(MAKE)
