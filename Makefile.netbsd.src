@@ -160,6 +160,7 @@ $(graphics):
 
 $(multimedia):
 	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
+	cd $(PORTS)audio/xfce4-mixer && $(MAKE)
 	cd $(PORTS)multimedia/totem && $(MAKE)
 
 $(office):
