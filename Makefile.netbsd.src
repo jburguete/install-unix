@@ -8,7 +8,7 @@ CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BIN)lintpkgsrc
 compilers = $(BASE)gcc5/bin/gcc
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/freeglut.h
+libraries = $(BASE)include/SDL2/SDL.h
 x = $(BASE)sbin/gdm
 xutils = $(BIN)/xfce4-screenshooter
 editors = $(BIN)nedit
@@ -43,9 +43,9 @@ all: \
 	$(mail) \
 	$(graphics) \
 	$(multimedia) \
+	$(office) \
 	$(spam) \
-	$(flash) \
-	$(office)
+	$(flash)
 
 /etc/mk.conf:
 	echo "CPUFLAGS=$(CPUTYPE)" > /etc/mk.conf
@@ -81,6 +81,8 @@ $(libraries):
 	cd $(PORTS)graphics/freeglut && $(MAKE)
 	cd $(PORTS)graphics/glew && $(MAKE)
 	cd $(PORTS)fonts/freefont-ttf && $(MAKE)
+#	cd $(PORTS)graphics/glfw && $(MAKE)
+	cd $(PORTS)devel/SDL2 && $(MAKE)
 
 $(x):
 	cd $(PORTS)textproc/groff && $(MAKE)
@@ -160,14 +162,14 @@ $(multimedia):
 	cd $(PORTS)audio/gst-plugins0.10-pulse && $(MAKE)
 	cd $(PORTS)multimedia/totem && $(MAKE)
 
+$(office):
+	cd $(PORTS)misc/libreoffice && $(MAKE)
+
 $(spam):
 	cd $(PORTS)mail/spamassassin && $(MAKE)
 
 $(flash):
 	cd $(PORTS)multimedia/gnash && $(MAKE)
-
-$(office):
-	cd $(PORTS)misc/libreoffice4 && $(MAKE)
 
 update:
 	cd $(PORTS) && cvs up -r$(RELEASE) -dP
