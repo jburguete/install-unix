@@ -1,10 +1,9 @@
 MAKE = aptitude install
 BASE = /usr/
 BIN = $(BASE)bin/
-LIB = /usr/lib/x86_64-illumos/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/freeglut.h
+libraries = $(BASE)include/SDL2/SDL.h
 x = /etc/X11/xorg.conf
 xutils = $(BIN)xfce4-screenshooter
 edit = $(BIN)gvim
@@ -50,7 +49,7 @@ $(repositories):
 $(libraries):
 	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
 		mpich2 libmpich2-dev libgsl0-dev libgtk2.0-dev libgtk-3-dev \
-		freeglut3-dev
+		freeglut3-dev fonts-freefont-ttf libglew-dev libsdl2-dev
 
 $(x):
 	$(MAKE) xserver-xorg-input-kbd xserver-xorg-input-mouse \
