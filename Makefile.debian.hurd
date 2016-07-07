@@ -1,7 +1,6 @@
 MAKE = aptitude install
 BASE = /usr/
 BIN = $(BASE)bin/
-LIB = /usr/lib/i386-gnu/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/SDL2/SDL.h
