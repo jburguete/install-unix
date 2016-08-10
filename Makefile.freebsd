@@ -119,10 +119,10 @@ $(flash):
 	$(MAKE) gnash
 
 update:
-#	freebsd-update fetch
-#	freebsd-update install
 	pkg update
 	pkg upgrade
+	freebsd-update fetch
+	freebsd-update install
 
 upgrade:
 	freebsd-update -r 10.3-RELEASE upgrade
