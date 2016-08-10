@@ -4,7 +4,7 @@ BASE2 = /mingw64/bin/
 MINGW = mingw64/mingw-w64-x86_64-
 compilers = $(BASE2)gfortran.exe
 repositories = $(BASE)svn.exe
-libraries = $(BASE2)libfreeglut.dll
+libraries = $(BASE2)libglew.dll
 edit = $(BASE)vim.exe
 debug = $(BASE2)gdb.exe
 diff = $(BASE2)meld
@@ -26,7 +26,7 @@ all: \
 	$(graphics)
 
 $(compilers):
-	$(MAKE) autoconf automake make $(MINGW)gcc $(MINGW)gcc-fortran
+	$(MAKE) autoconf automake make $(MINGW)gcc $(MINGW)gcc-fortran pkg-config
 
 $(repositories):
 	$(MAKE) git subversion
@@ -34,7 +34,7 @@ $(repositories):
 $(libraries):
 	$(MAKE) $(MINGW)libxml2 $(MINGW)glib2 $(MINGW)json-glib $(MINGW)sqlite3 \
 		$(MINGW)gsl $(MINGW)gettext $(MINGW)gtk2 $(MINGW)gtk3 $(MINGW)freeglut \
-		pkg-config
+		$(MINGW)glew
 
 $(edit):
 	$(MAKE) vim
