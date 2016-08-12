@@ -52,20 +52,21 @@ $(libraries):
 
 $(x):
 	$(MAKE) xorg-minimal xfce gnome-keyring gdm
-	X -configure
-	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
-	echo "exec startxfce4" > /root/.xinitrc
-	ln -s /root/.xinitrc /root/.xsession
+	echo "snd_ihc_load=\"YES\"" >> /boot/loader.conf # adding sound
 	echo "moused_enable=YES" >> /etc/rc.conf
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
 	echo "gdm_enable=YES" >> /etc/rc.conf
+	echo "exec startxfce4" > /root/.xinitrc
+	ln -s /root/.xinitrc /root/.xsession
+	X -configure
+	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
 $(xutils):
 	$(MAKE) xscreensaver xfce4-netload-plugin xfce4-xkb-plugin \
-		xfce4-weather-plugin xfce4-screenshooter-plugin
+		xfce4-weather-plugin xfce4-screenshooter-plugin xfce4-mixer
 
 $(edit):
 	$(MAKE) vim nedit universalindentgui
