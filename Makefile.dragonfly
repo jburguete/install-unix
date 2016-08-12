@@ -51,7 +51,7 @@ $(libraries):
 	$(MAKE) gsl mpich gtk3 freeglut
 
 $(x):
-	$(MAKE) xorg-minimal xfce4 gnome-keyring gdm
+	$(MAKE) xorg-minimal xfce gnome-keyring gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
