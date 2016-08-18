@@ -12,7 +12,7 @@ debug = $(BIN)ddd
 diff = $(BIN)meld
 pdf = $(BIN)evince
 doxygen = $(BIN)doxygen
-browser = $(BIN)iceweasel
+browser = $(BIN)firefox
 mail = $(BIN)icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
 multimedia = $(BIN)parole
@@ -92,7 +92,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget iceweasel iceweasel-l10n-es-es xul-ext-adblock-plus
+	$(MAKE) wget firefox firefox-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
 	$(MAKE) icedove icedove-l10n-es-es
