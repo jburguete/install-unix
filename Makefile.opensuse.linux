@@ -3,7 +3,8 @@ BASE = /usr/
 BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/freeglut.h
+libraries = $(BASE)include/SDL2/SDL.h
+xorg = $(BIN)gdm
 xutils = $(BASE)lib64/xfce4/panel/plugins/libweather.so
 edit = $(BIN)gvim
 math = $(BIN)xmaxima
@@ -20,6 +21,7 @@ all: \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
+	$(xorg) \
 	$(xutils) \
 	$(edit) \
 	$(math) \
@@ -41,7 +43,11 @@ $(repositories):
 $(libraries):
 	$(MAKE) libxml2-devel glib2-devel json-glib-devel gettext-tools \
 		sqlite3-devel openmpi-devel gsl-devel libpng16-devel gtk3-devel \
-		freeglut-devel
+		freeglut-devel glew-devel libglfw-devel libSDL2-devel \
+		gnu-free-fonts
+
+$(xorg):
+	$(MAKE) gdm
 
 $(xutils):
 	$(MAKE) xfce4-panel-plugin-cpugraph xfce4-panel-plugin-netload \
@@ -68,7 +74,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) mozaddon-adblock_edge
+#	$(MAKE) mozaddon-adblock_edge
 
 $(graphics):
 	$(MAKE) gimp-ufraw
@@ -77,13 +83,13 @@ $(spam):
 	$(MAKE) spamassassin
 
 $(flash):
-	$(MAKE) flash-player
+#	$(MAKE) flash-player
 
 update:
 	zypper patch
 
 upgrade:
-	zypper dist-upgrade
+	zypper up
 
 clean:
 	zypper clean
