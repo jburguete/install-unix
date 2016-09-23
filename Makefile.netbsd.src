@@ -2,7 +2,7 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-RELEASE = pkgsrc-2016Q1
+RELEASE = pkgsrc-2016Q2
 CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BIN)lintpkgsrc
