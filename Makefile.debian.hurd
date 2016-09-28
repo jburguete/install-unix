@@ -16,8 +16,8 @@ browser = $(BIN)firefox
 mail = $(BIN)icedove
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
 multimedia = $(BIN)parole
-office = $(BIN)loffice
 spam = $(BIN)spamassassin
+office = $(BIN)loffice
 flash =
 
 all: \
@@ -36,8 +36,8 @@ all: \
 	$(mail) \
 	$(graphics) \
 	$(multimedia) \
-	$(office) \
 	$(spam) \
+	$(office) \
 	$(flash)
 
 $(compilers):
@@ -103,11 +103,11 @@ $(graphics):
 $(multimedia):
 	$(MAKE) parole
 
-$(office):
-	$(MAKE) libreoffice
-
 $(spam):
 	$(MAKE) spamassassin
+
+$(office):
+	$(MAKE) libreoffice
 
 update:
 	aptitude update
