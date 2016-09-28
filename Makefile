@@ -39,11 +39,17 @@ all:
 		else if test `uname -m` = "i686"; then \
 			make -f Makefile.msys2.32; \
 		else \
-			echo "Unknown operative system"; \
+			echo "Unknown machine"; \
 		fi fi \
+	else if test `uname -o` = "Cygwin"; then \
+		if test `uname -m` = "x86_64"; then \
+			make -f Makefile.cygwin.64; \
+		else \
+			echo "Unknown machine"; \
+		fi \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi fi
 
 update:
 	if test `uname -s` = "Linux"; then \
@@ -88,9 +94,15 @@ update:
 		else \
 			echo "Unknown operative system"; \
 		fi fi \
+	else if test `uname -o` = "Cygwin"; then \
+		if test `uname -m` = "x86_64"; then \
+			make update -f Makefile.cygwin.64; \
+		else \
+			echo "Unknown operative system"; \
+		fi \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi fi
 
 upgrade:
 	if test `uname -s` = "Linux"; then \

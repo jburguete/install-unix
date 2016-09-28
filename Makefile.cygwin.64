@@ -1,0 +1,61 @@
+MAKE = /sbin/setup-x86_64.exe
+BASE = /usr/bin/
+compilers = $(BASE)gfortran.exe
+repositories = $(BASE)svn.exe
+libraries = /usr/include/GL/glew.h
+edit = $(BASE)gvim.exe
+debug = $(BASE)ddd.exe
+diff = $(BASE)meld
+pdf = $(BASE)evince.exe
+doxygen = $(BASE)doxygen.exe
+browser = $(BASE)wget.exe
+graphics = $(BASE)gimp-2.8.exe
+
+all: \
+	$(compilers) \
+	$(repositories) \
+	$(libraries) \
+	$(edit) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(graphics)
+
+$(compilers):
+	$(MAKE) -P autoconf -P automake -P make -P gcc-core -P gcc-g++ \
+	       -P gcc-fortran -P pkg-config
+
+$(repositories):
+	$(MAKE) -P git -P subversion
+
+$(libraries):
+	$(MAKE) -P libxml2-devel -P libglib2.0-devel -P libjson-glib1.0-devel \
+	       	-P libsqlite3-devel -P libgsl-devel -P gettext-devel \
+		-P libgtk3-devel -P libGLEW-devel -P libSDL2-devel \
+		-P gnu-free-fonts
+
+$(edit):
+	$(MAKE) -P vim -P gvim
+
+$(debug):
+	$(MAKE) -P gdb -P ddd
+
+$(diff):
+	$(MAKE) -P meld
+
+$(pdf):
+	$(MAKE) -P evince
+
+$(doxygen):
+	$(MAKE) -P doxygen
+
+$(browser):
+	$(MAKE) -P wget -P epiphany
+
+$(graphics):
+	$(MAKE) -P ImageMagick -P gimp -P gimp-ufraw
+
+update:
+	$(MAKE)
