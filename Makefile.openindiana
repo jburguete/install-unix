@@ -6,7 +6,7 @@ MAKE = pkg install
 MAKE2 = $(BIN2)pkgutil -y -i
 compilers = $(BIN)pkg-config
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/glew.h
+libraries = $(BASE)include/openmpi/mpi.h
 editors = $(BIN2)nedit
 math = $(BIN)gnuplot
 debug = $(BIN)gdb
@@ -41,7 +41,7 @@ $(BIN2):
 
 $(compilers):
 	$(MAKE) developer/build/autoconf developer/build/automake \
-		developer/gnu-binutils developer/gcc-5 \
+		developer/gnu-binutils developer/gcc-5 developer/library/lint \
 		system/header developer/build/pkg-config
 
 $(repositories):
@@ -51,7 +51,7 @@ $(libraries):
 	$(MAKE) library/desktop/json-glib library/mpich/gcc developer/gsl \
 		library/desktop/gtk2 library/desktop/gtk3 \
 		text/gnu-gettext sfe/x11/library/freeglut sfe/library/libglew \
-		library/openmpi/gcc
+		library/openmpi/gcc system/font/gnome-fonts
 
 $(editors):
 	$(MAKE) editor/gvim
