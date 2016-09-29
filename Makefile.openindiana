@@ -13,10 +13,11 @@ debug = $(BIN)gdb
 diff = $(BIN)meld
 pdf = $(BIN2)latex
 graphics = $(BIN)gimp
-office = $(BIN)loffice
+office = $(BASE)lib/libreoffice/program/soffice
 
 all: \
 	$(BIN2) \
+	$(office) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
@@ -26,21 +27,20 @@ all: \
 	$(diff) \
 	$(pdf) \
 	$(graphics) \
-	$(office)
 
 $(BIN2):
 	pkg set-publisher -G '*' -g http://sfe.opencsw.org/localhostoih localhostoih
 	pkgadd -d http://get.opencsw.org/now
 	$(BIN2)pkgutil -U
 	pkg refresh --full
-	$(MAKE2) openssh_client
-	rm $(BIN)ssh*
-	cd $(BIN); ln -s $(REPOSITORIES)ssh; ln -s $(REPOSITORIES)ssh-add; \
-		ln -s $(REPOSITORIES)ssh-agent; ln -s $(REPOSITORIES)ssh-copy-id; \
-		ln -s $(REPOSITORIES)ssh-keygen; ln -s $(REPOSITORIES)ssh-keyscan;
+#	$(MAKE2) openssh_client
+#	rm $(BIN)ssh*
+#	cd $(BIN); ln -s $(REPOSITORIES)ssh; ln -s $(REPOSITORIES)ssh-add; \
+#		ln -s $(REPOSITORIES)ssh-agent; ln -s $(REPOSITORIES)ssh-copy-id; \
+#		ln -s $(REPOSITORIES)ssh-keygen; ln -s $(REPOSITORIES)ssh-keyscan;
 
 $(compilers):
-	$(MAKE) developer/build/autoconf developer/build/automake developer/gcc-49 \
+	$(MAKE) developer/build/autoconf developer/build/automake developer/gcc-5 \
 		system/header developer/build/pkg-config
 
 $(repositories):
