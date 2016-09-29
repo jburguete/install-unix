@@ -20,20 +20,29 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
-* Debian Hurd 8.1
-* Debian kFreeBSD 8.1
-* Debian Linux 8.1
-* DragonFlyBSD 4.2.4
+* Debian Hurd 8.6
+* Debian kFreeBSD 8.6
+* Debian Linux 8.6
+* DragonFlyBSD 4.6
 * Dyson kOpenSolaris (2014/10/8)
-* Fedora Linux 22
-* FreeBSD 10.1
+* Fedora Linux 24
+* FreeBSD 10.3
+* Microsoft Windows 7 32 bits + Cygwin
 * Microsoft Windows 7 32 bits + MSYS2
+* Microsoft Windows 7 64 bits + Cygwin
 * Microsoft Windows 7 64 bits + MSYS2
+* Microsoft Windows 8.1 32 bits + Cygwin
+* Microsoft Windows 8.1 32 bits + MSYS2
+* Microsoft Windows 8.1 64 bits + Cygwin
 * Microsoft Windows 8.1 64 bits + MSYS2
-* NetBSD 6.1.5
-* OpenBSD 5.7
-* OpenIndiana 151a8 Server
-* OpenSUSE Linux 13.2 XFCE
-* Xubuntu Linux 12.04, 14.04 and 15.04
+* Microsoft Windows 10 32 bits + Cygwin
+* Microsoft Windows 10 32 bits + MSYS2
+* Microsoft Windows 10 64 bits + Cygwin
+* Microsoft Windows 10 64 bits + MSYS2
+* NetBSD 7.0.1
+* OpenBSD 6.0
+* OpenIndiana Hipster
+* OpenSUSE Linux Tumbleweed XFCE
+* Xubuntu Linux 16.04
 
 Other versions of these operative systems can work but it has not been tested.
