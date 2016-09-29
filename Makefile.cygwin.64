@@ -3,7 +3,10 @@ BASE = /usr/bin/
 compilers = $(BASE)gfortran.exe
 repositories = $(BASE)svn.exe
 libraries = /usr/include/GL/glew.h
+x = $(BASE)startxfce4
+xutils = $(BIN)xfce4-screenshooter.exe
 edit = $(BASE)gvim.exe
+math = $(BASE)gnuplot.exe
 debug = $(BASE)ddd.exe
 diff = $(BASE)meld
 pdf = $(BASE)evince.exe
@@ -15,7 +18,10 @@ all: \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
+	$(x) \
+	$(xutils) \
 	$(edit) \
+	$(math) \
 	$(debug) \
 	$(diff) \
 	$(pdf) \
@@ -36,8 +42,18 @@ $(libraries):
 		-P libgtk3-devel -P libGLEW-devel -P libSDL2-devel \
 		-P gnu-free-fonts
 
+$(x):
+	$(MAKE) -P xserver-xorg -P xinit -P xfce4-session
+
+$(xutils):
+	$(MAKE) -P xfce4-cpugraph-plugin -P xfce4-weather-plugin -P xfce4-xkb-plugin \
+		-P xfce4-mixer -P xfce4-screenshooter
+
 $(edit):
 	$(MAKE) -P vim -P gvim
+
+$(math):
+	$(MAKE) -P gnome-calculator -P gnuplot
 
 $(debug):
 	$(MAKE) -P gdb -P ddd
