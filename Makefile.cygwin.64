@@ -68,7 +68,7 @@ $(doxygen):
 	$(MAKE) -P doxygen
 
 $(browser):
-	$(MAKE) -P wget -P epiphany
+	$(MAKE) -P wget
 
 $(graphics):
 	$(MAKE) -P ImageMagick -P gimp -P gimp-ufraw

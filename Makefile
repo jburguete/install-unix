@@ -44,9 +44,11 @@ all:
 	else if test `uname -o` = "Cygwin"; then \
 		if test `uname -m` = "x86_64"; then \
 			make -f Makefile.cygwin.64; \
+		else if test `uname -m` = "i686"; then \
+			make -f Makefile.cygwin.32; \
 		else \
 			echo "Unknown machine"; \
-		fi \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi fi
@@ -97,9 +99,11 @@ update:
 	else if test `uname -o` = "Cygwin"; then \
 		if test `uname -m` = "x86_64"; then \
 			make update -f Makefile.cygwin.64; \
+		else if test `uname -m` = "i686"; then \
+			make update -f Makefile.cygwin.32; \
 		else \
 			echo "Unknown operative system"; \
-		fi \
+		fi fi \
 	else \
 		echo "Unknown operative system"; \
 	fi fi fi fi fi fi fi fi fi fi
