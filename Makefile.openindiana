@@ -40,7 +40,8 @@ $(BIN2):
 #		ln -s $(REPOSITORIES)ssh-keygen; ln -s $(REPOSITORIES)ssh-keyscan;
 
 $(compilers):
-	$(MAKE) developer/build/autoconf developer/build/automake developer/gcc-5 \
+	$(MAKE) developer/build/autoconf developer/build/automake \
+		developer/gnu-binutils developer/gcc-5 \
 		system/header developer/build/pkg-config
 
 $(repositories):
