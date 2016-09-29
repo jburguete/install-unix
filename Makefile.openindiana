@@ -51,7 +51,7 @@ $(libraries):
 	$(MAKE) library/desktop/json-glib library/mpich/gcc developer/gsl \
 		library/desktop/gtk2 library/desktop/gtk3 \
 		text/gnu-gettext sfe/x11/library/freeglut sfe/library/libglew \
-		library/openmpi/gcc system/font/gnome-fonts
+		library/openmpi/gcc system/font/gnome-fonts sfe/developer/gcc-49
 
 $(editors):
 	$(MAKE) editor/gvim
