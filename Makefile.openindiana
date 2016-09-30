@@ -80,6 +80,7 @@ $(office):
 
 update:
 	pkg update
+	/opt/csw/bin/pkgutil -U -u
 
 clean:
 	beadm list
