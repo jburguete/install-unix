@@ -1,7 +1,7 @@
 MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
-compilers = $(BIN)gcc5
+compilers = $(BIN)gcc6
 repositories = $(BIN)svn
 libraries = $(BASE)include/gtk-3.0/gtk/gtk.h
 vboxguest = $(BASE)sbin/VBoxService
@@ -43,7 +43,7 @@ all: \
 	$(flash)
 
 $(compilers):
-	$(MAKE) automake pkgconf gcc5
+	$(MAKE) automake pkgconf gcc6
 
 $(repositories):
 	$(MAKE) git subversion
@@ -59,7 +59,7 @@ $(vboxguest):
 	read
 
 $(x):
-	$(MAKE) xorg-minimal xfce4-desktop gdm
+	$(MAKE) xorg-minimal xfce gdm
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
@@ -73,7 +73,7 @@ $(x):
 $(xutils):
 	$(MAKE) xscreensaver xfce4-cpugraph-plugin xfce4-netload-plugin \
 		xfce4-systemload-plugin xfce4-xkb-plugin xfce4-weather-plugin \
-		xfce4-screenshooter-plugin
+		xfce4-mixer xfce4-screenshooter-plugin
 
 $(editors):
 	$(MAKE) vim nedit
