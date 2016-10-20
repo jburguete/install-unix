@@ -93,3 +93,5 @@ upgrade:
 
 clean:
 	zypper clean
+	snapper list
+	# snapper delete X-Y
