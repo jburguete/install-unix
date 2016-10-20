@@ -1,15 +1,15 @@
 PORTS = /usr/dports/
+MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
-MAKE = pkg install
-compilers = $(BIN)gcc5
+compilers = $(BIN)gcc6
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BASE)sbin/gdm
 xutils = $(BIN)xfce4-screenshooter
-edit = $(BIN)universalindentgui
-math = $(BIN)xmaxima
+editors = $(BIN)nedit
 debug = $(BIN)ddd
+math = $(BIN)maxima
 diff = $(BIN)meld
 pdf = $(BIN)evince
 doxygen = $(BIN)doxygen
@@ -27,9 +27,9 @@ all: \
 	$(libraries) \
 	$(x) \
 	$(xutils) \
-	$(edit) \
-	$(math) \
+	$(editors) \
 	$(debug) \
+	$(math) \
 	$(diff) \
 	$(pdf) \
 	$(doxygen) \
@@ -42,13 +42,13 @@ all: \
 #	$(flash)
 
 $(compilers):
-	$(MAKE) automake gcc5
+	$(MAKE) automake pkgconf gcc6
 
 $(repositories):
 	$(MAKE) subversion
 
 $(libraries):
-	$(MAKE) gsl mpich gtk3 freeglut
+	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
 
 $(x):
 	$(MAKE) xorg-minimal xfce gnome-keyring gdm
@@ -68,26 +68,26 @@ $(xutils):
 	$(MAKE) xscreensaver xfce4-netload-plugin xfce4-xkb-plugin \
 		xfce4-weather-plugin xfce4-screenshooter-plugin xfce4-mixer
 
-$(edit):
+$(editors):
 	$(MAKE) vim nedit universalindentgui
-
-$(math):
-	$(MAKE) galculator maxima
 
 $(debug):
 	$(MAKE) ddd
+
+$(math):
+	$(MAKE) galculator maxima
 
 $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) texlive-texmf evince
+	$(MAKE) latex-beamer evince
 
 $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-i18n
+	$(MAKE) wget firefox firefox-i18n xpi-adblock_plus
 
 $(mail):
 	$(MAKE) thunderbird thunderbird-i18n
@@ -113,4 +113,4 @@ update:
 
 clean:
 	pkg autoremove
-	pkg clean
+	pkg clean -a

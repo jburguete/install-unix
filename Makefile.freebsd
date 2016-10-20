@@ -3,7 +3,7 @@ BASE = /usr/local/
 BIN = $(BASE)bin/
 compilers = $(BIN)gcc6
 repositories = $(BIN)svn
-libraries = $(BASE)include/gtk-3.0/gtk/gtk.h
+libraries = $(BASE)include/GL/freeglut.h
 vboxguest = $(BASE)sbin/VBoxService
 x = $(BASE)sbin/gdm
 xutils = $(BIN)xfce4-screenshooter
@@ -76,7 +76,7 @@ $(xutils):
 		xfce4-mixer xfce4-screenshooter-plugin
 
 $(editors):
-	$(MAKE) vim nedit
+	$(MAKE) vim nedit universalindentgui
 
 $(debug):
 	$(MAKE) valgrind ddd
