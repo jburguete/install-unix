@@ -85,9 +85,9 @@ $(libraries):
 	cd $(PORTS)devel/SDL2 && $(MAKE)
 
 $(x):
+	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)textproc/groff && $(MAKE)
 	ln -sf /usr/pkg/bin/gtbl /usr/bin/tbl
-	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
 	cd $(PORTS)x11/xf86-input-keyboard && $(MAKE)
@@ -104,7 +104,7 @@ $(x):
 	ln -sf $(BASE)share/examples/rc.d/gdm /etc/rc.d
 	echo "hal=YES" >> /etc/rc.conf
 	echo "dbus=YES" >> /etc/rc.conf
-	echo "gdm=YES" >> /etc/rc.conf
+#	echo "gdm=YES" >> /etc/rc.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
