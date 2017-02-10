@@ -40,7 +40,7 @@ $(libraries):
 	$(MAKE) -P libxml2-devel -P libglib2.0-devel -P libjson-glib1.0-devel \
 	       	-P libsqlite3-devel -P libgsl-devel -P gettext-devel \
 		-P libgtk3-devel -P libGLEW-devel -P libSDL2-devel \
-		-P gnu-free-fonts
+		-P gnu-free-fonts -P libiconv-devel
 
 $(x):
 	$(MAKE) -P xserver-xorg -P xinit -P xfce4-session

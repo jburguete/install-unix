@@ -68,7 +68,7 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) texlive-beamer texlive-adjustbox tex-preview \
+	$(MAKE) texlive-beamer texlive-adjustbox tex-preview graphviz \
 		texlive-collection-langspanish texlive-collection-langfrench \
 		texlive-collection-langenglish texlive-latex texlive-tabu
 
@@ -97,7 +97,7 @@ update:
 	dnf update --refresh
 
 upgrade:
-	dnf system-upgrade download --refresh --releasever=24 --allowerasing
+	dnf system-upgrade download --refresh --releasever=25 --allowerasing
 	dnf system-upgrade reboot
 
 clean:

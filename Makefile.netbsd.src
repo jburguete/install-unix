@@ -2,11 +2,11 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-RELEASE = pkgsrc-2016Q2
+RELEASE = pkgsrc-2016Q3
 CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BIN)lintpkgsrc
-compilers = $(BASE)gcc5/bin/gcc
+compilers = $(BASE)gcc6/bin/gcc
 repositories = $(BIN)svn
 libraries = $(BASE)include/SDL2/SDL.h
 x = $(BASE)sbin/gdm
@@ -66,7 +66,7 @@ $(pkgtools):
 
 $(compilers):
 	cd $(PORTS)devel/automake && $(MAKE)
-	cd $(PORTS)lang/gcc5 && $(MAKE)
+	cd $(PORTS)lang/gcc6 && $(MAKE)
 
 $(repositories):
 	cd $(PORTS)devel/git-base && $(MAKE)
@@ -85,9 +85,9 @@ $(libraries):
 	cd $(PORTS)devel/SDL2 && $(MAKE)
 
 $(x):
+	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)textproc/groff && $(MAKE)
 	ln -sf /usr/pkg/bin/gtbl /usr/bin/tbl
-	cd $(PORTS)x11/modular-xorg-server && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-apps && $(MAKE)
 	cd $(PORTS)meta-pkgs/modular-xorg-fonts && $(MAKE)
 	cd $(PORTS)x11/xf86-input-keyboard && $(MAKE)
@@ -104,7 +104,7 @@ $(x):
 	ln -sf $(BASE)share/examples/rc.d/gdm /etc/rc.d
 	echo "hal=YES" >> /etc/rc.conf
 	echo "dbus=YES" >> /etc/rc.conf
-	echo "gdm=YES" >> /etc/rc.conf
+#	echo "gdm=YES" >> /etc/rc.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
