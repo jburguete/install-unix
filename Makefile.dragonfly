@@ -69,7 +69,7 @@ $(xutils):
 		xfce4-weather-plugin xfce4-screenshooter-plugin xfce4-mixer
 
 $(editors):
-	$(MAKE) vim nedit universalindentgui
+	$(MAKE) vim nedit gindent universalindentgui
 
 $(debug):
 	$(MAKE) ddd
