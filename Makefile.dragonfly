@@ -42,7 +42,7 @@ all: \
 #	$(flash)
 
 $(compilers):
-	$(MAKE) automake pkgconf gcc6
+	$(MAKE) gsed automake pkgconf gcc6
 
 $(repositories):
 	$(MAKE) subversion
