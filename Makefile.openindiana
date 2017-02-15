@@ -41,7 +41,7 @@ $(BIN2):
 
 $(compilers):
 	$(MAKE) developer/build/autoconf developer/build/automake \
-		developer/gnu-binutils developer/gcc-5 developer/library/lint \
+		developer/gnu-binutils developer/gcc-6 developer/library/lint \
 		system/header developer/build/pkg-config
 
 $(repositories):
@@ -84,4 +84,5 @@ update:
 
 clean:
 	beadm list
+	echo "beadm destroy -s ..."
 #	beadm destroy -s ...
