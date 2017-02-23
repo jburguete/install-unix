@@ -2,9 +2,10 @@ MAKE = pacman -S
 BASE = /usr/bin/
 BASE2 = /mingw32/bin/
 MINGW = mingw32/mingw-w64-i686-
+utils = $(BASE)patch.exe
 compilers = $(BASE2)gfortran.exe
 repositories = $(BASE)svn.exe
-libraries = $(BASE2)libglew.dll
+libraries = $(BASE2)glew32.dll
 edit = $(BASE)vim.exe
 debug = $(BASE2)gdb.exe
 diff = $(BASE2)meld
@@ -14,6 +15,7 @@ browser = $(BASE)wget.exe
 graphics = $(BASE2)ufraw.exe
 
 all: \
+	$(utils) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
@@ -24,6 +26,9 @@ all: \
 	$(doxygen) \
 	$(browser) \
 	$(graphics)
+
+$(utils):
+	$(MAKE) zip xz tar patch
 
 $(compilers):
 	$(MAKE) autoconf automake make $(MINGW)gcc $(MINGW)gcc-fortran pkg-config
