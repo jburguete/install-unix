@@ -76,7 +76,7 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) latex-beamer texlive-latex-extra texlive-publishers \
+	$(MAKE) texlive-latex-extra texlive-publishers texlive-luatex \
 		texlive-fonts-recommended texlive-lang-spanish texlive-lang-french \
 		texlive-lang-english texlive-lang-italian evince
 
