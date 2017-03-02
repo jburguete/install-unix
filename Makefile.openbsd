@@ -46,7 +46,7 @@ $(automake):
 	$(MAKE) automake-1.15
 
 $(compilers): $(automake)
-	$(MAKE) gcc g95
+	$(MAKE) gsed patch gcc g95
 
 $(repositories):
 	$(MAKE) git subversion

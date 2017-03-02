@@ -1,4 +1,3 @@
-PORTS = /usr/dports/
 MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
@@ -42,7 +41,7 @@ all: \
 #	$(flash)
 
 $(compilers):
-	$(MAKE) gsed automake pkgconf gcc6
+	$(MAKE) gsed patch automake pkgconf gcc6
 
 $(repositories):
 	$(MAKE) subversion
@@ -52,15 +51,15 @@ $(libraries):
 
 $(x):
 	$(MAKE) xorg-minimal xfce gnome-keyring gdm
+	X -configure
+	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+	echo "exec startxfce4" > /root/.xinitrc
+	ln -s /root/.xinitrc /root/.xsession
 	echo "snd_ihc_load=\"YES\"" >> /boot/loader.conf # adding sound
 	echo "moused_enable=YES" >> /etc/rc.conf
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
 	echo "gdm_enable=YES" >> /etc/rc.conf
-	echo "exec startxfce4" > /root/.xinitrc
-	ln -s /root/.xinitrc /root/.xsession
-	X -configure
-	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 

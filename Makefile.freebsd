@@ -43,13 +43,13 @@ all: \
 	$(flash)
 
 $(compilers):
-	$(MAKE) automake pkgconf gcc6
+	$(MAKE) gsed patch automake pkgconf gcc6
 
 $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) gsl mpich freeglut glew glfw sdl2 gtk3
+	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
 
 $(vboxguest):
 	$(MAKE) virtualbox-ose-additions
