@@ -2,6 +2,7 @@ MAKE = dnf install
 BASE = /usr/
 BIN = $(BASE)bin/
 VIRTUALBOXREPO = download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+utils = $(BIN)lsb_release
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/SDL2/SDL.h
@@ -20,10 +21,10 @@ spam = $(BIN)spamassassin
 flash = $(BIN)gnash
 
 all: \
+	$(utils) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
-	$(x) \
 	$(edit) \
 	$(math) \
 	$(debug) \
@@ -35,7 +36,11 @@ all: \
 	$(graphics) \
 	$(office) \
 	$(spam) \
+#	$(x) \
 #	$(flash)
+
+$(utils):
+	$(MAKE) redhat-lsb-core
 
 $(compilers):
 	$(MAKE) automake gcc gcc-c++ gcc-gfortran
