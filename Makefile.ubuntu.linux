@@ -3,9 +3,9 @@ BASE = /usr/
 BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
-libraries = $(BASE)include/GL/freeglut.h
-x = $(BIN)startxfce4
-xutils = $(BIN)xfce4-screenshooter
+libraries = $(BASE)include/SDL2/SDL.h
+x = $(BASE)sbin/lightdm
+xutils = $(BIN)X11/xscreensaver
 edit = $(BIN)universalindentgui
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
@@ -48,8 +48,8 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
-		mpich2 libmpich2-dev libgsl0-dev libgtk2.0-dev libgtk-3-dev \
-		freeglut3-dev
+		mpich libmpich-dev libgsl0-dev libgtk2.0-dev libgtk-3-dev \
+		freeglut3-dev libglew-dev libglfw3-dev libsdl2-dev
 
 $(x):
 	$(MAKE) virtualbox-guest-dkms virtualbox-guest-utils \
@@ -76,7 +76,7 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) latex-beamer texlive-latex-extra texlive-publishers \
+	$(MAKE) texlive-latex-extra texlive-luatex texlive-publishers \
 		texlive-fonts-recommended texlive-lang-spanish texlive-lang-french \
 		texlive-lang-english texlive-lang-italian evince
 
@@ -93,7 +93,7 @@ $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw
 
 $(multimedia):
-	$(MAKE) totem
+	$(MAKE) parole
 
 $(office):
 	$(MAKE) libreoffice
