@@ -43,7 +43,7 @@ all: \
 	$(flash) \
 
 $(automake): 
-	$(MAKE) automake-1.15
+	$(MAKE) automake-1.15p0
 
 $(compilers): $(automake)
 	$(MAKE) gsed patch gcc g95
