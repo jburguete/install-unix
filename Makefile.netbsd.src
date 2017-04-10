@@ -2,7 +2,7 @@ MAKE = make && make install clean-depends clean
 PORTS = /usr/pkgsrc/
 BASE = /usr/pkg/
 BIN = $(BASE)bin/
-RELEASE = pkgsrc-2016Q3
+RELEASE = pkgsrc-2017Q1
 CPUTYPE = -march=core2 -mfpmath=sse -msse3
 CFLAGS = -O2 -fno-strict-aliasing
 pkgtools = $(BIN)lintpkgsrc
@@ -93,8 +93,6 @@ $(x):
 	cd $(PORTS)x11/xf86-input-keyboard && $(MAKE)
 	cd $(PORTS)x11/xf86-input-mouse && $(MAKE)
 	cd $(PORTS)x11/xf86-video-vesa && $(MAKE)
-	X -configure
-	ln -sf /root/xorg.conf.new /etc/X11/xorg.conf
 	cd $(PORTS)meta-pkgs/xfce4 && $(MAKE)
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -sf /root/.xinitrc /root/.xsession
@@ -105,6 +103,8 @@ $(x):
 	echo "hal=YES" >> /etc/rc.conf
 	echo "dbus=YES" >> /etc/rc.conf
 #	echo "gdm=YES" >> /etc/rc.conf
+	X -configure
+	ln -sf /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
