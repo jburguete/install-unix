@@ -11,9 +11,10 @@ editors = $(BIN2)nedit
 math = $(BIN)gnuplot
 debug = $(BIN)gdb
 diff = $(BIN)meld
+doxygen = $(BIN)doxygen
 pdf = $(BIN2)latex
 graphics = $(BIN)gimp
-office = $(BASE)lib/libreoffice/program/soffice
+office = $(BASE)lib/libreoffice5.2/program/soffice
 
 all: \
 	$(BIN2) \
@@ -25,6 +26,7 @@ all: \
 	$(math) \
 	$(debug) \
 	$(diff) \
+	$(doxygen) \
 	$(pdf) \
 	$(graphics) \
 
@@ -33,11 +35,6 @@ $(BIN2):
 	pkgadd -d http://get.opencsw.org/now
 	$(BIN2)pkgutil -U
 	pkg refresh --full
-#	$(MAKE2) openssh_client
-#	rm $(BIN)ssh*
-#	cd $(BIN); ln -s $(REPOSITORIES)ssh; ln -s $(REPOSITORIES)ssh-add; \
-#		ln -s $(REPOSITORIES)ssh-agent; ln -s $(REPOSITORIES)ssh-copy-id; \
-#		ln -s $(REPOSITORIES)ssh-keygen; ln -s $(REPOSITORIES)ssh-keyscan;
 
 $(compilers):
 	$(MAKE) developer/build/autoconf developer/build/automake \
@@ -64,9 +61,13 @@ $(debug):
 	$(MAKE) developer/debug/valgrind developer/debug/gdb
 
 $(diff):
-	$(MAKE) meld
+	$(MAKE) developer/meld
+
+$(doxygen):
+	$(MAKE) developer/documentation-tool/doxygen
 
 $(pdf):
+	$(MAKE) desktop/pdf-viewer/evince
 	$(MAKE2) texlive texlive_latex_extra texlive_publishers \
 		texlive_fonts_recommended texlive_lang_spanish texlive_lang_french \
 		texlive_lang_italian
@@ -75,8 +76,7 @@ $(graphics):
 	$(MAKE) image/imagemagick image/editor/gimp /image/editor/gimp/locale/es
 
 $(office):
-	$(MAKE) system/library/g++/boost@1.59.0-0.0.151.1.8 \
-		library/g++/icu@55.1-0.0.151.1.8 desktop/application/libreoffice4
+	$(MAKE) desktop/application/libreoffice52
 
 update:
 	pkg update
