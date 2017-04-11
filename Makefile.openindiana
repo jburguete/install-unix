@@ -70,7 +70,7 @@ $(pdf):
 	$(MAKE) desktop/pdf-viewer/evince
 	$(MAKE2) texlive texlive_latex_extra texlive_publishers \
 		texlive_fonts_recommended texlive_lang_spanish texlive_lang_french \
-		texlive_lang_italian
+		texlive_lang_italian texlive_pstricks
 
 $(graphics):
 	$(MAKE) image/imagemagick image/editor/gimp /image/editor/gimp/locale/es
