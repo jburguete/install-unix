@@ -20,7 +20,6 @@ graphics = $(BIN)ufraw
 multimedia = $(BIN)parole
 spam = $(BASE)libexec/milter-spamd
 office = $(BIN)libreoffice
-flash = $(BIN)gnash
 
 all: \
 	$(compilers) \
@@ -40,7 +39,6 @@ all: \
 	$(multimedia) \
 	$(spam) \
 	$(office) \
-	$(flash) \
 
 $(automake): 
 	$(MAKE) automake-1.15p0
@@ -66,7 +64,7 @@ $(xutils):
 		xfce4-weather xfce4-xkb xfce4-screenshooter 
 
 $(editors):
-	$(MAKE) vim-gtk nedit
+	$(MAKE) vim-8.0.0388-gtk2 nedit
 
 $(debug):
 	$(MAKE) ddd 
@@ -100,9 +98,6 @@ $(spam):
 
 $(office):
 	$(MAKE) libreoffice
-
-$(flash):
-	$(MAKE) gnash
 
 update:
 	pkg_add -u
