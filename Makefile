@@ -5,7 +5,7 @@ all:
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
 			make -f Makefile.ubuntu.linux; \
 		else if test `lsb_release -i -s` = "LinuxMint"; then \
-			make -f Makefile.debian.linux; \
+			make -f Makefile.linux.mint; \
 		else if test `lsb_release -i -s | sed 's/ project//g'` \
 			= "openSUSE"; then \
 			make -f Makefile.opensuse.linux; \
