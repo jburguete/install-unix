@@ -2,7 +2,7 @@ install-unix
 ============
 
 A set of Makefiles to install some useful applications on different UNIX type
-systems guest in Virtualbox.
+systems guest in QEMU/KVM.
 
 Building instructions
 ---------------------
@@ -22,9 +22,9 @@ Currently the following UNIX type systems are supported:
 
 * Debian 8.6 (Hurd, kFreeBSD or Linux) 
 * DragonFlyBSD 4.6
-* Dyson kOpenSolaris (2014/10/8)
+* Dyson Illumos (2014/10/8)
 * Fedora Linux 24
-* FreeBSD 10.3
+* FreeBSD 11.0
 * Microsoft Windows 7 32 bits + Cygwin
 * Microsoft Windows 7 32 bits + MSYS2
 * Microsoft Windows 7 64 bits + Cygwin
@@ -38,9 +38,9 @@ Currently the following UNIX type systems are supported:
 * Microsoft Windows 10 64 bits + Cygwin
 * Microsoft Windows 10 64 bits + MSYS2
 * NetBSD 7.0.1
-* OpenBSD 6.0
+* OpenBSD 6.1
 * OpenIndiana Hipster
 * OpenSUSE Linux Tumbleweed XFCE
-* Xubuntu Linux 16.04
+* Xubuntu Linux 17.04
 
 Other versions of these operative systems can work but it has not been tested.
