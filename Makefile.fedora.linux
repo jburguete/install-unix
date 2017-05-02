@@ -1,7 +1,6 @@
 MAKE = dnf install
 BASE = /usr/
 BIN = $(BASE)bin/
-VIRTUALBOXREPO = download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
 utils = $(BIN)lsb_release
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
@@ -36,7 +35,6 @@ all: \
 	$(graphics) \
 	$(office) \
 	$(spam) \
-#	$(x) \
 #	$(flash)
 
 $(utils):
@@ -52,13 +50,6 @@ $(libraries):
 	$(MAKE) libxml2-devel glib2-devel json-glib-devel sqlite-devel \
 		openmpi-devel gsl-devel libpng-devel gtk3-devel freeglut-devel \
 		glew-devel glfw-devel SDL2-devel
-
-$(x):
-	dnf install dkms kernel-devel
-	echo "Insert VirtualBox Guest Additions CD-ROM"
-	echo "Run VBoxLinuxAdditions.run"
-	echo "Reboot"
-	read
 
 $(edit):
 	$(MAKE) vim-enhanced vim-X11 nedit 
