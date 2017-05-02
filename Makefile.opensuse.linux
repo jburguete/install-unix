@@ -4,8 +4,6 @@ BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/SDL2/SDL.h
-xorg = $(BIN)gdm
-xutils = $(BASE)lib64/xfce4/panel/plugins/libweather.so
 edit = $(BIN)gvim
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
@@ -13,6 +11,7 @@ diff = $(BIN)meld
 pdf = $(BIN)pdflatex
 doxygen = $(BIN)doxygen
 browser = $(BIN)adblock
+mail = $(BIN)thunderbird
 graphics = $(BASE)lib64/gimp/2.0/plug-ins/ufraw-gimp
 spam = $(BIN)spamassassin
 flash = $(BASE)lib64/browser-plugins/libflashplayer.so
@@ -21,8 +20,6 @@ all: \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
-	$(xorg) \
-	$(xutils) \
 	$(edit) \
 	$(math) \
 	$(debug) \
@@ -30,6 +27,7 @@ all: \
 	$(pdf) \
 	$(doxygen) \
 	$(browser) \
+	$(mail) \
 	$(graphics) \
 	$(spam) \
 	$(flash)
@@ -45,13 +43,6 @@ $(libraries):
 		sqlite3-devel openmpi-devel gsl-devel libpng16-devel gtk3-devel \
 		freeglut-devel glew-devel libglfw-devel libSDL2-devel \
 		gnu-free-fonts
-
-$(xorg):
-	$(MAKE) gdm
-
-$(xutils):
-	$(MAKE) xfce4-panel-plugin-cpugraph xfce4-panel-plugin-netload \
-		xfce4-panel-plugin-systemload xfce4-panel-plugin-weather
 
 $(edit):
 	$(MAKE) gvim
@@ -75,6 +66,9 @@ $(doxygen):
 
 $(browser):
 #	$(MAKE) mozaddon-adblock_edge
+
+$(mail):
+	$(MAKE) thunderbird
 
 $(graphics):
 	$(MAKE) gimp-ufraw
