@@ -13,9 +13,11 @@ all:
 			make -f Makefile.opensuse.linux; \
 		else if test `lsb_release -i -s` = "Fedora"; then \
 			make -f Makefile.fedora.linux; \
+		else if test `lsb_release -i -s` = "ManjaroLinux"; then \
+			make -f Makefile.manjaro.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi fi \
+		fi fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -70,9 +72,11 @@ update:
 			make update -f Makefile.opensuse.linux; \
 		else if test `lsb_release -i -s` = "Fedora"; then \
 			make update -f Makefile.fedora.linux; \
+		else if test `lsb_release -i -s` = "ManjaroLinux"; then \
+			make update -f Makefile.manjaro.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi fi \
+		fi fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make update -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -127,9 +131,11 @@ upgrade:
 			make upgrade -f Makefile.opensuse.linux; \
 		else if test `lsb_release -i -s` = "Fedora"; then \
 			make upgrade -f Makefile.fedora.linux; \
+		else if test `lsb_release -i -s` = "ManjaroLinux"; then \
+			make upgrade -f Makefile.manjaro.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi fi \
+		fi fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make upgrade -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -176,9 +182,11 @@ clean:
 			make clean -f Makefile.opensuse.linux; \
 		else if test `lsb_release -i -s` = "Fedora"; then \
 			make clean -f Makefile.fedora.linux; \
+		else if test `lsb_release -i -s` = "ManjaroLinux"; then \
+			make clean -f Makefile.manjaro.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi fi \
+		fi fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make clean -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \

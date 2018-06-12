@@ -1,0 +1,88 @@
+MAKE = pacman -S
+BASE = /usr/bin/
+LIB = /usr/lib/
+compilers = $(BASE)gfortran
+repositories = $(BASE)svn
+libraries = $(LIB)libGLEW.so
+edit = $(BASE)gvim
+math = $(BASE)wxmaxima
+debug = $(BASE)valgrind
+diff = $(BASE)meld
+pdf = $(BASE)evince
+doxygen = $(BASE)doxygen
+browser = $(BASE)firefox
+mail = $(BASE)thunderbird
+graphics = $(BASE)gimp
+multimedia = $(BASE)parole
+office = $(BASE)loffice
+spam = $(BASE)spamassassin
+
+all: \
+	$(compilers) \
+	$(repositories) \
+	$(libraries) \
+	$(edit) \
+	$(math) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(office) \
+	$(spam)
+
+$(compilers):
+	$(MAKE) autoconf automake make gcc gcc-fortran pkg-config
+
+$(repositories):
+	$(MAKE) git subversion
+
+$(libraries):
+	$(MAKE) libxml2 glib2 json-glib sqlite3 openmpi gsl gettext gtk3 \
+		ttf-freefont freeglut glew sdl2
+		
+$(edit):
+	$(MAKE) gvim nedit
+
+$(math):
+	$(MAKE) galculator wxmaxima
+
+$(debug):
+	$(MAKE) gdb valgrind
+
+$(diff):
+	$(MAKE) meld
+
+$(pdf):
+	$(MAKE) texlive-core texlive-publishers texlive-latexextra \
+		texlive-pstricks evince
+
+$(doxygen):
+	$(MAKE) doxygen
+
+$(browser):
+	$(MAKE) wget firefox firefox-i18n-es-es firefox-adblock-plus
+
+$(mail):
+	$(MAKE) thunderbird thunderbird-i18n-es-es
+
+$(graphics):
+	$(MAKE) imagemagick gimp gimp-nufraw
+
+$(multimedia):
+	$(MAKE) parole
+
+$(office):
+	$(MAKE) libreoffice-still libreoffice-still-es
+
+$(spam):
+	$(MAKE) spamassassin
+
+update:
+	pacman -Syu
+
+clean:
+	pacman -Sc
