@@ -12,8 +12,8 @@ debug = $(BIN)ddd
 diff = $(BIN)meld
 pdf = $(BIN)evince
 doxygen = $(BIN)doxygen
-browser = $(BIN)firefox
-mail = $(BIN)icedove
+browser = $(BIN)firefox-esr
+mail = $(BIN)thunderbird
 graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
 multimedia = $(BIN)parole
 spam = $(BIN)spamassassin
@@ -48,7 +48,7 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
-		libgsl0-dev libgtk2.0-dev libgtk-3-dev freeglut3-dev \
+		libgsl0-dev libgtk-3-dev freeglut3-dev \
 		libglew-dev libglfw3-dev libsdl2-dev
 
 $(x):
@@ -95,7 +95,7 @@ $(browser):
 	$(MAKE) wget firefox firefox-l10n-es-es xul-ext-adblock-plus
 
 $(mail):
-	$(MAKE) icedove icedove-l10n-es-es
+	$(MAKE) thunderbird thunderbird-l10n-es-es
 
 $(graphics):
 	$(MAKE) imagemagick gimp gimp-ufraw

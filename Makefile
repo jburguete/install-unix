@@ -2,6 +2,8 @@ all:
 	if test `uname -s` = "Linux"; then \
 		if test `lsb_release -i -s` = "Debian"; then \
 			make -f Makefile.debian.linux; \
+		else if test `lsb_release -i -s` = "Devuan"; then \
+			make -f Makefile.devuan.linux; \
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
 			make -f Makefile.ubuntu.linux; \
 		else if test `lsb_release -i -s` = "LinuxMint"; then \
@@ -13,7 +15,7 @@ all:
 			make -f Makefile.fedora.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi \
+		fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -57,6 +59,8 @@ update:
 	if test `uname -s` = "Linux"; then \
 		if test `lsb_release -i -s` = "Debian"; then \
 			make update -f Makefile.debian.linux; \
+		else if test `lsb_release -i -s` = "Devuan"; then \
+			make update -f Makefile.devuan.linux; \
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
 			make update -f Makefile.ubuntu.linux; \
 		else if test `lsb_release -i -s` = "LinuxMint"; then \
@@ -68,7 +72,7 @@ update:
 			make update -f Makefile.fedora.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi \
+		fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make update -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -112,6 +116,8 @@ upgrade:
 	if test `uname -s` = "Linux"; then \
 		if test `lsb_release -i -s` = "Debian"; then \
 			make upgrade -f Makefile.debian.linux; \
+		else if test `lsb_release -i -s` = "Devuan"; then \
+			make upgrade -f Makefile.devuan.linux; \
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
 			make upgrade -f Makefile.ubuntu.linux; \
 		else if test `lsb_release -i -s` = "LinuxMint"; then \
@@ -123,7 +129,7 @@ upgrade:
 			make upgrade -f Makefile.fedora.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi \
+		fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make upgrade -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
@@ -159,6 +165,8 @@ clean:
 	if test `uname -s` = "Linux"; then \
 		if test `lsb_release -i -s` = "Debian"; then \
 			make clean -f Makefile.debian.linux; \
+		else if test `lsb_release -i -s` = "Devuan"; then \
+			make clean -f Makefile.devuan.linux; \
 		else if test `lsb_release -i -s` = "Ubuntu"; then \
 			make clean -f Makefile.ubuntu.linux; \
 		else if test `lsb_release -i -s` = "LinuxMint"; then \
@@ -170,7 +178,7 @@ clean:
 			make clean -f Makefile.fedora.linux; \
 		else \
 			echo "Unknown Linux distribution:"; \
-		fi fi fi fi fi \
+		fi fi fi fi fi fi \
 	else if test `uname -s` = "FreeBSD"; then \
 		make clean -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
