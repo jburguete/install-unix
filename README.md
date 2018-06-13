@@ -20,9 +20,9 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
-* Debian 8.6 (Hurd, kFreeBSD or Linux) 
+* Debian 9.4 (Hurd, kFreeBSD or Linux) 
 * Devuan Linux 2.0
-* DragonFlyBSD 4.6
+* DragonFlyBSD 5.2
 * Dyson Illumos (2014/10/8)
 * Fedora Linux 24
 * FreeBSD 11.0

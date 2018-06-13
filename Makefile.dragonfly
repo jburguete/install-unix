@@ -1,7 +1,7 @@
 MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
-compilers = $(BIN)gcc6
+compilers = $(BIN)gcc7
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BASE)sbin/gdm
@@ -41,10 +41,10 @@ all: \
 #	$(flash)
 
 $(compilers):
-	$(MAKE) gsed patch automake pkgconf gcc6
+	$(MAKE) gsed patch automake pkgconf gcc7
 
 $(repositories):
-	$(MAKE) subversion
+	$(MAKE) git subversion
 
 $(libraries):
 	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
