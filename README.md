@@ -92,8 +92,8 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
-* Debian 9.4 (Hurd, kFreeBSD or Linux) 
-* Devuan Linux 2.0
+* Debian 9 (Hurd, kFreeBSD or Linux) 
+* Devuan Linux 2
 * DragonFlyBSD 5.2
 * Dyson Illumos (2014/10/8)
 * Fedora Linux 24
@@ -107,7 +107,7 @@ Currently the following UNIX type systems are supported:
 * Microsoft Windows 10 32 bits + MSYS2
 * Microsoft Windows 10 64 bits + Cygwin
 * Microsoft Windows 10 64 bits + MSYS2
-* NetBSD 7.0.1
+* NetBSD 7.0
 * OpenBSD 6.1
 * OpenIndiana Hipster
 * OpenSUSE Linux Tumbleweed XFCE
