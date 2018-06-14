@@ -4,6 +4,78 @@ install-unix
 A set of Makefiles to install some useful applications on different UNIX type
 systems guest in QEMU/KVM.
 
+Tools list
+----------
+
+* Programming:
+  * C, C++ and FORTRAN compilers
+  * Autoconf, Automake
+  * Make  
+
+* Control versions:
+  * Git
+  * Subversion
+
+* Developing libraries:
+  * Libxml2
+  * GLib
+  * JSON-GLib
+  * SQLite3
+  * GSL
+  * OpenMPI or MPICH
+  * GTK+3
+  * FreeGLUT
+  * GLEW
+  * GLFW
+  * SDL2
+
+* Windows system:
+  * XFCE, Mate, GNOME or Microsoft Windows
+
+* Editors:
+  * VIM
+  * NEdit
+  * UniversalIndentGUI
+
+* Mathematics:
+  * Galculator
+  * Maxima
+
+* Debuggers:
+  * DDD or GDB
+  * Valgrind
+
+* Differences:
+  * Meld
+
+* Text processing:
+  * Latex
+  * Evince
+
+* Documentation:
+  * Doxygen
+
+* Internet browser:
+  * Firefox
+  * Wget
+
+* Mail:
+  * Thunderbird
+  * Spamassassin
+
+* Graphics:
+  * GIMP
+  * ImageMagick
+
+* Multimedia:
+  * Parole or Totem
+
+* Office:
+  * LibreOffice
+
+* Flash viewer:
+  * GNash
+
 Building instructions
 ---------------------
 
@@ -39,6 +111,6 @@ Currently the following UNIX type systems are supported:
 * OpenBSD 6.1
 * OpenIndiana Hipster
 * OpenSUSE Linux Tumbleweed XFCE
-* Xubuntu Linux 17.04
+* Xubuntu Linux 18.04
 
 Other versions of these operative systems can work but it has not been tested.
