@@ -31,14 +31,14 @@ all: \
 	$(graphics) \
 
 $(BIN2):
-	pkg set-publisher -G '*' -g http://sfe.opencsw.org/localhostoih localhostoih
-	pkgadd -d http://get.opencsw.org/now
+	wget http://mirror.opencsw.org/opencsw/pkgutil.pkg
+	pkgadd -d pkgutil.pkg
 	$(BIN2)pkgutil -U
 	pkg refresh --full
 
 $(compilers):
 	$(MAKE) developer/build/autoconf developer/build/automake \
-		developer/gnu-binutils developer/gcc-6 developer/library/lint \
+		developer/gnu-binutils developer/gcc-8 developer/library/lint \
 		system/header developer/build/pkg-config
 
 $(repositories):
@@ -47,12 +47,12 @@ $(repositories):
 $(libraries):
 	$(MAKE) library/desktop/json-glib library/mpich/gcc developer/gsl \
 		library/desktop/gtk2 library/desktop/gtk3 \
-		text/gnu-gettext sfe/x11/library/freeglut sfe/library/libglew \
-		library/openmpi/gcc system/font/gnome-fonts sfe/developer/gcc-49
+		developer/gnome/gettext x11/library/freeglut \
+		x11/library/libglew library/openmpi/gcc system/font/gnome-fonts
 
 $(editors):
-	$(MAKE) editor/gvim
 	$(MAKE2) nedit
+	$(MAKE) editor/gvim
 
 $(math):
 	$(MAKE) runtime/sbcl image/gnuplot
@@ -67,10 +67,10 @@ $(doxygen):
 	$(MAKE) developer/documentation-tool/doxygen
 
 $(pdf):
-	$(MAKE) desktop/pdf-viewer/evince
 	$(MAKE2) texlive texlive_latex_extra texlive_publishers \
 		texlive_fonts_recommended texlive_lang_spanish texlive_lang_french \
 		texlive_lang_italian texlive_pstricks
+	$(MAKE) desktop/pdf-viewer/evince
 
 $(graphics):
 	$(MAKE) image/imagemagick image/editor/gimp /image/editor/gimp/locale/es
@@ -79,8 +79,8 @@ $(office):
 	$(MAKE) desktop/application/libreoffice52
 
 update:
-	pkg update
 	/opt/csw/bin/pkgutil -U -u
+	pkg update
 
 clean:
 	beadm list
