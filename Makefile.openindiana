@@ -38,8 +38,8 @@ $(BIN2):
 
 $(compilers):
 	$(MAKE) developer/build/autoconf developer/build/automake \
-		developer/gnu-binutils developer/gcc-8 developer/library/lint \
-		system/header developer/build/pkg-config
+		developer/gnu-binutils developer/gcc-6 developer/gcc-8 \
+		developer/library/lint system/header developer/build/pkg-config
 
 $(repositories):
 	$(MAKE) developer/versioning/git developer/versioning/subversion
