@@ -10,11 +10,9 @@ debug = $(BIN)ddd
 diff = $(BIN)meld
 pdf = $(BIN)pdflatex
 doxygen = $(BIN)doxygen
-browser = $(BIN)adblock
 mail = $(BIN)thunderbird
 graphics = $(BASE)lib64/gimp/2.0/plug-ins/ufraw-gimp
 spam = $(BIN)spamassassin
-flash = $(BASE)lib64/browser-plugins/libflashplayer.so
 
 all: \
 	$(compilers) \
@@ -26,11 +24,9 @@ all: \
 	$(diff) \
 	$(pdf) \
 	$(doxygen) \
-	$(browser) \
 	$(mail) \
 	$(graphics) \
-	$(spam) \
-	$(flash)
+	$(spam)
 
 $(compilers):
 	$(MAKE) make automake gcc gcc-c++ gcc-fortran
@@ -57,15 +53,12 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) latex-beamer texlive texlive-xtab texlive-multirow texlive-sectsty \
+	$(MAKE) texlive texlive-xtab texlive-multirow texlive-sectsty \
 		texlive-tocloft texlive-elsarticle texlive-ascelike texlive-lineno \
 		texlive-pst-tools texlive-auto-pst-pdf texlive-tabu
 
 $(doxygen):
 	$(MAKE) doxygen
-
-$(browser):
-#	$(MAKE) mozaddon-adblock_edge
 
 $(mail):
 	$(MAKE) thunderbird
@@ -75,9 +68,6 @@ $(graphics):
 
 $(spam):
 	$(MAKE) spamassassin
-
-$(flash):
-#	$(MAKE) flash-player
 
 update:
 	zypper patch
