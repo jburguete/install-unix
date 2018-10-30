@@ -4,7 +4,7 @@ BIN = $(BASE)bin/
 compilers = $(BIN)gcc7
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-x = $(BASE)sbin/gdm
+x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
 editors = $(BIN)nedit
 debug = $(BIN)ddd
@@ -50,7 +50,7 @@ $(libraries):
 	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
 
 $(x):
-	$(MAKE) xorg-minimal xfce gnome-keyring gdm
+	$(MAKE) xorg-minimal xfce
 	X -configure
 	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
@@ -59,7 +59,6 @@ $(x):
 	echo "moused_enable=YES" >> /etc/rc.conf
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
-	echo "gdm_enable=YES" >> /etc/rc.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
