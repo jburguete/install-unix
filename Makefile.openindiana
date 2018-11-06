@@ -18,7 +18,6 @@ office = $(BASE)lib/libreoffice5.2/program/soffice
 
 all: \
 	$(BIN2) \
-	$(office) \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
@@ -29,6 +28,7 @@ all: \
 	$(doxygen) \
 	$(pdf) \
 	$(graphics) \
+	$(office) \
 
 $(BIN2):
 	wget http://mirror.opencsw.org/opencsw/pkgutil.pkg
@@ -49,6 +49,7 @@ $(libraries):
 		library/desktop/gtk2 library/desktop/gtk3 \
 		developer/gnome/gettext x11/library/freeglut \
 		x11/library/libglew library/openmpi/gcc system/font/gnome-fonts
+	ln -sf /usr/include/glew.h /usr/include/GL
 
 $(editors):
 	$(MAKE2) nedit
