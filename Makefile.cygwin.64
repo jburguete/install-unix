@@ -4,7 +4,7 @@ compilers = $(BASE)gfortran.exe
 repositories = $(BASE)svn.exe
 libraries = /usr/include/GL/glew.h
 x = $(BASE)startxfce4
-xutils = $(BIN)xfce4-screenshooter.exe
+xutils = $(BASE)xfce4-screenshooter.exe
 edit = $(BASE)gvim.exe
 math = $(BASE)gnuplot.exe
 debug = $(BASE)ddd.exe
@@ -13,6 +13,7 @@ pdf = $(BASE)evince.exe
 doxygen = $(BASE)doxygen.exe
 browser = $(BASE)wget.exe
 graphics = $(BASE)gimp-2.8.exe
+multimedia = $(BASE)parole.exe
 
 all: \
 	$(compilers) \
