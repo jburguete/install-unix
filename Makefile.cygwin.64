@@ -27,7 +27,8 @@ all: \
 	$(pdf) \
 	$(doxygen) \
 	$(browser) \
-	$(graphics)
+	$(graphics) \
+	$(multimedia)
 
 $(compilers):
 	$(MAKE) -P autoconf -P automake -P make -P gcc-core -P gcc-g++ \
@@ -43,17 +44,17 @@ $(libraries):
 		-P gnu-free-fonts -P libiconv-devel
 
 $(x):
-	$(MAKE) -P xserver-xorg -P xinit -P xfce4-session
+	$(MAKE) -P xorg-server -P xinit -P xfce4-session
 
 $(xutils):
 	$(MAKE) -P xfce4-cpugraph-plugin -P xfce4-weather-plugin -P xfce4-xkb-plugin \
-		-P xfce4-mixer -P xfce4-screenshooter
+		-P xfce4-pulseaudio-plugin -P xfce4-screenshooter
 
 $(edit):
 	$(MAKE) -P vim -P gvim
 
 $(math):
-	$(MAKE) -P gnome-calculator -P gnuplot
+	$(MAKE) -P gnome-calculator -P gnuplot -P maxima-xmaxima
 
 $(debug):
 	$(MAKE) -P gdb -P ddd
@@ -72,6 +73,9 @@ $(browser):
 
 $(graphics):
 	$(MAKE) -P ImageMagick -P gimp -P gimp-ufraw
+
+$(multimedia):
+	$(MAKE) -P parole
 
 update:
 	$(MAKE)

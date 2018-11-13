@@ -38,7 +38,7 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) $(MINGW)libxml2 $(MINGW)glib2 $(MINGW)json-glib $(MINGW)sqlite3 \
-		$(MINGW)gsl $(MINGW)gettext $(MINGW)gtk2 $(MINGW)gtk3 $(MINGW)freeglut \
+		$(MINGW)gsl $(MINGW)gettext $(MINGW)gtk3 $(MINGW)freeglut \
 		$(MINGW)glew
 
 $(edit):
