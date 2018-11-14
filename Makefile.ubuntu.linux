@@ -69,7 +69,7 @@ $(diff):
 $(pdf):
 	$(MAKE) texlive-latex-extra texlive-luatex texlive-publishers \
 		texlive-fonts-recommended texlive-lang-spanish texlive-lang-french \
-		texlive-lang-english texlive-lang-italian evince
+		texlive-lang-english texlive-lang-italian texlive-pstricks evince
 
 $(doxygen):
 	$(MAKE) doxygen
