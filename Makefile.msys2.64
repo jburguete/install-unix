@@ -13,6 +13,11 @@ pdf = $(BASE2)evince.exe
 doxygen = $(BASE)doxygen.exe
 browser = $(BASE)wget.exe
 graphics = $(BASE2)ufraw.exe
+fontsver = 20120503
+fontsname = freefont
+fontsurl = https://ftp.gnu.org/gnu/freefont/$(fontsname)-ttf-$(fontsver)
+fontsdir = /usr/share/fonts/truetype/
+fonts = $(fontsdir)FreeSans.ttf
 
 all: \
 	$(utils) \
@@ -25,10 +30,11 @@ all: \
 	$(pdf) \
 	$(doxygen) \
 	$(browser) \
-	$(graphics)
+	$(graphics) \
+	$(fonts)
 
 $(utils):
-	$(MAKE) zip xz tar patch
+	$(MAKE) zip xz tar unzip patch
 
 $(compilers):
 	$(MAKE) autoconf automake make $(MINGW)gcc $(MINGW)gcc-fortran pkg-config
@@ -61,6 +67,13 @@ $(browser):
 
 $(graphics):
 	$(MAKE) $(MINGW)imagemagick $(MINGW)gimp $(MINGW)gimp-ufraw
+
+$(fonts):
+	wget $(fontsurl).zip
+	unzip $(fontsname)-ttf-$(fontsver).zip
+	cd $(fontsname)-$(fontsver); \
+	test -d $(fontsdir) || mkdir -p $(fontsdir); \
+	mv *.ttf $(fontsdir)
 
 update:
 	pacman -Syu
