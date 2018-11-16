@@ -50,7 +50,7 @@ $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) gsl freeglut openmpi glew sdl2 gettext-tools
+	$(MAKE) gsl freeglut openmpi glew sdl2 gettext-tools freefont-ttf
 
 $(x):
 	$(MAKE) xfce
