@@ -38,7 +38,7 @@ all: \
 	$(multimedia) \
 	$(office) \
 	$(spam) \
-#	$(flash)
+	$(flash)
 
 $(compilers):
 	$(MAKE) gsed patch automake pkgconf gcc7
@@ -47,7 +47,7 @@ $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
+	$(MAKE) gettext-tools gsl mpich gtk3 glew glfw sdl2 freeglut
 
 $(x):
 	$(MAKE) xorg-minimal xfce
