@@ -50,9 +50,9 @@ $(libraries):
 	$(MAKE) gettext-tools gsl mpich gtk3 glew glfw sdl2 freeglut
 
 $(x):
-	$(MAKE) xorg-minimal xfce
-	X -configure
-	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+	$(MAKE) xorg-minimal xdm xfce
+	# X -configure
+	# ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -s /root/.xinitrc /root/.xsession
 	echo "snd_ihc_load=\"YES\"" >> /boot/loader.conf # adding sound
