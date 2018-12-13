@@ -1,7 +1,7 @@
 MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
-compilers = $(BIN)gcc7
+compilers = $(BIN)gcc8
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
 x = $(BIN)startxfce4
@@ -41,7 +41,7 @@ all: \
 	$(flash)
 
 $(compilers):
-	$(MAKE) gsed patch automake pkgconf gcc7
+	$(MAKE) gsed patch automake pkgconf gcc8
 
 $(repositories):
 	$(MAKE) git subversion
