@@ -48,7 +48,7 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) libxml2-dev libglib2.0-dev libjson-glib-dev libsqlite3-dev \
-		mpich libmpich-dev libgsl-dev libgtk-3-dev \
+		mpich libmpich-dev libgsl-dev libgtop2-dev libgtk-3-dev \
 		freeglut3-dev fonts-freefont-ttf libglew-dev libglfw3-dev libsdl2-dev
 
 $(x):
