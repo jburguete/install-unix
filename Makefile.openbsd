@@ -2,7 +2,7 @@ MAKE = pkg_add
 BASE = /usr/local/
 INC = $(BASE)include/
 BIN = $(BASE)bin/
-automake = $(BIN)automake-1.15
+automake = $(BIN)automake-1.16
 compilers = $(BIN)egfortran
 repositories = $(BIN)svn
 libraries = $(INC)SDL2/SDL.h
@@ -41,16 +41,16 @@ all: \
 	$(office) \
 
 $(automake): 
-	$(MAKE) automake-1.15p0
+	$(MAKE) automake-1.16.1
 
 $(compilers): $(automake)
-	$(MAKE) gsed patch gcc g95
+	$(MAKE) gsed gcc g95
 
 $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) gsl freeglut openmpi glew sdl2 gettext-tools
+	$(MAKE) gsl freeglut openmpi glew sdl2 gettext-tools freefont-ttf
 
 $(x):
 	$(MAKE) xfce
@@ -64,7 +64,7 @@ $(xutils):
 		xfce4-weather xfce4-xkb xfce4-screenshooter 
 
 $(editors):
-	$(MAKE) vim-8.0.0388-gtk2 nedit
+	$(MAKE) vim-8.1.0438-gtk2 nedit
 
 $(debug):
 	$(MAKE) ddd 

@@ -21,7 +21,6 @@ all:
 	else if test `uname -s` = "FreeBSD"; then \
 		make -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
-		export PKG_PATH=http://ftp.fr.openbsd.org/pub/OpenBSD/6.1/packages/amd64/; \
 		make -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
 		make -f Makefile.netbsd.src; \
@@ -80,7 +79,6 @@ update:
 	else if test `uname -s` = "FreeBSD"; then \
 		make update -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
-		export PKG_PATH=http://ftp.fr.openbsd.org/pub/OpenBSD/6.1/packages/amd64/; \
 		make update -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
 		make update -f Makefile.netbsd.src; \
@@ -139,7 +137,6 @@ upgrade:
 	else if test `uname -s` = "FreeBSD"; then \
 		make upgrade -f Makefile.freebsd; \
 	else if test `uname -s` = "OpenBSD"; then \
-		export PKG_PATH=http://ftp.fr.openbsd.org/pub/OpenBSD/6.1/packages/amd64/; \
 		make upgrade -f Makefile.openbsd; \
 	else if test `uname -s` = "NetBSD"; then \
 		make upgrade -f Makefile.netbsd.src; \

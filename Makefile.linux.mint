@@ -4,7 +4,6 @@ BIN = $(BASE)bin/
 compilers = $(BIN)gfortran
 repositories = $(BIN)svn
 libraries = $(BASE)include/SDL2/SDL.h
-xutils = $(BIN)X11/xscreensaver
 edit = $(BIN)universalindentgui
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
@@ -23,7 +22,6 @@ all: \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
-	$(xutils) \
 	$(edit) \
 	$(math) \
 	$(debug) \
@@ -49,12 +47,6 @@ $(libraries):
 		mpich libmpich-dev libgsl-dev libgtk-3-dev freeglut3-dev \
 		fonts-freefont-ttf libglew-dev libglfw3-dev libsdl2-dev
 
-$(xutils):
-	$(MAKE) xscreensaver xfce4-cpugraph-plugin xfce4-netload-plugin \
-		xfce4-systemload-plugin xfce4-weather-plugin xfce4-xkb-plugin \
-		xfce4-terminal orage gstreamer0.10-plugins-good \
-		gstreamer0.10-pulseaudio xfce4-pulseaudio-plugin xfce4-screenshooter
-
 $(edit):
 	$(MAKE) nedit vim-gtk3 universalindentgui
 
@@ -70,7 +62,7 @@ $(diff):
 $(pdf):
 	$(MAKE) texlive-latex-recommended texlive-latex-extra texlive-publishers \
 		texlive-fonts-recommended texlive-lang-spanish texlive-lang-french \
-		texlive-lang-english texlive-lang-italian evince
+		texlive-lang-english texlive-lang-italian texlive-luatex evince
 
 $(doxygen):
 	$(MAKE) doxygen

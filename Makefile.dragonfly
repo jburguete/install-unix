@@ -1,10 +1,10 @@
 MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
-compilers = $(BIN)gcc7
+compilers = $(BIN)gcc8
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-x = $(BASE)sbin/gdm
+x = $(BIN)startxfce4
 xutils = $(BIN)xfce4-screenshooter
 editors = $(BIN)nedit
 debug = $(BIN)ddd
@@ -38,28 +38,27 @@ all: \
 	$(multimedia) \
 	$(office) \
 	$(spam) \
-#	$(flash)
+	$(flash)
 
 $(compilers):
-	$(MAKE) gsed patch automake pkgconf gcc7
+	$(MAKE) gsed patch automake pkgconf gcc8
 
 $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
+	$(MAKE) gettext-tools gsl mpich gtk3 glew glfw sdl2 freeglut
 
 $(x):
-	$(MAKE) xorg-minimal xfce gnome-keyring gdm
-	X -configure
-	ln -s /root/xorg.conf.new /etc/X11/xorg.conf
+	$(MAKE) xorg-minimal xdm xfce
+	# X -configure
+	# ln -s /root/xorg.conf.new /etc/X11/xorg.conf
 	echo "exec startxfce4" > /root/.xinitrc
 	ln -s /root/.xinitrc /root/.xsession
 	echo "snd_ihc_load=\"YES\"" >> /boot/loader.conf # adding sound
 	echo "moused_enable=YES" >> /etc/rc.conf
 	echo "hald_enable=YES" >> /etc/rc.conf
 	echo "dbus_enable=YES" >> /etc/rc.conf
-	echo "gdm_enable=YES" >> /etc/rc.conf
 	echo "Please: reboot the computer to make effective the changes"
 	read
 
