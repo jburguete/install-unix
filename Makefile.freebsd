@@ -1,10 +1,9 @@
 MAKE = pkg install
 BASE = /usr/local/
 BIN = $(BASE)bin/
-compilers = $(BIN)gcc6
+compilers = $(BIN)gcc8
 repositories = $(BIN)svn
 libraries = $(BASE)include/GL/freeglut.h
-vboxguest = $(BASE)sbin/VBoxService
 x = $(BASE)sbin/gdm
 xutils = $(BIN)xfce4-screenshooter
 editors = $(BIN)nedit
@@ -25,7 +24,6 @@ all: \
 	$(compilers) \
 	$(repositories) \
 	$(libraries) \
-	$(vboxguest) \
 	$(x) \
 	$(xutils) \
 	$(editors) \
@@ -43,20 +41,13 @@ all: \
 	$(flash)
 
 $(compilers):
-	$(MAKE) gsed patch automake pkgconf gcc6
+	$(MAKE) gsed patch automake pkgconf gcc9 gmake
 
 $(repositories):
 	$(MAKE) git subversion
 
 $(libraries):
-	$(MAKE) gsl mpich gtk3 glew glfw sdl2 freeglut
-
-$(vboxguest):
-	$(MAKE) virtualbox-ose-additions
-	echo "vboxguest_enable=YES" >> /etc/rc.conf
-	echo "vboxservice_enable=YES" >> /etc/rc.conf
-	echo "Please: reboot the computer to make effective the changes"
-	read
+	$(MAKE) gsl libgtop mpich gtk3 glew glfw sdl2 freeglut
 
 $(x):
 	$(MAKE) xorg-minimal xfce gdm
@@ -125,7 +116,7 @@ update:
 	freebsd-update install
 
 upgrade:
-	freebsd-update -r 11.0-RELEASE upgrade
+	freebsd-update -r 12.0-RELEASE upgrade
 
 clean:
 	pkg autoremove
