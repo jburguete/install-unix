@@ -93,7 +93,7 @@ update:
 	dnf update --refresh
 
 upgrade:
-	dnf system-upgrade download --refresh --releasever=30 --allowerasing
+	dnf system-upgrade download --refresh --releasever=31 --allowerasing
 	dnf system-upgrade reboot
 
 clean:
