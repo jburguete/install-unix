@@ -92,7 +92,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-l10n-es-es xul-ext-adblock-plus
+	$(MAKE) wget firefox firefox-l10n-es-es webext-ublock-origin
 
 $(mail):
 	$(MAKE) thunderbird thunderbird-l10n-es-es

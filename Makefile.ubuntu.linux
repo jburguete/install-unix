@@ -76,7 +76,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-locale-es xul-ext-adblock-plus
+	$(MAKE) wget firefox firefox-locale-es webext-ublock-origin
 
 $(mail):
 	$(MAKE) thunderbird thunderbird-locale-es
