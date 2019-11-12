@@ -36,9 +36,9 @@ $(repositories):
 
 $(libraries):
 	$(MAKE) libxml2-devel glib2-devel json-glib-devel gettext-tools \
-		sqlite3-devel openmpi-devel gsl-devel libpng16-devel gtk3-devel \
-		freeglut-devel glew-devel libglfw-devel libSDL2-devel \
-		gnu-free-fonts
+		sqlite3-devel openmpi-devel gsl-devel libpng16-devel \
+		libgtop-devel gtk3-devel freeglut-devel glew-devel \
+		libglfw-devel libSDL2-devel gnu-free-fonts
 
 $(edit):
 	$(MAKE) gvim
