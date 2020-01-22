@@ -41,7 +41,7 @@ $(repositories):
 $(libraries):
 	$(MAKE) -P libxml2-devel -P libglib2.0-devel -P libjson-glib1.0-devel \
 	       	-P libsqlite3-devel -P libgsl-devel -P gettext-devel \
-		-P libgtop2.0-dev -P libgtk3-devel -P libGLEW-devel \
+		-P libgtop2.0-devel -P libgtk3-devel -P libGLEW-devel \
 		-P libSDL2-devel -P gnu-free-fonts -P libiconv-devel
 
 $(x):
