@@ -52,9 +52,11 @@ all:
 		else \
 			echo "Unknown machine"; \
 		fi fi \
+	else if test `uname -s` = "Darwin"; then \
+		make -f Makefile.darwin; \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi fi fi
 
 update:
 	if test `uname -s` = "Linux"; then \
@@ -110,9 +112,11 @@ update:
 		else \
 			echo "Unknown operative system"; \
 		fi fi \
+	else if test `uname -s` = "Darwin"; then \
+		make update -f Makefile.darwin; \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi fi fi
 
 upgrade:
 	if test `uname -s` = "Linux"; then \
@@ -160,9 +164,11 @@ upgrade:
 		else \
 			echo "Unknown operative system"; \
 		fi fi \
+	else if test `uname -s` = "Darwin"; then \
+		make upgrade -f Makefile.darwin; \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi fi
 
 clean:
 	if test `uname -s` = "Linux"; then \
@@ -210,6 +216,8 @@ clean:
 		else \
 			echo "Unknown operative system"; \
 		fi fi \
+	else if test `uname -s` = "Darwin"; then \
+		make clean -f Makefile.darwin; \
 	else \
 		echo "Unknown operative system"; \
-	fi fi fi fi fi fi fi fi fi
+	fi fi fi fi fi fi fi fi fi fi

@@ -1,0 +1,94 @@
+MAKE = brew install
+MAKE2 = brew cask install
+BASE = /usr/local/
+BIN = $(BASE)bin/
+compilers = $(BIN)pkg-config
+libraries = $(BASE)include/SDL2/SDL.h
+edit = $(BIN)nedit
+math = $(BIN)xmaxima
+debug = $(BIN)ddd
+diff = $(BIN)meld
+pdf = $(BIN)pdflatex
+doxygen = $(BIN)doxygen
+browser = $(BIN)firefox
+mail = $(BIN)thunderbird
+graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
+multimedia = $(BIN)vlc
+office = $(BIN)loffice
+spam = $(BIN)spamassassin
+flash = $(BIN)gnash
+
+all: \
+	$(compilers) \
+	$(libraries) \
+	$(edit) \
+	$(math) \
+	$(debug) \
+	$(diff) \
+	$(pdf) \
+	$(doxygen) \
+	$(browser) \
+	$(mail) \
+	$(graphics) \
+	$(multimedia) \
+	$(office) \
+	$(spam) \
+	$(flash)
+
+$(compilers):
+	$(MAKE) automake pkg-config
+
+$(libraries):
+	$(MAKE2) xquartz
+	$(MAKE) libxml2 glib json-glib sqlite mpich gsl gtk+3 freeglut \
+		glew glfw sdl2
+
+$(edit):
+	$(MAKE) nedit findent gnu-indent
+
+$(math):
+	$(MAKE) qalculate-gtk gnuplot maxima
+
+$(debug):
+	#$(MAKE) valgrind ddd
+	$(MAKE) ddd
+
+$(diff):
+	$(MAKE2) meld
+
+$(pdf):
+	$(MAKE2) mactex-no-gui
+	$(MAKE) evince
+
+$(doxygen):
+	$(MAKE) doxygen
+
+$(browser):
+	$(MAKE) wget firefox firefox-locale-es
+
+$(mail):
+	$(MAKE) thunderbird thunderbird-locale-es
+
+$(graphics):
+	$(MAKE) imagemagick gimp gimp-ufraw
+
+$(multimedia):
+	$(MAKE) vlc
+
+$(office):
+	$(MAKE) libreoffice
+
+$(spam):
+	$(MAKE) spamassassin
+
+$(flash):
+	$(MAKE) gnash
+
+update:
+	aptitude update
+
+upgrade:
+	aptitude upgrade
+
+clean:
+	aptitude clean
