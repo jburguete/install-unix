@@ -2,21 +2,21 @@ MAKE = brew install
 MAKE2 = brew cask install
 BASE = /usr/local/
 BIN = $(BASE)bin/
+BIN2 = /Applications/
+BIN3 = /Contents/MacOS/
 compilers = $(BIN)pkg-config
 libraries = $(BASE)include/SDL2/SDL.h
 edit = $(BIN)nedit
 math = $(BIN)xmaxima
 debug = $(BIN)ddd
 diff = $(BIN)meld
-pdf = $(BIN)pdflatex
+pdf = $(BIN)evince
 doxygen = $(BIN)doxygen
-browser = $(BIN)firefox
-mail = $(BIN)thunderbird
-graphics = $(BASE)lib/gimp/2.0/plug-ins/ufraw-gimp
-multimedia = $(BIN)vlc
+browser = $(BIN2)Firefox.app$(BIN3)firefox
+mail = $(BIN2)Thunderbird.app$(BIN3)thunderbird
+graphics = $(BIN)gimp
+multimedia = $(BIN)mpv
 office = $(BIN)loffice
-spam = $(BIN)spamassassin
-flash = $(BIN)gnash
 
 all: \
 	$(compilers) \
@@ -31,9 +31,7 @@ all: \
 	$(mail) \
 	$(graphics) \
 	$(multimedia) \
-	$(office) \
-	$(spam) \
-	$(flash)
+	$(office)
 
 $(compilers):
 	$(MAKE) automake pkg-config
@@ -64,31 +62,27 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-locale-es
+	$(MAKE) wget
+	$(MAKE2) firefox
 
 $(mail):
-	$(MAKE) thunderbird thunderbird-locale-es
+	$(MAKE2) thunderbird
 
 $(graphics):
-	$(MAKE) imagemagick gimp gimp-ufraw
+	$(MAKE) imagemagick ufraw
+	$(MAKE2) gimp
 
 $(multimedia):
-	$(MAKE) vlc
+	$(MAKE2) mpv
 
 $(office):
-	$(MAKE) libreoffice
-
-$(spam):
-	$(MAKE) spamassassin
-
-$(flash):
-	$(MAKE) gnash
+	$(MAKE2) libreoffice
 
 update:
-	aptitude update
+	brew update
 
 upgrade:
-	aptitude upgrade
+	brew upgrade
 
 clean:
-	aptitude clean
+	brew cleanup
