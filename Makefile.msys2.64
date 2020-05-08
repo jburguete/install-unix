@@ -74,6 +74,7 @@ $(fonts):
 	cd $(fontsname)-$(fontsver); \
 	test -d $(fontsdir) || mkdir -p $(fontsdir); \
 	mv *.ttf $(fontsdir)
+	rm -rf $(fontsname)*
 
 update:
 	pacman -Syu
