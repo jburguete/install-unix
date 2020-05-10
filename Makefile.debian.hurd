@@ -72,7 +72,7 @@ $(xutils):
 	#xfce4-systemload-plugin xfce4-cpugraph-plugin xfce4-netload-plugin 
 
 $(edit):
-	$(MAKE) nedit vim-gtk universalindentgui
+	$(MAKE) nedit vim-gtk3 indent universalindentgui
 
 $(math):
 	$(MAKE) galculator xmaxima
@@ -84,7 +84,7 @@ $(diff):
 	$(MAKE) meld
 
 $(pdf):
-	$(MAKE) texlive-latex-extra texlive-publishers texlive-luatex \
+	$(MAKE) texlive-latex-extra texlive-luatex texlive-publishers \
 		texlive-fonts-recommended texlive-lang-spanish texlive-lang-french \
 		texlive-lang-english texlive-lang-italian evince
 
@@ -92,7 +92,7 @@ $(doxygen):
 	$(MAKE) doxygen
 
 $(browser):
-	$(MAKE) wget firefox firefox-l10n-es-es webext-ublock-origin
+	$(MAKE) wget firefox-esr firefox-esr-l10n-es-es webext-ublock-origin
 
 $(mail):
 	$(MAKE) thunderbird thunderbird-l10n-es-es
