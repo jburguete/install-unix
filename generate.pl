@@ -236,18 +236,19 @@ else
 			$mingw."gimp",
 			$mingw."gimp-ufraw");
 		@postinstall=(
-			"\n\$ver=\"20120503\";",
-			"\n\$name=\"freefont\";",
-			"\n$file=\"${name}-ttf-${ver}.zip\";",
-			"\n$url=\"https://ftp.gnu.org/gnu/${name}/${file}\";",
-			"\n$dir=\"/usr/share/fonts/truetype/\";",
-			"\nsystem(\"wget\",$url);",
-			"\nsystem(\"unzip\",$file);",
-			"\nchdir \"${name}-${ver}\";",
-			"\nif (!(-d $dir)) mkdir -p $dir;",
-			"\nmove \"*.ttf\" $dir;",
-			"\nchdir \"..\";",
-			"\nunlink \"${name}*\";");
+			"ver=20120503",
+			"\nname=freefont",
+			"\nfile=\"\${name}-ttf-\${ver}.zip\"",
+			"\nurl=\"https://ftp.gnu.org/gnu/\${name}/\${file}\"",
+			"\ndir=/usr/share/fonts/truetype/",
+			"\nwget \$url",
+			"\nunzip \$file",
+			"\ncd \"\${name}-\${ver}\"",
+			"\nif test -d \$dir; then mkdir -p \$dir; fi",
+			"\nmv *.ttf \$dir",
+			"\ncd ..",
+			"\necho \"\${name}*\"",
+			"\nrm -rf \"\${name}*\"");
 	}
 	elsif ($os eq "Cygwin")
 	{
@@ -323,25 +324,25 @@ else
 if (@install)
 {
 	open (INSTALL,">install.sh");
-	print INSTALL "@install @packages";
-	print INSTALL "@postinstall" if (@postinstall);
+	print INSTALL "@install @packages\n";
+	print INSTALL "@postinstall\n" if (@postinstall);
 	close (INSTALL);
 }
 if (@clean)
 {
 	open (CLEAN,">clean.sh");
-	print CLEAN "@clean";
+	print CLEAN "@clean\n";
 	close (CLEAN);
 }
 if (@update)
 {
 	open (UPDATE,">update.sh");
-	print UPDATE "@update";
+	print UPDATE "@update\n";
 	close (UPDATE);
 }
 if (@upgrade)
 {
 	open (UPGRADE,">upgrade.sh");
-	print UPGRADE "@upgrade";
+	print UPGRADE "@upgrade\n";
 	close (UPGRADE);
 }
