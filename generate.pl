@@ -183,9 +183,9 @@ if ($os eq "Linux")
 else
 {
 	$os=`uname -o`;
-	$os=~ s/\r//g;
+	$os=~ s/\n//g;
 	$machine=`uname -m`;
-	$machine=~ s/\r//g;
+	$machine=~ s/\n//g;
 	print "OS=" . $os . " Mach=" . $machine . "\n";
 	if ($os eq "Msys")
 	{
