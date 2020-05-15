@@ -2,6 +2,7 @@
 #Supported systems
 #Debian Linux
 #Devuan Linux
+#FreeBSD
 #Linux Mint
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
@@ -16,8 +17,7 @@ if ($os eq "Linux")
 	print "OS=" . $os . " Dist=" . $dist . "\n";
 	if ($dist eq "Debian" || $dist eq "Devuan")
 	{
-		system("sudo","apt","install","aptitude")
-	   		if (!(-x "/usr/bin/aptitude"));
+		system("sudo","apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
 		@install=("aptitude","install");
 		@clean=("aptitude","clean");
 		@update=("aptitude","update");
@@ -32,8 +32,8 @@ if ($os eq "Linux")
 			"git",
 			"subversion",
 			"libxml2-dev",
-		   	"libglib2.0-dev",
-		   	"libjson-glib-dev",
+			"libglib2.0-dev",
+			"libjson-glib-dev",
 			"libsqlite3-dev",
 			"libgsl-dev",
 			"libgtop2-dev",
@@ -102,14 +102,14 @@ if ($os eq "Linux")
 			"spamassassin");
 		system("sudo",@install,"virt-what");
 		$machine=`sudo virt-what`;
-		$machine=~ s/\r//g;
+		$machine=~ s/\n//g;
 		if ($machine eq "virtualbox")
 		{
-			@postinstall=(@install,"virtualbox-guest-x11");
+			push @packages,"virtualbox-guest-x11";
 		}
 		elsif ($machine eq "qemu")
 		{
-			@postinstall=(@install,"xserver-xorg-video-qxl");
+			push @packages,"xserver-xorg-video-qxl";
 		}
 	}
 	elsif ($dist eq "Ubuntu" || $dist eq "LinuxMint")
@@ -130,8 +130,8 @@ if ($os eq "Linux")
 			"git",
 			"subversion",
 			"libxml2-dev",
-		   	"libglib2.0-dev",
-		   	"libjson-glib-dev",
+			"libglib2.0-dev",
+			"libjson-glib-dev",
 			"libsqlite3-dev",
 			"libgsl-dev",
 			"libgtop2-dev",
@@ -179,6 +179,90 @@ if ($os eq "Linux")
 			"libreoffice",
 			"spamassassin");
 	}
+}
+elsif ($os eq "FreeBSD")
+{
+	print "OS=" . $os . "\n";
+	@install=("pkg","install");
+	@clean=("pkg","autoremove",";","pkg","clean","-a");
+	@update=("freebsd-update","fetch",";","freebsd-update","install",";",
+					 "pkg","update",";","pkg","upgrade");
+	@upgrade=("freebsd-update","-r","12.1-RELEASE","upgrade");
+	@packages=(
+			"gsed",
+			"patch",
+			"autoconf",
+			"automake",
+			"pkgconf",
+			"gcc9",
+			"gmake",
+			"git",
+			"subversion",
+			"libxml2",
+			"gettext-tools",
+			"glib",
+			"json-glib",
+			"sqlite3",
+			"gsl",
+			"libgtop",
+			"gtk3",
+			"freeglut",
+			"glfw",
+			"sdl2",
+			"freefont-ttf",
+			"glew",
+			"mpich",
+			"xorg-minimal",
+			"xfce",
+			"lightdm",
+			"lightdm-gtk-greeter",
+			"lightdm-gtk-greeter-settings",
+			"xfce4-screensaver",
+			"xfce4-cpugraph-plugin",
+			"xfce4-netload-plugin",
+			"xfce4-systemload-plugin",
+			"xfce4-weather-plugin",
+			"xfce4-xkb-plugin",
+			"xfce4-terminal",
+			"orage",
+			"xfce4-pulseaudio-plugin",
+			"xfce4-screenshooter-plugin",
+			"vim",
+			"nedit",
+			"gindent",
+			"galculator",
+			"maxima",
+			"gdb",
+			"meld",
+			"latex-beamer",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox-esr",
+			"thunderbird",
+			"ImageMagick7",
+			"gimp",
+			"ufraw",
+			"mpv",
+			"libreoffice",
+			"es-libreoffice",
+			"spamassassin");
+	@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
+	system(@install,"virt-what");
+	$machine=`virt-what`;
+	$machine=~ s/\n//g;
+	print "Mach=" . $machine . "\n";
+	if ($machine eq "virtualbox")
+	{
+		push @packages,"virtualbox-ose-additions";
+		push @postinstall,"\necho vboxguest_enable=\"YES\" >> /etc/rc.conf";
+		push @postinstall,"\necho vboxservice_enable=\"YES\" >> /etc/rc.conf";
+	}
+	elsif ($machine eq "qemu")
+	{
+		push @packages,"xf86-video-qxl";
+	}
+	push @postinstall,"\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
 }
 else
 {
