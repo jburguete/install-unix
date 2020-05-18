@@ -4,6 +4,7 @@
 #Devuan Linux
 #FreeBSD
 #Linux Mint
+#Manjaro Linux
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
 #Ubuntu Linux
@@ -52,7 +53,7 @@ if ($os eq "Linux")
 			"xorg",
 			"xfce4",
 			"lightdm",
-			"xscreensaver",
+			"xfce4-screensaver",
 			"xfce4-cpugraph-plugin",
 			"xfce4-netload-plugin",
 			"xfce4-systemload-plugin",
@@ -179,6 +180,69 @@ if ($os eq "Linux")
 			"libreoffice",
 			"spamassassin");
 	}
+	elsif ($dist eq "ManjaroLinux")
+	{
+		@install=("pacman","-S");
+		@clean=("pacman","-Sc");
+		@update=("pacman","-Syu");
+		@packages=(
+			"autoconf",
+			"automake",
+			"pkgconf",
+			"gcc",
+			"gcc-fortran",
+			"make",
+			"git",
+			"subversion",
+			"libxml2",
+			"glib2",
+			"json-glib",
+			"sqlite",
+			"gsl",
+			"libgtop",
+			"gtk3",
+			"freeglut",
+			"glfw-x11",
+			"sdl2",
+			"gnu-free-fonts",
+			"glew",
+			"openmpi",
+			"xfce4-screensaver",
+			"xfce4-cpugraph-plugin",
+			"xfce4-netload-plugin",
+			"xfce4-systemload-plugin",
+			"xfce4-weather-plugin",
+			"xfce4-xkb-plugin",
+			"xfce4-pulseaudio-plugin",
+			"nedit",
+			"gvim",
+			"indent",
+			"galculator",
+			"maxima",
+			"valgrind",
+			"gdb",
+			"meld",
+			"texlive-core",
+			"texlive-latexextra",
+			"texlive-publishers",
+			"texlive-pstricks",
+			"graphviz",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox",
+			"firefox-i18n-es-es",
+			"firefox-ublock-origin",
+			"thunderbird",
+			"thunderbird-i18n-es-es",
+			"imagemagick",
+			"gimp",
+			"dcraw",
+			"mpv",
+			"libreoffice-still",
+			"libreoffice-still-es",
+			"spamassassin");
+	}
 }
 elsif ($os eq "FreeBSD")
 {
@@ -281,13 +345,13 @@ elsif ($os eq "SunOS")
 		"gettext",
 		"json-glib",
 		"gsl",
-		"library/mpich/gcc"
+		"library/mpich/gcc",
 		"gtk3",
 		"libglew",
 		"freeglut",
 		"gnome-fonts",
 		"mate_install",
-		"gvim",
+		"gvim"
 	);
 }
 else
