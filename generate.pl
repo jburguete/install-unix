@@ -2,11 +2,13 @@
 #Supported systems
 #Debian Linux
 #Devuan Linux
+#Dyson (partially)
 #FreeBSD
 #Linux Mint
 #Manjaro Linux
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
+#OpenIndiana (partially)
 #Ubuntu Linux
 use File::Copy 'move';
 $os=`uname -s`;
@@ -330,29 +332,116 @@ elsif ($os eq "FreeBSD")
 }
 elsif ($os eq "SunOS")
 {
-	print "OS=" . $os . "\n";
-	@install=("pkg","install");
-	@clean=("pkg","autoremove",";","pkg","clean","-a",";","beadmin","list");
-	@update=("pkg","update");
-	system("pkg","mate_install");
-	@packages=(
-		"autoconf",
-		"automake",
-		"pkg-config",
-		"gcc-10",
-		"git",
-		"developer/versioning/subversion",
-		"gettext",
-		"json-glib",
-		"gsl",
-		"library/mpich/gcc",
-		"gtk3",
-		"libglew",
-		"freeglut",
-		"gnome-fonts",
-		"mate_install",
-		"gvim"
-	);
+	print "OS=" . $os . " ";
+	$dist=`uname -v`;
+	$dist=~ s/\n//g;
+	if ($dist eq "5.10.18.git.2a44663-0.1")
+	{
+		print "Dist=Dyson\n";
+		system("sudo","apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
+		@install=("aptitude","install");
+		@clean=("aptitude","clean");
+		@update=("aptitude","update");
+		@upgrade=("aptitude","upgrade");
+		@packages=(
+			"autoconf",
+			"automake",
+			"pkg-config",
+			"g++",
+			"gfortran",
+			"make",
+			"git",
+			"subversion",
+			"libxml2-dev",
+			"libglib2.0-dev",
+			"libjson-glib-dev",
+			"libsqlite3-dev",
+			"libgsl-dev",
+			"libgtop2-dev",
+			"libgtk-3-dev",
+			"freeglut3-dev",
+			"libsdl2-dev",
+			"fonts-freefont-ttf",
+			"libglew-dev",
+			"mpich2",
+			"libmpich-dev",
+			"xserver-xorg-input-kbd",
+			"xserver-xorg-input-mouse",
+			"xserver-xorg-video-vesa",
+			"virtualbox-guest-x11",
+			"xorg",
+			"xfce4",
+			"xfce4-screensaver",
+			"xfce4-cpugraph-plugin",
+			"xfce4-netload-plugin",
+			"xfce4-systemload-plugin",
+			"xfce4-weather-plugin",
+			"xfce4-xkb-plugin",
+			"xfce4-terminal",
+			"orage",
+			"gstreamer1.0-plugins-good",
+			"gstreamer1.0-pulseaudio",
+			"xfce4-pulseaudio-plugin",
+			"xfce4-screenshooter",
+			"vim-gtk3",
+			"indent",
+			"gnome-galculator",
+			"xmaxima",
+			"ddd",
+			"meld",
+			"texlive-latex-extra",
+			"texlive-luatex",
+			"texlive-publishers",
+			"texlive-fonts-recommended",
+			"texlive-lang-spanish",
+			"texlive-lang-french",
+			"texlive-lang-english",
+			"texlive-lang-italian",
+			"texlive-pstricks",
+			"graphviz",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox-esr",
+			"firefox-esr-l10n-es-es",
+			"webext-ublock-origin",
+			"thunderbird",
+			"thunderbird-l10n-es-es",
+			"imagemagick",
+			"gimp",
+			"gimp-ufraw",
+			"mpv",
+			"gnumeric",
+			"libreoffice",
+			"libreoffice-l10n-es",
+			"spamassassin");
+	}
+	else
+	{
+		print "Dist=OpenIndiana\n";
+		@install=("pkg","install");
+		@clean=("pkg","autoremove",";","pkg","clean","-a",";","beadmin","list");
+		@update=("pkg","update");
+		system("pkg","mate_install");
+		@packages=(
+			"autoconf",
+			"automake",
+			"pkg-config",
+			"gcc-10",
+			"git",
+			"developer/versioning/subversion",
+			"gettext",
+			"json-glib",
+			"gsl",
+			"library/mpich/gcc",
+			"gtk3",
+			"libglew",
+			"freeglut",
+			"gnome-fonts",
+			"mate_install",
+			"gvim"
+		);
+	}
 }
 else
 {
