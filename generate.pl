@@ -2,7 +2,7 @@
 #Supported systems
 #Debian Linux
 #Devuan Linux
-#Dyson (partially)
+#Dyson
 #FreeBSD
 #Linux Mint
 #Manjaro Linux
@@ -371,11 +371,7 @@ elsif ($os eq "SunOS")
 			"virtualbox-guest-x11",
 			"xorg",
 			"xfce4",
-			"xfce4-screensaver",
-			"xfce4-cpugraph-plugin",
-			"xfce4-netload-plugin",
-			"xfce4-systemload-plugin",
-			"xfce4-weather-plugin",
+			"xscreensaver",
 			"xfce4-xkb-plugin",
 			"xfce4-terminal",
 			"orage",
@@ -385,7 +381,7 @@ elsif ($os eq "SunOS")
 			"xfce4-screenshooter",
 			"vim-gtk3",
 			"indent",
-			"gnome-galculator",
+			"gnome-calculator",
 			"xmaxima",
 			"ddd",
 			"meld",
@@ -399,22 +395,15 @@ elsif ($os eq "SunOS")
 			"texlive-lang-italian",
 			"texlive-pstricks",
 			"graphviz",
-			"evince",
+			"xpdf",
 			"doxygen",
 			"wget",
-			"firefox-esr",
-			"firefox-esr-l10n-es-es",
-			"webext-ublock-origin",
-			"thunderbird",
-			"thunderbird-l10n-es-es",
 			"imagemagick",
 			"gimp",
 			"gimp-ufraw",
-			"mpv",
 			"gnumeric",
 			"libreoffice",
-			"libreoffice-l10n-es",
-			"spamassassin");
+			"libreoffice-l10n-es");
 	}
 	else
 	{
