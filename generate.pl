@@ -8,6 +8,7 @@
 #Manjaro Linux
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
+#OpenBSD
 #OpenIndiana (partially)
 #Ubuntu Linux
 use File::Copy 'move';
@@ -329,6 +330,65 @@ elsif ($os eq "FreeBSD")
 		push @packages,"xf86-video-qxl";
 	}
 	push @postinstall,"\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
+}
+elsif ($os eq "OpenBSD")
+{
+	print "OS=" . $os . "\n";
+	@install=("pkg_add");
+	@update=("pkg_add","-u");
+	@packages=(
+		"gsed",
+		"gpatch",
+		"autoconf-2.69p2",
+		"automake-1.16.2",
+		"pkgconf",
+		"gcc",
+		"gmake",
+		"git",
+		"subversion",
+		"libxml",
+		"gettext-tools",
+		"glib2",
+		"json-glib",
+		"sqlite3",
+		"gsl",
+		"libgtop2",
+		"gtk+3",
+		"freeglut",
+		"glfw",
+		"sdl2",
+		"freefont-ttf",
+		"glew",
+		"openmpi",
+		"xfce",
+		"xfce4-cpugraph",
+		"xfce4-netload",
+		"xfce4-systemload",
+		"xfce4-weather",
+		"xfce4-xkb",
+		"orage",
+		"xfce4-pulseaudio",
+		"xfce4-screenshooter",
+		"vim-8.2.534-gtk3",
+		"nedit",
+		"gindent",
+		"galculator",
+		"maxima",
+		"ddd",
+		"meld",
+		"texlive_texmf-full",
+		"graphviz",
+		"evince",
+		"doxygen",
+		"wget",
+		"firefox-esr-i18n-es-ES",
+		"thunderbird-i18n-es-ES",
+		"ImageMagick",
+		"gimp",
+		"ufraw",
+		"mpv",
+		"libreoffice-i18n-es",
+		"milter-spamd");
 }
 elsif ($os eq "SunOS")
 {
