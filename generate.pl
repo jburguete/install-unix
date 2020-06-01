@@ -8,6 +8,7 @@
 #Manjaro Linux
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
+#NetBSD
 #OpenBSD
 #OpenIndiana (partially)
 #Ubuntu Linux
@@ -316,20 +317,103 @@ elsif ($os eq "FreeBSD")
 		"spamassassin");
 	@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
 	system(@install,"virt-what");
-	$machine=`virt-what`;
-	$machine=~ s/\n//g;
-	print "Mach=" . $machine . "\n";
-	if ($machine eq "virtualbox")
+	$mach=`virt-what`;
+	$mach=~ s/\n//g;
+	print "Mach=" . $mach. "\n";
+	if ($mach eq "virtualbox")
 	{
 		push @packages,"virtualbox-ose-additions";
 		push @postinstall,"\necho vboxguest_enable=\"YES\" >> /etc/rc.conf";
 		push @postinstall,"\necho vboxservice_enable=\"YES\" >> /etc/rc.conf";
 	}
-	elsif ($machine eq "qemu")
+	elsif ($mach eq "qemu")
 	{
 		push @packages,"xf86-video-qxl";
 	}
 	push @postinstall,"\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
+}
+elsif ($os eq "NetBSD")
+{
+	$arch=`uname -m`;
+	$arch=~ s/\n//g;
+	$ver=`uname -r`;
+	$ver=~ s/\n//g;
+	print "OS=" . $os . ' ' . $ver . " Arch=" . $arch . "\n";
+	@preinstall=("PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH");
+	@install=("pkg_add");
+	@packages=(
+		"virt-what",
+		"gsed",
+		"patch",
+		"autoconf",
+		"automake",
+		"pkgconf",
+		"gcc9",
+		"gmake",
+		"git",
+		"subversion",
+		"libxml2",
+		"gettext-tools",
+		"glib2",
+		"json-glib",
+		"sqlite3",
+		"gsl",
+		"libgtop",
+		"gtk3+",
+		"freeglut",
+		"glfw",
+		"freefont-ttf",
+		"glew",
+		"mpich",
+		"xfce4",
+		"xfce4-cpugraph-plugin",
+		"xfce4-netload-plugin",
+		"xfce4-systemload-plugin",
+		"xfce4-weather-plugin",
+		"xfce4-xkb-plugin",
+		"xfce4-mixer",
+		"xfce4-screenshooter",
+		"vim-gtk3",
+		"nedit",
+		"gindent",
+		"galculator",
+		"gnuplot",
+		"maxima",
+		"ddd",
+		"meld",
+		"tex-latex",
+		"tex-pst-pdf",
+		"tex-babel-spanish",
+		"tex-babel-french",
+		"tex-elsarticle",
+		"tex-beamer",
+		"tex-adjustbox",
+		"tex-float",
+		"tex-varwidth",
+		"tex-fancyvrb",
+		"tex-multirow",
+		"tex-hanging",
+		"tex-stackengine",
+		"tex-ulem",
+		"tex-wasysym",
+		"tex-sectsty",
+		"tex-fancyhdr",
+		"tex-tocloft",
+		"tex-newunicodechar",
+		"tex-caption",
+		"tex-etoc",
+		"graphviz",
+		"evince",
+		"doxygen",
+		"wget",
+		"firefox-esr",
+		"thunderbird",
+		"ImageMagick",
+		"gimp",
+		"gimp-ufraw",
+		"mpv",
+		"libreoffice",
+		"spamassassin");
 }
 elsif ($os eq "OpenBSD")
 {
@@ -636,6 +720,7 @@ else
 if (@install)
 {
 	open (INSTALL,">install.sh");
+	print INSTALL "@preinstall\n";
 	print INSTALL "@install @packages\n";
 	print INSTALL "@postinstall\n" if (@postinstall);
 	close (INSTALL);
