@@ -2,6 +2,7 @@
 #Supported systems
 #Debian Linux
 #Devuan Linux
+#Dragonfly BSD
 #Dyson
 #FreeBSD
 #Linux Mint
@@ -105,7 +106,7 @@ if ($os eq "Linux")
 			"libreoffice",
 			"libreoffice-l10n-es",
 			"spamassassin");
-		system("sudo",@install,"virt-what");
+		system("sudo",@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
 		$machine=`sudo virt-what`;
 		$machine=~ s/\n//g;
 		if ($machine eq "virtualbox")
@@ -303,6 +304,7 @@ elsif ($os eq "FreeBSD")
 		"gdb",
 		"meld",
 		"latex-beamer",
+		"graphviz",
 		"evince",
 		"doxygen",
 		"wget",
@@ -316,7 +318,7 @@ elsif ($os eq "FreeBSD")
 		"es-libreoffice",
 		"spamassassin");
 	@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
-	system(@install,"virt-what");
+	system(@install,"virt-what") if (!(-x "/usr/local/sbin/virt-what"));
 	$mach=`virt-what`;
 	$mach=~ s/\n//g;
 	print "Mach=" . $mach. "\n";
@@ -362,6 +364,7 @@ elsif ($os eq "NetBSD")
 		"gtk3+",
 		"freeglut",
 		"glfw",
+		"SDL2",
 		"freefont-ttf",
 		"glew",
 		"mpich",
@@ -473,6 +476,78 @@ elsif ($os eq "OpenBSD")
 		"mpv",
 		"libreoffice-i18n-es",
 		"milter-spamd");
+}
+elsif ($os eq "DragonFly")
+{
+	print "OS=" . $os . "\n";
+	@install=("pkg","install");
+	@clean=("pkg","autoremove",";","pkg","clean","-a");
+	@update=("pkg","update",";","pkg","upgrade");
+	@packages=(
+		"gsed",
+		"patch",
+		"autoconf",
+		"automake",
+		"pkgconf",
+		"gcc",
+		"gmake",
+		"git",
+		"subversion",
+		"libxml2",
+		"gettext-tools",
+		"glib",
+		"json-glib",
+		"sqlite3",
+		"gsl",
+		"libgtop",
+		"gtk3",
+		"freeglut",
+		"glfw",
+		"sdl2",
+		"freefont-ttf",
+		"glew",
+		"mpich",
+		"xf86-input-keyboard",
+		"xf86-input-mouse",
+		"xorg-minimal",
+		"xfce",
+		"xfce4-screensaver",
+		"xfce4-cpugraph-plugin",
+		"xfce4-netload-plugin",
+		"xfce4-systemload-plugin",
+		"xfce4-weather-plugin",
+		"xfce4-xkb-plugin",
+		"xfce4-terminal",
+		"orage",
+		"xfce4-mixer",
+		"xfce4-screenshooter-plugin",
+		"vim",
+		"nedit",
+		"gindent",
+		"galculator",
+		"maxima",
+		"gdb",
+		"meld",
+		"latex-beamer",
+		"graphviz",
+		"evince",
+		"doxygen",
+		"wget",
+		"firefox-esr",
+		"thunderbird",
+		"ImageMagick7",
+		"gimp",
+		"ufraw",
+		"mpv",
+		"libreoffice",
+		"es-libreoffice",
+		"spamassassin");
+	#@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
+	system(@install,"virt-what") if (!(-x "/usr/local/sbin/virt-what"));
+	$mach=`virt-what`;
+	$mach=~ s/\n//g;
+	print "Mach=" . $mach. "\n";
+	#push @postinstall,"\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
 }
 elsif ($os eq "SunOS")
 {
