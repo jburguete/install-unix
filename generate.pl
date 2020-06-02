@@ -260,6 +260,7 @@ elsif ($os eq "FreeBSD")
 	@packages=(
 		"gsed",
 		"patch",
+		"bash",
 		"autoconf",
 		"automake",
 		"pkgconf",
@@ -347,6 +348,7 @@ elsif ($os eq "NetBSD")
 		"virt-what",
 		"gsed",
 		"patch",
+		"bash",
 		"autoconf",
 		"automake",
 		"pkgconf",
@@ -426,6 +428,7 @@ elsif ($os eq "OpenBSD")
 	@packages=(
 		"gsed",
 		"gpatch",
+		"bash",
 		"autoconf-2.69p2",
 		"automake-1.16.2",
 		"pkgconf",
@@ -486,6 +489,7 @@ elsif ($os eq "DragonFly")
 	@packages=(
 		"gsed",
 		"patch",
+		"bash",
 		"autoconf",
 		"automake",
 		"pkgconf",
@@ -795,7 +799,10 @@ else
 if (@install)
 {
 	open (INSTALL,">install.sh");
-	print INSTALL "@preinstall\n";
+	if (@preinstall)
+	{
+		print INSTALL "@preinstall\n";
+	}
 	print INSTALL "@install @packages\n";
 	print INSTALL "@postinstall\n" if (@postinstall);
 	close (INSTALL);
