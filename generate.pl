@@ -23,7 +23,7 @@ if ($os eq "Linux")
 	print "OS=" . $os . " Dist=" . $dist . "\n";
 	if ($dist eq "Debian" || $dist eq "Devuan")
 	{
-		system("sudo","apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
+		system("apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
 		@install=("aptitude","install");
 		@clean=("aptitude","clean");
 		@update=("aptitude","update");
@@ -58,7 +58,7 @@ if ($os eq "Linux")
 			"xorg",
 			"xfce4",
 			"lightdm",
-			"xfce4-screensaver",
+			"xscreensaver",
 			"xfce4-cpugraph-plugin",
 			"xfce4-netload-plugin",
 			"xfce4-systemload-plugin",
@@ -106,14 +106,15 @@ if ($os eq "Linux")
 			"libreoffice",
 			"libreoffice-l10n-es",
 			"spamassassin");
-		system("sudo",@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
-		$machine=`sudo virt-what`;
-		$machine=~ s/\n//g;
-		if ($machine eq "virtualbox")
+		system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
 		{
 			push @packages,"virtualbox-guest-x11";
 		}
-		elsif ($machine eq "qemu")
+		elsif ($mach eq "kvm")
 		{
 			push @packages,"xserver-xorg-video-qxl";
 		}
@@ -329,7 +330,7 @@ elsif ($os eq "FreeBSD")
 		push @postinstall,"\necho vboxguest_enable=\"YES\" >> /etc/rc.conf";
 		push @postinstall,"\necho vboxservice_enable=\"YES\" >> /etc/rc.conf";
 	}
-	elsif ($mach eq "qemu")
+	elsif ($mach eq "kvm")
 	{
 		push @packages,"xf86-video-qxl";
 	}
