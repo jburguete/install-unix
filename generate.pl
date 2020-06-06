@@ -40,6 +40,7 @@ if ($os eq "Linux")
 			"libxml2-dev",
 			"libglib2.0-dev",
 			"libjson-glib-dev",
+			"gettext",
 			"libsqlite3-dev",
 			"libgsl-dev",
 			"libgtop2-dev",
