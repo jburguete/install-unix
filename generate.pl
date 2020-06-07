@@ -279,7 +279,8 @@ if ($os eq "Linux")
 		@clean=("dnf","autoremove",";","dnf","clean","all");
 		@update=("dnf","update");
 		@upgrade=("dnf","upgrade");
-		system("dnf group install gnome-desktop") if (!(-x "/usr/bin/gnome-shell"));
+		@preinstall="dnf group install gnome-desktop"
+			if (!(-x "/usr/bin/gnome-shell"));
 		@packages=(
 			"patch",
 			"autoconf",
@@ -431,6 +432,10 @@ if ($os eq "Linux")
 		{
 			push @packages,"xf86-video-qxl";
 		}
+	}
+	else
+	{
+		print "Unsupported Linux distribution\n";
 	}
 }
 elsif ($os eq "FreeBSD")
@@ -840,6 +845,10 @@ elsif ($os eq "SunOS")
 			"gvim"
 		);
 	}
+	else
+	{
+		print "Unsupported Illumos distribution\n";
+	}
 }
 elsif ($os eq "GNU")
 {
@@ -1069,6 +1078,10 @@ else
 			"-P gimp",
 			"-P gimp-ufraw",
 			"-P parole");
+	}
+	else
+	{
+		print "Unsupported operative system\n";
 	}
 }
 if (@install)
