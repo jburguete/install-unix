@@ -95,8 +95,8 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 
 * Debian 10 (Hurd, kFreeBSD or Linux) 
 * Devuan Linux 3
-* DragonFlyBSD 5.2
-* Dyson Illumos (2014/10/8)
+* Dragonfly BSD 5.8
+* Dyson Illumos (2019/11/5)
 * Fedora Linux 32
 * FreeBSD 12.1
 * Linux Mint DE 3
@@ -107,7 +107,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * OpenBSD 6.7
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap
-* Xubuntu Linux 18.04
+* Xubuntu Linux 20.04
 
 Otras versiones de estos sistemas operativos u otras distribuciones podrían
 funcionar pero no han sido probadas.

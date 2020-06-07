@@ -95,8 +95,8 @@ Currently the following UNIX type systems are supported:
 
 * Debian 10 (Hurd, kFreeBSD or Linux) 
 * Devuan Linux 3
-* DragonFlyBSD 5.2
-* Dyson Illumos (2014/10/8)
+* Dragonfly BSD 5.8
+* Dyson Illumos (2019/11/5)
 * Fedora Linux 32
 * FreeBSD 12.1
 * Linux Mint DE 3
@@ -107,7 +107,7 @@ Currently the following UNIX type systems are supported:
 * OpenBSD 6.7
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap
-* Xubuntu Linux 18.04
+* Xubuntu Linux 20.04
 
 Other versions of these operative systems or other distributions could work but 
 it has not been tested.
