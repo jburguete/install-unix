@@ -29,6 +29,7 @@ if ($os eq "Linux")
 		@update=("aptitude","update");
 		@upgrade=("aptitude","upgrade");
 		@packages=(
+			"patch",
 			"autoconf",
 			"automake",
 			"pkg-config",
@@ -48,7 +49,7 @@ if ($os eq "Linux")
 			"freeglut3-dev",
 			"libglfw3-dev",
 			"libsdl2-dev",
-			"fonts-freefont-ttf",
+			"fonts-freefont-otf",
 			"libglew-dev",
 			"mpich",
 			"libmpich-dev",
@@ -129,6 +130,7 @@ if ($os eq "Linux")
 		@update=("aptitude","update");
 		@upgrade=("aptitude","upgrade");
 		@packages=(
+			"patch",
 			"autoconf",
 			"automake",
 			"pkg-config",
@@ -147,7 +149,7 @@ if ($os eq "Linux")
 			"freeglut3-dev",
 			"libglfw3-dev",
 			"libsdl2-dev",
-			"fonts-freefont-ttf",
+			"fonts-freefont-otf",
 			"libglew-dev",
 			"mpich",
 			"libmpich-dev",
@@ -193,6 +195,7 @@ if ($os eq "Linux")
 		@clean=("pacman","-Sc");
 		@update=("pacman","-Syu");
 		@packages=(
+			"patch",
 			"autoconf",
 			"automake",
 			"pkgconf",
@@ -569,6 +572,7 @@ elsif ($os eq "SunOS")
 		@update=("aptitude","update");
 		@upgrade=("aptitude","upgrade");
 		@packages=(
+			"patch",
 			"autoconf",
 			"automake",
 			"pkg-config",
@@ -638,6 +642,7 @@ elsif ($os eq "SunOS")
 		@update=("pkg","update");
 		system("pkg","mate_install");
 		@packages=(
+			"patch",
 			"autoconf",
 			"automake",
 			"pkg-config",
@@ -655,6 +660,95 @@ elsif ($os eq "SunOS")
 			"mate_install",
 			"gvim"
 		);
+	}
+}
+elsif ($os eq "GNU")
+{
+	print "OS=" . $os . "\n";
+	@install=("apt","install");
+	@clean=("apt","autoremove",";","apt","clean");
+	@update=("apt","update");
+	@upgrade=("apt","upgrade");
+	@packages=(
+		"patch",
+		"autoconf",
+		"automake",
+		"pkg-config",
+		"g++",
+		"gfortran",
+		"make",
+		"git",
+		"subversion",
+		"libxml2-dev",
+		"libglib2.0-dev",
+		"libjson-glib-dev",
+		"libsqlite3-dev",
+		"libgsl-dev",
+		"libgtop2-dev",
+		"libgtk-3-dev",
+		"freeglut3-dev",
+		"libglfw3-dev",
+		"libsdl2-dev",
+		"fonts-freefont-otf",
+		"libglew-dev",
+		"mpich",
+		"libmpich-dev",
+		"xserver-xorg-input-kbd",
+		"xserver-xorg-input-mouse",
+		"xserver-xorg-video-vesa",
+		"xorg",
+		"xfce4",
+		"xfce4-screensaver",
+		"xfce4-weather-plugin",
+		"xfce4-xkb-plugin",
+		"xfce4-terminal",
+		"orage",
+		"gstreamer1.0-plugins-good",
+		"gstreamer1.0-pulseaudio",
+		"xfce4-pulseaudio-plugin",
+		"xfce4-screenshooter",
+		"nedit",
+		"vim-gtk3",
+		"indent",
+		"universalindentgui",
+		"galculator",
+		"xmaxima",
+		"valgrind",
+		"valgrind-mpi",
+		"ddd",
+		"meld",
+		"texlive-latex-extra",
+		"texlive-luatex",
+		"texlive-publishers",
+		"texlive-fonts-recommended",
+		"texlive-lang-spanish",
+		"texlive-lang-french",
+		"texlive-lang-english",
+		"texlive-lang-italian",
+		"texlive-pstricks",
+		"graphviz",
+		"evince",
+		"doxygen",
+		"wget",
+		"firefox-esr",
+		"firefox-esr-l10n-es-es",
+		"webext-ublock-origin",
+		"thunderbird",
+		"thunderbird-l10n-es-es",
+		"imagemagick",
+		"gimp",
+		"gimp-ufraw",
+		"mpv",
+		"gnumeric",
+		"libreoffice",
+		"libreoffice-l10n-es",
+		"spamassassin");
+	system("sudo",@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+	$machine=`sudo virt-what`;
+	$machine=~ s/\n//g;
+	if ($machine eq "kvm")
+	{
+		push @packages,"xserver-xorg-video-qxl";
 	}
 }
 else
