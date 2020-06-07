@@ -1,6 +1,6 @@
 
 #Supported systems
-#Debian Hurd and Linux
+#Debian Hurd, kFreeBSD and Linux
 #Devuan Linux
 #Dragonfly BSD
 #Dyson
@@ -938,6 +938,95 @@ elsif ($os eq "GNU")
 	{
 		push @packages,"xserver-xorg-video-qxl";
 	}
+}
+elsif ($os eq "GNU/kFreeBSD")
+{
+	print "OS=" . $os . "\n";
+	@clean=("apt","autoremove",";","apt","clean");
+	@update=("apt","update");
+	@upgrade=("apt","upgrade");
+	@packages=(
+		"patch",
+		"autoconf",
+		"automake",
+		"pkg-config",
+		"g++",
+		"gfortran",
+		"make",
+		"git",
+		"subversion",
+		"libxml2-dev",
+		"libglib2.0-dev",
+		"libjson-glib-dev",
+		"libsqlite3-dev",
+		"libgsl-dev",
+		"libgtop2-dev",
+		"libgtk-3-dev",
+		"freeglut3-dev",
+		"libglfw3-dev",
+		"libsdl2-dev",
+		"fonts-freefont-otf",
+		"libglew-dev",
+		"mpich",
+		"libmpich-dev",
+		"xserver-xorg-input-kbd",
+		"xserver-xorg-input-mouse",
+		"xserver-xorg-video-vesa",
+		"xorg",
+		"xfce4",
+		"xfce4-screensaver",
+		"xfce4-weather-plugin",
+		"xfce4-xkb-plugin",
+		"xfce4-terminal",
+		"orage",
+		"gstreamer1.0-plugins-good",
+		"gstreamer1.0-pulseaudio",
+		"xfce4-pulseaudio-plugin",
+		"xfce4-screenshooter",
+		"nedit",
+		"vim-gtk3",
+		"indent",
+		"universalindentgui",
+		"galculator",
+		"xmaxima",
+		"valgrind",
+		"valgrind-mpi",
+		"ddd",
+		"meld",
+		"texlive-latex-extra",
+		"texlive-luatex",
+		"texlive-publishers",
+		"texlive-fonts-recommended",
+		"texlive-lang-spanish",
+		"texlive-lang-french",
+		"texlive-lang-english",
+		"texlive-lang-italian",
+		"texlive-pstricks",
+		"graphviz",
+		"evince",
+		"doxygen",
+		"wget",
+		"firefox-esr",
+		"firefox-esr-l10n-es-es",
+		"webext-ublock-origin",
+		"thunderbird",
+		"thunderbird-l10n-es-es",
+		"imagemagick",
+		"gimp",
+		"gimp-ufraw",
+		"mpv",
+		"gnumeric",
+		"libreoffice",
+		"libreoffice-l10n-es",
+		"spamassassin");
+	system("sudo",@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+	$machine=`sudo virt-what`;
+	$machine=~ s/\n//g;
+	if ($machine eq "kvm")
+	{
+		push @packages,"xserver-xorg-video-qxl";
+	}
+
 }
 else
 {
