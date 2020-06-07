@@ -329,6 +329,92 @@ if ($os eq "Linux")
 			push @packages,"xorg-x11-drv-qxl";
 		}
 	}
+	elsif ($dist eq "openSUSE")
+	{
+		@install=("zypper","install");
+		@clean=("zypper","autoremove",";","zypper","clean","all");
+		@update=("zypper","patch");
+		@upgrade=("zypper","up");
+		system(@install,"lsb-release") if (!(-x "/usr/bin/lsb_release"));
+		@packages=(
+			"patch",
+			"autoconf",
+			"automake",
+			"pkg-config",
+			"gcc",
+			"gcc-c++",
+			"gcc-fortran",
+			"make",
+			"git-core",
+			"subversion",
+			"libxml2-devel",
+			"glib2-devel",
+			"gettext-tools",
+			"json-glib-devel",
+			"sqlite3-devel",
+			"gsl-devel",
+			"libgtop-devel",
+			"gtk3-devel",
+			"freeglut-devel",
+			"libglfw-devel",
+			"libSDL2-devel",
+			"gnu-free-fonts",
+			"glew-devel",
+			"mpich-devel",
+			"xf86-input-keyboard",
+			"xf86-input-mouse",
+			"xf86-input-evdev",
+			"xf86-video-vesa",
+			"xorg-x11",
+			"xfce4-session",
+			"xfce4-terminal",
+			"lightdm",
+			"xscreensaver",
+			"xfce4-panel-plugin-cpugraph",
+			"xfce4-panel-plugin-netload",
+			"xfce4-panel-plugin-systemload",
+			"xfce4-panel-plugin-weather",
+			"xfce4-panel-plugin-xkb",
+			"orage",
+			"xfce4-pulseaudio-plugin",
+			"nedit",
+			"gvim",
+			"indent",
+			"galculator",
+			"maxima-xmaxima",
+			"valgrind",
+			"ddd",
+			"meld",
+			"texlive",
+			"texlive-latex",
+			"texlive-collection-publishers",
+			"texlive-pstricks",
+			"graphviz",
+			"evince",
+			"doxygen",
+			"wget",
+			"MozillaFirefox",
+			"MozillaThunderbird",
+			"ImageMagick",
+			"gimp",
+			"gimp-ufraw",
+			"mpv",
+			"libreoffice",
+			"libreoffice-l10n-es",
+			"spamassassin");
+		system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
+		{
+			push @packages,"virtualbox-guest-x11";
+		}
+		elsif ($mach eq "kvm")
+		{
+			push @packages,"xf86-video-qxl";
+		}
+	}
 }
 elsif ($os eq "FreeBSD")
 {
