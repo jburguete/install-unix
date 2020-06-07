@@ -1,8 +1,10 @@
 install-unix
 ============
 
-A set of Makefiles to install some useful applications on different UNIX type
-systems guest in QEMU/KVM.
+:gb:[english](README.md) :es:[español](README.es.md)
+
+A perl script to install some useful applications on different UNIX type
+systems guest in QEMU/KVM or in Virtualbox.
 
 Tools list
 ----------
@@ -68,21 +70,20 @@ Tools list
   * ImageMagick
 
 * Multimedia:
-  * Parole or Totem
+  * MPV, Parole or Totem
 
 * Office:
   * LibreOffice
-
-* Flash viewer:
-  * GNash
 
 Building instructions
 ---------------------
 
 When you have installed the basic operative system, with the required tools git
-and make, you have only to type as root:
+and perl, you have to type as root:
 
-> make
+> \# perl generate.pl
+>
+> \# sh install.sh
 
 On Microsoft Windows systems you can follow detailed instructions on the
 tutorial supplied.
@@ -92,25 +93,21 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
-* Debian 9 (Hurd, kFreeBSD or Linux) 
-* Devuan Linux 2
+* Debian 10 (Hurd, kFreeBSD or Linux) 
+* Devuan Linux 3
 * DragonFlyBSD 5.2
 * Dyson Illumos (2014/10/8)
-* Fedora Linux 24
-* FreeBSD 11.0
+* Fedora Linux 32
+* FreeBSD 12.1
+* Linux Mint DE 3
 * Manjaro Linux
-* Microsoft Windows 7 32 bits + Cygwin
-* Microsoft Windows 7 32 bits + MSYS2
-* Microsoft Windows 7 64 bits + Cygwin
-* Microsoft Windows 7 64 bits + MSYS2
-* Microsoft Windows 10 32 bits + Cygwin
-* Microsoft Windows 10 32 bits + MSYS2
-* Microsoft Windows 10 64 bits + Cygwin
-* Microsoft Windows 10 64 bits + MSYS2
-* NetBSD 7.0
-* OpenBSD 6.1
+* Microsoft Windows 10 + Cygwin
+* Microsoft Windows 10 + MSYS2
+* NetBSD 9.0
+* OpenBSD 6.7
 * OpenIndiana Hipster
-* OpenSUSE Linux Tumbleweed XFCE
+* OpenSUSE Linux Leap
 * Xubuntu Linux 18.04
 
-Other versions of these operative systems can work but it has not been tested.
+Other versions of these operative systems or other distributions could work but 
+it has not been tested.
