@@ -19,6 +19,25 @@ $os=`uname -s`;
 $os=~ s/\n//g;
 if ($os eq "Linux")
 {
+	if (!(-x "/usr/bin/lsb_release"))
+	{
+		if (-x "/usr/bin/apt")
+		{
+			system("apt install lsb-release");
+		}
+		elsif (-x "/usr/bin/pacman")
+		{
+			system("pacman -S lsb-release");
+		}
+		elsif (-x "/usr/bin/dnf")
+		{
+			system("dnf install redhat-lsb-core");
+		}
+		elsif (-x "/usr/bin/zypper")
+		{
+			system("zypper install lsb-release");
+		}
+	}
 	$dist=`lsb_release -i -s`;
 	$dist=~ s/\n//g;
 	print "OS=" . $os . " Dist=" . $dist . "\n";
@@ -260,7 +279,6 @@ if ($os eq "Linux")
 		@clean=("dnf","autoremove",";","dnf","clean","all");
 		@update=("dnf","update");
 		@upgrade=("dnf","upgrade");
-		system(@install,"redhat-lsb-core") if (!(-x "/usr/bin/lsb_release"));
 		system("dnf group install gnome-desktop") if (!(-x "/usr/bin/gnome-shell"));
 		@packages=(
 			"patch",
@@ -332,10 +350,9 @@ if ($os eq "Linux")
 	elsif ($dist eq "openSUSE")
 	{
 		@install=("zypper","install");
-		@clean=("zypper","autoremove",";","zypper","clean","all");
+		@clean=("zypper","clean","-a");
 		@update=("zypper","patch");
 		@upgrade=("zypper","up");
-		system(@install,"lsb-release") if (!(-x "/usr/bin/lsb_release"));
 		@packages=(
 			"patch",
 			"autoconf",
@@ -376,7 +393,7 @@ if ($os eq "Linux")
 			"xfce4-panel-plugin-weather",
 			"xfce4-panel-plugin-xkb",
 			"orage",
-			"xfce4-pulseaudio-plugin",
+			"xfce4-panel-plugin-pulseaudio",
 			"nedit",
 			"gvim",
 			"indent",
