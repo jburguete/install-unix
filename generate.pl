@@ -253,6 +253,68 @@ if ($os eq "Linux")
 			"libreoffice-still-es",
 			"spamassassin");
 	}
+	elsif ($dist eq "Fedora")
+	{
+		@install=("dnf","install");
+		@clean=("dnf","clean");
+		@update=("dnf","update");
+		@upgrade=("dnf","upgrade");
+		system(@install,"redhat-lsb-core") if (!(-x "/usr/bin/lsb_release"));
+		system("dnf group install gnome-desktop");
+		@packages=(
+			"patch",
+			"autoconf",
+			"automake",
+			"pkgconf",
+			"gcc",
+			"gcc-c++",
+			"gcc-gfortran",
+			"make",
+			"git",
+			"subversion",
+			"libxml2-devel",
+			"glib-devel",
+			"gettext-devel",
+			"json-glib-devel",
+			"sqlite-devel",
+			"gsl-devel",
+			"libgtop2-devel",
+			"gtk3-devel",
+			"freeglut-devel",
+			"glfw-devel",
+			"SDL2-devel",
+			"texlive-gnu-freefont",
+			"glew-devel",
+			"mpich-devel",
+			"nedit",
+			"gvim",
+			"indent",
+			"galculator",
+			"maxima",
+			"valgrind",
+			"gdb",
+			"meld",
+			"texlive-core",
+			"texlive-latexextra",
+			"texlive-publishers",
+			"texlive-pstricks",
+			"graphviz",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox",
+			"firefox-i18n-es-es",
+			"firefox-ublock-origin",
+			"thunderbird",
+			"thunderbird-i18n-es-es",
+			"imagemagick",
+			"gimp",
+			"dcraw",
+			"mpv",
+			"libreoffice-still",
+			"libreoffice-still-es",
+			"spamassassin");
+	}
 }
 elsif ($os eq "FreeBSD")
 {
