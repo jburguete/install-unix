@@ -1,9 +1,10 @@
 
 #Supported systems
-#Debian Linux
+#Debian Hurd and Linux
 #Devuan Linux
 #Dragonfly BSD
 #Dyson
+#Fedora Linux
 #FreeBSD
 #Linux Mint
 #Manjaro Linux
@@ -256,11 +257,11 @@ if ($os eq "Linux")
 	elsif ($dist eq "Fedora")
 	{
 		@install=("dnf","install");
-		@clean=("dnf","clean");
+		@clean=("dnf","autoremove",";","dnf","clean","all");
 		@update=("dnf","update");
 		@upgrade=("dnf","upgrade");
 		system(@install,"redhat-lsb-core") if (!(-x "/usr/bin/lsb_release"));
-		system("dnf group install gnome-desktop");
+		system("dnf group install gnome-desktop") if (!(-x "/usr/bin/gnome-shell"));
 		@packages=(
 			"patch",
 			"autoconf",
@@ -287,33 +288,43 @@ if ($os eq "Linux")
 			"glew-devel",
 			"mpich-devel",
 			"nedit",
-			"gvim",
+			"vim-enhanced",
+			"vim-X11",
 			"indent",
-			"galculator",
-			"maxima",
+			"maxima-gui",
 			"valgrind",
-			"gdb",
+			"ddd",
 			"meld",
-			"texlive-core",
-			"texlive-latexextra",
-			"texlive-publishers",
-			"texlive-pstricks",
+			"texlive",
+			"texlive-latex",
+			"texlive-collection-publishers",
+			"texlive-collection-pstricks",
 			"graphviz",
 			"evince",
 			"doxygen",
 			"wget",
 			"firefox",
-			"firefox-i18n-es-es",
-			"firefox-ublock-origin",
+			"mozilla-ublock-origin",
 			"thunderbird",
-			"thunderbird-i18n-es-es",
-			"imagemagick",
+			"ImageMagick",
 			"gimp",
-			"dcraw",
-			"mpv",
-			"libreoffice-still",
-			"libreoffice-still-es",
+			"ufraw-gimp",
+			"totem",
+			"libreoffice",
+			"libreoffice-langpack-es",
 			"spamassassin");
+		system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
+		{
+			push @packages,"virtualbox-guest-additions";
+		}
+		elsif ($mach eq "kvm")
+		{
+			push @packages,"xorg-x11-drv-qxl";
+		}
 	}
 }
 elsif ($os eq "FreeBSD")
