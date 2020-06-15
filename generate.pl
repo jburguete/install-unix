@@ -1,5 +1,6 @@
 
 #Supported systems
+#Arch Linux
 #Debian Hurd, kFreeBSD and Linux
 #Devuan Linux
 #Dragonfly BSD
@@ -272,6 +273,78 @@ if ($os eq "Linux")
 			"libreoffice-still",
 			"libreoffice-still-es",
 			"spamassassin");
+	}
+	elsif ($dist eq "Arch")
+	{
+		@install=("pacman","-S");
+		@clean=("pacman","-Sc");
+		@update=("pacman","-Syu");
+		@packages=(
+			"patch",
+			"autoconf",
+			"automake",
+			"pkgconf",
+			"gcc",
+			"gcc-fortran",
+			"make",
+			"git",
+			"subversion",
+			"libxml2",
+			"glib2",
+			"json-glib",
+			"sqlite",
+			"gsl",
+			"libgtop",
+			"gtk3",
+			"freeglut",
+			"glfw-x11",
+			"sdl2",
+			"gnu-free-fonts",
+			"glew",
+			"openmpi",
+			"xf86-video-vesa",
+			"xf86-video-qxl",
+			"virtualbox-guest-utils",
+			"xorg-server",
+			"xfce4",
+			"lightdm",
+			"lightdm-gtk-greeter",
+			"xfce4-screensaver",
+			"xfce4-cpugraph-plugin",
+			"xfce4-netload-plugin",
+			"xfce4-systemload-plugin",
+			"xfce4-weather-plugin",
+			"xfce4-xkb-plugin",
+			"xfce4-pulseaudio-plugin",
+			"nedit",
+			"gvim",
+			"indent",
+			"galculator",
+			"maxima",
+			"valgrind",
+			"gdb",
+			"meld",
+			"texlive-core",
+			"texlive-latexextra",
+			"texlive-publishers",
+			"texlive-pstricks",
+			"graphviz",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox",
+			"firefox-i18n-es-es",
+			"firefox-ublock-origin",
+			"thunderbird",
+			"thunderbird-i18n-es-es",
+			"imagemagick",
+			"gimp",
+			"dcraw",
+			"mpv",
+			"libreoffice-still",
+			"libreoffice-still-es",
+			"spamassassin");
+		@postinstall=("systemctl enable lightdm.service");
 	}
 	elsif ($dist eq "Fedora")
 	{
@@ -844,10 +917,6 @@ elsif ($os eq "SunOS")
 			"mate_install",
 			"gvim"
 		);
-	}
-	else
-	{
-		print "Unsupported Illumos distribution\n";
 	}
 }
 elsif ($os eq "GNU")
