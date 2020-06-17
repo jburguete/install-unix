@@ -606,7 +606,10 @@ elsif ($os eq "NetBSD")
 	print "OS=" . $os . ' ' . $ver . " Arch=" . $arch . "\n";
 	@preinstall=("PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH");
 	@install=("pkg_add");
+	@update=("pkgin","update",";","pkgin","upgrade");
+	@clean=("pkgin","autoremove",";","pkgin","clean");
 	@packages=(
+		"pkgin",
 		"virt-what",
 		"gsed",
 		"patch",
