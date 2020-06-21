@@ -93,6 +93,7 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
+* Arch Linux
 * Debian 10 (Hurd, kFreeBSD or Linux) 
 * Devuan Linux 3
 * Dragonfly BSD 5.8

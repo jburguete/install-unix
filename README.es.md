@@ -93,6 +93,7 @@ Sistemas de tipo UNIX soportados
 
 Actualmente están soportados los siguientes sistemas de tipo UNIX:
 
+* Arch Linux
 * Debian 10 (Hurd, kFreeBSD or Linux) 
 * Devuan Linux 3
 * Dragonfly BSD 5.8
