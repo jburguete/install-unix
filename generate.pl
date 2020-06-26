@@ -898,14 +898,22 @@ elsif ($os eq "SunOS")
 	{
 		print "Dist=OpenIndiana\n";
 		@install=("pkg","install");
-		@clean=("pkg","autoremove",";","pkg","clean","-a",";","beadmin","list");
+		@clean=("beadmn","list");
 		@update=("pkg","update");
-		system("pkg","mate_install");
+		system("pkg","install","mate_install")
+			if (!(-x "/usr/bin/mate-session"));
+		system("pkg","install","wget") if (!(-x "/usr/bin/wget"));
+		system("wget","http://mirror.opencsw.org/opencsw/pkgutil.pkg")
+			if (!(-f "pkgutil.pkg"));
+		system("pkgadd","-d","pkgutil.pkg","all")
+			if (!(-x "/opt/csw/bin/pkgutil"));
 		@packages=(
-			"patch",
+			"gnu-patch",
+			"gnu-sed",
 			"autoconf",
 			"automake",
 			"pkg-config",
+			"gcc-7",
 			"gcc-10",
 			"git",
 			"developer/versioning/subversion",
@@ -916,10 +924,37 @@ elsif ($os eq "SunOS")
 			"gtk3",
 			"libglew",
 			"freeglut",
+			"sdl2",
 			"gnome-fonts",
 			"mate_install",
-			"gvim"
+			"gvim",
+			"gnu-indent",
+			"gnuplot",
+			"meld",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox",
+			"thunderbird",
+			"imagemagick",
+			"gimp",
+			"dcraw",
+			"gnumeric",
+			"libreoffice"
 		);
+		@postinstall=("export PATH=\$PATH:/opt/csw/bin");
+		push (@postinstall,"\npkgutil -U");
+		push (@postinstall,"\npkgutil --install");
+		push (@postinstall,"texlive");
+		push (@postinstall,"texlive_latex_extra");
+		push (@postinstall,"texlive_luatex");
+		push (@postinstall,"texlive_publishers");
+		push (@postinstall,"texlive_fonts_recommended");
+		push (@postinstall,"texlive_lang_spanish");
+		push (@postinstall,"texlive_lang_french");
+		push (@postinstall,"texlive_lang_italian");
+		push (@postinstall,"texlive_pstricks");
+		push (@postinstall,"graphviz");
 	}
 }
 elsif ($os eq "GNU")
