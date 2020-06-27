@@ -8,6 +8,7 @@
 #Fedora Linux
 #FreeBSD
 #Linux Mint
+#MacOS Catalina + Homebrew
 #Manjaro Linux
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
@@ -15,6 +16,7 @@
 #OpenBSD
 #OpenIndiana (partially)
 #Ubuntu Linux
+
 use File::Copy 'move';
 $os=`uname -s`;
 $os=~ s/\n//g;
@@ -1049,6 +1051,7 @@ elsif ($os eq "GNU")
 elsif ($os eq "GNU/kFreeBSD")
 {
 	print "OS=" . $os . "\n";
+	@install=("apt","install");
 	@clean=("apt","autoremove",";","apt","clean");
 	@update=("apt","update");
 	@upgrade=("apt","upgrade");
@@ -1134,6 +1137,63 @@ elsif ($os eq "GNU/kFreeBSD")
 		push @packages,"xserver-xorg-video-qxl";
 	}
 
+}
+elsif ($os eq "Darwin")
+{
+	print "OS=" . $os . "\n";
+	@install=("brew","install");
+	@installcask=("brew","cask","install");
+	@clean=("brew","autoremove",";","brew","clean");
+	@update=("brew","update");
+	@upgrade=("brew","upgrade");
+	system("/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"")
+		if (!(-x "/usr/local/bin/brew"));
+	@packagescask=(
+		"xquartz",
+		"homebrew/cask-fonts/font-freesans",
+		"macvim",
+		"meld",
+		"mactex-no-gui",
+		"firefox",
+		"thunderbird",
+		"gimp",
+		"libreoffice");
+	@preinstall=("@installcask @packagescask");
+	@packages=(
+		"gnu-sed",
+		"gpatch",
+		"autoconf",
+		"automake",
+		"pkg-config",
+		"gcc",
+		"make",
+		"git",
+		"subversion",
+		"libxml2",
+		"gettext",
+		"glib",
+		"json-glib",
+		"sqlite",
+		"gsl",
+		"libgtop",
+		"gtk+3",
+		"freeglut",
+		"glfw",
+		"sdl2",
+		"glew",
+		"mpich",
+		"nedit",
+		"gnu-indent",
+		"galculator",
+		"maxima",
+		"ddd",
+		"graphviz",
+		"evince",
+		"doxygen",
+		"wget",
+		"imagemagick",
+		"ufraw",
+		"mpv");
 }
 else
 {
