@@ -101,6 +101,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Fedora Linux 32
 * FreeBSD 12.1
 * Linux Mint DE 3
+* MacOS Catalina + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + Cygwin
 * Microsoft Windows 10 + MSYS2
