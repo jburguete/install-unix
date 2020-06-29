@@ -1184,7 +1184,6 @@ elsif ($os eq "Darwin")
 		"mpich",
 		"nedit",
 		"gnu-indent",
-		"galculator",
 		"maxima",
 		"ddd",
 		"graphviz",
