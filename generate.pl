@@ -15,7 +15,7 @@
 #NetBSD
 #OpenBSD
 #OpenIndiana (partially)
-#Ubuntu Linux
+#Xubuntu Linux
 
 use File::Copy 'move';
 $os=`uname -s`;
