@@ -261,7 +261,6 @@ if ($os eq "Linux")
 			"nedit",
 			"vim-gtk3",
 			"indent",
-			"universalindentgui",
 			"galculator",
 			"xmaxima",
 			"valgrind",
@@ -281,18 +280,31 @@ if ($os eq "Linux")
 			"evince",
 			"doxygen",
 			"wget",
-			"firefox-esr",
-			"firefox-esr-locale-es",
+			"firefox",
+			"firefox-locale-es",
 			"webext-ublock-origin",
 			"thunderbird",
 			"thunderbird-locale-es",
 			"imagemagick",
 			"gimp",
-			"gimp-ufraw",
+			"gimp-dcraw",
 			"mpv",
 			"gnumeric",
 			"libreoffice",
 			"spamassassin");
+		system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
+		{
+			push @packages,"virtualbox-guest-x11";
+		}
+		elsif ($mach eq "kvm")
+		{
+			push @packages,"qemu-guest-agent";
+			push @packages,"xserver-xorg-video-qxl";
+		}
 	}
 	elsif ($dist eq "ManjaroLinux")
 	{
