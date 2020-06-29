@@ -141,10 +141,92 @@ if ($os eq "Linux")
 		}
 		elsif ($mach eq "kvm")
 		{
+			push @packages,"qemu-guest-agent";
 			push @packages,"xserver-xorg-video-qxl";
 		}
 	}
-	elsif ($dist eq "Ubuntu" || $dist eq "LinuxMint")
+	elsif ($dist eq "Linuxmint")
+	{
+		system("apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
+		@install=("aptitude","install");
+		@clean=("aptitude","clean");
+		@update=("aptitude","update");
+		@upgrade=("aptitude","upgrade");
+		@packages=(
+			"patch",
+			"autoconf",
+			"automake",
+			"pkg-config",
+			"g++",
+			"gfortran",
+			"make",
+			"git",
+			"subversion",
+			"libxml2-dev",
+			"libglib2.0-dev",
+			"libjson-glib-dev",
+			"gettext",
+			"libsqlite3-dev",
+			"libgsl-dev",
+			"libgtop2-dev",
+			"libgtk-3-dev",
+			"freeglut3-dev",
+			"libglfw3-dev",
+			"libsdl2-dev",
+			"fonts-freefont-otf",
+			"libglew-dev",
+			"mpich",
+			"libmpich-dev",
+			"vim-gtk3",
+			"indent",
+			"universalindentgui",
+			"galculator",
+			"xmaxima",
+			"valgrind",
+			"valgrind-mpi",
+			"ddd",
+			"meld",
+			"texlive-latex-extra",
+			"texlive-luatex",
+			"texlive-publishers",
+			"texlive-fonts-recommended",
+			"texlive-lang-spanish",
+			"texlive-lang-french",
+			"texlive-lang-english",
+			"texlive-lang-italian",
+			"texlive-pstricks",
+			"graphviz",
+			"evince",
+			"doxygen",
+			"wget",
+			"firefox-esr",
+			"firefox-esr-l10n-es-es",
+			"webext-ublock-origin",
+			"thunderbird",
+			"thunderbird-l10n-es-es",
+			"imagemagick",
+			"gimp",
+			"gimp-ufraw",
+			"mpv",
+			"gnumeric",
+			"libreoffice",
+			"libreoffice-l10n-es",
+			"spamassassin");
+		system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
+		{
+			push @packages,"virtualbox-guest-x11";
+		}
+		elsif ($mach eq "kvm")
+		{
+			push @packages,"qemu-guest-agent";
+			push @packages,"xserver-xorg-video-qxl";
+		}
+	}
+	elsif ($dist eq "Ubuntu")
 	{
 		system("sudo","apt","install","aptitude")
 			if (!(-x "/usr/bin/aptitude"));
