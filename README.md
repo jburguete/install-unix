@@ -2,6 +2,7 @@ install-unix
 ============
 
 :gb:[english](README.md) :es:[español](README.es.md)
+:fr:[français](README.fr.md)
 
 A perl script to install some useful applications on different UNIX type
 systems guest in QEMU/KVM or in Virtualbox.
@@ -32,7 +33,7 @@ Tools list
   * SDL2
 
 * Windows system:
-  * XFCE, Mate, GNOME or Microsoft Windows
+  * XFCE, Mate, GNOME, Cinnamon, Microsoft Windows or Apple MacOS
 
 * Editors:
   * VIM
@@ -41,6 +42,7 @@ Tools list
 
 * Mathematics:
   * Galculator
+  * GNUPlot
   * Maxima
 
 * Debuggers:
@@ -75,6 +77,9 @@ Tools list
 * Office:
   * LibreOffice
 
+Note that all the tools are not available in all operatif systems or
+distributions.
+
 Building instructions
 ---------------------
 
@@ -100,7 +105,7 @@ Currently the following UNIX type systems are supported:
 * Dyson Illumos (2019/11/5)
 * Fedora Linux 32
 * FreeBSD 12.1
-* Linux Mint DE 3
+* Linux Mint DE 4
 * MacOS Catalina + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + Cygwin
