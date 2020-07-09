@@ -7,6 +7,7 @@
 #Dyson
 #Fedora Linux
 #FreeBSD
+#Gentoo Linux
 #Linux Mint
 #MacOS Catalina + Homebrew
 #Manjaro Linux
@@ -39,6 +40,10 @@ if ($os eq "Linux")
 		elsif (-x "/usr/bin/zypper")
 		{
 			system("zypper install lsb-release");
+		}
+		elsif (-x "/usr/bin/emerge")
+		{
+			system("emerge --ask sys-apps/lsb-release");
 		}
 	}
 	$dist=`lsb_release -i -s`;
@@ -601,6 +606,85 @@ if ($os eq "Linux")
 		elsif ($mach eq "kvm")
 		{
 			push @packages,"xf86-video-qxl";
+		}
+	}
+	elsif ($dist eq "Gentoo")
+	{
+		system("cp","gentoo.make.conf","/etc/portage/make.conf");
+		@install=("emerge","--ask");
+		@clean=("emerge","--ask","--depclean");
+		@update=("emerge","--sync");
+		@upgrade=("emerge","--update","--deep","--with-bdeps=y","--newuse","\@world");
+		@packages=(
+			"dev-vcs/subversion",
+			"dev-libs/libxml2",
+			"dev-libs/glib",
+			"sys-devel/gettext",
+			"dev-libs/json-glib",
+			"dev-db/sqlite",
+			"sci-libs/gsl",
+			"gnome-base/libgtop",
+			"x11-libs/gtk+",
+			"media-libs/freeglut",
+			"media-libs/glfw",
+			"media-libs/glew",
+			"media-libs/libsdl2",
+			"media-fonts/freefont",
+			"sys-cluster/mpich",
+			"x11-drivers/xf86-input-evdev",
+			"x11-drivers/xf86-input-libinput",
+			"x11-drivers/xf86-input-synaptics",
+			"x11-drivers/xf86-video-vesa",
+			"xfce-extra/xfce4-notifyd",
+			"xfce-base/xfce4-meta",
+			"xfce-extra/xfce4-screensaver",
+			"xfce-extra/xfce4-screenshooter",
+			"xfce-extra/xfce4-cpugraph-plugin",
+			"xfce-extra/xfce4-netload-plugin",
+			"xfce-extra/xfce4-pulseaudio-plugin",
+			"xfce-extra/xfce4-systemload-plugin",
+			"xfce-extra/xfce4-weather-plugin",
+			"xfce-extra/xfce4-xkb-plugin",
+			"app-office/orage",
+			"app-editors/gvim",
+			"app-editors/nedit",
+			"dev-util/indent",
+			"sci-calculators/galculator",
+			"sci-mathematics/maxima",
+			"dev-util/ddd",
+			"dev-util/valgrind",
+			"dev-util/meld",
+			"app-text/texlive",
+			"dev-texlive/texlive-langenglish",
+			"dev-texlive/texlive-langfrench",
+			"dev-texlive/texlive-langspanish",
+			"dev-texlive/texlive-latex",
+			"dev-texlive/texlive-latexextra",
+			"dev-texlive/texlive-publishers",
+			"dev-texlive/texlive-pstricks",
+			"media-gfx/graphviz",
+			"app-text/evince",
+			"app-doc/doxygen",
+			"net-misc/wget",
+			"www-client/firefox",
+			"mail-client/thunderbird",
+			"media-gfx/imagemagick",
+			"media-gfx/gimp",
+			"media-gfx/ufraw",
+			"media-video/mpv",
+			"app-office/libreoffice",
+			"mail-filter/spamassassin");
+		system(@install,"app-emulation/virt-what") if (!(-x "/usr/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
+		{
+			push @packages,"app-emulation/virtualbox-guest-additions";
+		}
+		elsif ($mach eq "kvm")
+		{
+			push @packages,"x11-drivers/xf86-video-qxl";
 		}
 	}
 	else
@@ -1238,7 +1322,7 @@ elsif ($os eq "Darwin")
 	print "OS=" . $os . "\n";
 	@install=("brew","install");
 	@installcask=("brew","cask","install");
-	@clean=("brew","autoremove",";","brew","clean");
+	@clean=("brew","cleanup",";","brew","cask","cleanup");
 	@update=("brew","update");
 	@upgrade=("brew","upgrade");
 	system("/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"")
