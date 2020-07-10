@@ -660,6 +660,7 @@ if ($os eq "Linux")
 			"dev-texlive/texlive-langspanish",
 			"dev-texlive/texlive-latex",
 			"dev-texlive/texlive-latexextra",
+			"dev-texlive/texlive-luatex",
 			"dev-texlive/texlive-publishers",
 			"dev-texlive/texlive-pstricks",
 			"media-gfx/graphviz",
