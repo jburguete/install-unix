@@ -1080,8 +1080,8 @@ elsif ($os eq "SunOS")
 	{
 		print "Dist=OpenIndiana\n";
 		@install=("pkg","install");
-		@clean=("beadmn","list");
-		@update=("pkg","update");
+		@clean=("beadm","list");
+		@update=("pkg","update",";","pkgutil","-U","-u","-y");
 		system("pkg","install","mate_install")
 			if (!(-x "/usr/bin/mate-session"));
 		system("pkg","install","wget") if (!(-x "/usr/bin/wget"));
