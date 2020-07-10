@@ -105,6 +105,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Dyson Illumos (2019/11/5)
 * Fedora Linux 32
 * FreeBSD 12.1
+* Gentoo Linux
 * Linux Mint DE 4
 * MacOS Catalina + Homebrew
 * Manjaro Linux
