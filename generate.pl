@@ -1,3 +1,4 @@
+#!/usr/bin/env perl
 
 #Supported systems
 #Arch Linux
