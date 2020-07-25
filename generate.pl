@@ -1,7 +1,7 @@
 
 #Supported systems
 #Arch Linux
-#Debian Hurd, kFreeBSD and Linux
+#Debian Hurd and Linux
 #Devuan Linux
 #Dragonfly BSD
 #Dyson
@@ -15,7 +15,7 @@
 #Microsoft Windows + MSYS2
 #NetBSD
 #OpenBSD
-#OpenIndiana (partially)
+#OpenIndiana
 #Xubuntu Linux
 
 use File::Copy 'move';
@@ -379,7 +379,7 @@ if ($os eq "Linux")
 	elsif ($dist eq "Arch")
 	{
 		@install=("pacman","-S");
-		@clean=("pacman","-Sc");
+		@clean=("pacman","-Rs","\$(pacman","-Qdtq);","pacman","-Sc");
 		@update=("pacman","-Syu");
 		@packages=(
 			"patch",
@@ -451,7 +451,7 @@ if ($os eq "Linux")
 	elsif ($dist eq "Fedora")
 	{
 		@install=("dnf","install");
-		@clean=("dnf","autoremove",";","dnf","clean","all");
+		@clean=("dnf","autoremove;","dnf","clean","all");
 		@update=("dnf","update");
 		@upgrade=("dnf","upgrade");
 		@preinstall="dnf group install gnome-desktop"
@@ -697,9 +697,9 @@ elsif ($os eq "FreeBSD")
 {
 	print "OS=" . $os . "\n";
 	@install=("pkg","install");
-	@clean=("pkg","autoremove",";","pkg","clean","-a");
-	@update=("freebsd-update","fetch",";","freebsd-update","install",";",
-					 "pkg","update",";","pkg","upgrade");
+	@clean=("pkg","autoremove;","pkg","clean","-a");
+	@update=("freebsd-update","fetch;","freebsd-update","install;",
+					 "pkg","update;","pkg","upgrade");
 	@upgrade=("freebsd-update","-r","12.1-RELEASE","upgrade");
 	@packages=(
 		"gsed",
@@ -788,8 +788,8 @@ elsif ($os eq "NetBSD")
 	print "OS=" . $os . ' ' . $ver . " Arch=" . $arch . "\n";
 	@preinstall=("PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH");
 	@install=("pkg_add");
-	@update=("pkgin","update",";","pkgin","upgrade");
-	@clean=("pkgin","autoremove",";","pkgin","clean");
+	@update=("pkgin","update;","pkgin","upgrade");
+	@clean=("pkgin","autoremove;","pkgin","clean");
 	@packages=(
 		"pkgin",
 		"virt-what",
@@ -931,8 +931,8 @@ elsif ($os eq "DragonFly")
 {
 	print "OS=" . $os . "\n";
 	@install=("pkg","install");
-	@clean=("pkg","autoremove",";","pkg","clean","-a");
-	@update=("pkg","update",";","pkg","upgrade");
+	@clean=("pkg","autoremove;","pkg","clean","-a");
+	@update=("pkg","update;","pkg","upgrade");
 	@packages=(
 		"gsed",
 		"patch",
@@ -1081,7 +1081,7 @@ elsif ($os eq "SunOS")
 		print "Dist=OpenIndiana\n";
 		@install=("pkg","install");
 		@clean=("beadm","list");
-		@update=("pkg","update",";","pkgutil","-U","-u","-y");
+		@update=("pkg","update;","pkgutil","-U","-u","-y");
 		system("pkg","install","mate_install")
 			if (!(-x "/usr/bin/mate-session"));
 		system("pkg","install","wget") if (!(-x "/usr/bin/wget"));
@@ -1143,7 +1143,7 @@ elsif ($os eq "GNU")
 {
 	print "OS=" . $os . "\n";
 	@install=("apt","install");
-	@clean=("apt","autoremove",";","apt","clean");
+	@clean=("apt","autoremove;","apt","clean");
 	@update=("apt","update");
 	@upgrade=("apt","upgrade");
 	@packages=(
@@ -1227,103 +1227,13 @@ elsif ($os eq "GNU")
 	{
 		push @packages,"xserver-xorg-video-qxl";
 	}
-}
-elsif ($os eq "GNU/kFreeBSD")
-{
-	print "OS=" . $os . "\n";
-	@install=("apt","install");
-	@clean=("apt","autoremove",";","apt","clean");
-	@update=("apt","update");
-	@upgrade=("apt","upgrade");
-	@packages=(
-		"patch",
-		"autoconf",
-		"automake",
-		"pkg-config",
-		"g++",
-		"gfortran",
-		"make",
-		"git",
-		"subversion",
-		"libxml2-dev",
-		"libglib2.0-dev",
-		"libjson-glib-dev",
-		"libsqlite3-dev",
-		"libgsl-dev",
-		"libgtop2-dev",
-		"libgtk-3-dev",
-		"freeglut3-dev",
-		"libglfw3-dev",
-		"libsdl2-dev",
-		"fonts-freefont-otf",
-		"libglew-dev",
-		"mpich",
-		"libmpich-dev",
-		"xserver-xorg-input-kbd",
-		"xserver-xorg-input-mouse",
-		"xserver-xorg-video-vesa",
-		"xorg",
-		"xfce4",
-		"xfce4-screensaver",
-		"xfce4-weather-plugin",
-		"xfce4-xkb-plugin",
-		"xfce4-terminal",
-		"orage",
-		"gstreamer1.0-plugins-good",
-		"gstreamer1.0-pulseaudio",
-		"xfce4-pulseaudio-plugin",
-		"xfce4-screenshooter",
-		"nedit",
-		"vim-gtk3",
-		"indent",
-		"universalindentgui",
-		"galculator",
-		"xmaxima",
-		"valgrind",
-		"valgrind-mpi",
-		"ddd",
-		"meld",
-		"texlive-latex-extra",
-		"texlive-luatex",
-		"texlive-publishers",
-		"texlive-fonts-recommended",
-		"texlive-lang-spanish",
-		"texlive-lang-french",
-		"texlive-lang-english",
-		"texlive-lang-italian",
-		"texlive-pstricks",
-		"graphviz",
-		"evince",
-		"doxygen",
-		"wget",
-		"firefox-esr",
-		"firefox-esr-l10n-es-es",
-		"webext-ublock-origin",
-		"thunderbird",
-		"thunderbird-l10n-es-es",
-		"imagemagick",
-		"gimp",
-		"gimp-ufraw",
-		"mpv",
-		"gnumeric",
-		"libreoffice",
-		"libreoffice-l10n-es",
-		"spamassassin");
-	system("sudo",@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
-	$machine=`sudo virt-what`;
-	$machine=~ s/\n//g;
-	if ($machine eq "kvm")
-	{
-		push @packages,"xserver-xorg-video-qxl";
-	}
-
 }
 elsif ($os eq "Darwin")
 {
 	print "OS=" . $os . "\n";
 	@install=("brew","install");
 	@installcask=("brew","cask","install");
-	@clean=("brew","cleanup",";","brew","cask","cleanup");
+	@clean=("brew","cleanup;","brew","cask","cleanup");
 	@update=("brew","update");
 	@upgrade=("brew","upgrade");
 	system("/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"")
