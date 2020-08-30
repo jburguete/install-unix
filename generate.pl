@@ -1221,8 +1221,8 @@ elsif ($os eq "GNU")
 		"libreoffice",
 		"libreoffice-l10n-es",
 		"spamassassin");
-	system("sudo",@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
-	$machine=`sudo virt-what`;
+	system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
+	$machine=`virt-what`;
 	$machine=~ s/\n//g;
 	if ($machine eq "kvm")
 	{
