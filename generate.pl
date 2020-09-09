@@ -613,10 +613,11 @@ if ($os eq "Linux")
 	{
 		system("cp","gentoo.make.conf","/etc/portage/make.conf");
 		@install=("emerge","--ask");
-		@clean=("emerge","--ask","--depclean");
+		@clean=("emerge","--ask","--depclean",";","eclean-dist","--deep");
 		@update=("emerge","--sync");
-		@upgrade=("emerge","--update","--deep","--with-bdeps=y","--newuse","\@world");
+		@upgrade=("emerge","--ask","--update","--deep","--with-bdeps=y","--newuse","\@world");
 		@packages=(
+			"app-portage/gentoolkit",
 			"dev-vcs/subversion",
 			"dev-libs/libxml2",
 			"dev-libs/glib",
