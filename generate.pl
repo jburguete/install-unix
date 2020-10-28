@@ -52,7 +52,8 @@ if ($os eq "Linux")
 	print "OS=" . $os . " Dist=" . $dist . "\n";
 	if ($dist eq "Debian" || $dist eq "Devuan")
 	{
-		system("apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
+		system("apt","install","aptitude")
+			if (!(-x "/usr/bin/aptitude"));
 		@install=("aptitude","install");
 		@clean=("aptitude","clean");
 		@update=("aptitude","update");
@@ -153,7 +154,8 @@ if ($os eq "Linux")
 	}
 	elsif ($dist eq "Linuxmint")
 	{
-		system("apt","install","aptitude") if (!(-x "/usr/bin/aptitude"));
+		system("apt","install","aptitude")
+			if (!(-x "/usr/bin/aptitude"));
 		@install=("aptitude","install");
 		@clean=("aptitude","clean");
 		@update=("aptitude","update");
@@ -453,11 +455,13 @@ if ($os eq "Linux")
 	{
 		@install=("dnf","install");
 		@clean=("dnf","autoremove;","dnf","clean","all");
-		@update=("dnf","update");
-		@upgrade=("dnf","upgrade");
+		@update=("dnf","update;","dnf","upgrade");
+		@upgrade=("dnf","upgrade","--refresh;",
+			"dnf","system-upgrade","download","--release=33");
 		@preinstall="dnf group install gnome-desktop"
 			if (!(-x "/usr/bin/gnome-shell"));
 		@packages=(
+			"dnf-plugin-system-upgrade",
 			"patch",
 			"autoconf",
 			"automake",
