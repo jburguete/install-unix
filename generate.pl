@@ -1239,9 +1239,9 @@ elsif ($os eq "Darwin")
 	print "OS=" . $os . "\n";
 	@install=("brew","install");
 	@installcask=("brew","cask","install");
-	@clean=("brew","cleanup;","brew","cask","cleanup");
+	@clean=("brew","cleanup;","brew","cleanup","cask");
 	@update=("brew","update");
-	@upgrade=("brew","upgrade");
+	@upgrade=("brew","upgrade;","brew","upgrade","--cask","--greedy");
 	system("/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"")
 		if (!(-x "/usr/local/bin/brew"));
 	@packagescask=(
