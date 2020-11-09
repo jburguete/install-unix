@@ -1193,11 +1193,7 @@ elsif ($os eq "GNU")
 		"nedit",
 		"vim-gtk3",
 		"indent",
-		"universalindentgui",
 		"galculator",
-		"xmaxima",
-		"valgrind",
-		"valgrind-mpi",
 		"ddd",
 		"meld",
 		"texlive-latex-extra",
@@ -1213,19 +1209,7 @@ elsif ($os eq "GNU")
 		"evince",
 		"doxygen",
 		"wget",
-		"firefox-esr",
-		"firefox-esr-l10n-es-es",
-		"webext-ublock-origin",
-		"thunderbird",
-		"thunderbird-l10n-es-es",
-		"imagemagick",
-		"gimp",
-		"gimp-ufraw",
-		"mpv",
-		"gnumeric",
-		"libreoffice",
-		"libreoffice-l10n-es",
-		"spamassassin");
+		"imagemagick");
 	system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
 	$machine=`virt-what`;
 	$machine=~ s/\n//g;
