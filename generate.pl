@@ -488,6 +488,7 @@ if ($os eq "Linux")
 			"SDL2-devel",
 			"texlive-gnu-freefont",
 			"glew-devel",
+			"glslang",
 			"mpich-devel",
 			"nedit",
 			"vim-enhanced",
