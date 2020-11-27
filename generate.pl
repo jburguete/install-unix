@@ -1267,6 +1267,7 @@ elsif ($os eq "Darwin")
 		"glfw",
 		"sdl2",
 		"glew",
+		"glslang",
 		"mpich",
 		"nedit",
 		"gnu-indent",
