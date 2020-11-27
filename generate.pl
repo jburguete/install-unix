@@ -345,6 +345,7 @@ if ($os eq "Linux")
 			"sdl2",
 			"gnu-free-fonts",
 			"glew",
+			"vulkan-headers",
 			"openmpi",
 			"xfce4-screensaver",
 			"xfce4-cpugraph-plugin",
