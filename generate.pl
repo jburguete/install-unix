@@ -722,7 +722,7 @@ elsif ($os eq "FreeBSD")
 		"autoconf",
 		"automake",
 		"pkgconf",
-		"gcc9",
+		"gcc10",
 		"gmake",
 		"git",
 		"subversion",
@@ -739,6 +739,10 @@ elsif ($os eq "FreeBSD")
 		"sdl2",
 		"freefont-ttf",
 		"glew",
+		"vulkan-headers",
+		"vulkan-loader",
+		"vulkan-validation-layers",
+		"glslang",
 		"mpich",
 		"xorg-minimal",
 		"xfce",
@@ -789,7 +793,7 @@ elsif ($os eq "FreeBSD")
 	}
 	elsif ($mach eq "kvm")
 	{
-		push @packages,"xf86-video-qxl";
+#		push @packages,"xf86-video-qxl";
 	}
 	push @postinstall,"\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
 }
