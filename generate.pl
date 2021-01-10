@@ -756,7 +756,6 @@ elsif ($os eq "FreeBSD")
 		"xfce4-weather-plugin",
 		"xfce4-xkb-plugin",
 		"xfce4-terminal",
-		"orage",
 		"xfce4-pulseaudio-plugin",
 		"xfce4-screenshooter-plugin",
 		"vim",
