@@ -1342,6 +1342,7 @@ else
 			$mingw."gsl",
 			$mingw."gettext",
 			$mingw."gtk3",
+			$mingw."gtk4",
 			$mingw."freeglut",
 			$mingw."glfw",
 			$mingw."SDL2",
