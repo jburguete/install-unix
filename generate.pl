@@ -340,6 +340,7 @@ if ($os eq "Linux")
 			"gsl",
 			"libgtop",
 			"gtk3",
+			"gtk4",
 			"freeglut",
 			"glfw-x11",
 			"sdl2",
