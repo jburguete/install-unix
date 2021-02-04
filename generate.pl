@@ -1285,6 +1285,7 @@ elsif ($os eq "Darwin")
 		"gsl",
 		"libgtop",
 		"gtk+3",
+		"gtk4",
 		"freeglut",
 		"glfw",
 		"sdl2",
