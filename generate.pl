@@ -669,7 +669,6 @@ if ($os eq "Linux")
 			"xfce-extra/xfce4-systemload-plugin",
 			"xfce-extra/xfce4-weather-plugin",
 			"xfce-extra/xfce4-xkb-plugin",
-			"app-office/orage",
 			"app-editors/gvim",
 			"app-editors/nedit",
 			"dev-util/indent",
