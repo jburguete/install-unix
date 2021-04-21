@@ -635,6 +635,7 @@ if ($os eq "Linux")
 	{
 		system("cp","gentoo.make.conf","/etc/portage/make.conf");
 		@install=("emerge","--ask");
+		@preinstall=("USE=\"-vaapi\"",@install,"media-libs/mesa");
 		@clean=("emerge","--ask","--depclean",";","eclean-dist","--deep");
 		@update=("emerge","--sync");
 		@upgrade=("emerge","--ask","--update","--deep","--with-bdeps=y","--newuse","\@world");
@@ -669,6 +670,7 @@ if ($os eq "Linux")
 			"xfce-extra/xfce4-systemload-plugin",
 			"xfce-extra/xfce4-weather-plugin",
 			"xfce-extra/xfce4-xkb-plugin",
+			"app-editors/vim",
 			"app-editors/gvim",
 			"app-editors/nedit",
 			"dev-util/indent",
@@ -709,6 +711,7 @@ if ($os eq "Linux")
 		elsif ($mach eq "kvm")
 		{
 			push @packages,"x11-drivers/xf86-video-qxl";
+			@preinstall=("echo","\"VIDEO_CARDS=\\\"virtgl\\\"\"",">>","/etc/portage/make.conf");
 		}
 	}
 	else
