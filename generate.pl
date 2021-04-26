@@ -841,6 +841,7 @@ elsif ($os eq "NetBSD")
 		"gsl",
 		"libgtop",
 		"gtk3+",
+		"gtk4",
 		"freeglut",
 		"glfw",
 		"SDL2",
