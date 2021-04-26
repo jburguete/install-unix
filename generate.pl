@@ -674,6 +674,7 @@ if ($os eq "Linux")
 			"app-editors/gvim",
 			"app-editors/nedit",
 			"dev-util/indent",
+			"sci-visualization/gnuplot",
 			"sci-calculators/galculator",
 			"sci-mathematics/maxima",
 			"dev-util/ddd",
