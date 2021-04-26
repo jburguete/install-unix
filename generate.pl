@@ -921,6 +921,7 @@ elsif ($os eq "OpenBSD")
 		"gsl",
 		"libgtop2",
 		"gtk+3",
+		"gtk+4",
 		"freeglut",
 		"glfw",
 		"sdl2",
