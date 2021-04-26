@@ -829,7 +829,7 @@ elsif ($os eq "NetBSD")
 		"autoconf",
 		"automake",
 		"pkgconf",
-		"gcc9",
+		"gcc10",
 		"gmake",
 		"git",
 		"subversion",
