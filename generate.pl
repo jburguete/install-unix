@@ -262,6 +262,7 @@ if ($os eq "Linux")
 			"libgsl-dev",
 			"libgtop2-dev",
 			"libgtk-3-dev",
+			"libgtk-4-dev",
 			"freeglut3-dev",
 			"libglfw3-dev",
 			"libsdl2-dev",
