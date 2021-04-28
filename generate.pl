@@ -467,7 +467,8 @@ if ($os eq "Linux")
 		@clean=("dnf","autoremove;","dnf","clean","all");
 		@update=("dnf","update;","dnf","upgrade");
 		@upgrade=("dnf","upgrade","--refresh;",
-			"dnf","system-upgrade","download","--release=33");
+			"dnf","system-upgrade","download","--release=34;",
+			"dnf","system-upgrade","reboot");
 		@preinstall="dnf group install gnome-desktop"
 			if (!(-x "/usr/bin/gnome-shell"));
 		@packages=(
