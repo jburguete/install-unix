@@ -652,6 +652,7 @@ if ($os eq "Linux")
 			"sci-libs/gsl",
 			"gnome-base/libgtop",
 			"x11-libs/gtk+",
+			"gui-libs/gtk",
 			"media-libs/freeglut",
 			"media-libs/glfw",
 			"media-libs/glew",
