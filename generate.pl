@@ -262,6 +262,7 @@ if ($os eq "Linux")
 			"libgsl-dev",
 			"libgtop2-dev",
 			"libgtk-3-dev",
+			"libgtk-4-dev",
 			"freeglut3-dev",
 			"libglfw3-dev",
 			"libsdl2-dev",
@@ -340,6 +341,7 @@ if ($os eq "Linux")
 			"gsl",
 			"libgtop",
 			"gtk3",
+			"gtk4",
 			"freeglut",
 			"glfw-x11",
 			"sdl2",
@@ -405,6 +407,7 @@ if ($os eq "Linux")
 			"gsl",
 			"libgtop",
 			"gtk3",
+			"gtk4",
 			"freeglut",
 			"glfw-x11",
 			"sdl2",
@@ -415,6 +418,9 @@ if ($os eq "Linux")
 			"xf86-video-qxl",
 			"virtualbox-guest-utils",
 			"xorg-server",
+			"pulseaudio",
+			"pulseaudio-alsa",
+			"pavucontrol",
 			"xfce4",
 			"lightdm",
 			"lightdm-gtk-greeter",
@@ -461,7 +467,8 @@ if ($os eq "Linux")
 		@clean=("dnf","autoremove;","dnf","clean","all");
 		@update=("dnf","update;","dnf","upgrade");
 		@upgrade=("dnf","upgrade","--refresh;",
-			"dnf","system-upgrade","download","--release=33");
+			"dnf","system-upgrade","download","--release=34;",
+			"dnf","system-upgrade","reboot");
 		@preinstall="dnf group install gnome-desktop"
 			if (!(-x "/usr/bin/gnome-shell"));
 		@packages=(
@@ -484,11 +491,16 @@ if ($os eq "Linux")
 			"gsl-devel",
 			"libgtop2-devel",
 			"gtk3-devel",
+			"gtk4-devel",
 			"freeglut-devel",
 			"glfw-devel",
 			"SDL2-devel",
 			"texlive-gnu-freefont",
 			"glew-devel",
+			"vulkan-headers",
+			"vulkan-loader",
+			"vulkan-validation-layers",
+			"vulkan-tools",
 			"glslang",
 			"mpich-devel",
 			"nedit",
@@ -618,6 +630,7 @@ if ($os eq "Linux")
 	{
 		system("cp","gentoo.make.conf","/etc/portage/make.conf");
 		@install=("emerge","--ask");
+		@preinstall=("USE=\"-vaapi\"",@install,"media-libs/mesa");
 		@clean=("emerge","--ask","--depclean",";","eclean-dist","--deep");
 		@update=("emerge","--sync");
 		@upgrade=("emerge","--ask","--update","--deep","--with-bdeps=y","--newuse","\@world");
@@ -632,6 +645,7 @@ if ($os eq "Linux")
 			"sci-libs/gsl",
 			"gnome-base/libgtop",
 			"x11-libs/gtk+",
+			"gui-libs/gtk",
 			"media-libs/freeglut",
 			"media-libs/glfw",
 			"media-libs/glew",
@@ -652,10 +666,11 @@ if ($os eq "Linux")
 			"xfce-extra/xfce4-systemload-plugin",
 			"xfce-extra/xfce4-weather-plugin",
 			"xfce-extra/xfce4-xkb-plugin",
-			"app-office/orage",
+			"app-editors/vim",
 			"app-editors/gvim",
 			"app-editors/nedit",
 			"dev-util/indent",
+			"sci-visualization/gnuplot",
 			"sci-calculators/galculator",
 			"sci-mathematics/maxima",
 			"dev-util/ddd",
@@ -693,6 +708,7 @@ if ($os eq "Linux")
 		elsif ($mach eq "kvm")
 		{
 			push @packages,"x11-drivers/xf86-video-qxl";
+			@preinstall=("echo","\"VIDEO_CARDS=\\\"virtgl\\\"\"",">>","/etc/portage/make.conf");
 		}
 	}
 	else
@@ -707,7 +723,7 @@ elsif ($os eq "FreeBSD")
 	@clean=("pkg","autoremove;","pkg","clean","-a");
 	@update=("freebsd-update","fetch;","freebsd-update","install;",
 					 "pkg","update;","pkg","upgrade");
-	@upgrade=("freebsd-update","-r","12.2-RELEASE","upgrade");
+	@upgrade=("freebsd-update","-r","13.0-RELEASE","upgrade");
 	@packages=(
 		"gsed",
 		"patch",
@@ -715,7 +731,7 @@ elsif ($os eq "FreeBSD")
 		"autoconf",
 		"automake",
 		"pkgconf",
-		"gcc9",
+		"gcc10",
 		"gmake",
 		"git",
 		"subversion",
@@ -732,6 +748,10 @@ elsif ($os eq "FreeBSD")
 		"sdl2",
 		"freefont-ttf",
 		"glew",
+		"vulkan-headers",
+		"vulkan-loader",
+		"vulkan-validation-layers",
+		"glslang",
 		"mpich",
 		"xorg-minimal",
 		"xfce",
@@ -745,7 +765,6 @@ elsif ($os eq "FreeBSD")
 		"xfce4-weather-plugin",
 		"xfce4-xkb-plugin",
 		"xfce4-terminal",
-		"orage",
 		"xfce4-pulseaudio-plugin",
 		"xfce4-screenshooter-plugin",
 		"vim",
@@ -782,7 +801,7 @@ elsif ($os eq "FreeBSD")
 	}
 	elsif ($mach eq "kvm")
 	{
-		push @packages,"xf86-video-qxl";
+#		push @packages,"xf86-video-qxl";
 	}
 	push @postinstall,"\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
 }
@@ -806,7 +825,7 @@ elsif ($os eq "NetBSD")
 		"autoconf",
 		"automake",
 		"pkgconf",
-		"gcc9",
+		"gcc10",
 		"gmake",
 		"git",
 		"subversion",
@@ -818,6 +837,7 @@ elsif ($os eq "NetBSD")
 		"gsl",
 		"libgtop",
 		"gtk3+",
+		"gtk4",
 		"freeglut",
 		"glfw",
 		"SDL2",
@@ -898,6 +918,7 @@ elsif ($os eq "OpenBSD")
 		"gsl",
 		"libgtop2",
 		"gtk+3",
+		"gtk+4",
 		"freeglut",
 		"glfw",
 		"sdl2",
@@ -968,6 +989,10 @@ elsif ($os eq "DragonFly")
 		"sdl2",
 		"freefont-ttf",
 		"glew",
+		"vulkan-headers",
+		"vulkan-loader",
+		"vulkan-validation-layers",
+		"glslang",
 		"mpich",
 		"xf86-input-keyboard",
 		"xf86-input-mouse",
@@ -1264,6 +1289,7 @@ elsif ($os eq "Darwin")
 		"gsl",
 		"libgtop",
 		"gtk+3",
+		"gtk4",
 		"freeglut",
 		"glfw",
 		"sdl2",
@@ -1323,10 +1349,15 @@ else
 			$mingw."gsl",
 			$mingw."gettext",
 			$mingw."gtk3",
+			$mingw."gtk4",
 			$mingw."freeglut",
 			$mingw."glfw",
 			$mingw."SDL2",
 			$mingw."glew",
+			$mingw."vulkan-loader",
+			$mingw."vulkan-headers",
+			$mingw."vulkan-validation-layers",
+			$mingw."glslang",
 			"vim",
 			$mingw."indent",
 			$mingw."gdb",
