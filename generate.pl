@@ -1364,26 +1364,24 @@ else
 			$mingw."indent",
 			$mingw."gdb",
 			$mingw."meld3",
+			$mingw."texlive-core",
+			$mingw."texlive-luatex",
+			$mingw."texlive-latex-extra",
+			$mingw."texlive-fonts-recommended",
+			$mingw."texlive-fonts-extra",
+			$mingw."texlive-publishers",
+			$mingw."texlive-pstricks",
+			$mingw."texlive-lang-spanish",
+			$mingw."texlive-lang-french",
+			$mingw."texlive-lang-english",
+			$mingw."texlive-lang-italian",
+			$mingw."graphviz",
 			$mingw."evince",
 			"doxygen",
 			"wget",
 			$mingw."imagemagick",
 			$mingw."gimp",
 			$mingw."gimp-ufraw");
-		@postinstall=(
-			"ver=20120503",
-			"\nname=freefont",
-			"\nfile=\"\${name}-ttf-\${ver}.zip\"",
-			"\nurl=\"https://ftp.gnu.org/gnu/\${name}/\${file}\"",
-			"\ndir=/usr/share/fonts/truetype/",
-			"\nwget \$url",
-			"\nunzip \$file",
-			"\ncd \"\${name}-\${ver}\"",
-			"\nif test -d \$dir; then mkdir -p \$dir; fi",
-			"\nmv *.ttf \$dir",
-			"\ncd ..",
-			"\necho \"\${name}*\"",
-			"\nrm -rf \"\${name}*\"");
 	}
 	elsif ($os eq "Cygwin")
 	{
