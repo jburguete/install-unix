@@ -1256,7 +1256,7 @@ elsif ($os eq "Darwin")
 {
 	print "OS=" . $os . "\n";
 	@install=("brew","install");
-	@installcask=("brew","cask","install");
+	@installcask=("brew","install");
 	@clean=("brew","cleanup;","brew","cleanup","cask");
 	@update=("brew","update");
 	@upgrade=("brew","upgrade;","brew","upgrade","--cask","--greedy");
@@ -1264,7 +1264,7 @@ elsif ($os eq "Darwin")
 		if (!(-x "/usr/local/bin/brew"));
 	@packagescask=(
 		"xquartz",
-		"homebrew/cask-fonts/font-freesans",
+		"homebrew/cask-fonts/font-open-sans",
 		"macvim",
 		"meld",
 		"mactex-no-gui",
@@ -1298,6 +1298,7 @@ elsif ($os eq "Darwin")
 		"glew",
 		"glslang",
 		"mpich",
+		"font-open-sans",
 		"nedit",
 		"gnu-indent",
 		"maxima",
@@ -1307,7 +1308,7 @@ elsif ($os eq "Darwin")
 		"doxygen",
 		"wget",
 		"imagemagick",
-		"ufraw",
+		"dcraw",
 		"mpv");
 }
 else
