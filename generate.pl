@@ -630,7 +630,7 @@ if ($os eq "Linux")
 	{
 		system("cp","gentoo.make.conf","/etc/portage/make.conf");
 		@install=("emerge","--ask");
-		@preinstall=("USE=\"-vaapi\"",@install,"media-libs/mesa");
+		@preinstall=("USE=\"gimp -vaapi\"",@install,"media-libs/mesa media-gfx/dcraw");
 		@clean=("emerge","--ask","--depclean",";","eclean-dist","--deep");
 		@update=("emerge","--sync");
 		@upgrade=("emerge","--ask","--update","--deep","--with-bdeps=y","--newuse","\@world");
@@ -693,7 +693,7 @@ if ($os eq "Linux")
 			"mail-client/thunderbird",
 			"media-gfx/imagemagick",
 			"media-gfx/gimp",
-			"media-gfx/ufraw",
+			"media-gfx/dcraw",
 			"media-video/mpv",
 			"app-office/libreoffice",
 			"mail-filter/spamassassin");
