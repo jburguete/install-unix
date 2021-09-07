@@ -986,6 +986,7 @@ elsif ($os eq "DragonFly")
 		"gsl",
 		"libgtop",
 		"gtk3",
+		"gtk4",
 		"freeglut",
 		"glfw",
 		"sdl2",
