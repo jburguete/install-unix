@@ -1361,7 +1361,7 @@ else
 			"doxygen",
 			"wget",
 			$mingw."imagemagick",
-			$mingw."gimp",
+			$mingw."gimp");
 	}
 	elsif ($os eq "Cygwin")
 	{
