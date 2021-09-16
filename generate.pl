@@ -131,7 +131,7 @@ if ($os eq "Linux")
 			"thunderbird-l10n-es-es",
 			"imagemagick",
 			"gimp",
-			"gimp-ufraw",
+			"gimp-dcraw",
 			"mpv",
 			"gnumeric",
 			"libreoffice",
@@ -213,7 +213,7 @@ if ($os eq "Linux")
 			"thunderbird-l10n-es-es",
 			"imagemagick",
 			"gimp",
-			"gimp-ufraw",
+			"gimp-dcraw",
 			"mpv",
 			"gnumeric",
 			"libreoffice",
@@ -605,7 +605,7 @@ if ($os eq "Linux")
 			"MozillaThunderbird",
 			"ImageMagick",
 			"gimp",
-			"gimp-ufraw",
+			"gimp-dcraw",
 			"mpv",
 			"libreoffice",
 			"libreoffice-l10n-es",
@@ -782,7 +782,7 @@ elsif ($os eq "FreeBSD")
 		"thunderbird",
 		"ImageMagick7",
 		"gimp",
-		"ufraw",
+		"dcraw",
 		"mpv",
 		"libreoffice",
 		"es-libreoffice",
@@ -888,7 +888,7 @@ elsif ($os eq "NetBSD")
 		"thunderbird",
 		"ImageMagick",
 		"gimp",
-		"gimp-ufraw",
+		"gimp-dcraw",
 		"mpv",
 		"libreoffice",
 		"spamassassin");
@@ -952,7 +952,7 @@ elsif ($os eq "OpenBSD")
 		"thunderbird-i18n-es-ES",
 		"ImageMagick",
 		"gimp",
-		"ufraw",
+		"dcraw",
 		"mpv",
 		"libreoffice-i18n-es",
 		"milter-spamd");
@@ -1022,7 +1022,7 @@ elsif ($os eq "DragonFly")
 		"thunderbird",
 		"ImageMagick7",
 		"gimp",
-		"ufraw",
+		"dcraw",
 		"mpv",
 		"libreoffice",
 		"es-libreoffice",
@@ -1104,7 +1104,7 @@ elsif ($os eq "SunOS")
 			"wget",
 			"imagemagick",
 			"gimp",
-			"gimp-ufraw",
+			"gimp-dcraw",
 			"gnumeric",
 			"libreoffice",
 			"libreoffice-l10n-es");
@@ -1376,7 +1376,7 @@ else
 			"wget",
 			$mingw."imagemagick",
 			$mingw."gimp",
-			$mingw."gimp-ufraw");
+			$mingw."gimp-dcraw");
 	}
 	elsif ($os eq "Cygwin")
 	{
@@ -1445,7 +1445,7 @@ else
 			"-P wget",
 			"-P ImageMagick",
 			"-P gimp",
-			"-P gimp-ufraw",
+			"-P gimp-dcraw",
 			"-P parole");
 	}
 	else
