@@ -994,7 +994,6 @@ elsif ($os eq "DragonFly")
 		"xfce4-weather-plugin",
 		"xfce4-xkb-plugin",
 		"xfce4-terminal",
-		"xfce4-mixer",
 		"xfce4-screenshooter-plugin",
 		"vim",
 		"nedit",
