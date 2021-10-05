@@ -962,7 +962,7 @@ elsif ($os eq "DragonFly")
 		"pkgconf",
 		"gcc",
 		"gmake",
-		"git",
+		"git-lite",
 		"subversion",
 		"libxml2",
 		"gettext-tools",
