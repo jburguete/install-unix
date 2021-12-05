@@ -1321,7 +1321,7 @@ else
 			"make",
 			$mingw."gcc",
 			$mingw."gcc-fortran",
-			"pkg-config",
+			"pkgconf",
 			"git",
 			"subversion",
 			$mingw."libxml2",
