@@ -996,6 +996,7 @@ elsif ($os eq "DragonFly")
 		"xfce4-terminal",
 		"xfce4-screenshooter-plugin",
 		"vim",
+		"vim-gtk3",
 		"nedit",
 		"gindent",
 		"galculator",
