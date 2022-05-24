@@ -722,7 +722,7 @@ elsif ($os eq "FreeBSD")
 		"autoconf",
 		"automake",
 		"pkgconf",
-		"gcc10",
+		"gcc11",
 		"gmake",
 		"git",
 		"subversion",
