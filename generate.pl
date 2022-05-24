@@ -713,7 +713,7 @@ elsif ($os eq "FreeBSD")
 	@clean=("pkg","autoremove;","pkg","clean","-a");
 	@update=("freebsd-update","fetch;","freebsd-update","install;",
 		"pkg","update;","pkg","upgrade");
-	@upgrade=("freebsd-update","-r","13.0-RELEASE","upgrade;",
+	@upgrade=("freebsd-update","-r","13.1-RELEASE","upgrade;",
 		"freebsd-update","install");
 	@packages=(
 		"gsed",
