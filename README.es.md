@@ -99,23 +99,23 @@ Sistemas de tipo UNIX soportados
 Actualmente están soportados los siguientes sistemas de tipo UNIX:
 
 * Arch Linux
-* Debian 10 (Hurd, kFreeBSD or Linux) 
-* Devuan Linux 3
-* Dragonfly BSD 5.8
-* Dyson Illumos (2019/11/5)
-* Fedora Linux 32
-* FreeBSD 12.1
+* Debian 11 (Hurd or Linux) 
+* Devuan Linux 4
+* Dragonfly BSD 6.2
+* Fedora Linux 36
+* FreeBSD 13.1
 * Gentoo Linux
-* Linux Mint DE 4
+* Haiku
+* Linux Mint DE 5
 * MacOS Catalina + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + Cygwin
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.0
-* OpenBSD 6.7
+* OpenBSD 7.1
 * OpenIndiana Hipster
-* OpenSUSE Linux Leap
-* Xubuntu Linux 20.04
+* OpenSUSE Linux Leap 15.4
+* Xubuntu Linux 22.04
 
 Otras versiones de estos sistemas operativos u otras distribuciones podrían
 funcionar pero no han sido probadas.
