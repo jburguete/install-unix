@@ -11,7 +11,7 @@
 #Gentoo Linux
 #Haiku
 #Linux Mint
-#MacOS Catalina + Homebrew
+#MacOS Big Sur + Homebrew
 #Manjaro Linux
 #Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
