@@ -9,6 +9,7 @@
 #Fedora Linux
 #FreeBSD
 #Gentoo Linux
+#Haiku
 #Linux Mint
 #MacOS Catalina + Homebrew
 #Manjaro Linux
@@ -1235,6 +1236,43 @@ elsif ($os eq "GNU")
 	{
 		push @packages,"xserver-xorg-video-qxl";
 	}
+}
+elsif ($os eq "Haiku")
+{
+	print "OS=" . $os . "\n";
+	@install=("pkgman","install");
+	@update=("pkgman","full-sync");
+	@packages=(
+		"patch",
+		"autoconf",
+		"automake",
+		"pkgconfig",
+		"gcc",
+		"gcc_gfortran",
+		"make",
+		"git",
+		"subversion",
+		"libxml2_devel",
+		"glib2_devel",
+		"json_glib_devel",
+		"gettext",
+		"sqlite_devel",
+		"gsl_devel",
+		"gtk3_devel",
+		"glfw_devel",
+		"libsdl2_devel",
+		"glew_devel",
+		"nedit",
+		"vim",
+		"indent",
+		"gdb",
+		"texlive_core",
+		"graphviz",
+    "gnuplot",
+		"doxygen",
+		"wget",
+		"imagemagick",
+    "gimp");
 }
 elsif ($os eq "Darwin")
 {
