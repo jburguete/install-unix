@@ -1248,7 +1248,7 @@ elsif ($os eq "Haiku")
 		"automake",
 		"pkgconfig",
 		"gcc",
-		"gcc_gfortran",
+		"gcc_fortran",
 		"make",
 		"git",
 		"subversion",
@@ -1262,17 +1262,16 @@ elsif ($os eq "Haiku")
 		"glfw_devel",
 		"libsdl2_devel",
 		"glew_devel",
-		"nedit",
 		"vim",
 		"indent",
 		"gdb",
 		"texlive_core",
 		"graphviz",
-    "gnuplot",
+		"gnuplot",
 		"doxygen",
 		"wget",
 		"imagemagick",
-    "gimp");
+		"gimp");
 }
 elsif ($os eq "Darwin")
 {
