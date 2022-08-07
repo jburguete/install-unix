@@ -818,7 +818,7 @@ elsif ($os eq "NetBSD")
 		"autoconf",
 		"automake",
 		"pkgconf",
-		"gcc9",
+		"gcc12",
 		"gmake",
 		"git",
 		"subversion",
@@ -887,6 +887,14 @@ elsif ($os eq "NetBSD")
 		"mpv",
 		"libreoffice",
 		"spamassassin");
+		system(@install,"virt-what") if (!(-x "/usr/pkg/sbin/virt-what"));
+		$mach=`virt-what`;
+		$mach=~ s/\n//g;
+		print "Mach=" . $mach. "\n";
+		if ($mach eq "virtualbox")
+		{
+			push @packages,"xf86-video-vboxvideo";
+		}
 }
 elsif ($os eq "OpenBSD")
 {
