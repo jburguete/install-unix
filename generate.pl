@@ -1196,6 +1196,7 @@ elsif ($os eq "GNU")
 		"libgsl-dev",
 		"libgtop2-dev",
 		"libgtk-3-dev",
+		"libgtk-4-dev",
 		"freeglut3-dev",
 		"libglfw3-dev",
 		"libsdl2-dev",
@@ -1236,7 +1237,8 @@ elsif ($os eq "GNU")
 		"evince",
 		"doxygen",
 		"wget",
-		"imagemagick");
+		"imagemagick",
+		"gimp");
 	system(@install,"virt-what") if (!(-x "/usr/sbin/virt-what"));
 	$machine=`virt-what`;
 	$machine=~ s/\n//g;
