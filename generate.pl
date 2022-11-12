@@ -20,6 +20,13 @@
 #OpenIndiana
 #Xubuntu Linux
 
+#Without GTK4:
+#Debian and Devuan Linux
+#Linux Mint
+#OpenIndiana
+#Haiku
+#Windows + CYGWIN
+
 use File::Copy 'move';
 $os = `uname -s`;
 $os =~ s/\n//g;
