@@ -315,12 +315,12 @@ if ($os eq "Linux")
     {
         @install = ("dnf", "install");
         @clean   = ("dnf", "autoremove;", "dnf", "clean", "all");
-        @update  = ("dnf", "update;",     "dnf", "upgrade");
+        @update  = ("dnf", "update");
         @upgrade = (
                     "dnf",            "upgrade",
                     "--refresh;",     "dnf",
                     "system-upgrade", "download",
-                    "--release=36;",  "dnf",
+                    "--release=37;",  "dnf",
                     "system-upgrade", "reboot"
                    );
         @preinstall = "dnf group install gnome-desktop"
@@ -361,6 +361,7 @@ if ($os eq "Linux")
                      "vim-enhanced",
                      "vim-X11",
                      "indent",
+                     "perltidy",
                      "maxima-gui",
                      "valgrind",
                      "ddd",
