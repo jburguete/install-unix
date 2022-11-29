@@ -646,6 +646,7 @@ elsif ($os eq "FreeBSD")
     }
     elsif ($mach eq "kvm")
     {
+
         #		push @packages,"xf86-video-qxl";
     }
     push @postinstall, "\necho lightdm_enable=\"YES\" >> /etc/rc.conf";
@@ -899,36 +900,37 @@ elsif ($os eq "GNU")
     @update  = ("apt", "update");
     @upgrade = ("apt", "upgrade");
     @packages = (
-                 "patch",                     "autoconf",
-                 "automake",                  "pkg-config",
-                 "g++",                       "gfortran",
-                 "make",                      "git",
-                 "subversion",                "libxml2-dev",
-                 "libglib2.0-dev",            "libjson-glib-dev",
-                 "gettext",                   "libsqlite3-dev",
-                 "libgsl-dev",                "libgtop2-dev",
-                 "libgtk-3-dev",              "libgtk-4-dev",
-                 "freeglut3-dev",             "libglfw3-dev",
-                 "libsdl2-dev",               "fonts-freefont-otf",
-                 "glslang-tools",             "libglew-dev",
-                 "mpich",                     "libmpich-dev",
-                 "xserver-xorg-input-kbd",    "xserver-xorg-input-mouse",
-                 "xserver-xorg-video-vesa",   "xorg",
-                 "xfce4",                     "xfce4-screensaver",
-                 "xfce4-weather-plugin",      "xfce4-xkb-plugin",
-                 "xfce4-terminal",            "gstreamer1.0-plugins-good",
-                 "gstreamer1.0-pulseaudio",   "xfce4-pulseaudio-plugin",
-                 "xfce4-screenshooter",       "nedit",
-                 "vim-gtk3",                  "indent",
-                 "galculator",                "ddd",
-                 "meld",                      "texlive-latex-extra",
-                 "texlive-luatex",            "texlive-publishers",
-                 "texlive-fonts-recommended", "texlive-lang-spanish",
-                 "texlive-lang-french",       "texlive-lang-english",
-                 "texlive-lang-italian",      "texlive-pstricks",
-                 "graphviz",                  "evince",
-                 "doxygen",                   "wget",
-                 "imagemagick",               "gimp"
+                 "patch",                   "autoconf",
+                 "automake",                "pkg-config",
+                 "g++",                     "gfortran",
+                 "make",                    "git",
+                 "subversion",              "libxml2-dev",
+                 "libglib2.0-dev",          "libjson-glib-dev",
+                 "gettext",                 "libsqlite3-dev",
+                 "libgsl-dev",              "libgtop2-dev",
+                 "libgtk-3-dev",            "libgtk-4-dev",
+                 "freeglut3-dev",           "libglfw3-dev",
+                 "libsdl2-dev",             "fonts-freefont-otf",
+                 "glslang-tools",           "libglew-dev",
+                 "mpich",                   "libmpich-dev",
+                 "xserver-xorg-input-kbd",  "xserver-xorg-input-mouse",
+                 "xserver-xorg-video-vesa", "xorg",
+                 "xfce4",                   "xfce4-screensaver",
+                 "xfce4-weather-plugin",    "xfce4-xkb-plugin",
+                 "xfce4-terminal",          "gstreamer1.0-plugins-good",
+                 "gstreamer1.0-pulseaudio", "xfce4-pulseaudio-plugin",
+                 "xfce4-screenshooter",     "nedit",
+                 "vim-gtk3",                "indent",
+                 "perltidy",                "galculator",
+                 "ddd",                     "meld",
+                 "texlive-latex-extra",     "texlive-luatex",
+                 "texlive-publishers",      "texlive-fonts-recommended",
+                 "texlive-lang-spanish",    "texlive-lang-french",
+                 "texlive-lang-english",    "texlive-lang-italian",
+                 "texlive-pstricks",        "graphviz",
+                 "evince",                  "doxygen",
+                 "wget",                    "imagemagick",
+                 "gimp"
                 );
     system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
     $machine = `virt-what`;
