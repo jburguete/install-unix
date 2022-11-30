@@ -131,35 +131,36 @@ if ($os eq "Linux")
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
         @packages = (
-                     "patch",                     "autoconf",
-                     "automake",                  "pkg-config",
-                     "g++",                       "gfortran",
-                     "make",                      "git",
-                     "subversion",                "libxml2-dev",
-                     "libglib2.0-dev",            "libjson-glib-dev",
-                     "gettext",                   "libsqlite3-dev",
-                     "libgsl-dev",                "libgtop2-dev",
-                     "libgtk-3-dev",              "freeglut3-dev",
-                     "libglfw3-dev",              "libsdl2-dev",
-                     "fonts-freefont-otf",        "libglew-dev",
-                     "glslang-tools",             "mpich",
-                     "libmpich-dev",              "vim-gtk3",
-                     "indent",                    "galculator",
-                     "xmaxima",                   "valgrind",
-                     "valgrind-mpi",              "ddd",
-                     "meld",                      "texlive-latex-extra",
-                     "texlive-luatex",            "texlive-publishers",
-                     "texlive-fonts-recommended", "texlive-lang-spanish",
-                     "texlive-lang-french",       "texlive-lang-english",
-                     "texlive-lang-italian",      "texlive-pstricks",
-                     "graphviz",                  "evince",
-                     "doxygen",                   "wget",
-                     "firefox",                   "firefox-l10n-es",
-                     "webext-ublock-origin",      "thunderbird",
-                     "thunderbird-l10n-es-es",    "imagemagick",
-                     "gimp",                      "mpv",
-                     "gnumeric",                  "libreoffice",
-                     "libreoffice-l10n-es",       "spamassassin"
+                     "patch",                "autoconf",
+                     "automake",             "pkg-config",
+                     "g++",                  "gfortran",
+                     "make",                 "git",
+                     "subversion",           "libxml2-dev",
+                     "libglib2.0-dev",       "libjson-glib-dev",
+                     "gettext",              "libsqlite3-dev",
+                     "libgsl-dev",           "libgtop2-dev",
+                     "libgtk-3-dev",         "freeglut3-dev",
+                     "libglfw3-dev",         "libsdl2-dev",
+                     "fonts-freefont-otf",   "libglew-dev",
+                     "glslang-tools",        "mpich",
+                     "libmpich-dev",         "vim-gtk3",
+                     "indent",               "perltidy",
+                     "galculator",           "xmaxima",
+                     "valgrind",             "valgrind-mpi",
+                     "ddd",                  "meld",
+                     "texlive-latex-extra",  "texlive-luatex",
+                     "texlive-publishers",   "texlive-fonts-recommended",
+                     "texlive-lang-spanish", "texlive-lang-french",
+                     "texlive-lang-english", "texlive-lang-italian",
+                     "texlive-pstricks",     "graphviz",
+                     "evince",               "doxygen",
+                     "wget",                 "firefox",
+                     "firefox-l10n-es",      "webext-ublock-origin",
+                     "thunderbird",          "thunderbird-l10n-es-es",
+                     "imagemagick",          "gimp",
+                     "mpv",                  "gnumeric",
+                     "libreoffice",          "libreoffice-l10n-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -488,7 +489,7 @@ if ($os eq "Linux")
     elsif ($dist eq "Gentoo")
     {
         system("cp", "gentoo.make.conf", "/etc/portage/make.conf");
-        @install    = ("emerge", "--ask");
+        @install    = ("emerge",              "--ask");
         @preinstall = ("USE=\"gimp -vaapi\"", @install, "media-libs/mesa");
         @clean =
           ("emerge", "--ask", "--depclean", ";", "eclean-dist", "--deep");
@@ -664,7 +665,7 @@ elsif ($os eq "NetBSD")
         "PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH"
     );
     @install = ("pkg_add");
-    @update  = ("pkgin", "update;",     "pkgin", "upgrade");
+    @update  = ("pkgin", "update;", "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @packages = (
                  "pkgin",                   "virt-what",
@@ -758,7 +759,7 @@ elsif ($os eq "DragonFly")
     print "OS=" . $os . "\n";
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
-    @update  = ("pkg", "update;",     "pkg", "upgrade");
+    @update  = ("pkg", "update;", "pkg", "upgrade");
     @packages = (
                  "gsed",                       "patch",
                  "bash",                       "autoconf",
@@ -854,7 +855,7 @@ elsif ($os eq "SunOS")
         print "Dist=OpenIndiana\n";
         @install = ("pkg",   "install");
         @clean   = ("beadm", "list");
-        @update  = ("pkg", "update;", "/opt/csw/bin/pkgutil", "-U", "-u", "-y");
+        @update = ("pkg", "update;", "/opt/csw/bin/pkgutil", "-U", "-u", "-y");
         system("pkg", "install", "mate_install")
           if (!(-x "/usr/bin/mate-session"));
         system("pkg", "install", "wget") if (!(-x "/usr/bin/wget"));
