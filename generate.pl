@@ -744,14 +744,15 @@ elsif ($os eq "OpenBSD")
                  "xfce4-xkb",                "xfce4-pulseaudio",
                  "xfce4-screenshooter",      "vim",
                  "nedit",                    "gindent",
-                 "galculator",               "maxima",
-                 "ddd",                      "meld",
-                 "texlive_texmf-full",       "graphviz",
-                 "evince",                   "doxygen",
-                 "wget",                     "firefox-esr-i18n-es-ES",
-                 "thunderbird-i18n-es-ES",   "ImageMagick",
-                 "gimp",                     "mpv",
-                 "libreoffice-i18n-es",      "milter-spamd"
+                 "perltidy",                 "galculator",
+                 "maxima",                   "ddd",
+                 "meld",                     "texlive_texmf-full",
+                 "graphviz",                 "evince",
+                 "doxygen",                  "wget",
+                 "firefox-esr-i18n-es-ES",   "thunderbird-i18n-es-ES",
+                 "ImageMagick",              "gimp",
+                 "mpv",                      "libreoffice-i18n-es",
+                 "milter-spamd"
                 );
 }
 elsif ($os eq "DragonFly")
