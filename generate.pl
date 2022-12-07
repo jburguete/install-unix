@@ -1049,7 +1049,7 @@ else
     {
         if ($machine eq "x86_64")
         {
-            @install = ("/sbin/setup-x86_64.exe");
+            @install = ("/sbin/setup-x86_64.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
                 print "Error!\nYou have to copy the installation program "
@@ -1059,7 +1059,7 @@ else
         }
         elsif ($machine eq "i686")
         {
-            @install = ("/sbin/setup-x86.exe");
+            @install = ("/sbin/setup-x86.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
                 print "Error!\nYou have to copy the installation program "
@@ -1067,52 +1067,52 @@ else
                 exit 1;
             }
         }
-        @update = @install;
-        @packages = (
-                     "-P pkg-config",
-                     "-P autoconf",
-                     "-P automake",
-                     "-P make",
-                     "-P gcc-core",
-                     "-P gcc-g++",
-                     "-P gcc-fortran",
-                     "-P git",
-                     "-P subversion",
-                     "-P libxml2-devel",
-                     "-P libglib2.0-devel",
-                     "-P libjson-glib1.0-devel",
-                     "-P libsqlite3-devel",
-                     "-P libgsl-devel",
-                     "-P gettext-devel",
-                     "-P libgtop2.0-devel",
-                     "-P libgtk3-devel",
-                     "-P libGLEW-devel",
-                     "-P libSDL2-devel",
-                     "-P gnu-free-fonts",
-                     "-P libiconv-devel",
-                     "-P xorg-server",
-                     "-P xinit",
-                     "-P xfce4-session",
-                     "-P xfce4-cpugraph-plugin",
-                     "-P xfce4-weather-plugin",
-                     "-P xfce4-xkb-plugin",
-                     "-P xfce4-pulseaudio-plugin",
-                     "-P xfce4-screenshooter",
-                     "-P vim",
-                     "-P gvim",
-                     "-P indent",
-                     "-P gnome-calculator",
-                     "-P gnuplot",
-                     "-P maxima-xmaxima",
-                     "-P gdb",
-                     "-P ddd",
-                     "-P meld",
-                     "-P evince",
-                     "-P doxygen",
-                     "-P wget",
-                     "-P ImageMagick",
-                     "-P gimp",
-                     "-P parole"
+        @update = (@install, "--upgrade-also");
+        @packages = ("--packages",
+                     "pkg-config",
+                     "autoconf",
+                     "automake",
+                     "make",
+                     "gcc-core",
+                     "gcc-g++",
+                     "gcc-fortran",
+                     "git",
+                     "subversion",
+                     "libxml2-devel",
+                     "libglib2.0-devel",
+                     "libjson-glib1.0-devel",
+                     "libsqlite3-devel",
+                     "libgsl-devel",
+                     "gettext-devel",
+                     "libgtop2.0-devel",
+                     "libgtk3-devel",
+                     "libGLEW-devel",
+                     "libSDL2-devel",
+                     "gnu-free-fonts",
+                     "libiconv-devel",
+                     "xorg-server",
+                     "xinit",
+                     "xfce4-session",
+                     "xfce4-cpugraph-plugin",
+                     "xfce4-weather-plugin",
+                     "xfce4-xkb-plugin",
+                     "xfce4-pulseaudio-plugin",
+                     "xfce4-screenshooter",
+                     "vim",
+                     "gvim",
+                     "indent",
+                     "gnome-calculator",
+                     "gnuplot",
+                     "maxima-xmaxima",
+                     "gdb",
+                     "ddd",
+                     "meld",
+                     "evince",
+                     "doxygen",
+                     "wget",
+                     "ImageMagick",
+                     "gimp",
+                     "parole"
                     );
     }
     else
