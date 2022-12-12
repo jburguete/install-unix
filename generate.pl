@@ -693,7 +693,8 @@ elsif ($os eq "OpenBSD")
 {
     print "OS=" . $os . "\n";
     @install = ("pkg_add");
-    @update  = ("syspatch;", "syspatch;", "pkg_add", "-u");
+    @update  = ("syspatch;", "pkg_add", "-u");
+    @upgrade = ("sysupgrade"); 
     @packages = (
                  "gsed",                     "gpatch",
                  "bash",                     "autoconf",
@@ -732,7 +733,6 @@ elsif ($os eq "DragonFly")
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
     @update  = ("pkg", "update;",     "pkg", "upgrade");
-    @upgrade = ("sysupgrade"); 
     @packages = (
                  "gsed",                       "patch",
                  "bash",                       "autoconf",
