@@ -732,6 +732,7 @@ elsif ($os eq "DragonFly")
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
     @update  = ("pkg", "update;",     "pkg", "upgrade");
+    @upgrade = ("sysupgrade"); 
     @packages = (
                  "gsed",                       "patch",
                  "bash",                       "autoconf",
