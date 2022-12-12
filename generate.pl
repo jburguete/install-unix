@@ -5,7 +5,6 @@
 #Debian Hurd and Linux
 #Devuan Linux
 #Dragonfly BSD
-#Dyson
 #Fedora Linux
 #FreeBSD
 #Gentoo Linux
@@ -792,93 +791,49 @@ elsif ($os eq "SunOS")
     print "OS=" . $os . " ";
     $dist = `uname -v`;
     $dist =~ s/\n//g;
-    if ($dist eq "5.10.18.git.2a44663-0.1")
-    {
-        print "Dist=Dyson\n";
-        system("sudo", "apt", "install", "aptitude")
-          if (!(-x "/usr/bin/aptitude"));
-        @install = ("aptitude", "install");
-        @clean   = ("aptitude", "clean");
-        @update  = ("aptitude", "update");
-        @upgrade = ("aptitude", "upgrade");
-        @packages = (
-                     "patch",                     "autoconf",
-                     "automake",                  "pkg-config",
-                     "g++",                       "gfortran",
-                     "make",                      "git",
-                     "subversion",                "libxml2-dev",
-                     "libglib2.0-dev",            "libjson-glib-dev",
-                     "libsqlite3-dev",            "libgsl-dev",
-                     "libgtop2-dev",              "libgtk-3-dev",
-                     "freeglut3-dev",             "libsdl2-dev",
-                     "fonts-freefont-ttf",        "libglew-dev",
-                     "mpich2",                    "libmpich-dev",
-                     "xserver-xorg-input-kbd",    "xserver-xorg-input-mouse",
-                     "xserver-xorg-video-vesa",   "virtualbox-guest-x11",
-                     "xorg",                      "xfce4",
-                     "xscreensaver",              "xfce4-xkb-plugin",
-                     "xfce4-terminal",            "gstreamer1.0-plugins-good",
-                     "gstreamer1.0-pulseaudio",   "xfce4-pulseaudio-plugin",
-                     "xfce4-screenshooter",       "vim-gtk3",
-                     "indent",                    "gnome-calculator",
-                     "xmaxima",                   "ddd",
-                     "meld",                      "texlive-latex-extra",
-                     "texlive-luatex",            "texlive-publishers",
-                     "texlive-fonts-recommended", "texlive-lang-spanish",
-                     "texlive-lang-french",       "texlive-lang-english",
-                     "texlive-lang-italian",      "texlive-pstricks",
-                     "graphviz",                  "xpdf",
-                     "doxygen",                   "wget",
-                     "imagemagick",               "gimp",
-                     "gnumeric",                  "libreoffice",
-                     "libreoffice-l10n-es"
-                    );
-    }
-    else
-    {
-        print "Dist=OpenIndiana\n";
-        @install = ("pkg",   "install");
-        @clean   = ("beadm", "list");
-        @update  = ("pkg", "update;", "/opt/csw/bin/pkgutil", "-U", "-u", "-y");
-        system("pkg", "install", "mate_install")
-          if (!(-x "/usr/bin/mate-session"));
-        system("pkg", "install", "wget") if (!(-x "/usr/bin/wget"));
-        system("wget", "http://mirror.opencsw.org/opencsw/pkgutil.pkg")
-          if (!(-f "pkgutil.pkg"));
-        system("pkgadd", "-d", "pkgutil.pkg", "all")
-          if (!(-x "/opt/csw/bin/pkgutil"));
-        @packages = (
-                     "gnu-patch",                       "gnu-sed",
-                     "autoconf",                        "automake",
-                     "pkg-config",                      "gcc-7",
-                     "gcc-10",                          "git",
-                     "developer/versioning/subversion", "gettext",
-                     "json-glib",                       "gsl",
-                     "library/mpich/gcc",               "gtk3",
-                     "libglew",                         "freeglut",
-                     "sdl2",                            "gnome-fonts",
-                     "mate_install",                    "gvim",
-                     "gnu-indent",                      "gnuplot",
-                     "meld",                            "evince",
-                     "doxygen",                         "wget",
-                     "firefox",                         "thunderbird",
-                     "imagemagick",                     "gimp",
-                     "gnumeric",                        "libreoffice"
-                    );
-        @postinstall = ("export PATH=\$PATH:/opt/csw/bin");
-        push(@postinstall, "\npkgutil -U");
-        push(@postinstall, "\npkgutil --install");
-        push(@postinstall, "texlive");
-        push(@postinstall, "texlive_latex_extra");
-        push(@postinstall, "texlive_luatex");
-        push(@postinstall, "texlive_publishers");
-        push(@postinstall, "texlive_fonts_recommended");
-        push(@postinstall, "texlive_lang_spanish");
-        push(@postinstall, "texlive_lang_french");
-        push(@postinstall, "texlive_lang_italian");
-        push(@postinstall, "texlive_pstricks");
-        push(@postinstall, "graphviz");
-    }
+    print "Dist=OpenIndiana\n";
+    @install = ("pkg",   "install");
+    @clean   = ("beadm", "list");
+    @update  = ("pkg",   "update;", "/opt/csw/bin/pkgutil", "-U", "-u", "-y");
+    system("pkg", "install", "mate_install")
+      if (!(-x "/usr/bin/mate-session"));
+    system("pkg", "install", "wget") if (!(-x "/usr/bin/wget"));
+    system("wget", "http://mirror.opencsw.org/opencsw/pkgutil.pkg")
+      if (!(-f "pkgutil.pkg"));
+    system("pkgadd", "-d", "pkgutil.pkg", "all")
+      if (!(-x "/opt/csw/bin/pkgutil"));
+    @packages = (
+                 "gnu-patch",                       "gnu-sed",
+                 "autoconf",                        "automake",
+                 "pkg-config",                      "gcc-7",
+                 "gcc-10",                          "git",
+                 "developer/versioning/subversion", "gettext",
+                 "json-glib",                       "gsl",
+                 "library/mpich/gcc",               "gtk3",
+                 "libglew",                         "freeglut",
+                 "sdl2",                            "gnome-fonts",
+                 "mate_install",                    "gvim",
+                 "gnu-indent",                      "gnuplot",
+                 "meld",                            "evince",
+                 "doxygen",                         "wget",
+                 "firefox",                         "thunderbird",
+                 "imagemagick",                     "gimp",
+                 "gnumeric",                        "libreoffice"
+                );
+    @postinstall = ("export PATH=\$PATH:/opt/csw/bin");
+    push(@postinstall, "\npkgutil -U");
+    push(@postinstall, "\npkgutil --install");
+    push(@postinstall, "perltidy");
+    push(@postinstall, "texlive");
+    push(@postinstall, "texlive_latex_extra");
+    push(@postinstall, "texlive_luatex");
+    push(@postinstall, "texlive_publishers");
+    push(@postinstall, "texlive_fonts_recommended");
+    push(@postinstall, "texlive_lang_spanish");
+    push(@postinstall, "texlive_lang_french");
+    push(@postinstall, "texlive_lang_italian");
+    push(@postinstall, "texlive_pstricks");
+    push(@postinstall, "graphviz");
 }
 elsif ($os eq "GNU")
 {
