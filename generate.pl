@@ -693,7 +693,7 @@ elsif ($os eq "OpenBSD")
 {
     print "OS=" . $os . "\n";
     @install = ("pkg_add");
-    @update  = ("pkg_add", "-u");
+    @update  = ("syspatch;", "syspatch;", "pkg_add", "-u");
     @packages = (
                  "gsed",                     "gpatch",
                  "bash",                     "autoconf",
