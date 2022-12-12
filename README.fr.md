@@ -102,7 +102,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Debian 11 (Hurd or Linux) 
 * Devuan Linux 4
 * Dragonfly BSD 6.2
-* Fedora Linux 36
+* Fedora Linux 37
 * FreeBSD 13.1
 * Gentoo Linux
 * Haiku
@@ -112,7 +112,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Microsoft Windows 10 + Cygwin
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.0
-* OpenBSD 7.1
+* OpenBSD 7.2
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.4
 * Xubuntu Linux 22.04
