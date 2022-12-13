@@ -39,7 +39,7 @@
 #Haiku
 #10 Linux Mint
 #-- MacOS Big Sur + Homebrew
-#Manjaro Linux
+#12 Manjaro Linux
 #11 Microsoft Windows + CYGWIN
 #12 Microsoft Windows + MSYS2
 #NetBSD
@@ -60,7 +60,7 @@
 #Haiku
 #11 Linux Mint
 #13 MacOS Big Sur + Homebrew
-#Manjaro Linux
+#14 Manjaro Linux
 #-- Microsoft Windows + CYGWIN
 #15 Microsoft Windows + MSYS2
 #NetBSD
@@ -285,33 +285,47 @@ if ($os eq "Linux")
                      "patch",                   "autoconf",
                      "automake",                "pkgconf",
                      "gcc",                     "gcc-fortran",
-                     "make",                    "git",
-                     "subversion",              "libxml2",
-                     "glib2",                   "json-glib",
-                     "sqlite",                  "gsl",
-                     "libgtop",                 "gtk3",
-                     "gtk4",                    "freeglut",
-                     "glfw-x11",                "sdl2",
-                     "gnu-free-fonts",          "glew",
-                     "vulkan-headers",          "openmpi",
-                     "xfce4-screensaver",       "xfce4-cpugraph-plugin",
-                     "xfce4-netload-plugin",    "xfce4-systemload-plugin",
-                     "xfce4-weather-plugin",    "xfce4-xkb-plugin",
-                     "xfce4-pulseaudio-plugin", "gvim",
-                     "indent",                  "perl-tidy",
-                     "galculator",              "maxima",
-                     "valgrind",                "gdb",
-                     "meld",                    "texlive-core",
-                     "texlive-latexextra",      "texlive-publishers",
-                     "texlive-pstricks",        "graphviz",
-                     "evince",                  "doxygen",
-                     "wget",                    "firefox",
-                     "firefox-i18n-es-es",      "firefox-ublock-origin",
-                     "thunderbird",             "thunderbird-i18n-es-es",
-                     "imagemagick",             "gimp",
-                     "mpv",                     "libreoffice-still",
-                     "libreoffice-still-es",    "spamassassin"
+                     "clang",                   "make",
+                     "git",                     "subversion",
+                     "libxml2",                 "glib2",
+                     "json-glib",               "sqlite",
+                     "gsl",                     "libgtop",
+                     "gtk3",                    "gtk4",
+                     "freeglut",                "glfw-x11",
+                     "sdl2",                    "gnu-free-fonts",
+                     "glew",                    "vulkan-headers",
+                     "openmpi",                 "xfce4-screensaver",
+                     "xfce4-cpugraph-plugin",   "xfce4-netload-plugin",
+                     "xfce4-systemload-plugin", "xfce4-weather-plugin",
+                     "xfce4-xkb-plugin",        "xfce4-pulseaudio-plugin",
+                     "gvim",                    "indent",
+                     "perl-tidy",               "galculator",
+                     "maxima",                  "valgrind",
+                     "gdb",                     "meld",
+                     "texlive-core",            "texlive-latexextra",
+                     "texlive-publishers",      "texlive-pstricks",
+                     "graphviz",                "evince",
+                     "doxygen",                 "wget",
+                     "firefox",                 "firefox-i18n-es-es",
+                     "firefox-ublock-origin",   "thunderbird",
+                     "thunderbird-i18n-es-es",  "imagemagick",
+                     "gimp",                    "mpv",
+                     "libreoffice-still",       "libreoffice-still-es",
+                     "spamassassin"
                     );
+        system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
+        $mach = `virt-what`;
+        $mach =~ s/\n//g;
+        print "Mach=" . $mach . "\n";
+
+        if ($mach eq "virtualbox")
+        {
+            push @packages, "virtualbox-guest-utils";
+        }
+        elsif ($mach eq "kvm")
+        {
+            push @packages, "xf86-video-qxl";
+        }
     }
     elsif ($dist eq "Arch")
     {
