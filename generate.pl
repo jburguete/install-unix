@@ -29,8 +29,9 @@
 
 #GCC versions
 #12 Arch Linux
-#Debian Hurd and Linux
-#Devuan Linux
+#12 Debian Hurd
+#10 Debian Linux
+#10 Devuan Linux
 #Dragonfly BSD
 #Fedora Linux
 #FreeBSD
@@ -49,8 +50,9 @@
 
 #CLang versions
 #14 Arch Linux
-#Debian Hurd and Linux
-#Devuan Linux
+#14 Debian Hurd
+#11 Debian Linux
+#11 Devuan Linux
 #Dragonfly BSD
 #Fedora Linux
 #FreeBSD
@@ -110,42 +112,43 @@ if ($os eq "Linux")
                      "patch",                     "autoconf",
                      "automake",                  "pkg-config",
                      "g++",                       "gfortran",
-                     "make",                      "git",
-                     "subversion",                "libxml2-dev",
-                     "libglib2.0-dev",            "libjson-glib-dev",
-                     "gettext",                   "libsqlite3-dev",
-                     "libgsl-dev",                "libgtop2-dev",
-                     "libgtk-3-dev",              "freeglut3-dev",
-                     "libglfw3-dev",              "libsdl2-dev",
-                     "fonts-freefont-otf",        "libglew-dev",
-                     "glslang-tools",             "mpich",
-                     "libmpich-dev",              "xserver-xorg-input-kbd",
-                     "xserver-xorg-input-mouse",  "xserver-xorg-input-evdev",
-                     "xserver-xorg-video-vesa",   "xorg",
-                     "xfce4",                     "lightdm",
-                     "xscreensaver",              "xfce4-cpugraph-plugin",
-                     "xfce4-netload-plugin",      "xfce4-systemload-plugin",
-                     "xfce4-weather-plugin",      "xfce4-xkb-plugin",
-                     "xfce4-terminal",            "gstreamer1.0-plugins-good",
-                     "gstreamer1.0-pulseaudio",   "xfce4-pulseaudio-plugin",
-                     "xfce4-screenshooter",       "nedit",
-                     "vim-gtk3",                  "indent",
-                     "perltidy",                  "galculator",
-                     "xmaxima",                   "valgrind",
-                     "valgrind-mpi",              "ddd",
-                     "meld",                      "texlive-latex-extra",
-                     "texlive-luatex",            "texlive-publishers",
-                     "texlive-fonts-recommended", "texlive-lang-spanish",
-                     "texlive-lang-french",       "texlive-lang-english",
-                     "texlive-lang-italian",      "texlive-pstricks",
-                     "graphviz",                  "evince",
-                     "doxygen",                   "wget",
-                     "firefox-esr",               "firefox-esr-l10n-es-es",
-                     "webext-ublock-origin",      "thunderbird",
-                     "thunderbird-l10n-es-es",    "imagemagick",
-                     "gimp",                      "mpv",
-                     "gnumeric",                  "libreoffice",
-                     "libreoffice-l10n-es",       "spamassassin"
+                     "clang",                     "make",
+                     "git",                       "subversion",
+                     "libxml2-dev",               "libglib2.0-dev",
+                     "libjson-glib-dev",          "gettext",
+                     "libsqlite3-dev",            "libgsl-dev",
+                     "libgtop2-dev",              "libgtk-3-dev",
+                     "freeglut3-dev",             "libglfw3-dev",
+                     "libsdl2-dev",               "fonts-freefont-otf",
+                     "libglew-dev",               "glslang-tools",
+                     "mpich",                     "libmpich-dev",
+                     "xserver-xorg-input-kbd",    "xserver-xorg-input-mouse",
+                     "xserver-xorg-input-evdev",  "xserver-xorg-video-vesa",
+                     "xorg",                      "xfce4",
+                     "lightdm",                   "xscreensaver",
+                     "xfce4-cpugraph-plugin",     "xfce4-netload-plugin",
+                     "xfce4-systemload-plugin",   "xfce4-weather-plugin",
+                     "xfce4-xkb-plugin",          "xfce4-terminal",
+                     "gstreamer1.0-plugins-good", "gstreamer1.0-pulseaudio",
+                     "xfce4-pulseaudio-plugin",   "xfce4-screenshooter",
+                     "nedit",                     "vim-gtk3",
+                     "indent",                    "perltidy",
+                     "galculator",                "xmaxima",
+                     "valgrind",                  "valgrind-mpi",
+                     "ddd",                       "meld",
+                     "texlive-latex-extra",       "texlive-luatex",
+                     "texlive-publishers",        "texlive-fonts-recommended",
+                     "texlive-lang-spanish",      "texlive-lang-french",
+                     "texlive-lang-english",      "texlive-lang-italian",
+                     "texlive-pstricks",          "graphviz",
+                     "evince",                    "doxygen",
+                     "wget",                      "firefox-esr",
+                     "firefox-esr-l10n-es-es",    "webext-ublock-origin",
+                     "thunderbird",               "thunderbird-l10n-es-es",
+                     "imagemagick",               "gimp",
+                     "mpv",                       "gnumeric",
+                     "libreoffice",               "libreoffice-l10n-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -513,7 +516,7 @@ if ($os eq "Linux")
     elsif ($dist eq "Gentoo")
     {
         system("cp", "gentoo.make.conf", "/etc/portage/make.conf");
-        @install    = ("emerge", "--ask");
+        @install    = ("emerge",              "--ask");
         @preinstall = ("USE=\"gimp -vaapi\"", @install, "media-libs/mesa");
         @clean =
           ("emerge", "--ask", "--depclean", ";", "eclean-dist", "--deep");
@@ -689,7 +692,7 @@ elsif ($os eq "NetBSD")
         "PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH"
     );
     @install = ("pkg_add");
-    @update  = ("pkgin", "update;",     "pkgin", "upgrade");
+    @update  = ("pkgin", "update;", "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @packages = (
                  "pkgin",                   "sysupgrade",
@@ -785,7 +788,7 @@ elsif ($os eq "DragonFly")
     print "OS=" . $os . "\n";
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
-    @update  = ("pkg", "update;",     "pkg", "upgrade");
+    @update  = ("pkg", "update;", "pkg", "upgrade");
     @packages = (
                  "gsed",                       "patch",
                  "bash",                       "autoconf",
@@ -887,37 +890,37 @@ elsif ($os eq "GNU")
     @update  = ("apt", "update");
     @upgrade = ("apt", "upgrade");
     @packages = (
-                 "patch",                   "autoconf",
-                 "automake",                "pkg-config",
-                 "g++",                     "gfortran",
-                 "make",                    "git",
-                 "subversion",              "libxml2-dev",
-                 "libglib2.0-dev",          "libjson-glib-dev",
-                 "gettext",                 "libsqlite3-dev",
-                 "libgsl-dev",              "libgtop2-dev",
-                 "libgtk-3-dev",            "libgtk-4-dev",
-                 "freeglut3-dev",           "libglfw3-dev",
-                 "libsdl2-dev",             "fonts-freefont-otf",
-                 "glslang-tools",           "libglew-dev",
-                 "mpich",                   "libmpich-dev",
-                 "xserver-xorg-input-kbd",  "xserver-xorg-input-mouse",
-                 "xserver-xorg-video-vesa", "xorg",
-                 "xfce4",                   "xfce4-screensaver",
-                 "xfce4-weather-plugin",    "xfce4-xkb-plugin",
-                 "xfce4-terminal",          "gstreamer1.0-plugins-good",
-                 "gstreamer1.0-pulseaudio", "xfce4-pulseaudio-plugin",
-                 "xfce4-screenshooter",     "nedit",
-                 "vim-gtk3",                "indent",
-                 "perltidy",                "galculator",
-                 "ddd",                     "meld",
-                 "texlive-latex-extra",     "texlive-luatex",
-                 "texlive-publishers",      "texlive-fonts-recommended",
-                 "texlive-lang-spanish",    "texlive-lang-french",
-                 "texlive-lang-english",    "texlive-lang-italian",
-                 "texlive-pstricks",        "graphviz",
-                 "evince",                  "doxygen",
-                 "wget",                    "imagemagick",
-                 "gimp"
+                 "patch",                     "autoconf",
+                 "automake",                  "pkg-config",
+                 "g++",                       "gfortran",
+                 "clang",                     "make",
+                 "git",                       "subversion",
+                 "libxml2-dev",               "libglib2.0-dev",
+                 "libjson-glib-dev",          "gettext",
+                 "libsqlite3-dev",            "libgsl-dev",
+                 "libgtop2-dev",              "libgtk-3-dev",
+                 "libgtk-4-dev",              "freeglut3-dev",
+                 "libglfw3-dev",              "libsdl2-dev",
+                 "fonts-freefont-otf",        "glslang-tools",
+                 "libglew-dev",               "mpich",
+                 "libmpich-dev",              "xserver-xorg-input-kbd",
+                 "xserver-xorg-input-mouse",  "xserver-xorg-video-vesa",
+                 "xorg",                      "xfce4",
+                 "xfce4-screensaver",         "xfce4-weather-plugin",
+                 "xfce4-xkb-plugin",          "xfce4-terminal",
+                 "gstreamer1.0-plugins-good", "gstreamer1.0-pulseaudio",
+                 "xfce4-pulseaudio-plugin",   "xfce4-screenshooter",
+                 "nedit",                     "vim-gtk3",
+                 "indent",                    "perltidy",
+                 "galculator",                "ddd",
+                 "meld",                      "texlive-latex-extra",
+                 "texlive-luatex",            "texlive-publishers",
+                 "texlive-fonts-recommended", "texlive-lang-spanish",
+                 "texlive-lang-french",       "texlive-lang-english",
+                 "texlive-lang-italian",      "texlive-pstricks",
+                 "graphviz",                  "evince",
+                 "doxygen",                   "wget",
+                 "imagemagick",               "gimp"
                 );
     system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
     $machine = `virt-what`;
