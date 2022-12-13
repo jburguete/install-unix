@@ -26,6 +26,44 @@
 #Haiku
 #Windows + CYGWIN
 
+#GCC versions
+#Arch Linux
+#Debian Hurd and Linux
+#Devuan Linux
+#Dragonfly BSD
+#Fedora Linux
+#FreeBSD
+#Gentoo Linux
+#Haiku
+#Linux Mint
+#MacOS Big Sur + Homebrew
+#Manjaro Linux
+#Microsoft Windows + CYGWIN
+#Microsoft Windows + MSYS2
+#NetBSD
+#11 OpenBSD
+#11 OpenIndiana
+#Xubuntu Linux
+
+#CLang versions
+#Arch Linux
+#Debian Hurd and Linux
+#Devuan Linux
+#Dragonfly BSD
+#Fedora Linux
+#FreeBSD
+#Gentoo Linux
+#Haiku
+#Linux Mint
+#MacOS Big Sur + Homebrew
+#Manjaro Linux
+#Microsoft Windows + CYGWIN
+#Microsoft Windows + MSYS2
+#NetBSD
+#13 OpenBSD
+#13 OpenIndiana
+#Xubuntu Linux
+
 use File::Copy 'move';
 $os = `uname -s`;
 $os =~ s/\n//g;
@@ -803,22 +841,23 @@ elsif ($os eq "SunOS")
     system("pkgadd", "-d", "pkgutil.pkg", "all")
       if (!(-x "/opt/csw/bin/pkgutil"));
     @packages = (
-                 "gnu-patch",                       "gnu-sed",
-                 "autoconf",                        "automake",
-                 "pkg-config",                      "gcc-7",
-                 "gcc-11",                          "git",
-                 "developer/versioning/subversion", "gettext",
-                 "json-glib",                       "gsl",
-                 "library/mpich/gcc",               "gtk3",
-                 "libglew",                         "freeglut",
-                 "sdl2",                            "gnome-fonts",
-                 "mate_install",                    "gvim",
-                 "gnu-indent",                      "gnuplot",
-                 "meld",                            "evince",
-                 "doxygen",                         "wget",
-                 "firefox",                         "thunderbird",
-                 "imagemagick",                     "gimp",
-                 "gnumeric",                        "libreoffice"
+                 "gnu-patch",   "gnu-sed",
+                 "autoconf",    "automake",
+                 "pkg-config",  "gcc-7",
+                 "gcc-11",      "developer/clang-13",
+                 "git",         "developer/versioning/subversion",
+                 "gettext",     "json-glib",
+                 "gsl",         "library/mpich/gcc",
+                 "gtk3",        "libglew",
+                 "freeglut",    "sdl2",
+                 "gnome-fonts", "mate_install",
+                 "gvim",        "gnu-indent",
+                 "gnuplot",     "meld",
+                 "evince",      "doxygen",
+                 "wget",        "firefox",
+                 "thunderbird", "imagemagick",
+                 "gimp",        "gnumeric",
+                 "libreoffice"
                 );
     @postinstall = ("export PATH=\$PATH:/opt/csw/bin");
     push(@postinstall, "\npkgutil -U");
