@@ -17,6 +17,7 @@
 #NetBSD
 #OpenBSD
 #OpenIndiana
+#OpenSUSE Linux
 #Xubuntu Linux
 
 #Without GTK4:
@@ -43,6 +44,7 @@
 #NetBSD
 #11 OpenBSD
 #11 OpenIndiana
+#11 OpenSUSE Linux
 #Xubuntu Linux
 
 #CLang versions
@@ -62,6 +64,7 @@
 #NetBSD
 #13 OpenBSD
 #13 OpenIndiana
+#-- OpenSUSE Linux
 #Xubuntu Linux
 
 use File::Copy 'move';
@@ -1009,6 +1012,7 @@ else
                      "make",
                      $mingw . "gcc",
                      $mingw . "gcc-fortran",
+		     $mingw . "clang",
                      "pkgconf",
                      "git",
                      "subversion",
