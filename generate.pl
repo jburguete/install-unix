@@ -923,10 +923,11 @@ elsif ($os eq "GNU")
                  "imagemagick",               "gimp"
                 );
     system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
-    $machine = `virt-what`;
-    $machine =~ s/\n//g;
+    $mach = `virt-what`;
+    $mach =~ s/\n//g;
+    print "Mach=" . $mach . "\n";
 
-    if ($machine eq "kvm")
+    if ($mach eq "kvm")
     {
         push @packages, "xserver-xorg-video-qxl";
     }
@@ -990,19 +991,19 @@ else
 {
     $os = `uname -o`;
     $os =~ s/\n//g;
-    $machine = `uname -m`;
-    $machine =~ s/\n//g;
-    print "OS=" . $os . " Mach=" . $machine . "\n";
+    $mach = `uname -m`;
+    $mach =~ s/\n//g;
+    print "OS=" . $os . " Mach=" . $mach . "\n";
     if ($os eq "Msys")
     {
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Sc");
         @update  = ("pacman", "-Syu");
-        if ($machine eq "x86_64")
+        if ($mach eq "x86_64")
         {
             $mingw = "mingw64/mingw-w64-x86_64-";
         }
-        elsif ($machine eq "i686")
+        elsif ($mach eq "i686")
         {
             $mingw = "mingw32/mingw-w64-i686-";
         }
@@ -1062,7 +1063,7 @@ else
     }
     elsif ($os eq "Cygwin")
     {
-        if ($machine eq "x86_64")
+        if ($mach eq "x86_64")
         {
             @install = ("/sbin/setup-x86_64.exe", "--quiet-mode");
             if (!(-x $install[0]))
@@ -1072,7 +1073,7 @@ else
                 exit 1;
             }
         }
-        elsif ($machine eq "i686")
+        elsif ($mach eq "i686")
         {
             @install = ("/sbin/setup-x86.exe", "--quiet-mode");
             if (!(-x $install[0]))
