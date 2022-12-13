@@ -45,7 +45,7 @@
 #11 OpenBSD
 #11 OpenIndiana
 #11 OpenSUSE Linux
-#Xubuntu Linux
+#12 Xubuntu Linux
 
 #CLang versions
 #Arch Linux
@@ -65,7 +65,7 @@
 #13 OpenBSD
 #13 OpenIndiana
 #-- OpenSUSE Linux
-#Xubuntu Linux
+#15 Xubuntu Linux
 
 use File::Copy 'move';
 $os = `uname -s`;
@@ -226,36 +226,37 @@ if ($os eq "Linux")
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
         @packages = (
-                     "patch",                "autoconf",
-                     "automake",             "pkg-config",
-                     "g++",                  "gfortran",
-                     "make",                 "git",
-                     "subversion",           "libxml2-dev",
-                     "libglib2.0-dev",       "libjson-glib-dev",
-                     "gettext",              "libsqlite3-dev",
-                     "libgsl-dev",           "libgtop2-dev",
-                     "libgtk-3-dev",         "libgtk-4-dev",
-                     "freeglut3-dev",        "libglfw3-dev",
-                     "libsdl2-dev",          "fonts-freefont-otf",
-                     "libglew-dev",          "glslang-tools",
-                     "mpich",                "libmpich-dev",
-                     "nedit",                "vim-gtk3",
-                     "indent",               "perltidy",
-                     "galculator",           "xmaxima",
-                     "valgrind",             "valgrind-mpi",
-                     "ddd",                  "meld",
-                     "texlive-latex-extra",  "texlive-luatex",
-                     "texlive-publishers",   "texlive-fonts-recommended",
-                     "texlive-lang-spanish", "texlive-lang-french",
-                     "texlive-lang-english", "texlive-lang-italian",
-                     "texlive-pstricks",     "graphviz",
-                     "evince",               "doxygen",
-                     "wget",                 "firefox",
-                     "firefox-locale-es",    "webext-ublock-origin",
-                     "thunderbird",          "thunderbird-locale-es",
-                     "imagemagick",          "gimp",
-                     "mpv",                  "gnumeric",
-                     "libreoffice",          "spamassassin"
+                     "patch",                     "autoconf",
+                     "automake",                  "pkg-config",
+                     "g++",                       "gfortran",
+                     "clang",                     "make",
+                     "git",                       "subversion",
+                     "libxml2-dev",               "libglib2.0-dev",
+                     "libjson-glib-dev",          "gettext",
+                     "libsqlite3-dev",            "libgsl-dev",
+                     "libgtop2-dev",              "libgtk-3-dev",
+                     "libgtk-4-dev",              "freeglut3-dev",
+                     "libglfw3-dev",              "libsdl2-dev",
+                     "fonts-freefont-otf",        "libglew-dev",
+                     "glslang-tools",             "mpich",
+                     "libmpich-dev",              "nedit",
+                     "vim-gtk3",                  "indent",
+                     "perltidy",                  "galculator",
+                     "xmaxima",                   "valgrind",
+                     "valgrind-mpi",              "ddd",
+                     "meld",                      "texlive-latex-extra",
+                     "texlive-luatex",            "texlive-publishers",
+                     "texlive-fonts-recommended", "texlive-lang-spanish",
+                     "texlive-lang-french",       "texlive-lang-english",
+                     "texlive-lang-italian",      "texlive-pstricks",
+                     "graphviz",                  "evince",
+                     "doxygen",                   "wget",
+                     "firefox",                   "firefox-locale-es",
+                     "webext-ublock-origin",      "thunderbird",
+                     "thunderbird-locale-es",     "imagemagick",
+                     "gimp",                      "mpv",
+                     "gnumeric",                  "libreoffice",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -1012,7 +1013,7 @@ else
                      "make",
                      $mingw . "gcc",
                      $mingw . "gcc-fortran",
-		     $mingw . "clang",
+                     $mingw . "clang",
                      "pkgconf",
                      "git",
                      "subversion",
