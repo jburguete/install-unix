@@ -28,7 +28,7 @@
 #Windows + CYGWIN
 
 #GCC versions
-#Arch Linux
+#12 Arch Linux
 #Debian Hurd and Linux
 #Devuan Linux
 #Dragonfly BSD
@@ -48,7 +48,7 @@
 #12 Xubuntu Linux
 
 #CLang versions
-#Arch Linux
+#14 Arch Linux
 #Debian Hurd and Linux
 #Devuan Linux
 #Dragonfly BSD
@@ -319,36 +319,37 @@ if ($os eq "Linux")
                      "patch",                   "autoconf",
                      "automake",                "pkgconf",
                      "gcc",                     "gcc-fortran",
-                     "make",                    "git",
-                     "subversion",              "libxml2",
-                     "glib2",                   "json-glib",
-                     "sqlite",                  "gsl",
-                     "libgtop",                 "gtk3",
-                     "gtk4",                    "freeglut",
-                     "glfw-x11",                "sdl2",
-                     "gnu-free-fonts",          "glew",
-                     "vulkan-headers",          "openmpi",
-                     "xf86-video-vesa",         "xorg-server",
-                     "pulseaudio",              "pulseaudio-alsa",
-                     "pavucontrol",             "xfce4",
-                     "lightdm",                 "lightdm-gtk-greeter",
-                     "xfce4-screensaver",       "xfce4-cpugraph-plugin",
-                     "xfce4-netload-plugin",    "xfce4-systemload-plugin",
-                     "xfce4-weather-plugin",    "xfce4-xkb-plugin",
-                     "xfce4-pulseaudio-plugin", "gvim",
-                     "indent",                  "perl-tidy",
-                     "galculator",              "maxima",
-                     "valgrind",                "gdb",
-                     "meld",                    "texlive-core",
-                     "texlive-latexextra",      "texlive-publishers",
-                     "texlive-pstricks",        "graphviz",
-                     "evince",                  "doxygen",
-                     "wget",                    "firefox",
-                     "firefox-i18n-es-es",      "firefox-ublock-origin",
-                     "thunderbird",             "thunderbird-i18n-es-es",
-                     "imagemagick",             "gimp",
-                     "mpv",                     "libreoffice-still",
-                     "libreoffice-still-es",    "spamassassin"
+                     "clang",                   "make",
+                     "git",                     "subversion",
+                     "libxml2",                 "glib2",
+                     "json-glib",               "sqlite",
+                     "gsl",                     "libgtop",
+                     "gtk3",                    "gtk4",
+                     "freeglut",                "glfw-x11",
+                     "sdl2",                    "gnu-free-fonts",
+                     "glew",                    "vulkan-headers",
+                     "openmpi",                 "xf86-video-vesa",
+                     "xorg-server",             "pulseaudio",
+                     "pulseaudio-alsa",         "pavucontrol",
+                     "xfce4",                   "lightdm",
+                     "lightdm-gtk-greeter",     "xfce4-screensaver",
+                     "xfce4-cpugraph-plugin",   "xfce4-netload-plugin",
+                     "xfce4-systemload-plugin", "xfce4-weather-plugin",
+                     "xfce4-xkb-plugin",        "xfce4-pulseaudio-plugin",
+                     "gvim",                    "indent",
+                     "perl-tidy",               "galculator",
+                     "maxima",                  "valgrind",
+                     "gdb",                     "meld",
+                     "texlive-core",            "texlive-latexextra",
+                     "texlive-publishers",      "texlive-pstricks",
+                     "graphviz",                "evince",
+                     "doxygen",                 "wget",
+                     "firefox",                 "firefox-i18n-es-es",
+                     "firefox-ublock-origin",   "thunderbird",
+                     "thunderbird-i18n-es-es",  "imagemagick",
+                     "gimp",                    "mpv",
+                     "libreoffice-still",       "libreoffice-still-es",
+                     "spamassassin"
                     );
         @postinstall = ("systemctl enable lightdm.service");
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
