@@ -37,8 +37,8 @@
 #11 FreeBSD
 #11 Gentoo Linux
 #Haiku
-#Linux Mint
-#MacOS Big Sur + Homebrew
+#10 Linux Mint
+#-- MacOS Big Sur + Homebrew
 #Manjaro Linux
 #11 Microsoft Windows + CYGWIN
 #12 Microsoft Windows + MSYS2
@@ -58,8 +58,8 @@
 #13 FreeBSD
 #15 Gentoo Linux
 #Haiku
-#Linux Mint
-#MacOS Big Sur + Homebrew
+#11 Linux Mint
+#13 MacOS Big Sur + Homebrew
 #Manjaro Linux
 #-- Microsoft Windows + CYGWIN
 #15 Microsoft Windows + MSYS2
@@ -177,7 +177,7 @@ if ($os eq "Linux")
                      "patch",                "autoconf",
                      "automake",             "pkg-config",
                      "g++",                  "gfortran",
-                     "make",                 "git",
+                     "clang", "make",                 "git",
                      "subversion",           "libxml2-dev",
                      "libglib2.0-dev",       "libjson-glib-dev",
                      "gettext",              "libsqlite3-dev",
