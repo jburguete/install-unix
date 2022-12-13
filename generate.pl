@@ -34,7 +34,7 @@
 #10 Devuan Linux
 #11 Dragonfly BSD
 #12 Fedora Linux
-#FreeBSD
+#11 FreeBSD
 #Gentoo Linux
 #Haiku
 #Linux Mint
@@ -55,7 +55,7 @@
 #11 Devuan Linux
 #-- Dragonfly BSD
 #15 Fedora Linux
-#FreeBSD
+#-- FreeBSD
 #Gentoo Linux
 #Haiku
 #Linux Mint
