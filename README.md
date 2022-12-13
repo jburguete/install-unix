@@ -111,7 +111,7 @@ Currently the following UNIX type systems are supported:
 * Manjaro Linux
 * Microsoft Windows 10 + Cygwin
 * Microsoft Windows 10 + MSYS2
-* NetBSD 9.0
+* NetBSD 9.3
 * OpenBSD 7.2
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.4

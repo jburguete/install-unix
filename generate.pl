@@ -649,7 +649,7 @@ elsif ($os eq "NetBSD")
     @update  = ("pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @packages = (
-                 "pkgin",                   "virt-what",
+                 "pkgin",                   "sysupgrade",
                  "gsed",                    "patch",
                  "bash",                    "autoconf",
                  "automake",                "pkgconf",
