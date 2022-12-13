@@ -806,7 +806,7 @@ elsif ($os eq "SunOS")
                  "gnu-patch",                       "gnu-sed",
                  "autoconf",                        "automake",
                  "pkg-config",                      "gcc-7",
-                 "gcc-10",                          "git",
+                 "gcc-11",                          "git",
                  "developer/versioning/subversion", "gettext",
                  "json-glib",                       "gsl",
                  "library/mpich/gcc",               "gtk3",
