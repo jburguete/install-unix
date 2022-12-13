@@ -33,7 +33,7 @@
 #10 Debian Linux
 #10 Devuan Linux
 #11 Dragonfly BSD
-#Fedora Linux
+#12 Fedora Linux
 #FreeBSD
 #Gentoo Linux
 #Haiku
@@ -54,7 +54,7 @@
 #11 Debian Linux
 #11 Devuan Linux
 #-- Dragonfly BSD
-#Fedora Linux
+#15 Fedora Linux
 #FreeBSD
 #Gentoo Linux
 #Haiku
@@ -392,6 +392,7 @@ if ($os eq "Linux")
                      "gcc",
                      "gcc-c++",
                      "gcc-gfortran",
+                     "clang",
                      "make",
                      "git",
                      "subversion",
@@ -516,7 +517,7 @@ if ($os eq "Linux")
     elsif ($dist eq "Gentoo")
     {
         system("cp", "gentoo.make.conf", "/etc/portage/make.conf");
-        @install    = ("emerge",              "--ask");
+        @install    = ("emerge", "--ask");
         @preinstall = ("USE=\"gimp -vaapi\"", @install, "media-libs/mesa");
         @clean =
           ("emerge", "--ask", "--depclean", ";", "eclean-dist", "--deep");
@@ -692,7 +693,7 @@ elsif ($os eq "NetBSD")
         "PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH"
     );
     @install = ("pkg_add");
-    @update  = ("pkgin", "update;", "pkgin", "upgrade");
+    @update  = ("pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @packages = (
                  "pkgin",                   "sysupgrade",
@@ -788,7 +789,7 @@ elsif ($os eq "DragonFly")
     print "OS=" . $os . "\n";
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
-    @update  = ("pkg", "update;", "pkg", "upgrade");
+    @update  = ("pkg", "update;",     "pkg", "upgrade");
     @packages = (
                  "gsed",                       "patch",
                  "bash",                       "autoconf",
