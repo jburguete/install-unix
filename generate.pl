@@ -38,8 +38,8 @@
 #Linux Mint
 #MacOS Big Sur + Homebrew
 #Manjaro Linux
-#Microsoft Windows + CYGWIN
-#Microsoft Windows + MSYS2
+#11 Microsoft Windows + CYGWIN
+#12 Microsoft Windows + MSYS2
 #NetBSD
 #11 OpenBSD
 #11 OpenIndiana
@@ -57,8 +57,8 @@
 #Linux Mint
 #MacOS Big Sur + Homebrew
 #Manjaro Linux
-#Microsoft Windows + CYGWIN
-#Microsoft Windows + MSYS2
+#-- Microsoft Windows + CYGWIN
+#15 Microsoft Windows + MSYS2
 #NetBSD
 #13 OpenBSD
 #13 OpenIndiana
