@@ -42,7 +42,7 @@
 #12 Manjaro Linux
 #11 Microsoft Windows + CYGWIN
 #12 Microsoft Windows + MSYS2
-#NetBSD
+#12 NetBSD
 #11 OpenBSD
 #11 OpenIndiana
 #11 OpenSUSE Linux
@@ -63,7 +63,7 @@
 #14 Manjaro Linux
 #-- Microsoft Windows + CYGWIN
 #15 Microsoft Windows + MSYS2
-#NetBSD
+#13 NetBSD
 #13 OpenBSD
 #13 OpenIndiana
 #-- OpenSUSE Linux
@@ -710,45 +710,46 @@ elsif ($os eq "NetBSD")
     @update  = ("pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @packages = (
-                 "pkgin",                   "sysupgrade",
-                 "gsed",                    "patch",
-                 "bash",                    "autoconf",
-                 "automake",                "pkgconf",
-                 "gcc12",                   "gmake",
-                 "git",                     "subversion",
-                 "libxml2",                 "gettext-tools",
-                 "glib2",                   "json-glib",
-                 "sqlite3",                 "gsl",
-                 "libgtop",                 "gtk3+",
-                 "gtk4",                    "freeglut",
-                 "glfw",                    "SDL2",
-                 "freefont-ttf",            "glew",
-                 "mpich",                   "xfce4",
-                 "xfce4-cpugraph-plugin",   "xfce4-netload-plugin",
-                 "xfce4-systemload-plugin", "xfce4-weather-plugin",
-                 "xfce4-xkb-plugin",        "xfce4-screenshooter",
-                 "vim-gtk3",                "nedit",
-                 "gindent",                 "p5-Perl-Tidy",
-                 "galculator",              "gnuplot",
-                 "maxima",                  "ddd",
-                 "meld",                    "tex-latex",
-                 "tex-pst-pdf",             "tex-babel-spanish",
-                 "tex-babel-french",        "tex-elsarticle",
-                 "tex-beamer",              "tex-adjustbox",
-                 "tex-float",               "tex-varwidth",
-                 "tex-fancyvrb",            "tex-multirow",
-                 "tex-hanging",             "tex-stackengine",
-                 "tex-ulem",                "tex-wasysym",
-                 "tex-sectsty",             "tex-fancyhdr",
-                 "tex-tocloft",             "tex-newunicodechar",
-                 "tex-caption",             "tex-etoc",
-                 "tex-alphalph",            "tex-ec",
-                 "tex-epstopdf-pkg",        "graphviz",
-                 "evince",                  "doxygen",
-                 "wget",                    "firefox-esr",
-                 "thunderbird",             "ImageMagick",
-                 "gimp",                    "mpv",
-                 "libreoffice",             "spamassassin"
+                 "pkgin",                "sysupgrade",
+                 "gsed",                 "patch",
+                 "bash",                 "autoconf",
+                 "automake",             "pkgconf",
+                 "gcc12",                "clang",
+                 "gmake",                "git",
+                 "subversion",           "libxml2",
+                 "gettext-tools",        "glib2",
+                 "json-glib",            "sqlite3",
+                 "gsl",                  "libgtop",
+                 "gtk3+",                "gtk4",
+                 "freeglut",             "glfw",
+                 "SDL2",                 "freefont-ttf",
+                 "glew",                 "mpich",
+                 "xfce4",                "xfce4-cpugraph-plugin",
+                 "xfce4-netload-plugin", "xfce4-systemload-plugin",
+                 "xfce4-weather-plugin", "xfce4-xkb-plugin",
+                 "xfce4-screenshooter",  "vim-gtk3",
+                 "nedit",                "gindent",
+                 "p5-Perl-Tidy",         "galculator",
+                 "gnuplot",              "maxima",
+                 "ddd",                  "meld",
+                 "tex-latex",            "tex-pst-pdf",
+                 "tex-babel-spanish",    "tex-babel-french",
+                 "tex-elsarticle",       "tex-beamer",
+                 "tex-adjustbox",        "tex-float",
+                 "tex-varwidth",         "tex-fancyvrb",
+                 "tex-multirow",         "tex-hanging",
+                 "tex-stackengine",      "tex-ulem",
+                 "tex-wasysym",          "tex-sectsty",
+                 "tex-fancyhdr",         "tex-tocloft",
+                 "tex-newunicodechar",   "tex-caption",
+                 "tex-etoc",             "tex-alphalph",
+                 "tex-ec",               "tex-epstopdf-pkg",
+                 "graphviz",             "evince",
+                 "doxygen",              "wget",
+                 "firefox-esr",          "thunderbird",
+                 "ImageMagick",          "gimp",
+                 "mpv",                  "libreoffice",
+                 "spamassassin"
                 );
     system(@install, "virt-what") if (!(-x "/usr/pkg/sbin/virt-what"));
     $mach = `virt-what`;
