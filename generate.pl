@@ -709,7 +709,7 @@ elsif ($os eq "OpenBSD")
                  "gsed",                     "gpatch",
                  "bash",                     "autoconf",
                  "automake",                 "pkgconf",
-                 "gcc-8",                    "gmake",
+                 "gcc",                      "gmake",
                  "git",                      "subversion",
                  "libxml",                   "gettext-tools",
                  "glib2",                    "json-glib",
