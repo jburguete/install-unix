@@ -35,7 +35,7 @@
 #11 Dragonfly BSD
 #12 Fedora Linux
 #11 FreeBSD
-#Gentoo Linux
+#11 Gentoo Linux
 #Haiku
 #Linux Mint
 #MacOS Big Sur + Homebrew
@@ -56,7 +56,7 @@
 #-- Dragonfly BSD
 #15 Fedora Linux
 #13 FreeBSD
-#Gentoo Linux
+#15 Gentoo Linux
 #Haiku
 #Linux Mint
 #MacOS Big Sur + Homebrew
