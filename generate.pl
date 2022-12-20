@@ -36,7 +36,7 @@
 #12 Fedora Linux
 #11 FreeBSD
 #11 Gentoo Linux
-#Haiku
+#11 Haiku
 #10 Linux Mint
 #-- MacOS Big Sur + Homebrew
 #12 Manjaro Linux
@@ -57,7 +57,7 @@
 #15 Fedora Linux
 #13 FreeBSD
 #15 Gentoo Linux
-#Haiku
+#12 Haiku
 #11 Linux Mint
 #13 MacOS Big Sur + Homebrew
 #14 Manjaro Linux
@@ -957,6 +957,7 @@ elsif ($os eq "Haiku")
                  "patch",        "autoconf",
                  "automake",     "pkgconfig",
                  "gcc",          "gcc_fortran",
+		 "llvm12_clang",
                  "make",         "git",
                  "subversion",   "libxml2_devel",
                  "glib2_devel",  "json_glib_devel",
@@ -968,7 +969,7 @@ elsif ($os eq "Haiku")
                  "texlive_core", "graphviz",
                  "gnuplot",      "doxygen",
                  "wget",         "imagemagick",
-                 "gimp"
+                 "gimp",         "epiphany"
                 );
 }
 elsif ($os eq "Darwin")
