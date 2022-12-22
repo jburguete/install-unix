@@ -665,18 +665,17 @@ elsif ($os eq "FreeBSD")
                  "xfce4-netload-plugin",       "xfce4-systemload-plugin",
                  "xfce4-weather-plugin",       "xfce4-xkb-plugin",
                  "xfce4-terminal",             "xfce4-pulseaudio-plugin",
-                 "xfce4-screenshooter-plugin", "vim",
-                 "vim-gtk3",                   "nedit",
-                 "gindent",                    "p5-Perl-Tidy",
-                 "galculator",                 "maxima",
-                 "gdb",                        "meld",
-                 "latex-beamer",               "graphviz",
-                 "evince",                     "doxygen",
-                 "wget",                       "firefox-esr",
-                 "thunderbird",                "ImageMagick7",
-                 "gimp",                       "mpv",
-                 "libreoffice",                "es-libreoffice",
-                 "spamassassin"
+                 "xfce4-screenshooter-plugin", "vim-gtk3",
+                 "nedit",                      "gindent",
+                 "p5-Perl-Tidy",               "galculator",
+                 "maxima",                     "gdb",
+                 "meld",                       "latex-beamer",
+                 "graphviz",                   "evince",
+                 "doxygen",                    "wget",
+                 "firefox-esr",                "thunderbird",
+                 "ImageMagick7",               "gimp",
+                 "mpv",                        "libreoffice",
+                 "es-libreoffice",             "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
