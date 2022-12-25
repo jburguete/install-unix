@@ -66,7 +66,7 @@
 #13 NetBSD
 #13 OpenBSD
 #13 OpenIndiana
-#-- OpenSUSE Linux
+#13 OpenSUSE Linux
 #15 Xubuntu Linux
 
 use File::Copy 'move';
@@ -485,7 +485,8 @@ if ($os eq "Linux")
                      "patch",                         "autoconf",
                      "automake",                      "pkg-config",
                      "gcc11",                         "gcc11-c++",
-                     "gcc11-fortran",                 "make",
+                     "gcc11-fortran",                 "clang",
+                     "llvm",                          "make",
                      "git-core",                      "subversion",
                      "libxml2-devel",                 "glib2-devel",
                      "gettext-tools",                 "json-glib-devel",
