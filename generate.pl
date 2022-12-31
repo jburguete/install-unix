@@ -993,15 +993,25 @@ elsif ($os eq "Darwin")
                     );
     @preinstall = ("@installcask @packagescask");
     @packages = (
-                 "gnu-sed",        "gpatch",  "autoconf",    "automake",
-                 "pkg-config",     "gcc",     "make",        "git",
-                 "subversion",     "libxml2", "gettext",     "glib",
-                 "json-glib",      "sqlite",  "gsl",         "libgtop",
-                 "gtk+3",          "gtk4",    "freeglut",    "glfw",
-                 "sdl2",           "glew",    "glslang",     "mpich",
-                 "font-open-sans", "nedit",   "gnu-indent",  "perltidy",
-                 "maxima",         "ddd",     "graphviz",    "evince",
-                 "doxygen",        "wget",    "imagemagick", "mpv"
+                 "gnu-sed",    "gpatch",
+                 "autoconf",   "automake",
+                 "pkg-config", "gcc",
+                 "llvm@13",    "make",
+                 "git",        "subversion",
+                 "libxml2",    "gettext",
+                 "glib",       "json-glib",
+                 "sqlite",     "gsl",
+                 "libgtop",    "gtk+3",
+                 "gtk4",       "freeglut",
+                 "glfw",       "sdl2",
+                 "glew",       "glslang",
+                 "mpich",      "font-open-sans",
+                 "nedit",      "gnu-indent",
+                 "perltidy",   "maxima",
+                 "ddd",        "graphviz",
+                 "evince",     "doxygen",
+                 "wget",       "imagemagick",
+                 "mpv"
                 );
 }
 else
