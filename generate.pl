@@ -2,11 +2,12 @@
 
 #Supported systems
 #Arch Linux
-#Debian Hurd and Linux
+#Debian Hurd 12
+#Debian Linux 11
 #Devuan Linux
-#Dragonfly BSD
-#Fedora Linux
-#FreeBSD
+#Dragonfly BSD 6.4
+#Fedora Linux 37
+#FreeBSD 13.2
 #Gentoo Linux
 #Haiku
 #Linux Mint
@@ -16,9 +17,9 @@
 #Microsoft Windows + MSYS2
 #NetBSD
 #OpenBSD
-#OpenIndiana
+#OpenIndiana Hipster
 #OpenSUSE Linux
-#Xubuntu Linux
+#Xubuntu Linux 22.10
 
 #Without GTK4:
 #Debian and Devuan Linux
