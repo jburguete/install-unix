@@ -1029,7 +1029,7 @@ else
         @update  = ("pacman", "-Syu");
         if ($mach eq "x86_64")
         {
-            $mingw = "mingw64/mingw-w64-x86_64-";
+            $mingw = "ucrt/mingw-w64-ucrt-x86_64-";
         }
         elsif ($mach eq "i686")
         {
@@ -1096,7 +1096,7 @@ else
             @install = ("/sbin/setup-x86_64.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
-                print "Error!\nYou have to copy the installation program "
+                print "Error!\nYou have to copy the CYGWIN installation program "
                   . "(setup-86_64.exe) in /sbin\n";
                 exit 1;
             }
@@ -1106,7 +1106,7 @@ else
             @install = ("/sbin/setup-x86.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
-                print "Error!\nYou have to copy the installation program "
+                print "Error!\nYou have to copy the CYGWIN installation program "
                   . "(setup-86.exe) in /sbin\n";
                 exit 1;
             }
