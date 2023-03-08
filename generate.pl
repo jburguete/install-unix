@@ -1029,7 +1029,7 @@ else
         @update  = ("pacman", "-Syu");
         if ($mach eq "x86_64")
         {
-            $mingw = "ucrt/mingw-w64-ucrt-x86_64-";
+            $mingw = "ucrt64/mingw-w64-ucrt-x86_64-";
         }
         elsif ($mach eq "i686")
         {
