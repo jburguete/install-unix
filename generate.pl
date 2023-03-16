@@ -331,7 +331,7 @@ if ($os eq "Linux")
     {
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
-        @update  = ("pacman", "-Syu");
+        @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
         @packages = (
                      "patch",                   "autoconf",
                      "automake",                "pkgconf",
