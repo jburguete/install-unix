@@ -279,7 +279,7 @@ if ($os eq "Linux")
     elsif ($dist eq "ManjaroLinux")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
         @packages = (
                      "patch",                   "autoconf",
@@ -1025,7 +1025,7 @@ else
     if ($os eq "Msys")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
         if ($mach eq "x86_64")
         {
