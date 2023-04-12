@@ -641,7 +641,7 @@ elsif ($os eq "FreeBSD")
                "pkg",            "update;", "pkg",            "upgrade"
               );
     @upgrade = (
-                "freebsd-update", "-r", "13.1-RELEASE", "upgrade;",
+                "freebsd-update", "-r", "13.2-RELEASE", "upgrade;",
                 "freebsd-update", "install"
                );
     @packages = (
