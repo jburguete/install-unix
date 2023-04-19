@@ -102,8 +102,8 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Debian 11 (Hurd or Linux) 
 * Devuan Linux 4
 * Dragonfly BSD 6.2
-* Fedora Linux 37
-* FreeBSD 13.1
+* Fedora Linux 38
+* FreeBSD 13.2
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 5
@@ -112,7 +112,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Microsoft Windows 10 + Cygwin
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.3
-* OpenBSD 7.2
+* OpenBSD 7.3
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.4
 * Xubuntu Linux 22.10
