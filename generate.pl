@@ -6,7 +6,7 @@
 #Debian Linux 11
 #Devuan Linux
 #Dragonfly BSD 6.4
-#Fedora Linux 37
+#Fedora Linux 38
 #FreeBSD 13.2
 #Gentoo Linux
 #Haiku
@@ -393,7 +393,7 @@ if ($os eq "Linux")
                     "dnf",            "upgrade",
                     "--refresh;",     "dnf",
                     "system-upgrade", "download",
-                    "--release=37;",  "dnf",
+                    "--release=38;",  "dnf",
                     "system-upgrade", "reboot"
                    );
         @preinstall = "dnf group install gnome-desktop"
