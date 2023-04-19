@@ -280,7 +280,7 @@ if ($os eq "Linux")
     elsif ($dist eq "ManjaroLinux")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
         @packages = (
                      "patch",                   "autoconf",
@@ -332,7 +332,7 @@ if ($os eq "Linux")
     {
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
-        @update  = ("pacman", "-Syu");
+        @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
         @packages = (
                      "patch",                   "autoconf",
                      "automake",                "pkgconf",
@@ -533,7 +533,7 @@ if ($os eq "Linux")
     elsif ($dist eq "Gentoo")
     {
         system("cp", "gentoo.make.conf", "/etc/portage/make.conf");
-        @install    = ("emerge",              "--ask");
+        @install    = ("emerge", "--ask");
         @preinstall = ("USE=\"gimp -vaapi\"", @install, "media-libs/mesa");
         @clean =
           ("emerge", "--ask", "--depclean", ";", "eclean-dist", "--deep");
@@ -642,7 +642,7 @@ elsif ($os eq "FreeBSD")
                "pkg",            "update;", "pkg",            "upgrade"
               );
     @upgrade = (
-                "freebsd-update", "-r", "13.1-RELEASE", "upgrade;",
+                "freebsd-update", "-r", "13.2-RELEASE", "upgrade;",
                 "freebsd-update", "install"
                );
     @packages = (
@@ -672,12 +672,13 @@ elsif ($os eq "FreeBSD")
                  "p5-Perl-Tidy",               "galculator",
                  "maxima",                     "gdb",
                  "meld",                       "latex-beamer",
-                 "graphviz",                   "evince",
-                 "doxygen",                    "wget",
-                 "firefox-esr",                "thunderbird",
-                 "ImageMagick7",               "gimp",
-                 "mpv",                        "libreoffice",
-                 "es-libreoffice",             "spamassassin"
+                 "graphviz",                   "tex-dvipsk",
+                 "evince",                     "doxygen",
+                 "wget",                       "firefox-esr",
+                 "thunderbird",                "ImageMagick7",
+                 "gimp",                       "mpv",
+                 "libreoffice",                "es-libreoffice",
+                 "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
@@ -709,7 +710,7 @@ elsif ($os eq "NetBSD")
         "PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH"
     );
     @install = ("pkg_add");
-    @update  = ("pkgin", "update;", "pkgin", "upgrade");
+    @update  = ("pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @packages = (
                  "pkgin",                "sysupgrade",
@@ -806,7 +807,7 @@ elsif ($os eq "DragonFly")
     print "OS=" . $os . "\n";
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
-    @update  = ("pkg", "update;", "pkg", "upgrade");
+    @update  = ("pkg", "update;",     "pkg", "upgrade");
     @packages = (
                  "gsed",                       "patch",
                  "bash",                       "autoconf",
@@ -1025,11 +1026,11 @@ else
     if ($os eq "Msys")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
         if ($mach eq "x86_64")
         {
-            $mingw = "mingw64/mingw-w64-x86_64-";
+            $mingw = "ucrt64/mingw-w64-ucrt-x86_64-";
         }
         elsif ($mach eq "i686")
         {
@@ -1096,7 +1097,7 @@ else
             @install = ("/sbin/setup-x86_64.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
-                print "Error!\nYou have to copy the installation program "
+                print "Error!\nYou have to copy the CYGWIN installation program "
                   . "(setup-86_64.exe) in /sbin\n";
                 exit 1;
             }
@@ -1106,7 +1107,7 @@ else
             @install = ("/sbin/setup-x86.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
-                print "Error!\nYou have to copy the installation program "
+                print "Error!\nYou have to copy the CYGWIN installation program "
                   . "(setup-86.exe) in /sbin\n";
                 exit 1;
             }
