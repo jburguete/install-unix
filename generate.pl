@@ -22,7 +22,7 @@
 #Xubuntu Linux 22.10
 
 #Without GTK4:
-#Debian and Devuan Linux
+#Devuan Linux
 #Linux Mint
 #OpenIndiana
 #Haiku
@@ -31,7 +31,7 @@
 #GCC versions
 #12 Arch Linux
 #12 Debian Hurd
-#10 Debian Linux
+#12 Debian Linux
 #10 Devuan Linux
 #11 Dragonfly BSD
 #12 Fedora Linux
@@ -51,8 +51,8 @@
 
 #CLang versions
 #14 Arch Linux
-#14 Debian Hurd
-#11 Debian Linux
+#15 Debian Hurd
+#15 Debian Linux
 #11 Devuan Linux
 #-- Dragonfly BSD
 #15 Fedora Linux
@@ -119,37 +119,38 @@ if ($os eq "Linux")
                      "libglib2.0-dev",            "libjson-glib-dev",
                      "gettext",                   "libsqlite3-dev",
                      "libgsl-dev",                "libgtop2-dev",
-                     "libgtk-3-dev",              "freeglut3-dev",
-                     "libglfw3-dev",              "libsdl2-dev",
-                     "fonts-freefont-otf",        "libglew-dev",
-                     "glslang-tools",             "mpich",
-                     "libmpich-dev",              "xserver-xorg-input-kbd",
-                     "xserver-xorg-input-mouse",  "xserver-xorg-input-evdev",
-                     "xserver-xorg-video-vesa",   "xorg",
-                     "xfce4",                     "lightdm",
-                     "xscreensaver",              "xfce4-cpugraph-plugin",
-                     "xfce4-netload-plugin",      "xfce4-systemload-plugin",
-                     "xfce4-weather-plugin",      "xfce4-xkb-plugin",
-                     "xfce4-terminal",            "gstreamer1.0-plugins-good",
-                     "gstreamer1.0-pulseaudio",   "xfce4-pulseaudio-plugin",
-                     "xfce4-screenshooter",       "nedit",
-                     "vim-gtk3",                  "indent",
-                     "perltidy",                  "galculator",
-                     "xmaxima",                   "valgrind",
-                     "valgrind-mpi",              "ddd",
-                     "meld",                      "texlive-latex-extra",
-                     "texlive-luatex",            "texlive-publishers",
-                     "texlive-fonts-recommended", "texlive-lang-spanish",
-                     "texlive-lang-french",       "texlive-lang-english",
-                     "texlive-lang-italian",      "texlive-pstricks",
-                     "graphviz",                  "evince",
-                     "doxygen",                   "wget",
-                     "firefox-esr",               "firefox-esr-l10n-es-es",
-                     "webext-ublock-origin",      "thunderbird",
-                     "thunderbird-l10n-es-es",    "imagemagick",
-                     "gimp",                      "mpv",
-                     "gnumeric",                  "libreoffice",
-                     "libreoffice-l10n-es",       "spamassassin"
+                     "libgtk-3-dev",              "libgtk-4-dev",
+                     "freeglut3-dev",             "libglfw3-dev",
+                     "libsdl2-dev",               "fonts-freefont-otf",
+                     "libglew-dev",               "glslang-tools",
+                     "mpich",                     "libmpich-dev",
+                     "xserver-xorg-input-kbd",    "xserver-xorg-input-mouse",
+                     "xserver-xorg-input-evdev",  "xserver-xorg-video-vesa",
+                     "xorg",                      "xfce4",
+                     "lightdm",                   "xscreensaver",
+                     "xfce4-cpugraph-plugin",     "xfce4-netload-plugin",
+                     "xfce4-systemload-plugin",   "xfce4-weather-plugin",
+                     "xfce4-xkb-plugin",          "xfce4-terminal",
+                     "gstreamer1.0-plugins-good", "gstreamer1.0-pulseaudio",
+                     "xfce4-pulseaudio-plugin",   "xfce4-screenshooter",
+                     "nedit",                     "vim-gtk3",
+                     "indent",                    "perltidy",
+                     "galculator",                "xmaxima",
+                     "valgrind",                  "valgrind-mpi",
+                     "ddd",                       "meld",
+                     "texlive-latex-extra",       "texlive-luatex",
+                     "texlive-publishers",        "texlive-fonts-recommended",
+                     "texlive-lang-spanish",      "texlive-lang-french",
+                     "texlive-lang-english",      "texlive-lang-italian",
+                     "texlive-pstricks",          "graphviz",
+                     "evince",                    "doxygen",
+                     "wget",                      "firefox-esr",
+                     "firefox-esr-l10n-es-es",    "webext-ublock-origin",
+                     "thunderbird",               "thunderbird-l10n-es-es",
+                     "imagemagick",               "gimp",
+                     "mpv",                       "gnumeric",
+                     "libreoffice",               "libreoffice-l10n-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -1097,7 +1098,8 @@ else
             @install = ("/sbin/setup-x86_64.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
-                print "Error!\nYou have to copy the CYGWIN installation program "
+                print
+                  "Error!\nYou have to copy the CYGWIN installation program "
                   . "(setup-86_64.exe) in /sbin\n";
                 exit 1;
             }
@@ -1107,7 +1109,8 @@ else
             @install = ("/sbin/setup-x86.exe", "--quiet-mode");
             if (!(-x $install[0]))
             {
-                print "Error!\nYou have to copy the CYGWIN installation program "
+                print
+                  "Error!\nYou have to copy the CYGWIN installation program "
                   . "(setup-86.exe) in /sbin\n";
                 exit 1;
             }
