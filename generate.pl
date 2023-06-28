@@ -18,7 +18,7 @@
 #NetBSD
 #OpenBSD
 #OpenIndiana Hipster
-#OpenSUSE Linux
+#OpenSUSE Leap Linux 15.5
 #Xubuntu Linux 22.10
 
 #Without GTK4:
@@ -46,7 +46,7 @@
 #12 NetBSD
 #11 OpenBSD
 #11 OpenIndiana
-#11 OpenSUSE Linux
+#12 OpenSUSE Linux
 #12 Xubuntu Linux
 
 #CLang versions
@@ -67,7 +67,7 @@
 #13 NetBSD
 #13 OpenBSD
 #13 OpenIndiana
-#13 OpenSUSE Linux
+#15 OpenSUSE Linux
 #15 Xubuntu Linux
 
 use File::Copy 'move';
@@ -486,8 +486,8 @@ if ($os eq "Linux")
         @packages = (
                      "patch",                         "autoconf",
                      "automake",                      "pkg-config",
-                     "gcc11",                         "gcc11-c++",
-                     "gcc11-fortran",                 "clang",
+                     "gcc12",                         "gcc12-c++",
+                     "gcc12-fortran",                 "clang",
                      "llvm",                          "make",
                      "git-core",                      "subversion",
                      "libxml2-devel",                 "glib2-devel",
