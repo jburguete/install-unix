@@ -19,7 +19,7 @@
 #OpenBSD
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.5
-#Xubuntu Linux 22.10
+#Xubuntu Linux 23.04
 
 #Without GTK4:
 #Devuan Linux

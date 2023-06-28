@@ -115,7 +115,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * OpenBSD 7.3
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.5
-* Xubuntu Linux 22.10
+* Xubuntu Linux 23.04
 
 D'autres versions de ces systèmes d'exploitation ou d'autres distributions
 pourraient travailler mais on n'a pas été prouvé.

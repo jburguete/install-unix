@@ -115,7 +115,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * OpenBSD 7.3
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.5
-* Xubuntu Linux 22.10
+* Xubuntu Linux 23.04
 
 Otras versiones de estos sistemas operativos u otras distribuciones podrían
 funcionar pero no han sido probadas.
