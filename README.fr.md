@@ -109,7 +109,6 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Linux Mint DE 5
 * MacOS Catalina + Homebrew
 * Manjaro Linux
-* Microsoft Windows 10 + Cygwin
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.3
 * OpenBSD 7.3

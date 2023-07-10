@@ -13,7 +13,6 @@
 #Linux Mint
 #MacOS Big Sur + Homebrew
 #Manjaro Linux
-#Microsoft Windows + CYGWIN
 #Microsoft Windows + MSYS2
 #NetBSD
 #OpenBSD
@@ -41,8 +40,7 @@
 #10 Linux Mint
 #-- MacOS Big Sur + Homebrew
 #12 Manjaro Linux
-#11 Microsoft Windows + CYGWIN
-#12 Microsoft Windows + MSYS2
+#13 Microsoft Windows + MSYS2
 #12 NetBSD
 #11 OpenBSD
 #11 OpenIndiana
@@ -62,7 +60,6 @@
 #11 Linux Mint
 #13 MacOS Big Sur + Homebrew
 #14 Manjaro Linux
-#-- Microsoft Windows + CYGWIN
 #15 Microsoft Windows + MSYS2
 #13 NetBSD
 #13 OpenBSD
@@ -1089,78 +1086,6 @@ else
                      "wget",
                      $mingw . "imagemagick",
                      $mingw . "gimp"
-                    );
-    }
-    elsif ($os eq "Cygwin")
-    {
-        if ($mach eq "x86_64")
-        {
-            @install = ("/sbin/setup-x86_64.exe", "--quiet-mode");
-            if (!(-x $install[0]))
-            {
-                print
-                  "Error!\nYou have to copy the CYGWIN installation program "
-                  . "(setup-86_64.exe) in /sbin\n";
-                exit 1;
-            }
-        }
-        elsif ($mach eq "i686")
-        {
-            @install = ("/sbin/setup-x86.exe", "--quiet-mode");
-            if (!(-x $install[0]))
-            {
-                print
-                  "Error!\nYou have to copy the CYGWIN installation program "
-                  . "(setup-86.exe) in /sbin\n";
-                exit 1;
-            }
-        }
-        @update = (@install, "--upgrade-also");
-        @packages = (
-                     "-P pkg-config",
-                     "-P autoconf",
-                     "-P automake",
-                     "-P make",
-                     "-P gcc-core",
-                     "-P gcc-g++",
-                     "-P gcc-fortran",
-                     "-P git",
-                     "-P subversion",
-                     "-P libxml2-devel",
-                     "-P libglib2.0-devel",
-                     "-P libjson-glib1.0-devel",
-                     "-P libsqlite3-devel",
-                     "-P libgsl-devel",
-                     "-P gettext-devel",
-                     "-P libgtop2.0-devel",
-                     "-P libgtk3-devel",
-                     "-P libGLEW-devel",
-                     "-P libSDL2-devel",
-                     "-P gnu-free-fonts",
-                     "-P libiconv-devel",
-                     "-P xorg-server",
-                     "-P xinit",
-                     "-P xfce4-session",
-                     "-P xfce4-cpugraph-plugin",
-                     "-P xfce4-weather-plugin",
-                     "-P xfce4-xkb-plugin",
-                     "-P xfce4-pulseaudio-plugin",
-                     "-P xfce4-screenshooter",
-                     "-P vim",
-                     "-P gvim",
-                     "-P indent",
-                     "-P gnome-calculator",
-                     "-P gnuplot",
-                     "-P maxima-xmaxima",
-                     "-P gdb",
-                     "-P ddd",
-                     "-P meld",
-                     "-P evince",
-                     "-P doxygen",
-                     "-P wget",
-                     "-P ImageMagick",
-                     "-P gimp",
-                     "-P parole"
                     );
     }
     else
