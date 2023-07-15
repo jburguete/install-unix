@@ -28,7 +28,7 @@
 #Windows + CYGWIN
 
 #GCC versions
-#12 Arch Linux
+#13 Arch Linux
 #12 Debian Hurd
 #12 Debian Linux
 #10 Devuan Linux
@@ -48,7 +48,7 @@
 #12 Xubuntu Linux
 
 #CLang versions
-#14 Arch Linux
+#15 Arch Linux
 #15 Debian Hurd
 #15 Debian Linux
 #11 Devuan Linux
