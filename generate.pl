@@ -33,7 +33,7 @@
 #12 Debian Linux
 #10 Devuan Linux
 #11 Dragonfly BSD
-#12 Fedora Linux
+#13 Fedora Linux
 #11 FreeBSD
 #11 Gentoo Linux
 #11 Haiku
@@ -53,7 +53,7 @@
 #15 Debian Linux
 #11 Devuan Linux
 #-- Dragonfly BSD
-#15 Fedora Linux
+#16 Fedora Linux
 #13 FreeBSD
 #15 Gentoo Linux
 #12 Haiku
