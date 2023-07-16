@@ -2,8 +2,8 @@
 
 #Supported systems
 #Arch Linux
-#Debian Hurd 12
-#Debian Linux 11
+#Debian Hurd 13
+#Debian Linux 12
 #Devuan Linux
 #Dragonfly BSD 6.4
 #Fedora Linux 38
@@ -29,7 +29,7 @@
 
 #GCC versions
 #13 Arch Linux
-#12 Debian Hurd
+#13 Debian Hurd
 #12 Debian Linux
 #10 Devuan Linux
 #11 Dragonfly BSD
