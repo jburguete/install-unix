@@ -32,7 +32,7 @@
 #13 Debian Hurd
 #12 Debian Linux
 #10 Devuan Linux
-#11 Dragonfly BSD
+#12 Dragonfly BSD
 #13 Fedora Linux
 #11 FreeBSD
 #11 Gentoo Linux
