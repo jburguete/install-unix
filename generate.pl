@@ -58,7 +58,7 @@
 #15 Gentoo Linux
 #12 Haiku
 #11 Linux Mint
-#13 MacOS Big Sur + Homebrew
+#14 MacOS Big Sur + Homebrew
 #14 Manjaro Linux
 #15 Microsoft Windows + MSYS2
 #13 NetBSD
