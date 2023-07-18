@@ -101,13 +101,13 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Arch Linux
 * Debian 12 (Hurd or Linux) 
 * Devuan Linux 4
-* Dragonfly BSD 6.2
+* Dragonfly BSD 6.4
 * Fedora Linux 38
 * FreeBSD 13.2
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 5
-* MacOS Catalina + Homebrew
+* MacOS Big Sur + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.3

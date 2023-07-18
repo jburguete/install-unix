@@ -39,7 +39,7 @@
 #11 Haiku
 #10 Linux Mint
 #-- MacOS Big Sur + Homebrew
-#12 Manjaro Linux
+#13 Manjaro Linux
 #13 Microsoft Windows + MSYS2
 #12 NetBSD
 #11 OpenBSD
@@ -59,7 +59,7 @@
 #12 Haiku
 #11 Linux Mint
 #13 MacOS Big Sur + Homebrew
-#14 Manjaro Linux
+#15 Manjaro Linux
 #15 Microsoft Windows + MSYS2
 #13 NetBSD
 #13 OpenBSD
