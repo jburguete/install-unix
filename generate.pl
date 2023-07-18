@@ -25,7 +25,6 @@
 #Linux Mint
 #OpenIndiana
 #Haiku
-#Windows + CYGWIN
 
 #GCC versions
 #13 Arch Linux
@@ -61,7 +60,7 @@
 #13 MacOS Big Sur + Homebrew
 #15 Manjaro Linux
 #15 Microsoft Windows + MSYS2
-#13 NetBSD
+#15 NetBSD
 #13 OpenBSD
 #13 OpenIndiana
 #15 OpenSUSE Linux
