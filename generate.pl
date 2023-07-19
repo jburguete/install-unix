@@ -59,7 +59,7 @@
 #11 Linux Mint
 #13 MacOS Big Sur + Homebrew
 #15 Manjaro Linux
-#15 Microsoft Windows + MSYS2
+#16 Microsoft Windows + MSYS2
 #15 NetBSD
 #13 OpenBSD
 #13 OpenIndiana
