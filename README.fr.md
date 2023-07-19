@@ -107,7 +107,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 5
-* MacOS Monterey + Homebrew
+* MacOS Ventura + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.3

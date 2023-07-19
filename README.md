@@ -107,7 +107,7 @@ Currently the following UNIX type systems are supported:
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 5
-* MacOS Monterey + Homebrew
+* MacOS Ventura + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + MSYS2
 * NetBSD 9.3
