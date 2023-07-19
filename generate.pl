@@ -11,7 +11,7 @@
 #Gentoo Linux
 #Haiku
 #Linux Mint
-#MacOS Big Sur + Homebrew
+#MacOS Monterey + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD
@@ -37,7 +37,7 @@
 #11 Gentoo Linux
 #11 Haiku
 #10 Linux Mint
-#-- MacOS Big Sur + Homebrew
+#-- MacOS Monterey + Homebrew
 #13 Manjaro Linux
 #13 Microsoft Windows + MSYS2
 #12 NetBSD
