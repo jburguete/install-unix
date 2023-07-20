@@ -358,6 +358,7 @@ if ($os eq "Linux")
                      "texlive-core",            "texlive-fontsrecommended",
                      "texlive-latexextra",      "texlive-publishers",
                      "texlive-pstricks",        "texlive-luatex",
+                     "texlive-langspanish",     "texlive-langfrench",
                      "graphviz",                "evince",
                      "doxygen",                 "wget",
                      "firefox",                 "firefox-i18n-es-es",
