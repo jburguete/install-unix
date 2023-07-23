@@ -670,14 +670,14 @@ elsif ($os eq "FreeBSD")
                  "nedit",                      "gindent",
                  "p5-Perl-Tidy",               "galculator",
                  "maxima",                     "gdb",
-                 "meld",                       "latex-beamer",
-                 "graphviz",                   "tex-dvipsk",
-                 "evince",                     "doxygen",
-                 "wget",                       "firefox-esr",
-                 "thunderbird",                "ImageMagick7",
-                 "gimp",                       "mpv",
-                 "libreoffice",                "es-libreoffice",
-                 "spamassassin"
+                 "valgrind",                   "meld",
+                 "latex-beamer",               "graphviz",
+                 "tex-dvipsk",                 "evince",
+                 "doxygen",                    "wget",
+                 "firefox-esr",                "thunderbird",
+                 "ImageMagick7",               "gimp",
+                 "mpv",                        "libreoffice",
+                 "es-libreoffice",             "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
