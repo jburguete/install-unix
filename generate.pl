@@ -800,6 +800,10 @@ elsif ($os eq "OpenBSD")
                  "mpv",                      "libreoffice-i18n-es",
                  "milter-spamd"
                 );
+    system(@install, "virt-what") if (!(-x "/usr/pkg/sbin/virt-what"));
+    $mach = `virt-what`;
+    $mach =~ s/\n//g;
+    print "Mach=" . $mach . "\n";
 }
 elsif ($os eq "DragonFly")
 {
