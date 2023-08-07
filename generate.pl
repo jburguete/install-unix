@@ -185,7 +185,7 @@ if ( $os eq "Linux" ) {
             "texlive-lang-italian",      "texlive-pstricks",
             "graphviz",                  "evince",
             "doxygen",                   "wget",
-            "firefox",                   "firefox-l10n-es",
+            "firefox-esr",               "firefox-esr-l10n-es-es",
             "webext-ublock-origin",      "thunderbird",
             "thunderbird-l10n-es-es",    "imagemagick",
             "gimp",                      "mpv",
