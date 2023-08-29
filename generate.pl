@@ -133,7 +133,7 @@ if ( $os eq "Linux" ) {
             "texlive-pstricks",          "graphviz",
             "evince",                    "doxygen",
             "wget",                      "firefox-esr",
-            "firefox-esr-l10n-es-es",    "webext-ublock-origin",
+            "firefox-esr-l10n-es-es",    "webext-ublock-origin-firefox",
             "thunderbird",               "thunderbird-l10n-es-es",
             "imagemagick",               "gimp",
             "mpv",                       "gnumeric",
