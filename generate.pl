@@ -884,19 +884,26 @@ elsif ( $os eq "Haiku" ) {
     @install  = ( "pkgman", "install" );
     @update   = ( "pkgman", "full-sync" );
     @packages = (
-        "patch",           "autoconf",    "automake",      "pkgconfig",
-        "gcc",             "gcc_fortran", "llvm12_clang",  "make",
-        "git",             "subversion",  "libxml2_devel", "glib2_devel",
-        "json_glib_devel", "gettext",     "sqlite_devel",  "gsl_devel",
-        "gtk3_devel",      "glfw_devel",  "libsdl2_devel", "glew_devel",
-        "vim",             "indent",      "gdb",           "texlive",
-        "texlive_latexextra",       "texlive_luatex",
-            "texlive_publishers",        "texlive_fontsrecommended",
-            "texlive_langspanish",      "texlive_langfrench",
-            "texlive_langenglish",      "texlive_langitalian",
-            "texlive_pstricks", 
-        "graphviz",        "gnuplot",     "doxygen",       "wget",
-        "imagemagick",     "gimp",        "epiphany"
+        "patch",               "autoconf",
+        "automake",            "pkgconfig",
+        "gcc",                 "gcc_fortran",
+        "llvm12_clang",        "make",
+        "git",                 "subversion",
+        "libxml2_devel",       "glib2_devel",
+        "json_glib_devel",     "gettext",
+        "sqlite_devel",        "gsl_devel",
+        "gtk3_devel",          "glfw_devel",
+        "libsdl2_devel",       "glew_devel",
+        "vim",                 "indent",
+        "gdb",                 "texlive",
+        "texlive_latexextra",  "texlive_luatex",
+        "texlive_publishers",  "texlive_fontsrecommended",
+        "texlive_langspanish", "texlive_langfrench",
+        "texlive_langenglish", "texlive_langitalian",
+        "texlive_pstricks",    "graphviz",
+        "gnuplot",             "doxygen",
+        "wget",                "imagemagick",
+        "gimp",                "epiphany"
     );
 }
 elsif ( $os eq "Darwin" ) {
