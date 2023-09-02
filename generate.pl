@@ -889,7 +889,12 @@ elsif ( $os eq "Haiku" ) {
         "git",             "subversion",  "libxml2_devel", "glib2_devel",
         "json_glib_devel", "gettext",     "sqlite_devel",  "gsl_devel",
         "gtk3_devel",      "glfw_devel",  "libsdl2_devel", "glew_devel",
-        "vim",             "indent",      "gdb",           "texlive_core",
+        "vim",             "indent",      "gdb",           "texlive",
+        "texlive_latexextra",       "texlive_luatex",
+            "texlive_publishers",        "texlive_fontsrecommended",
+            "texlive_langspanish",      "texlive_langfrench",
+            "texlive_langenglish",      "texlive_langitalian",
+            "texlive_pstricks", 
         "graphviz",        "gnuplot",     "doxygen",       "wget",
         "imagemagick",     "gimp",        "epiphany"
     );
