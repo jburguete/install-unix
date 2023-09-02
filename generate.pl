@@ -35,7 +35,7 @@
 #13 Fedora Linux
 #13 FreeBSD
 #11 Gentoo Linux
-#11 Haiku
+#13 Haiku
 #10 Linux Mint
 #-- MacOS Ventura + Homebrew
 #13 Manjaro Linux
