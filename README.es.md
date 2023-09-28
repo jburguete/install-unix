@@ -106,7 +106,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * FreeBSD 13.2
 * Gentoo Linux
 * Haiku
-* Linux Mint DE 5
+* Linux Mint DE 6
 * MacOS Ventura + Homebrew
 * Manjaro Linux
 * Microsoft Windows 10 + MSYS2
