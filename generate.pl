@@ -22,7 +22,6 @@
 
 #Without GTK4:
 #Devuan Linux
-#Linux Mint
 #OpenIndiana
 #Haiku
 
@@ -36,7 +35,7 @@
 #13 FreeBSD
 #11 Gentoo Linux
 #13 Haiku
-#10 Linux Mint
+#12 Linux Mint
 #-- MacOS Ventura + Homebrew
 #13 Manjaro Linux
 #13 Microsoft Windows + MSYS2
@@ -56,7 +55,7 @@
 #14 FreeBSD
 #15 Gentoo Linux
 #12 Haiku
-#11 Linux Mint
+#14 Linux Mint
 #14 MacOS Ventura + Homebrew
 #15 Manjaro Linux
 #16 Microsoft Windows + MSYS2
@@ -161,36 +160,37 @@ if ( $os eq "Linux" ) {
         @update   = ( "aptitude", "update" );
         @upgrade  = ( "aptitude", "upgrade" );
         @packages = (
-            "patch",                     "autoconf",
-            "automake",                  "pkg-config",
-            "g++",                       "gfortran",
-            "clang",                     "make",
-            "git",                       "subversion",
-            "libxml2-dev",               "libglib2.0-dev",
-            "libjson-glib-dev",          "gettext",
-            "libsqlite3-dev",            "libgsl-dev",
-            "libgtop2-dev",              "libgtk-3-dev",
-            "freeglut3-dev",             "libglfw3-dev",
-            "libsdl2-dev",               "fonts-freefont-otf",
-            "libglew-dev",               "glslang-tools",
-            "mpich",                     "libmpich-dev",
-            "vim-gtk3",                  "indent",
-            "perltidy",                  "galculator",
-            "xmaxima",                   "valgrind",
-            "valgrind-mpi",              "ddd",
-            "meld",                      "texlive-latex-extra",
-            "texlive-luatex",            "texlive-publishers",
-            "texlive-fonts-recommended", "texlive-lang-spanish",
-            "texlive-lang-french",       "texlive-lang-english",
-            "texlive-lang-italian",      "texlive-pstricks",
-            "graphviz",                  "evince",
-            "doxygen",                   "wget",
-            "firefox-esr",               "firefox-esr-l10n-es-es",
-            "webext-ublock-origin",      "thunderbird",
-            "thunderbird-l10n-es-es",    "imagemagick",
-            "gimp",                      "mpv",
-            "gnumeric",                  "libreoffice",
-            "libreoffice-l10n-es",       "spamassassin"
+            "patch",                  "autoconf",
+            "automake",               "pkg-config",
+            "g++",                    "gfortran",
+            "clang",                  "make",
+            "git",                    "subversion",
+            "libxml2-dev",            "libglib2.0-dev",
+            "libjson-glib-dev",       "gettext",
+            "libsqlite3-dev",         "libgsl-dev",
+            "libgtop2-dev",           "libgtk-3-dev",
+            "libgtk-4-dev",           "freeglut3-dev",
+            "libglfw3-dev",           "libsdl2-dev",
+            "fonts-freefont-otf",     "libglew-dev",
+            "glslang-tools",          "mpich",
+            "libmpich-dev",           "vim-gtk3",
+            "indent",                 "perltidy",
+            "galculator",             "xmaxima",
+            "valgrind",               "valgrind-mpi",
+            "ddd",                    "meld",
+            "texlive-latex-extra",    "texlive-luatex",
+            "texlive-publishers",     "texlive-fonts-recommended",
+            "texlive-lang-spanish",   "texlive-lang-french",
+            "texlive-lang-english",   "texlive-lang-italian",
+            "texlive-pstricks",       "graphviz",
+            "evince",                 "doxygen",
+            "wget",                   "firefox-esr",
+            "firefox-esr-l10n-es-es", "webext-ublock-origin",
+            "thunderbird",            "thunderbird-l10n-es-es",
+            "imagemagick",            "gimp",
+            "mpv",                    "gnumeric",
+            "libreoffice",            "libreoffice-l10n-es",
+            "spamassassin"
         );
         system( @install, "virt-what" ) if ( !( -x "/usr/sbin/virt-what" ) );
         $mach = `virt-what`;
