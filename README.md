@@ -99,8 +99,9 @@ Supported UNIX type systems
 Currently the following UNIX type systems are supported:
 
 * Arch Linux
-* Debian 12 (Hurd or Linux) 
-* Devuan Linux 4
+* Debian Hurd 13
+* Debian Linux 12 
+* Devuan Linux 5
 * Dragonfly BSD 6.4
 * Fedora Linux 38
 * FreeBSD 13.2

@@ -4,13 +4,13 @@
 #Arch Linux
 #Debian Hurd 13
 #Debian Linux 12
-#Devuan Linux
+#Devuan Linux 5
 #Dragonfly BSD 6.4
 #Fedora Linux 38
 #FreeBSD 13.2
 #Gentoo Linux
 #Haiku
-#Linux Mint
+#Linux Mint DE 6
 #MacOS Ventura + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
@@ -21,7 +21,6 @@
 #Xubuntu Linux 23.04
 
 #Without GTK4:
-#Devuan Linux
 #OpenIndiana
 #Haiku
 
@@ -29,7 +28,7 @@
 #13 Arch Linux
 #13 Debian Hurd
 #12 Debian Linux
-#10 Devuan Linux
+#12 Devuan Linux
 #12 Dragonfly BSD
 #13 Fedora Linux
 #13 FreeBSD
@@ -48,8 +47,8 @@
 #CLang versions
 #15 Arch Linux
 #15 Debian Hurd
-#15 Debian Linux
-#11 Devuan Linux
+#14 Debian Linux
+#14 Devuan Linux
 #-- Dragonfly BSD
 #16 Fedora Linux
 #14 FreeBSD
