@@ -32,7 +32,7 @@
 #12 Dragonfly BSD
 #13 Fedora Linux
 #13 FreeBSD
-#11 Gentoo Linux
+#13 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
 #-- MacOS Ventura + Homebrew
@@ -52,7 +52,7 @@
 #-- Dragonfly BSD
 #16 Fedora Linux
 #14 FreeBSD
-#15 Gentoo Linux
+#16 Gentoo Linux
 #12 Haiku
 #14 Linux Mint
 #14 MacOS Ventura + Homebrew
