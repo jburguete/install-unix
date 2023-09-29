@@ -56,7 +56,7 @@
 #12 Haiku
 #14 Linux Mint
 #14 MacOS Ventura + Homebrew
-#15 Manjaro Linux
+#16 Manjaro Linux
 #16 Microsoft Windows + MSYS2
 #15 NetBSD
 #13 OpenBSD
@@ -285,16 +285,15 @@ if ( $os eq "Linux" ) {
             "meld",                     "texlive-core",
             "texlive-fontsrecommended", "texlive-latexextra",
             "texlive-publishers",       "texlive-pstricks",
-	    "texlive-luatex",
-            "texlive-langspanish",      "texlive-langfrench",
-            "graphviz",                 "evince",
-            "doxygen",                  "wget",
-            "firefox",                  "firefox-i18n-es-es",
-            "firefox-ublock-origin",    "thunderbird",
-            "thunderbird-i18n-es-es",   "imagemagick",
-            "gimp",                     "mpv",
-            "libreoffice-still",        "libreoffice-still-es",
-            "spamassassin"
+            "texlive-luatex",           "texlive-langspanish",
+            "texlive-langfrench",       "graphviz",
+            "evince",                   "doxygen",
+            "wget",                     "firefox",
+            "firefox-i18n-es-es",       "firefox-ublock-origin",
+            "thunderbird",              "thunderbird-i18n-es-es",
+            "imagemagick",              "gimp",
+            "mpv",                      "libreoffice-still",
+            "libreoffice-still-es",     "spamassassin"
         );
         system( @install, "virt-what" ) if ( !( -x "/usr/sbin/virt-what" ) );
         $mach = `virt-what`;
