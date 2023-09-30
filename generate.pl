@@ -21,8 +21,8 @@
 #Xubuntu Linux 23.04
 
 #Without GTK4:
-#OpenIndiana
 #Haiku
+#OpenIndiana
 
 #GCC versions
 #13 Arch Linux
@@ -35,7 +35,7 @@
 #13 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
-#-- MacOS Ventura + Homebrew
+#13 MacOS Ventura + Homebrew
 #13 Manjaro Linux
 #13 Microsoft Windows + MSYS2
 #12 NetBSD
@@ -45,17 +45,17 @@
 #12 Xubuntu Linux
 
 #CLang versions
-#15 Arch Linux
-#15 Debian Hurd
+#16 Arch Linux
+#16 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
-#-- Dragonfly BSD
+#16 Dragonfly BSD
 #16 Fedora Linux
-#14 FreeBSD
+#16 FreeBSD
 #16 Gentoo Linux
-#12 Haiku
+#17 Haiku
 #14 Linux Mint
-#14 MacOS Ventura + Homebrew
+#17 MacOS Ventura + Homebrew
 #16 Manjaro Linux
 #16 Microsoft Windows + MSYS2
 #15 NetBSD
@@ -645,46 +645,49 @@ elsif ( $os eq "NetBSD" ) {
     @update   = ( "pkgin", "update;",     "pkgin", "upgrade" );
     @clean    = ( "pkgin", "autoremove;", "pkgin", "clean" );
     @packages = (
-        "pkgin",                "sysupgrade",
-        "gsed",                 "patch",
-        "bash",                 "autoconf",
-        "automake",             "pkgconf",
-        "gcc12",                "clang",
-        "gmake",                "git",
-        "subversion",           "libxml2",
-        "gettext-tools",        "glib2",
-        "json-glib",            "sqlite3",
-        "gsl",                  "libgtop",
-        "gtk3+",                "gtk4",
-        "freeglut",             "glfw",
-        "SDL2",                 "freefont-ttf",
-        "glew",                 "mpich",
-        "xfce4",                "xfce4-cpugraph-plugin",
-        "xfce4-netload-plugin", "xfce4-systemload-plugin",
-        "xfce4-weather-plugin", "xfce4-xkb-plugin",
-        "xfce4-screenshooter",  "vim-gtk3",
-        "nedit",                "gindent",
-        "p5-Perl-Tidy",         "galculator",
-        "gnuplot",              "maxima",
-        "ddd",                  "meld",
-        "tex-latex",            "tex-pst-pdf",
-        "tex-babel-spanish",    "tex-babel-french",
-        "tex-elsarticle",       "tex-beamer",
-        "tex-adjustbox",        "tex-float",
-        "tex-varwidth",         "tex-fancyvrb",
-        "tex-multirow",         "tex-hanging",
-        "tex-stackengine",      "tex-ulem",
-        "tex-wasysym",          "tex-sectsty",
-        "tex-fancyhdr",         "tex-tocloft",
-        "tex-newunicodechar",   "tex-caption",
-        "tex-etoc",             "tex-alphalph",
-        "tex-ec",               "tex-epstopdf-pkg",
-        "graphviz",             "evince",
-        "doxygen",              "wget",
-        "firefox-esr",          "thunderbird",
-        "ImageMagick",          "gimp",
-        "mpv",                  "libreoffice",
-        "spamassassin"
+        "pkgin",                         "sysupgrade",
+        "gsed",                          "patch",
+        "bash",                          "autoconf",
+        "automake",                      "pkgconf",
+        "gcc12",                         "clang",
+        "gmake",                         "git",
+        "subversion",                    "libxml2",
+        "gettext-tools",                 "glib2",
+        "json-glib",                     "sqlite3",
+        "gsl",                           "libgtop",
+        "gtk3+",                         "gtk4",
+        "freeglut",                      "glfw",
+        "SDL2",                          "freefont-ttf",
+        "glew",                          "mpich",
+        "xfce4",                         "xfce4-cpugraph-plugin",
+        "xfce4-netload-plugin",          "xfce4-systemload-plugin",
+        "xfce4-weather-plugin",          "xfce4-xkb-plugin",
+        "xfce4-screenshooter",           "vim-gtk3",
+        "nedit",                         "gindent",
+        "p5-Perl-Tidy",                  "galculator",
+        "gnuplot",                       "maxima",
+        "ddd",                           "meld",
+        "tex-latex",                     "tex-pst-pdf",
+        "tex-babel-spanish",             "tex-babel-french",
+        "tex-elsarticle",                "tex-beamer",
+        "tex-adjustbox",                 "tex-float",
+        "tex-varwidth",                  "tex-fancyvrb",
+        "tex-multirow",                  "tex-hanging",
+        "tex-stackengine",               "tex-ulem",
+        "tex-wasysym",                   "tex-sectsty",
+        "tex-fancyhdr",                  "tex-tocloft",
+        "tex-newunicodechar",            "tex-caption",
+        "tex-etoc",                      "tex-alphalph",
+        "tex-ec",                        "tex-epstopdf-pkg",
+        "tex-multido",                   "tex-listings",
+        "tex-luatex85",                  "tex-trimspaces",
+        "texlive-collection-english",    "texlive-collection-langspanish",
+        "texlive-collection-langfrench", "graphviz",
+        "evince",                        "doxygen",
+        "wget",                          "firefox-esr",
+        "thunderbird",                   "ImageMagick",
+        "gimp",                          "mpv",
+        "libreoffice",                   "spamassassin"
     );
     system( @install, "virt-what" ) if ( !( -x "/usr/pkg/sbin/virt-what" ) );
     $mach = `virt-what`;
@@ -742,37 +745,38 @@ elsif ( $os eq "DragonFly" ) {
     @clean    = ( "pkg", "autoremove;", "pkg", "clean", "-a" );
     @update   = ( "pkg", "update;",     "pkg", "upgrade" );
     @packages = (
-        "gsed",                       "patch",
-        "bash",                       "autoconf",
-        "automake",                   "pkgconf",
-        "gcc",                        "gmake",
-        "git-lite",                   "subversion",
-        "libxml2",                    "gettext-tools",
-        "glib",                       "json-glib",
-        "sqlite3",                    "gsl",
-        "libgtop",                    "gtk3",
-        "gtk4",                       "freeglut",
-        "glfw",                       "sdl2",
-        "freefont-ttf",               "glew",
-        "vulkan-headers",             "vulkan-loader",
-        "vulkan-tools",               "glslang",
-        "mpich",                      "xf86-input-keyboard",
-        "xf86-input-mouse",           "xorg-minimal",
-        "xfce",                       "xfce4-screensaver",
-        "xfce4-cpugraph-plugin",      "xfce4-netload-plugin",
-        "xfce4-systemload-plugin",    "xfce4-weather-plugin",
-        "xfce4-xkb-plugin",           "xfce4-terminal",
-        "xfce4-screenshooter-plugin", "vim-gtk3",
-        "nedit",                      "gindent",
-        "p5-Perl-Tidy",               "galculator",
-        "maxima",                     "gdb",
-        "meld",                       "latex-beamer",
-        "graphviz",                   "evince",
-        "doxygen",                    "wget",
-        "firefox-esr",                "thunderbird",
-        "ImageMagick7",               "gimp",
-        "mpv",                        "libreoffice",
-        "es-libreoffice",             "spamassassin"
+        "gsed",                 "patch",
+        "bash",                 "autoconf",
+        "automake",             "pkgconf",
+        "gcc12",                "llvm16",
+        "gmake",                "git-lite",
+        "subversion",           "libxml2",
+        "gettext-tools",        "glib",
+        "json-glib",            "sqlite3",
+        "gsl",                  "libgtop",
+        "gtk3",                 "gtk4",
+        "freeglut",             "glfw",
+        "sdl2",                 "freefont-ttf",
+        "glew",                 "vulkan-headers",
+        "vulkan-loader",        "vulkan-tools",
+        "glslang",              "mpich",
+        "xf86-input-keyboard",  "xf86-input-mouse",
+        "xorg-minimal",         "xfce",
+        "xfce4-screensaver",    "xfce4-cpugraph-plugin",
+        "xfce4-netload-plugin", "xfce4-systemload-plugin",
+        "xfce4-weather-plugin", "xfce4-xkb-plugin",
+        "xfce4-terminal",       "xfce4-screenshooter-plugin",
+        "vim-gtk3",             "nedit",
+        "gindent",              "p5-Perl-Tidy",
+        "galculator",           "maxima",
+        "gdb",                  "meld",
+        "latex-beamer",         "graphviz",
+        "evince",               "doxygen",
+        "wget",                 "firefox-esr",
+        "thunderbird",          "ImageMagick7",
+        "gimp",                 "mpv",
+        "libreoffice",          "es-libreoffice",
+        "spamassassin"
     );
 
     #@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
@@ -888,7 +892,7 @@ elsif ( $os eq "Haiku" ) {
         "patch",               "autoconf",
         "automake",            "pkgconfig",
         "gcc",                 "gcc_fortran",
-        "llvm12_clang",        "make",
+        "llvm17_clang",        "make",
         "git",                 "subversion",
         "libxml2_devel",       "glib2_devel",
         "json_glib_devel",     "gettext",
