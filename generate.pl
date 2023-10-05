@@ -795,47 +795,35 @@ elsif ( $os eq "SunOS" ) {
     print "Dist=OpenIndiana\n";
     @install = ( "pkg",   "install" );
     @clean   = ( "beadm", "list" );
-    @update  = ( "pkg",   "update;", "/opt/csw/bin/pkgutil", "-U", "-u", "-y" );
+    @update  = ( "pkg",   "update;" );
     system( "pkg", "install", "mate_install" )
       if ( !( -x "/usr/bin/mate-session" ) );
-    system( "pkg", "install", "wget" ) if ( !( -x "/usr/bin/wget" ) );
-    system( "wget", "http://mirror.opencsw.org/opencsw/pkgutil.pkg" )
-      if ( !( -f "pkgutil.pkg" ) );
-    system( "pkgadd", "-d", "pkgutil.pkg", "all" )
-      if ( !( -x "/opt/csw/bin/pkgutil" ) );
     @packages = (
-        "gnu-patch",   "gnu-sed",
-        "autoconf",    "automake",
-        "pkg-config",  "gcc-7",
-        "gcc-11",      "developer/clang-13",
-        "git",         "developer/versioning/subversion",
-        "gettext",     "json-glib",
-        "gsl",         "library/mpich/gcc",
-        "gtk3",        "libglew",
-        "freeglut",    "sdl2",
-        "gnome-fonts", "mate_install",
-        "gvim",        "gnu-indent",
-        "gnuplot",     "meld",
-        "evince",      "doxygen",
-        "wget",        "firefox",
-        "thunderbird", "imagemagick",
-        "gimp",        "gnumeric",
+        "gnu-patch",    "gnu-sed",
+        "autoconf",     "automake",
+        "pkg-config",   "gcc-7",
+        "gcc-11",       "developer/clang-13",
+        "git",          "developer/versioning/subversion",
+        "gettext",      "json-glib",
+        "gsl",          "library/mpich/gcc",
+        "gtk3",         "libglew",
+        "freeglut",     "sdl2",
+        "valgrind",     "gnome-fonts",
+        "mate_install", "gvim",
+        "gnu-indent",   "perl-tidy",
+        "gnuplot",      "meld",
+        "evince",       "doxygen",
+        "wget",         "firefox",
+        "thunderbird",  "imagemagick",
+        "gimp",         "gnumeric",
         "libreoffice"
     );
-    @postinstall = ("export PATH=\$PATH:/opt/csw/bin");
-    push( @postinstall, "\npkgutil -U" );
-    push( @postinstall, "\npkgutil --install" );
-    push( @postinstall, "perltidy" );
-    push( @postinstall, "texlive" );
-    push( @postinstall, "texlive_latex_extra" );
-    push( @postinstall, "texlive_luatex" );
-    push( @postinstall, "texlive_publishers" );
-    push( @postinstall, "texlive_fonts_recommended" );
-    push( @postinstall, "texlive_lang_spanish" );
-    push( @postinstall, "texlive_lang_french" );
-    push( @postinstall, "texlive_lang_italian" );
-    push( @postinstall, "texlive_pstricks" );
-    push( @postinstall, "graphviz" );
+    system( "wget",
+        "http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.bz" )
+      if ( !( -f "install-tl-unx.tar.gz" ) );
+    $tl = "install-tl-20231004";
+    system( "tar", "xf", $tl ) if ( !( -d $tl ) );
+    system( "cd", $tl, ";", "./install-tl" );
 }
 elsif ( $os eq "GNU" ) {
     print "OS=" . $os . "\n";
