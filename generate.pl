@@ -794,7 +794,7 @@ elsif ( $os eq "SunOS" ) {
     $dist =~ s/\n//g;
     print "Dist=OpenIndiana\n";
     @install = ( "pkg",   "install" );
-    @clean   = ( "beadm", "list" );
+    @clean   = ( "beadm", "list", "-a" );
     @update  = ( "pkg",   "update;" );
     system( "pkg", "install", "mate_install" )
       if ( !( -x "/usr/bin/mate-session" ) );
@@ -818,12 +818,13 @@ elsif ( $os eq "SunOS" ) {
         "gimp",         "gnumeric",
         "libreoffice"
     );
+    $tlf = "install-tl-unx.tar.gz";
     system( "wget",
-        "http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.bz" )
-      if ( !( -f "install-tl-unx.tar.gz" ) );
-    $tl = "install-tl-20231004";
-    system( "tar", "xf", $tl ) if ( !( -d $tl ) );
-    system( "cd", $tl, ";", "./install-tl" );
+        "http://mirror.ctan.org/systems/texlive/tlnet/" . $tlf )
+      if ( !( -f $tlf ) );
+    $tld = "install-tl-20231015";
+    system( "tar", "xf", $tlf ) if ( !( -d $tld ) );
+    system( "echo", "cd", $tld . ";", "./install-tl" );
 }
 elsif ( $os eq "GNU" ) {
     print "OS=" . $os . "\n";
