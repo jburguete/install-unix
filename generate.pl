@@ -15,10 +15,10 @@
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD
-#OpenBSD
+#OpenBSD 7.4
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.5
-#Xubuntu Linux 23.04
+#Xubuntu Linux 23.10
 
 #Without GTK4:
 #Haiku
@@ -42,7 +42,7 @@
 #11 OpenBSD
 #11 OpenIndiana
 #12 OpenSUSE Linux
-#12 Xubuntu Linux
+#13 Xubuntu Linux
 
 #CLang versions
 #16 Arch Linux
@@ -62,7 +62,7 @@
 #13 OpenBSD
 #13 OpenIndiana
 #15 OpenSUSE Linux
-#15 Xubuntu Linux
+#16 Xubuntu Linux
 
 use File::Copy 'move';
 $os = `uname -s`;
