@@ -727,13 +727,13 @@ elsif ( $os eq "OpenBSD" ) {
         "nedit",                    "gindent",
         "perltidy",                 "galculator",
         "maxima",                   "ddd",
-        "meld",                     "texlive_texmf-full",
-        "graphviz",                 "evince",
-        "doxygen",                  "wget",
-        "firefox-esr-i18n-es-ES",   "thunderbird-i18n-es-ES",
-        "ImageMagick",              "gimp",
-        "mpv",                      "libreoffice-i18n-es",
-        "milter-spamd"
+        "valgrind",                 "meld",
+        "texlive_texmf-full",       "graphviz",
+        "evince",                   "doxygen",
+        "wget",                     "firefox-esr-i18n-es-ES",
+        "thunderbird-i18n-es-ES",   "ImageMagick",
+        "gimp",                     "mpv",
+        "libreoffice-i18n-es",      "milter-spamd"
     );
     system( @install, "virt-what" ) if ( !( -x "/usr/pkg/sbin/virt-what" ) );
     $mach = `virt-what`;
@@ -819,8 +819,7 @@ elsif ( $os eq "SunOS" ) {
         "libreoffice"
     );
     $tlf = "install-tl-unx.tar.gz";
-    system( "wget",
-        "http://mirror.ctan.org/systems/texlive/tlnet/" . $tlf )
+    system( "wget", "http://mirror.ctan.org/systems/texlive/tlnet/" . $tlf )
       if ( !( -f $tlf ) );
     $tld = "install-tl-20231015";
     system( "tar", "xf", $tlf ) if ( !( -d $tld ) );
