@@ -770,14 +770,14 @@ elsif ( $os eq "DragonFly" ) {
         "vim-gtk3",             "nedit",
         "gindent",              "p5-Perl-Tidy",
         "galculator",           "maxima",
-        "gdb",                  "meld",
-        "latex-beamer",         "graphviz",
-        "evince",               "doxygen",
-        "wget",                 "firefox-esr",
-        "thunderbird",          "ImageMagick7",
-        "gimp",                 "mpv",
-        "libreoffice",          "es-libreoffice",
-        "spamassassin"
+        "gdb",                  "valgrind",
+        "meld",                 "latex-beamer",
+        "graphviz",             "evince",
+        "doxygen",              "wget",
+        "firefox-esr",          "thunderbird",
+        "ImageMagick7",         "gimp",
+        "mpv",                  "libreoffice",
+        "es-libreoffice",       "spamassassin"
     );
 
     #@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
