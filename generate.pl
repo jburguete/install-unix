@@ -368,7 +368,7 @@ if ( $os eq "Linux" ) {
         @update  = ( "dnf", "update" );
         @upgrade = (
             "dnf",            "upgrade",  "--refresh;",    "dnf",
-            "system-upgrade", "download", "--release=38;", "dnf",
+            "system-upgrade", "download", "--release=39;", "dnf",
             "system-upgrade", "reboot"
         );
         @preinstall = "dnf group install gnome-desktop"
