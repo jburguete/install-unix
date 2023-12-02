@@ -40,7 +40,7 @@
 #13 Microsoft Windows + MSYS2
 #12 NetBSD
 #11 OpenBSD
-#11 OpenIndiana
+#13 OpenIndiana
 #12 OpenSUSE Linux
 #13 Xubuntu Linux
 
@@ -60,7 +60,7 @@
 #16 Microsoft Windows + MSYS2
 #15 NetBSD
 #13 OpenBSD
-#13 OpenIndiana
+#17 OpenIndiana
 #15 OpenSUSE Linux
 #16 Xubuntu Linux
 
@@ -960,8 +960,8 @@ elsif ($os eq "SunOS")
     @packages = (
                  "gnu-patch",    "gnu-sed",
                  "autoconf",     "automake",
-                 "pkg-config",   "gcc-7",
-                 "gcc-11",       "developer/clang-13",
+                 "pkg-config",
+                 "gcc-13",       "developer/clang-17",
                  "git",          "developer/versioning/subversion",
                  "gettext",      "json-glib",
                  "gsl",          "library/mpich/gcc",
