@@ -22,7 +22,6 @@
 
 #Without GTK4:
 #Haiku
-#OpenIndiana
 
 #GCC versions
 #13 Arch Linux
@@ -958,23 +957,23 @@ elsif ($os eq "SunOS")
     system("pkg", "install", "mate_install")
       if (!(-x "/usr/bin/mate-session"));
     @packages = (
-                 "gnu-patch",    "gnu-sed",
-                 "autoconf",     "automake",
-                 "pkg-config",
-                 "gcc-13",       "developer/clang-17",
-                 "git",          "developer/versioning/subversion",
-                 "gettext",      "json-glib",
-                 "gsl",          "library/mpich/gcc",
-                 "gtk3",         "libglew",
-                 "freeglut",     "sdl2",
-                 "valgrind",     "gnome-fonts",
-                 "mate_install", "gvim",
-                 "gnu-indent",   "perl-tidy",
-                 "gnuplot",      "meld",
-                 "evince",       "doxygen",
-                 "wget",         "firefox",
-                 "thunderbird",  "imagemagick",
-                 "gimp",         "gnumeric",
+                 "gnu-patch",                       "gnu-sed",
+                 "autoconf",                        "automake",
+                 "pkg-config",                      "gcc-13",
+                 "developer/clang-17",              "git",
+                 "developer/versioning/subversion", "gettext",
+                 "json-glib",                       "gsl",
+                 "library/mpich/gcc",               "gtk3",
+                 "gtk4",                            "libglew",
+                 "freeglut",                        "sdl2",
+                 "valgrind",                        "gnome-fonts",
+                 "mate_install",                    "gvim",
+                 "gnu-indent",                      "perl-tidy",
+                 "gnuplot",                         "meld",
+                 "evince",                          "doxygen",
+                 "wget",                            "firefox",
+                 "thunderbird",                     "imagemagick",
+                 "gimp",                            "gnumeric",
                  "libreoffice"
                 );
     $tlf = "install-tl-unx.tar.gz";
