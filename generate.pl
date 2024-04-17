@@ -58,7 +58,7 @@
 #16 Manjaro Linux
 #17 Microsoft Windows + MSYS2
 #15 NetBSD
-#13 OpenBSD
+#16 OpenBSD
 #17 OpenIndiana
 #15 OpenSUSE Linux
 #16 Xubuntu Linux
