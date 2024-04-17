@@ -110,12 +110,12 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Linux Mint DE 6
 * MacOS Ventura + Homebrew
 * Manjaro Linux
-* Microsoft Windows 10 + MSYS2
-* NetBSD 9.3
-* OpenBSD 7.3
+* Microsoft Windows 11 + MSYS2
+* NetBSD 10.0
+* OpenBSD 7.5
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.5
-* Xubuntu Linux 23.04
+* Xubuntu Linux 23.10
 
 Otras versiones de estos sistemas operativos u otras distribuciones podrían
 funcionar pero no han sido probadas.
