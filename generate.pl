@@ -6,19 +6,19 @@
 #Debian Linux 12
 #Devuan Linux 5
 #Dragonfly BSD 6.4
-#Fedora Linux 39
-#FreeBSD 13.2
+#Fedora Linux 40
+#FreeBSD 14.0
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
 #MacOS Ventura + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
-#NetBSD
-#OpenBSD 7.4
+#NetBSD 10.0
+#OpenBSD 7.5
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.5
-#Xubuntu Linux 23.10
+#Xubuntu Linux 24.04
 
 #Without GTK4:
 #Haiku
@@ -61,7 +61,7 @@
 #16 OpenBSD
 #17 OpenIndiana
 #15 OpenSUSE Linux
-#16 Xubuntu Linux
+#18 Xubuntu Linux
 
 use File::Copy 'move';
 $os = `uname -s`;
@@ -265,36 +265,36 @@ if ($os eq "Linux")
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
         @packages = (
-                     "patch",                     "autoconf",
-                     "automake",                  "pkg-config",
-                     "g++",                       "gfortran",
-                     "clang",                     "make",
-                     "git",                       "subversion",
-                     "libxml2-dev",               "libglib2.0-dev",
-                     "libjson-glib-dev",          "gettext",
-                     "libsqlite3-dev",            "libgsl-dev",
-                     "libgtop2-dev",              "libgtk-3-dev",
-                     "libgtk-4-dev",              "freeglut3-dev",
-                     "libglfw3-dev",              "libsdl2-dev",
-                     "fonts-freefont-otf",        "libglew-dev",
-                     "glslang-tools",             "mpich",
-                     "libmpich-dev",              "nedit",
-                     "vim-gtk3",                  "indent",
-                     "perltidy",                  "galculator",
-                     "xmaxima",                   "valgrind",
-                     "valgrind-mpi",              "ddd",
-                     "meld",                      "texlive-latex-extra",
-                     "texlive-luatex",            "texlive-publishers",
-                     "texlive-fonts-recommended", "texlive-lang-spanish",
-                     "texlive-lang-french",       "texlive-lang-english",
-                     "texlive-lang-italian",      "texlive-pstricks",
-                     "graphviz",                  "evince",
-                     "doxygen",                   "wget",
-                     "firefox",                   "firefox-locale-es",
-                     "webext-ublock-origin",      "thunderbird",
-                     "thunderbird-locale-es",     "imagemagick",
-                     "gimp",                      "mpv",
-                     "gnumeric",                  "libreoffice",
+                     "patch",                        "autoconf",
+                     "automake",                     "pkg-config",
+                     "g++",                          "gfortran",
+                     "clang",                        "make",
+                     "git",                          "subversion",
+                     "libxml2-dev",                  "libglib2.0-dev",
+                     "libjson-glib-dev",             "gettext",
+                     "libsqlite3-dev",               "libgsl-dev",
+                     "libgtop2-dev",                 "libgtk-3-dev",
+                     "libgtk-4-dev",                 "freeglut3-dev",
+                     "libglfw3-dev",                 "libsdl2-dev",
+                     "fonts-freefont-otf",           "libglew-dev",
+                     "glslang-tools",                "mpich",
+                     "libmpich-dev",                 "nedit",
+                     "vim-gtk3",                     "indent",
+                     "perltidy",                     "galculator",
+                     "xmaxima",                      "valgrind",
+                     "valgrind-mpi",                 "ddd",
+                     "meld",                         "texlive-latex-extra",
+                     "texlive-luatex",               "texlive-publishers",
+                     "texlive-fonts-recommended",    "texlive-lang-spanish",
+                     "texlive-lang-french",          "texlive-lang-english",
+                     "texlive-lang-italian",         "texlive-pstricks",
+                     "graphviz",                     "evince",
+                     "doxygen",                      "wget",
+                     "firefox",                      "firefox-locale-es",
+                     "webext-ublock-origin-firefox", "thunderbird",
+                     "thunderbird-locale-es",        "imagemagick",
+                     "gimp",                         "mpv",
+                     "gnumeric",                     "libreoffice",
                      "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
