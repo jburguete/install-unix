@@ -40,7 +40,7 @@
 #12 NetBSD
 #11 OpenBSD
 #13 OpenIndiana
-#12 OpenSUSE Linux
+#13 OpenSUSE Linux
 #13 Xubuntu Linux
 
 #CLang versions
