@@ -7,7 +7,7 @@
 #Devuan Linux 5
 #Dragonfly BSD 6.4
 #Fedora Linux 40
-#FreeBSD 14.0
+#FreeBSD 14.1
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
@@ -50,7 +50,7 @@
 #14 Devuan Linux
 #16 Dragonfly BSD
 #18 Fedora Linux
-#16 FreeBSD
+#18 FreeBSD
 #17 Gentoo Linux
 #17 Haiku
 #14 Linux Mint
@@ -681,7 +681,7 @@ elsif ($os eq "FreeBSD")
                "pkg",            "update;", "pkg",            "upgrade"
               );
     @upgrade = (
-                "freebsd-update", "-r", "14.0-RELEASE", "upgrade;",
+                "freebsd-update", "-r", "14.1-RELEASE", "upgrade;",
                 "freebsd-update", "install"
                );
     @packages = (
