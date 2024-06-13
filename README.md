@@ -103,7 +103,7 @@ Currently the following UNIX type systems are supported:
 * Debian Linux 12 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
-* Fedora Linux 39
+* Fedora Linux 40
 * FreeBSD 14.1
 * Gentoo Linux
 * Haiku
@@ -114,8 +114,8 @@ Currently the following UNIX type systems are supported:
 * NetBSD 10.0
 * OpenBSD 7.5
 * OpenIndiana Hipster
-* OpenSUSE Linux Leap 15.5
-* Xubuntu Linux 23.10
+* OpenSUSE Linux Leap 15.6
+* Xubuntu Linux 24.04
 
 Other versions of these operative systems or other distributions could work but 
 it has not been tested.

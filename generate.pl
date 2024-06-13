@@ -17,7 +17,7 @@
 #NetBSD 10.0
 #OpenBSD 7.5
 #OpenIndiana Hipster
-#OpenSUSE Leap Linux 15.5
+#OpenSUSE Leap Linux 15.6
 #Xubuntu Linux 24.04
 
 #Without GTK4:
@@ -520,7 +520,11 @@ if ($os eq "Linux")
         @install = ("zypper", "install");
         @clean   = ("zypper", "clean", "-a");
         @update  = ("zypper", "patch");
-        @upgrade = ("zypper", "up");
+        @upgrade = (
+                    "zypper",            "--relasever=15.6",
+                    "refresh;",          "zypper",
+                    "--releasever=15.6", "dup"
+                   );
         @packages = (
                      "patch",                         "autoconf",
                      "automake",                      "pkg-config",

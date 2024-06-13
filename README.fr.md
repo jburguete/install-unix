@@ -103,7 +103,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Debian Linux 12 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
-* Fedora Linux 39
+* Fedora Linux 40
 * FreeBSD 14.1
 * Gentoo Linux
 * Haiku
@@ -114,8 +114,8 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * NetBSD 10.0
 * OpenBSD 7.5
 * OpenIndiana Hipster
-* OpenSUSE Linux Leap 15.5
-* Xubuntu Linux 23.10
+* OpenSUSE Linux Leap 15.6
+* Xubuntu Linux 24.04
 
 D'autres versions de ces systèmes d'exploitation ou d'autres distributions
 pourraient travailler mais on n'a pas été prouvé.
