@@ -11,7 +11,7 @@
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
-#MacOS Ventura + Homebrew
+#MacOS Sonoma + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD 10.0
@@ -25,7 +25,7 @@
 
 #GCC versions
 #13 Arch Linux
-#13 Debian Hurd
+#14 Debian Hurd
 #12 Debian Linux
 #12 Devuan Linux
 #12 Dragonfly BSD
@@ -34,7 +34,7 @@
 #13 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
-#13 MacOS Ventura + Homebrew
+#14 MacOS Ventura + Homebrew
 #13 Manjaro Linux
 #13 Microsoft Windows + MSYS2
 #12 NetBSD
@@ -738,8 +738,8 @@ elsif ($os eq "FreeBSD")
     }
     elsif ($mach eq "kvm")
     {
-        push @postinstall,   "\necho webcamd_enable=\"YES\" >> /etc/rc.conf;",
-          push @postinstall, "\necho utouch_load=\"YES\" >> /boot/loader.conf";
+        push @postinstall, "\necho webcamd_enable=\"YES\" >> /etc/rc.conf;";
+        push @postinstall, "\necho utouch_load=\"YES\" >> /boot/loader.conf";
 
         #push @packages,"xf86-video-qxl";
     }
@@ -1080,32 +1080,30 @@ elsif ($os eq "Darwin")
       )
       if (!(-x "/usr/local/bin/brew"));
     @packagescask = (
-                     "xquartz",       "homebrew/cask-fonts/font-open-sans",
-                     "macvim",        "meld",
-                     "mactex-no-gui", "firefox",
-                     "thunderbird",   "gimp",
-                     "libreoffice"
+                     "xquartz",     "macvim", "meld", "firefox",
+                     "thunderbird", "gimp",   "libreoffice"
                     );
     @preinstall = ("@installcask @packagescask");
     @packages = (
-                 "gnu-sed",    "gpatch",
-                 "autoconf",   "automake",
-                 "pkg-config", "gcc",
-                 "llvm@13",    "make",
-                 "git",        "subversion",
-                 "libxml2",    "gettext",
-                 "glib",       "json-glib",
-                 "sqlite",     "gsl",
-                 "libgtop",    "gtk+3",
-                 "gtk4",       "freeglut",
-                 "glfw",       "sdl2",
-                 "glew",       "glslang",
-                 "mpich",      "font-open-sans",
-                 "nedit",      "gnu-indent",
-                 "perltidy",   "maxima",
-                 "ddd",        "graphviz",
-                 "evince",     "doxygen",
-                 "wget",       "imagemagick",
+                 "gnu-sed",        "gpatch",
+                 "autoconf",       "automake",
+                 "pkg-config",     "gcc",
+                 "llvm",           "make",
+                 "git",            "subversion",
+                 "libxml2",        "gettext",
+                 "glib",           "json-glib",
+                 "sqlite",         "gsl",
+                 "libgtop",        "gtk+3",
+                 "gtk4",           "freeglut",
+                 "glfw",           "sdl2",
+                 "glew",           "glslang",
+                 "mpich",          "font-freefont",
+                 "font-open-sans", "nedit",
+                 "gnu-indent",     "perltidy",
+                 "maxima",         "ddd",
+                 "graphviz",       "texlive",
+                 "evince",         "doxygen",
+                 "wget",           "imagemagick",
                  "mpv"
                 );
 }
