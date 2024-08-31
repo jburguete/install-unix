@@ -692,7 +692,7 @@ elsif ($os eq "FreeBSD")
                  "utouch-kmod",                "gsed",
                  "patch",                      "bash",
                  "autoconf",                   "automake",
-                 "pkgconf",                    "gcc13",
+                 "pkgconf",                    "gcc14",
                  "gmake",                      "git",
                  "subversion",                 "libxml2",
                  "gettext-tools",              "glib",
