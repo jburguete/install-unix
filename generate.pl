@@ -30,7 +30,7 @@
 #12 Devuan Linux
 #12 Dragonfly BSD
 #14 Fedora Linux
-#13 FreeBSD
+#14 FreeBSD
 #13 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
