@@ -24,7 +24,7 @@
 #Haiku
 
 #GCC versions
-#13 Arch Linux
+#14 Arch Linux
 #14 Debian Hurd
 #12 Debian Linux
 #12 Devuan Linux
@@ -44,7 +44,7 @@
 #13 Xubuntu Linux
 
 #CLang versions
-#17 Arch Linux
+#18 Arch Linux
 #16 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
