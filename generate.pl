@@ -36,7 +36,7 @@
 #12 Linux Mint
 #14 MacOS Ventura + Homebrew
 #14 Manjaro Linux
-#13 Microsoft Windows + MSYS2
+#14 Microsoft Windows + MSYS2
 #13 NetBSD
 #11 OpenBSD
 #13 OpenIndiana
