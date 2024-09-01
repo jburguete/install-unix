@@ -51,7 +51,7 @@
 #16 Dragonfly BSD
 #18 Fedora Linux
 #18 FreeBSD
-#17 Gentoo Linux
+#18 Gentoo Linux
 #17 Haiku
 #14 Linux Mint
 #17 MacOS Ventura + Homebrew
