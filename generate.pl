@@ -37,7 +37,7 @@
 #14 MacOS Ventura + Homebrew
 #14 Manjaro Linux
 #13 Microsoft Windows + MSYS2
-#12 NetBSD
+#13 NetBSD
 #11 OpenBSD
 #13 OpenIndiana
 #13 OpenSUSE Linux
@@ -57,7 +57,7 @@
 #17 MacOS Ventura + Homebrew
 #18 Manjaro Linux
 #18 Microsoft Windows + MSYS2
-#16 NetBSD
+#17 NetBSD
 #16 OpenBSD
 #17 OpenIndiana
 #15 OpenSUSE Linux
@@ -767,7 +767,7 @@ elsif ($os eq "NetBSD")
                  "autoconf",
                  "automake",
                  "pkgconf",
-                 "gcc12",
+                 "gcc13",
                  "clang",
                  "gmake",
                  "git",
