@@ -35,7 +35,7 @@
 #13 Haiku
 #12 Linux Mint
 #14 MacOS Ventura + Homebrew
-#13 Manjaro Linux
+#14 Manjaro Linux
 #13 Microsoft Windows + MSYS2
 #12 NetBSD
 #11 OpenBSD
@@ -55,7 +55,7 @@
 #17 Haiku
 #14 Linux Mint
 #17 MacOS Ventura + Homebrew
-#16 Manjaro Linux
+#18 Manjaro Linux
 #18 Microsoft Windows + MSYS2
 #16 NetBSD
 #16 OpenBSD
