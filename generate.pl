@@ -18,7 +18,7 @@
 #OpenBSD 7.5
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
-#Xubuntu Linux 24.04
+#Xubuntu Linux 24.10
 
 #Without GTK4:
 #Haiku
