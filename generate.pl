@@ -18,7 +18,7 @@
 #OpenBSD 7.6
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
-#Xubuntu Linux 24.04
+#Xubuntu Linux 24.10
 
 #Without GTK4:
 #Haiku
@@ -37,7 +37,7 @@
 #14 MacOS Ventura + Homebrew
 #14 Manjaro Linux
 #14 Microsoft Windows + MSYS2
-#13 NetBSD
+#14 NetBSD
 #11 OpenBSD
 #13 OpenIndiana
 #13 OpenSUSE Linux
@@ -767,7 +767,7 @@ elsif ($os eq "NetBSD")
                  "autoconf",
                  "automake",
                  "pkgconf",
-                 "gcc13",
+                 "gcc14",
                  "clang",
                  "gmake",
                  "git",
