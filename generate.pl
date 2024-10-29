@@ -963,7 +963,7 @@ elsif ($os eq "SunOS")
     @packages = (
                  "gnu-patch",                       "gnu-sed",
                  "autoconf",                        "automake",
-                 "pkg-config",                      "gcc-13",
+                 "pkg-config",                      "gcc-14",
                  "developer/clang-18",              "git",
                  "developer/versioning/subversion", "gettext",
                  "json-glib",                       "gsl",
