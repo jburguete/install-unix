@@ -578,8 +578,13 @@ if ($os eq "Linux")
         system("cp", "gentoo.make.conf", "/etc/portage/make.conf");
         @install    = ("emerge", "--ask");
         @preinstall = ("USE=\"gimp -vaapi\"", @install, "media-libs/mesa");
-        @clean =
-          ("emerge", "--ask", "--depclean", ";", "eclean-dist", "--deep");
+        @clean = (
+                  "emerge",      "--ask",
+                  "--depclean",  ";",
+                  "eclean-dist", "--deep",
+                  ";",           "eclean-kernel",
+                  "-n",          "2"
+                 );
         @update = ("emerge", "--sync");
         @upgrade = (
                     "emerge",         "--ask",
@@ -589,6 +594,7 @@ if ($os eq "Linux")
                    );
         @packages = (
                      "app-portage/gentoolkit",
+                     "app-admin/eclean-kernel",
                      "dev-vcs/subversion",
                      "dev-libs/libxml2",
                      "dev-libs/glib",
