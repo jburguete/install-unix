@@ -41,7 +41,7 @@
 #11 OpenBSD
 #13 OpenIndiana
 #13 OpenSUSE Linux
-#13 Xubuntu Linux
+#14 Xubuntu Linux
 
 #CLang versions
 #18 Arch Linux
