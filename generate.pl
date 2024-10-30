@@ -15,7 +15,7 @@
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD 10.0
-#OpenBSD 7.5
+#OpenBSD 7.6
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
 #Xubuntu Linux 24.10
@@ -39,7 +39,7 @@
 #14 Microsoft Windows + MSYS2
 #14 NetBSD
 #11 OpenBSD
-#13 OpenIndiana
+#14 OpenIndiana
 #13 OpenSUSE Linux
 #14 Xubuntu Linux
 
