@@ -39,7 +39,7 @@
 #14 Microsoft Windows + MSYS2
 #14 NetBSD
 #11 OpenBSD
-#13 OpenIndiana
+#14 OpenIndiana
 #13 OpenSUSE Linux
 #14 Xubuntu Linux
 
