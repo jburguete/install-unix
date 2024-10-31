@@ -45,7 +45,7 @@
 
 #CLang versions
 #18 Arch Linux
-#16 Debian Hurd
+#19 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
 #16 Dragonfly BSD
