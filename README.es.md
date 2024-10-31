@@ -103,7 +103,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Debian Linux 12 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
-* Fedora Linux 40
+* Fedora Linux 41
 * FreeBSD 14.1
 * Gentoo Linux
 * Haiku

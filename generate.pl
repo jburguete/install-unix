@@ -6,7 +6,7 @@
 #Debian Linux 12
 #Devuan Linux 5
 #Dragonfly BSD 6.4
-#Fedora Linux 40
+#Fedora Linux 41
 #FreeBSD 14.1
 #Gentoo Linux
 #Haiku
@@ -41,11 +41,11 @@
 #11 OpenBSD
 #13 OpenIndiana
 #13 OpenSUSE Linux
-#13 Xubuntu Linux
+#14 Xubuntu Linux
 
 #CLang versions
 #18 Arch Linux
-#16 Debian Hurd
+#19 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
 #16 Dragonfly BSD
@@ -432,7 +432,7 @@ if ($os eq "Linux")
                     "dnf",            "upgrade",
                     "--refresh;",     "dnf",
                     "system-upgrade", "download",
-                    "--release=39;",  "dnf",
+                    "--release=41;",  "dnf",
                     "system-upgrade", "reboot"
                    );
         @preinstall = "dnf group install gnome-desktop"
@@ -963,7 +963,7 @@ elsif ($os eq "SunOS")
     @packages = (
                  "gnu-patch",                       "gnu-sed",
                  "autoconf",                        "automake",
-                 "pkg-config",                      "gcc-13",
+                 "pkg-config",                      "gcc-14",
                  "developer/clang-18",              "git",
                  "developer/versioning/subversion", "gettext",
                  "json-glib",                       "gsl",
