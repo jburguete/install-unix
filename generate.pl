@@ -589,6 +589,7 @@ if ($os eq "Linux")
                    );
         @packages = (
                      "app-portage/gentoolkit",
+                     "app-admin/eclean-kernel",
                      "dev-vcs/subversion",
                      "dev-libs/libxml2",
                      "dev-libs/glib",
@@ -1216,3 +1217,4 @@ if (@upgrade)
     print UPGRADE "@upgrade\n";
     close(UPGRADE);
 }
+
