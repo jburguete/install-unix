@@ -169,7 +169,7 @@ if ($os eq "Linux")
                      "texlive-lang-italian",
                      "texlive-pstricks",
                      "graphviz",
-		     "latexdiff",
+                     "latexdiff",
                      "evince",
                      "doxygen",
                      "wget",
@@ -720,11 +720,12 @@ elsif ($os eq "FreeBSD")
                  "valgrind",                   "meld",
                  "latex-beamer",               "graphviz",
                  "tex-dvipsk",                 "evince",
-                 "doxygen",                    "wget",
-                 "firefox-esr",                "thunderbird",
-                 "ImageMagick7",               "gimp",
-                 "mpv",                        "libreoffice",
-                 "es-libreoffice",             "spamassassin"
+                 "latexdiff",                  "doxygen",
+                 "wget",                       "firefox-esr",
+                 "thunderbird",                "ImageMagick7",
+                 "gimp",                       "mpv",
+                 "libreoffice",                "es-libreoffice",
+                 "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
