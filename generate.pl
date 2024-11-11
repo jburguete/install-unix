@@ -169,6 +169,7 @@ if ($os eq "Linux")
                      "texlive-lang-italian",
                      "texlive-pstricks",
                      "graphviz",
+                     "latexdiff",
                      "evince",
                      "doxygen",
                      "wget",
@@ -209,36 +210,67 @@ if ($os eq "Linux")
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
         @packages = (
-                     "patch",                  "autoconf",
-                     "automake",               "pkg-config",
-                     "g++",                    "gfortran",
-                     "clang",                  "make",
-                     "git",                    "subversion",
-                     "libxml2-dev",            "libglib2.0-dev",
-                     "libjson-glib-dev",       "gettext",
-                     "libsqlite3-dev",         "libgsl-dev",
-                     "libgtop2-dev",           "libgtk-3-dev",
-                     "libgtk-4-dev",           "freeglut3-dev",
-                     "libglfw3-dev",           "libsdl2-dev",
-                     "fonts-freefont-otf",     "libglew-dev",
-                     "glslang-tools",          "mpich",
-                     "libmpich-dev",           "vim-gtk3",
-                     "indent",                 "perltidy",
-                     "galculator",             "xmaxima",
-                     "valgrind",               "valgrind-mpi",
-                     "ddd",                    "meld",
-                     "texlive-latex-extra",    "texlive-luatex",
-                     "texlive-publishers",     "texlive-fonts-recommended",
-                     "texlive-lang-spanish",   "texlive-lang-french",
-                     "texlive-lang-english",   "texlive-lang-italian",
-                     "texlive-pstricks",       "graphviz",
-                     "evince",                 "doxygen",
-                     "wget",                   "firefox-esr",
-                     "firefox-esr-l10n-es-es", "webext-ublock-origin-firefox",
-                     "thunderbird",            "thunderbird-l10n-es-es",
-                     "imagemagick",            "gimp",
-                     "mpv",                    "gnumeric",
-                     "libreoffice",            "libreoffice-l10n-es",
+                     "patch",
+                     "autoconf",
+                     "automake",
+                     "pkg-config",
+                     "g++",
+                     "gfortran",
+                     "clang",
+                     "make",
+                     "git",
+                     "subversion",
+                     "libxml2-dev",
+                     "libglib2.0-dev",
+                     "libjson-glib-dev",
+                     "gettext",
+                     "libsqlite3-dev",
+                     "libgsl-dev",
+                     "libgtop2-dev",
+                     "libgtk-3-dev",
+                     "libgtk-4-dev",
+                     "freeglut3-dev",
+                     "libglfw3-dev",
+                     "libsdl2-dev",
+                     "fonts-freefont-otf",
+                     "libglew-dev",
+                     "glslang-tools",
+                     "mpich",
+                     "libmpich-dev",
+                     "vim-gtk3",
+                     "indent",
+                     "perltidy",
+                     "galculator",
+                     "xmaxima",
+                     "valgrind",
+                     "valgrind-mpi",
+                     "ddd",
+                     "meld",
+                     "texlive-latex-extra",
+                     "texlive-luatex",
+                     "texlive-publishers",
+                     "texlive-fonts-recommended",
+                     "texlive-lang-spanish",
+                     "texlive-lang-french",
+                     "texlive-lang-english",
+                     "texlive-lang-italian",
+                     "texlive-pstricks",
+                     "graphviz",
+                     "latexdiff",
+                     "evince",
+                     "doxygen",
+                     "wget",
+                     "firefox-esr",
+                     "firefox-esr-l10n-es-es",
+                     "webext-ublock-origin-firefox",
+                     "thunderbird",
+                     "thunderbird-l10n-es-es",
+                     "imagemagick",
+                     "gimp",
+                     "mpv",
+                     "gnumeric",
+                     "libreoffice",
+                     "libreoffice-l10n-es",
                      "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
@@ -343,13 +375,14 @@ if ($os eq "Linux")
                      "texlive-publishers",       "texlive-pstricks",
                      "texlive-luatex",           "texlive-langspanish",
                      "texlive-langfrench",       "graphviz",
-                     "evince",                   "doxygen",
-                     "wget",                     "firefox",
-                     "firefox-i18n-es-es",       "firefox-ublock-origin",
-                     "thunderbird",              "thunderbird-i18n-es-es",
-                     "imagemagick",              "gimp",
-                     "mpv",                      "libreoffice-still",
-                     "libreoffice-still-es",     "spamassassin"
+                     "texlive-binextra",         "evince",
+                     "doxygen",                  "wget",
+                     "firefox",                  "firefox-i18n-es-es",
+                     "firefox-ublock-origin",    "thunderbird",
+                     "thunderbird-i18n-es-es",   "imagemagick",
+                     "gimp",                     "mpv",
+                     "libreoffice-still",        "libreoffice-still-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -399,14 +432,14 @@ if ($os eq "Linux")
                      "texlive-latexextra",      "texlive-publishers",
                      "texlive-pstricks",        "texlive-luatex",
                      "texlive-langspanish",     "texlive-langfrench",
-                     "graphviz",                "evince",
-                     "doxygen",                 "wget",
-                     "firefox",                 "firefox-i18n-es-es",
-                     "firefox-ublock-origin",   "thunderbird",
-                     "thunderbird-i18n-es-es",  "imagemagick",
-                     "gimp",                    "mpv",
-                     "libreoffice-still",       "libreoffice-still-es",
-                     "spamassassin"
+                     "graphviz",                "texlive-binextra",
+                     "evince",                  "doxygen",
+                     "wget",                    "firefox",
+                     "firefox-i18n-es-es",      "firefox-ublock-origin",
+                     "thunderbird",             "thunderbird-i18n-es-es",
+                     "imagemagick",             "gimp",
+                     "mpv",                     "libreoffice-still",
+                     "libreoffice-still-es",    "spamassassin"
                     );
         @postinstall = ("systemctl enable lightdm.service");
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
@@ -438,68 +471,38 @@ if ($os eq "Linux")
         @preinstall = "dnf group install gnome-desktop"
           if (!(-x "/usr/bin/gnome-shell"));
         @packages = (
-                     "dnf-plugin-system-upgrade",
-                     "patch",
-                     "autoconf",
-                     "automake",
-                     "pkgconf",
-                     "gcc",
-                     "gcc-c++",
-                     "gcc-gfortran",
-                     "clang",
-                     "make",
-                     "git",
-                     "subversion",
-                     "libxml2-devel",
-                     "glib-devel",
-                     "gettext-devel",
-                     "json-glib-devel",
-                     "sqlite-devel",
-                     "gsl-devel",
-                     "libgtop2-devel",
-                     "gtk3-devel",
-                     "gtk4-devel",
-                     "freeglut-devel",
-                     "glfw-devel",
-                     "SDL2-devel",
-                     "texlive-gnu-freefont",
-                     "glew-devel",
-                     "vulkan-headers",
-                     "vulkan-loader",
-                     "vulkan-validation-layers",
-                     "vulkan-tools",
-                     "glslang",
-                     "mpich-devel",
-                     "nedit",
-                     "vim-enhanced",
-                     "vim-X11",
-                     "indent",
-                     "perltidy",
-                     "maxima-gui",
-                     "valgrind",
-                     "ddd",
-                     "meld",
-                     "texlive",
-                     "texlive-latex",
-                     "texlive-collection-publishers",
-                     "texlive-collection-pstricks",
-                     "texlive-newunicodechar",
-                     "texlive-hanging",
-                     "texlive-stackengine",
-                     "graphviz",
-                     "evince",
-                     "doxygen",
-                     "wget",
-                     "firefox",
-                     "mozilla-ublock-origin",
-                     "thunderbird",
-                     "ImageMagick",
-                     "gimp",
-                     "ufraw-gimp",
-                     "totem",
-                     "libreoffice",
-                     "libreoffice-langpack-es",
-                     "spamassassin"
+                 "dnf-plugin-system-upgrade",   "patch",
+                 "autoconf",                    "automake",
+                 "pkgconf",                     "gcc",
+                 "gcc-c++",                     "gcc-gfortran",
+                 "clang",                       "make",
+                 "git",                         "subversion",
+                 "libxml2-devel",               "glib-devel",
+                 "gettext-devel",               "json-glib-devel",
+                 "sqlite-devel",                "gsl-devel",
+                 "libgtop2-devel",              "gtk3-devel",
+                 "gtk4-devel",                  "freeglut-devel",
+                 "glfw-devel",                  "SDL2-devel",
+                 "texlive-gnu-freefont",        "glew-devel",
+                 "vulkan-headers",              "vulkan-loader",
+                 "vulkan-validation-layers",    "vulkan-tools",
+                 "glslang",                     "mpich-devel",
+                 "nedit",                       "vim-enhanced",
+                 "vim-X11",                     "indent",
+                 "perltidy",                    "maxima-gui",
+                 "valgrind",                    "ddd",
+                 "meld",                        "texlive",
+                 "texlive-latex",               "texlive-collection-publishers",
+                 "texlive-collection-pstricks", "texlive-newunicodechar",
+                 "texlive-hanging",             "texlive-stackengine",
+                 "graphviz",                    "texlive-latexdiff",
+                 "evince",                      "doxygen",
+                 "wget",                        "firefox",
+                 "mozilla-ublock-origin",       "thunderbird",
+                 "ImageMagick",                 "gimp",
+                 "ufraw-gimp",                  "totem",
+                 "libreoffice",                 "libreoffice-langpack-es",
+                 "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -578,8 +581,13 @@ if ($os eq "Linux")
         system("cp", "gentoo.make.conf", "/etc/portage/make.conf");
         @install    = ("emerge", "--ask");
         @preinstall = ("USE=\"gimp -vaapi\"", @install, "media-libs/mesa");
-        @clean =
-          ("emerge", "--ask", "--depclean", ";", "eclean-dist", "--deep");
+        @clean = (
+                  "emerge",      "--ask",
+                  "--depclean",  ";",
+                  "eclean-dist", "--deep",
+                  ";",           "eclean-kernel",
+                  "-n",          "2"
+                 );
         @update = ("emerge", "--sync");
         @upgrade = (
                     "emerge",         "--ask",
@@ -589,6 +597,7 @@ if ($os eq "Linux")
                    );
         @packages = (
                      "app-portage/gentoolkit",
+                     "app-admin/eclean-kernel",
                      "dev-vcs/subversion",
                      "dev-libs/libxml2",
                      "dev-libs/glib",
@@ -640,6 +649,7 @@ if ($os eq "Linux")
                      "dev-texlive/texlive-publishers",
                      "dev-texlive/texlive-pstricks",
                      "media-gfx/graphviz",
+                     "dev-tex/latexdiff",
                      "app-doc/doxygen",
                      "app-text/evince",
                      "net-misc/wget",
@@ -836,6 +846,7 @@ elsif ($os eq "NetBSD")
                  "texlive-collection-langspanish",
                  "texlive-collection-langfrench",
                  "graphviz",
+                 "tex-latexdiff",
                  "evince",
                  "doxygen",
                  "wget",
@@ -1023,9 +1034,10 @@ elsif ($os eq "GNU")
                  "texlive-fonts-recommended", "texlive-lang-spanish",
                  "texlive-lang-french",       "texlive-lang-english",
                  "texlive-lang-italian",      "texlive-pstricks",
-                 "graphviz",                  "evince",
-                 "doxygen",                   "wget",
-                 "imagemagick",               "gimp"
+                 "graphviz",                  "latexdiff",
+                 "evince",                    "doxygen",
+                 "wget",                      "imagemagick",
+                 "gimp"
                 );
     system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
     $mach = `virt-what`;
@@ -1062,9 +1074,10 @@ elsif ($os eq "Haiku")
                  "texlive_langspanish", "texlive_langfrench",
                  "texlive_langenglish", "texlive_langitalian",
                  "texlive_pstricks",    "graphviz",
-                 "gnuplot",             "doxygen",
-                 "wget",                "imagemagick",
-                 "gimp",                "epiphany"
+                 "texlive_binextra",    "gnuplot",
+                 "doxygen",             "wget",
+                 "imagemagick",         "gimp",
+                 "epiphany"
                 );
 }
 elsif ($os eq "Darwin")
@@ -1102,9 +1115,9 @@ elsif ($os eq "Darwin")
                  "gnu-indent",     "perltidy",
                  "maxima",         "ddd",
                  "graphviz",       "texlive",
-                 "evince",         "doxygen",
-                 "wget",           "imagemagick",
-                 "mpv"
+                 "latexdiff",      "evince",
+                 "doxygen",        "wget",
+                 "imagemagick",    "mpv"
                 );
 }
 else
@@ -1216,3 +1229,4 @@ if (@upgrade)
     print UPGRADE "@upgrade\n";
     close(UPGRADE);
 }
+
