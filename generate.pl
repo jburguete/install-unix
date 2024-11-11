@@ -169,6 +169,7 @@ if ($os eq "Linux")
                      "texlive-lang-italian",
                      "texlive-pstricks",
                      "graphviz",
+		     "latexdiff",
                      "evince",
                      "doxygen",
                      "wget",
