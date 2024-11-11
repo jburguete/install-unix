@@ -1113,9 +1113,9 @@ elsif ($os eq "Darwin")
                  "gnu-indent",     "perltidy",
                  "maxima",         "ddd",
                  "graphviz",       "texlive",
-                 "evince",         "doxygen",
-                 "wget",           "imagemagick",
-                 "mpv"
+                 "latexdiff",      "evince",
+                 "doxygen",        "wget",
+                 "imagemagick",    "mpv"
                 );
 }
 else
