@@ -112,7 +112,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
 * NetBSD 10.0
-* OpenBSD 7.5
+* OpenBSD 7.6
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.6
 * Xubuntu Linux 24.10
