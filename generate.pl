@@ -375,13 +375,14 @@ if ($os eq "Linux")
                      "texlive-publishers",       "texlive-pstricks",
                      "texlive-luatex",           "texlive-langspanish",
                      "texlive-langfrench",       "graphviz",
-                     "evince",                   "doxygen",
-                     "wget",                     "firefox",
-                     "firefox-i18n-es-es",       "firefox-ublock-origin",
-                     "thunderbird",              "thunderbird-i18n-es-es",
-                     "imagemagick",              "gimp",
-                     "mpv",                      "libreoffice-still",
-                     "libreoffice-still-es",     "spamassassin"
+                     "texlive-binextra",         "evince",
+                     "doxygen",                  "wget",
+                     "firefox",                  "firefox-i18n-es-es",
+                     "firefox-ublock-origin",    "thunderbird",
+                     "thunderbird-i18n-es-es",   "imagemagick",
+                     "gimp",                     "mpv",
+                     "libreoffice-still",        "libreoffice-still-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
