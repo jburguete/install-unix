@@ -617,7 +617,7 @@ if ($os eq "Linux")
                      "dev-texlive/texlive-publishers",
                      "dev-texlive/texlive-pstricks",
                      "media-gfx/graphviz",
-		     "dev-tex/latexdiff",
+                     "dev-tex/latexdiff",
                      "app-doc/doxygen",
                      "app-text/evince",
                      "net-misc/wget",
@@ -1041,9 +1041,10 @@ elsif ($os eq "Haiku")
                  "texlive_langspanish", "texlive_langfrench",
                  "texlive_langenglish", "texlive_langitalian",
                  "texlive_pstricks",    "graphviz",
-                 "gnuplot",             "doxygen",
-                 "wget",                "imagemagick",
-                 "gimp",                "epiphany"
+                 "texlive_binextra",    "gnuplot",
+                 "doxygen",             "wget",
+                 "imagemagick",         "gimp",
+                 "epiphany"
                 );
 }
 elsif ($os eq "Darwin")
