@@ -846,6 +846,7 @@ elsif ($os eq "NetBSD")
                  "texlive-collection-langspanish",
                  "texlive-collection-langfrench",
                  "graphviz",
+                 "tex-latexdiff",
                  "evince",
                  "doxygen",
                  "wget",
