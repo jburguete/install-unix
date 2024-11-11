@@ -488,6 +488,7 @@ if ($os eq "Linux")
                      "texlive-hanging",
                      "texlive-stackengine",
                      "graphviz",
+		     "texlive-latexdiff",
                      "evince",
                      "doxygen",
                      "wget",
