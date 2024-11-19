@@ -1131,7 +1131,7 @@ elsif ($os eq "Darwin")
     @packages = (
                  "gnu-sed",        "gpatch",
                  "autoconf",       "automake",
-                 "pkg-config",     "gcc",
+                 "pkgconf",        "gcc",
                  "llvm",           "make",
                  "git",            "subversion",
                  "libxml2",        "gettext",
