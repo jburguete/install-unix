@@ -1219,6 +1219,7 @@ else
                      $mingw . "texlive-lang-english",
                      $mingw . "texlive-lang-italian",
                      $mingw . "graphviz",
+                     $mingw . "texlive-extra-utils",
                      $mingw . "evince",
                      "doxygen",
                      "wget",
