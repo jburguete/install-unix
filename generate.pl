@@ -1132,7 +1132,7 @@ elsif ($os eq "Darwin")
     @packages = (
                  "gnu-sed",        "gpatch",
                  "autoconf",       "automake",
-                 "pkg-config",     "gcc",
+                 "pkgconf",        "gcc",
                  "llvm",           "make",
                  "git",            "subversion",
                  "libxml2",        "gettext",
@@ -1220,6 +1220,7 @@ else
                      $mingw . "texlive-lang-english",
                      $mingw . "texlive-lang-italian",
                      $mingw . "graphviz",
+                     $mingw . "texlive-extra-utils",
                      $mingw . "evince",
                      "doxygen",
                      "wget",
