@@ -11,7 +11,7 @@
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
-#MacOS Sonoma + Homebrew
+#MacOS Sequoia + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD 10.0
@@ -31,10 +31,10 @@
 #12 Dragonfly BSD
 #14 Fedora Linux
 #14 FreeBSD
-#13 Gentoo Linux
+#14 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
-#14 MacOS Ventura + Homebrew
+#14 MacOS Sequoia + Homebrew
 #14 Manjaro Linux
 #14 Microsoft Windows + MSYS2
 #14 NetBSD
@@ -54,7 +54,7 @@
 #18 Gentoo Linux
 #18 Haiku
 #14 Linux Mint
-#17 MacOS Ventura + Homebrew
+#17 MacOS Sequoia + Homebrew
 #18 Manjaro Linux
 #18 Microsoft Windows + MSYS2
 #17 NetBSD
