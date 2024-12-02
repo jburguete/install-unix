@@ -31,7 +31,7 @@
 #12 Dragonfly BSD
 #14 Fedora Linux
 #14 FreeBSD
-#13 Gentoo Linux
+#14 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
 #14 MacOS Sequoia + Homebrew
