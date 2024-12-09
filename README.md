@@ -104,7 +104,7 @@ Currently the following UNIX type systems are supported:
 * Devuan Linux 5
 * Dragonfly BSD 6.4
 * Fedora Linux 41
-* FreeBSD 14.1
+* FreeBSD 14.2
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 6

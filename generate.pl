@@ -7,7 +7,7 @@
 #Devuan Linux 5
 #Dragonfly BSD 6.4
 #Fedora Linux 41
-#FreeBSD 14.1
+#FreeBSD 14.2
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
@@ -51,7 +51,7 @@
 #16 Dragonfly BSD
 #18 Fedora Linux
 #18 FreeBSD
-#18 Gentoo Linux
+#19 Gentoo Linux
 #18 Haiku
 #14 Linux Mint
 #17 MacOS Sequoia + Homebrew
@@ -726,7 +726,7 @@ elsif ($os eq "FreeBSD")
                "pkg",            "update;", "pkg",            "upgrade"
               );
     @upgrade = (
-                "freebsd-update", "-r", "14.1-RELEASE", "upgrade;",
+                "freebsd-update", "-r", "14.2-RELEASE", "upgrade;",
                 "freebsd-update", "install"
                );
     @packages = (
@@ -759,11 +759,12 @@ elsif ($os eq "FreeBSD")
                  "valgrind",                   "meld",
                  "latex-beamer",               "graphviz",
                  "tex-dvipsk",                 "evince",
-                 "doxygen",                    "wget",
-                 "firefox-esr",                "thunderbird",
-                 "ImageMagick7",               "gimp",
-                 "mpv",                        "libreoffice",
-                 "es-libreoffice",             "spamassassin"
+                 "latexdiff",                  "doxygen",
+                 "wget",                       "firefox-esr",
+                 "thunderbird",                "ImageMagick7",
+                 "gimp",                       "mpv",
+                 "libreoffice",                "es-libreoffice",
+                 "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
