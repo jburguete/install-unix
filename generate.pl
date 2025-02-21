@@ -59,7 +59,7 @@
 #18 Microsoft Windows + MSYS2
 #17 NetBSD
 #16 OpenBSD
-#18 OpenIndiana
+#19 OpenIndiana
 #15 OpenSUSE Linux
 #18 Xubuntu Linux
 
@@ -1007,7 +1007,8 @@ elsif ($os eq "SunOS")
                  "gnu-patch",                       "gnu-sed",
                  "autoconf",                        "automake",
                  "pkg-config",                      "gcc-14",
-                 "developer/clang-18",              "git",
+                 "developer/clang-19",              "developer/build/meson",
+                 "ninja",                           "git",
                  "developer/versioning/subversion", "gettext",
                  "json-glib",                       "gsl",
                  "library/mpich/gcc",               "gtk3",
