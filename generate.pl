@@ -1187,6 +1187,7 @@ else
                      $mingw . "gcc-fortran",
                      $mingw . "clang",
                      "pkgconf",
+		     $mingw . "meson",
                      "git",
                      "subversion",
                      $mingw . "libxml2",
