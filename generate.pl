@@ -44,7 +44,7 @@
 #14 Xubuntu Linux
 
 #CLang versions
-#18 Arch Linux
+#19 Arch Linux
 #19 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
@@ -435,42 +435,43 @@ if ($os eq "Linux")
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
         @packages = (
-                     "patch",                   "autoconf",
-                     "automake",                "pkgconf",
-                     "gcc",                     "gcc-fortran",
-                     "clang",                   "make",
-                     "git",                     "subversion",
-                     "libxml2",                 "glib2",
-                     "json-glib",               "sqlite",
-                     "gsl",                     "libgtop",
-                     "gtk3",                    "gtk4",
-                     "freeglut",                "glfw-x11",
-                     "sdl2",                    "gnu-free-fonts",
-                     "glew",                    "vulkan-headers",
-                     "openmpi",                 "xf86-video-vesa",
-                     "xorg-server",             "pulseaudio",
-                     "pulseaudio-alsa",         "pavucontrol",
-                     "xfce4",                   "lightdm",
-                     "lightdm-gtk-greeter",     "xfce4-screensaver",
-                     "xfce4-cpugraph-plugin",   "xfce4-netload-plugin",
-                     "xfce4-systemload-plugin", "xfce4-weather-plugin",
-                     "xfce4-xkb-plugin",        "xfce4-pulseaudio-plugin",
-                     "gvim",                    "indent",
-                     "perl-tidy",               "galculator",
-                     "maxima",                  "valgrind",
-                     "gdb",                     "meld",
-                     "texlive-core",            "texlive-fontsrecommended",
-                     "texlive-latexextra",      "texlive-publishers",
-                     "texlive-pstricks",        "texlive-luatex",
-                     "texlive-langspanish",     "texlive-langfrench",
-                     "graphviz",                "texlive-binextra",
-                     "evince",                  "doxygen",
-                     "wget",                    "firefox",
-                     "firefox-i18n-es-es",      "firefox-ublock-origin",
-                     "thunderbird",             "thunderbird-i18n-es-es",
-                     "imagemagick",             "gimp",
-                     "mpv",                     "libreoffice-still",
-                     "libreoffice-still-es",    "spamassassin"
+                     "patch",                    "autoconf",
+                     "automake",                 "pkgconf",
+                     "gcc",                      "gcc-fortran",
+                     "clang",                    "make",
+                     "meson",                    "git",
+                     "subversion",               "libxml2",
+                     "glib2",                    "json-glib",
+                     "sqlite",                   "gsl",
+                     "libgtop",                  "gtk3",
+                     "gtk4",                     "freeglut",
+                     "glfw-x11",                 "sdl2",
+                     "gnu-free-fonts",           "glew",
+                     "vulkan-headers",           "openmpi",
+                     "xf86-video-vesa",          "xorg-server",
+                     "pulseaudio",               "pulseaudio-alsa",
+                     "pavucontrol",              "xfce4",
+                     "lightdm",                  "lightdm-gtk-greeter",
+                     "xfce4-screensaver",        "xfce4-cpugraph-plugin",
+                     "xfce4-netload-plugin",     "xfce4-systemload-plugin",
+                     "xfce4-weather-plugin",     "xfce4-xkb-plugin",
+                     "xfce4-pulseaudio-plugin",  "gvim",
+                     "indent",                   "perl-tidy",
+                     "galculator",               "maxima",
+                     "valgrind",                 "gdb",
+                     "meld",                     "texlive-core",
+                     "texlive-fontsrecommended", "texlive-latexextra",
+                     "texlive-publishers",       "texlive-pstricks",
+                     "texlive-luatex",           "texlive-langspanish",
+                     "texlive-langfrench",       "graphviz",
+                     "texlive-binextra",         "evince",
+                     "doxygen",                  "wget",
+                     "firefox",                  "firefox-i18n-es-es",
+                     "firefox-ublock-origin",    "thunderbird",
+                     "thunderbird-i18n-es-es",   "imagemagick",
+                     "gimp",                     "mpv",
+                     "libreoffice-still",        "libreoffice-still-es",
+                     "spamassassin"
                     );
         @postinstall = ("systemctl enable lightdm.service");
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
@@ -1187,7 +1188,7 @@ else
                      $mingw . "gcc-fortran",
                      $mingw . "clang",
                      "pkgconf",
-		     $mingw . "meson",
+                     $mingw . "meson",
                      "git",
                      "subversion",
                      $mingw . "libxml2",
