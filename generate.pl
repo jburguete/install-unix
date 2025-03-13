@@ -112,6 +112,7 @@ if ($os eq "Linux")
                      "clang",
                      "llvm",
                      "make",
+		     "meson",
                      "git",
                      "subversion",
                      "libxml2-dev",
