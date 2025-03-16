@@ -619,7 +619,9 @@ if ($os eq "Linux")
                   "--depclean",  ";",
                   "eclean-dist", "--deep",
                   ";",           "eclean-kernel",
-                  "-n",          "2"
+                  "-n",          "2",
+                  ";",           "rm",
+                  "/var/cache/distfiles/*"
                  );
         @update = ("emerge", "--sync");
         @upgrade = (
