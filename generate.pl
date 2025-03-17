@@ -219,6 +219,7 @@ if ($os eq "Linux")
                      "gfortran",
                      "clang",
                      "make",
+                     "meson",
                      "git",
                      "subversion",
                      "libxml2-dev",
