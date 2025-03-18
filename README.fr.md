@@ -14,6 +14,7 @@ Liste d'outils
   * C, C++ and FORTRAN compilers
   * Autoconf, Automake
   * Make  
+  * Meson
 
 * Contrôle de version:
   * Git
