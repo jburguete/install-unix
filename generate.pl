@@ -817,6 +817,7 @@ elsif ($os eq "NetBSD")
                  "gcc14",
                  "clang",
                  "gmake",
+		 "meson",
                  "git",
                  "subversion",
                  "libxml2",
