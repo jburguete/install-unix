@@ -1142,27 +1142,27 @@ elsif ($os eq "Darwin")
                     );
     @preinstall = ("@installcask @packagescask");
     @packages = (
-                 "gnu-sed",       "gpatch",
-                 "autoconf",      "automake",
-                 "pkgconf",       "gcc",
-                 "llvm",          "make",
-                 "meson",         "git",
-                 "subversion",    "libxml2",
-                 "gettext",       "glib",
-                 "json-glib",     "sqlite",
-                 "gsl",           "libgtop",
-                 "gtk+3",         "gtk4",
-                 "freeglut",      "glfw",
-                 "sdl2",          "glew",
-                 "glslang",       "mpich",
-                 "font-freefont", "font-open-sans",
-                 "nedit",         "gnu-indent",
-                 "perltidy",      "maxima",
-                 "ddd",           "graphviz",
-                 "texlive",       "latexdiff",
-                 "evince",        "doxygen",
-                 "wget",          "imagemagick",
-                 "mpv"
+                 "gnu-sed",        "gpatch",
+                 "autoconf",       "automake",
+                 "pkgconf",        "gcc",
+                 "llvm",           "make",
+                 "meson",          "git",
+                 "subversion",     "libxml2",
+                 "gettext",        "glib",
+                 "json-glib",      "sqlite",
+                 "gsl",            "libgtop",
+                 "gtk+3",          "gtk4",
+                 "freeglut",       "glfw",
+                 "sdl2",           "sdl3",
+                 "glew",           "glslang",
+                 "mpich",          "font-freefont",
+                 "font-open-sans", "nedit",
+                 "gnu-indent",     "perltidy",
+                 "maxima",         "ddd",
+                 "graphviz",       "texlive",
+                 "latexdiff",      "evince",
+                 "doxygen",        "wget",
+                 "imagemagick",    "mpv"
                 );
 }
 else
