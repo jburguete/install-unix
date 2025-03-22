@@ -14,7 +14,7 @@
 #MacOS Sequoia + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
-#NetBSD 10.0
+#NetBSD 10.1
 #OpenBSD 7.6
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
