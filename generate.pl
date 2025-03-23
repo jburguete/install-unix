@@ -1295,6 +1295,6 @@ if (@upgrade)
 if (@find)
 {
     open(FIND, ">find.sh");
-    print FIND, "@find \$1\n";
+    print FIND "@find \$1\n";
     close(FIND);
 }
