@@ -102,7 +102,7 @@ if ($os eq "Linux")
         @clean   = ("aptitude", "clean");
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
-	@find = ("aptitude", "search");
+        @find    = ("aptitude", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -211,7 +211,7 @@ if ($os eq "Linux")
         @clean   = ("aptitude", "clean");
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
-	@find = ("aptitude", "search");
+        @find    = ("aptitude", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -300,7 +300,7 @@ if ($os eq "Linux")
         @clean   = ("aptitude", "clean");
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
-	@find = ("aptitude", "search");
+        @find    = ("aptitude", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -385,7 +385,7 @@ if ($os eq "Linux")
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
-	@find = ("pacman", "-Ss");
+        @find    = ("pacman", "-Ss");
         @packages = (
                      "patch",                    "autoconf",
                      "automake",                 "pkgconf",
@@ -441,7 +441,7 @@ if ($os eq "Linux")
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
-	@find = ("pacman", "-Ss");
+        @find    = ("pacman", "-Ss");
         @packages = (
                      "patch",                   "autoconf",
                      "automake",                "pkgconf",
@@ -508,7 +508,7 @@ if ($os eq "Linux")
                     "--release=41;",  "dnf",
                     "system-upgrade", "reboot"
                    );
-	@find = ("dnf", "search");
+        @find       = ("dnf", "search");
         @preinstall = "dnf group install gnome-desktop"
           if (!(-x "/usr/bin/gnome-shell"));
         @packages = (
@@ -565,7 +565,7 @@ if ($os eq "Linux")
         @install = ("zypper", "install");
         @clean   = ("zypper", "clean", "-a");
         @update  = ("zypper", "patch");
-	@find = ("zypper", "search");
+        @find    = ("zypper", "search");
         @upgrade = (
                     "zypper",            "--relasever=15.6",
                     "refresh;",          "zypper",
@@ -816,7 +816,7 @@ elsif ($os eq "NetBSD")
     @install = ("pkg_add");
     @update  = ("pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
-    @find = ("pkgin", "search");
+    @find    = ("pkgin", "search");
     @packages = (
                  "pkgin",
                  "sysupgrade",
@@ -924,7 +924,7 @@ elsif ($os eq "OpenBSD")
     @install = ("pkg_add");
     @update  = ("syspatch;", "pkg_add", "-u");
     @upgrade = ("sysupgrade");
-    @find = ("pkg_info", "-aQ");
+    @find    = ("pkg_info", "-aQ");
     @packages = (
                  "gsed",                     "gpatch",
                  "bash",                     "autoconf",
@@ -968,7 +968,7 @@ elsif ($os eq "DragonFly")
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
     @update  = ("pkg", "update;",     "pkg", "upgrade");
-    @find = ("pkg", "search");
+    @find    = ("pkg", "search");
     @packages = (
                  "gsed",                 "patch",
                  "bash",                 "autoconf",
@@ -1022,7 +1022,7 @@ elsif ($os eq "SunOS")
     @install = ("pkg",   "install");
     @clean   = ("beadm", "list", "-a");
     @update  = ("pkg",   "update;");
-    @find = ("pkg", "search");
+    @find    = ("pkg",   "search");
     system("pkg", "install", "mate_install")
       if (!(-x "/usr/bin/mate-session"));
     @packages = (
@@ -1060,7 +1060,7 @@ elsif ($os eq "GNU")
     @clean   = ("apt", "autoremove;", "apt", "clean");
     @update  = ("apt", "update");
     @upgrade = ("apt", "upgrade");
-    @find = ("apt", "search");
+    @find    = ("apt", "search");
     @packages = (
                  "patch",                     "autoconf",
                  "automake",                  "pkg-config",
@@ -1110,7 +1110,7 @@ elsif ($os eq "Haiku")
     print "OS=" . $os . "\n";
     @install = ("pkgman", "install");
     @update  = ("pkgman", "full-sync");
-    @find = ("pkgman", "search");
+    @find    = ("pkgman", "search");
     @packages = (
                  "patch",               "autoconf",
                  "automake",            "pkgconfig",
@@ -1146,7 +1146,7 @@ elsif ($os eq "Darwin")
     @clean       = ("brew", "cleanup;", "brew", "cleanup", "cask");
     @update      = ("brew", "update");
     @upgrade = ("brew", "upgrade;", "brew", "upgrade", "--cask", "--greedy");
-    @find = ("brew", "search");
+    @find    = ("brew", "search");
     system(
         "/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
       )
@@ -1192,7 +1192,7 @@ else
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
-	@find = ("pacman", "-Ss");
+        @find    = ("pacman", "-Ss");
         if ($mach eq "x86_64")
         {
             $mingw = "ucrt64/mingw-w64-ucrt-x86_64-";
