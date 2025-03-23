@@ -1228,6 +1228,7 @@ else
                      $mingw . "freeglut",
                      $mingw . "glfw",
                      $mingw . "SDL2",
+                     $mingw . "sdl3",
                      $mingw . "glew",
                      $mingw . "vulkan-loader",
                      $mingw . "vulkan-headers",
