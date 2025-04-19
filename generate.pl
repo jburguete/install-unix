@@ -18,7 +18,7 @@
 #OpenBSD 7.6
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
-#Xubuntu Linux 24.10
+#Xubuntu Linux 25.04
 
 #Without GTK4:
 #Haiku
@@ -61,7 +61,7 @@
 #16 OpenBSD
 #19 OpenIndiana
 #15 OpenSUSE Linux
-#18 Xubuntu Linux
+#20 Xubuntu Linux
 
 use File::Copy 'move';
 $os = `uname -s`;
