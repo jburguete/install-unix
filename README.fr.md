@@ -100,6 +100,7 @@ Systèmes de type UNIX pris en charge
 Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 
 * Arch Linux
+* Bianbu Linux 2.1
 * Debian Hurd 13
 * Debian Linux 12 
 * Devuan Linux 5

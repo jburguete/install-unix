@@ -100,6 +100,7 @@ Supported UNIX type systems
 Currently the following UNIX type systems are supported:
 
 * Arch Linux
+* Bianbu Linux 2.1
 * Debian Hurd 13
 * Debian Linux 12 
 * Devuan Linux 5
