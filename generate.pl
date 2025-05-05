@@ -38,7 +38,7 @@
 #12 Linux Mint
 #14 MacOS Sequoia + Homebrew
 #14 Manjaro Linux
-#14 Microsoft Windows + MSYS2
+#15 Microsoft Windows + MSYS2
 #14 NetBSD
 #11 OpenBSD
 #14 OpenIndiana
@@ -59,7 +59,7 @@
 #14 Linux Mint
 #20 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
-#18 Microsoft Windows + MSYS2
+#20 Microsoft Windows + MSYS2
 #18 NetBSD
 #19 OpenBSD
 #19 OpenIndiana
