@@ -16,7 +16,7 @@
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD 10.1
-#OpenBSD 7.6
+#OpenBSD 7.7
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
 #Xubuntu Linux 25.04
@@ -25,7 +25,7 @@
 #Haiku
 
 #GCC versions
-#14 Arch Linux
+#15 Arch Linux
 #14 Bianbu Linux
 #14 Debian Hurd
 #12 Debian Linux
