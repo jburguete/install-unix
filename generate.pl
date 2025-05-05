@@ -2,36 +2,38 @@
 
 #Supported systems
 #Arch Linux
+#Bianbu Linux 2.1"
 #Debian Hurd 13
 #Debian Linux 12
 #Devuan Linux 5
 #Dragonfly BSD 6.4
 #Fedora Linux 42
-#FreeBSD 14.1
+#FreeBSD 14.2
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
 #MacOS Sequoia + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
-#NetBSD 10.0
-#OpenBSD 7.6
+#NetBSD 10.1
+#OpenBSD 7.7
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
-#Xubuntu Linux 24.10
+#Xubuntu Linux 25.04
 
 #Without GTK4:
 #Haiku
 
 #GCC versions
-#14 Arch Linux
+#15 Arch Linux
+#14 Bianbu Linux
 #14 Debian Hurd
 #12 Debian Linux
 #12 Devuan Linux
-#12 Dragonfly BSD
-#14 Fedora Linux
+#14 Dragonfly BSD
+#15 Fedora Linux
 #14 FreeBSD
-#13 Gentoo Linux
+#14 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
 #14 MacOS Sequoia + Homebrew
@@ -44,24 +46,25 @@
 #14 Xubuntu Linux
 
 #CLang versions
-#18 Arch Linux
+#19 Arch Linux
+#18 Bianbu Linux
 #19 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
-#16 Dragonfly BSD
-#18 Fedora Linux
+#18 Dragonfly BSD
+#20 Fedora Linux
 #18 FreeBSD
-#18 Gentoo Linux
+#19 Gentoo Linux
 #18 Haiku
 #14 Linux Mint
-#17 MacOS Sequoia + Homebrew
-#18 Manjaro Linux
+#20 MacOS Sequoia + Homebrew
+#19 Manjaro Linux
 #18 Microsoft Windows + MSYS2
-#17 NetBSD
-#16 OpenBSD
-#18 OpenIndiana
+#18 NetBSD
+#19 OpenBSD
+#19 OpenIndiana
 #15 OpenSUSE Linux
-#18 Xubuntu Linux
+#20 Xubuntu Linux
 
 use File::Copy 'move';
 $os = `uname -s`;
@@ -102,6 +105,7 @@ if ($os eq "Linux")
         @clean   = ("aptitude", "clean");
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
+        @find    = ("aptitude", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -112,6 +116,7 @@ if ($os eq "Linux")
                      "clang",
                      "llvm",
                      "make",
+                     "meson",
                      "git",
                      "subversion",
                      "libxml2-dev",
@@ -123,7 +128,6 @@ if ($os eq "Linux")
                      "libgtop2-dev",
                      "libgtk-3-dev",
                      "libgtk-4-dev",
-                     "freeglut3-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
                      "fonts-freefont-otf",
@@ -209,6 +213,7 @@ if ($os eq "Linux")
         @clean   = ("aptitude", "clean");
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
+        @find    = ("aptitude", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -218,6 +223,7 @@ if ($os eq "Linux")
                      "gfortran",
                      "clang",
                      "make",
+                     "meson",
                      "git",
                      "subversion",
                      "libxml2-dev",
@@ -229,7 +235,6 @@ if ($os eq "Linux")
                      "libgtop2-dev",
                      "libgtk-3-dev",
                      "libgtk-4-dev",
-                     "freeglut3-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
                      "fonts-freefont-otf",
@@ -296,6 +301,7 @@ if ($os eq "Linux")
         @clean   = ("aptitude", "clean");
         @update  = ("aptitude", "update");
         @upgrade = ("aptitude", "upgrade");
+        @find    = ("aptitude", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -316,7 +322,6 @@ if ($os eq "Linux")
                      "libgtop2-dev",
                      "libgtk-3-dev",
                      "libgtk-4-dev",
-                     "freeglut3-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
                      "fonts-freefont-otf",
@@ -380,40 +385,41 @@ if ($os eq "Linux")
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
+        @find    = ("pacman", "-Ss");
         @packages = (
-                     "patch",                    "autoconf",
-                     "automake",                 "pkgconf",
-                     "gcc",                      "gcc-fortran",
-                     "clang",                    "llvm",
-                     "make",                     "git",
-                     "subversion",               "libxml2",
-                     "glib2",                    "json-glib",
-                     "sqlite",                   "gsl",
-                     "libgtop",                  "gtk3",
-                     "gtk4",                     "freeglut",
-                     "glfw-x11",                 "sdl2",
-                     "gnu-free-fonts",           "glew",
-                     "vulkan-headers",           "openmpi",
-                     "xfce4-screensaver",        "xfce4-cpugraph-plugin",
-                     "xfce4-netload-plugin",     "xfce4-systemload-plugin",
-                     "xfce4-weather-plugin",     "xfce4-xkb-plugin",
-                     "xfce4-pulseaudio-plugin",  "gvim",
-                     "indent",                   "perl-tidy",
-                     "galculator",               "maxima",
-                     "valgrind",                 "gdb",
-                     "meld",                     "texlive-core",
-                     "texlive-fontsrecommended", "texlive-latexextra",
-                     "texlive-publishers",       "texlive-pstricks",
-                     "texlive-luatex",           "texlive-langspanish",
-                     "texlive-langfrench",       "graphviz",
-                     "texlive-binextra",         "evince",
-                     "doxygen",                  "wget",
-                     "firefox",                  "firefox-i18n-es-es",
-                     "firefox-ublock-origin",    "thunderbird",
-                     "thunderbird-i18n-es-es",   "imagemagick",
-                     "gimp",                     "mpv",
-                     "libreoffice-still",        "libreoffice-still-es",
-                     "spamassassin"
+                     "patch",                   "autoconf",
+                     "automake",                "pkgconf",
+                     "gcc",                     "gcc-fortran",
+                     "clang",                   "llvm",
+                     "make",                    "meson",
+                     "git",                     "subversion",
+                     "libxml2",                 "glib2",
+                     "json-glib",               "sqlite",
+                     "gsl",                     "libgtop",
+                     "gtk3",                    "gtk4",
+                     "glfw-x11",                "sdl2",
+                     "sdl3",                    "gnu-free-fonts",
+                     "glew",                    "vulkan-headers",
+                     "openmpi",                 "xfce4-screensaver",
+                     "xfce4-cpugraph-plugin",   "xfce4-netload-plugin",
+                     "xfce4-systemload-plugin", "xfce4-weather-plugin",
+                     "xfce4-xkb-plugin",        "xfce4-pulseaudio-plugin",
+                     "gvim",                    "indent",
+                     "perl-tidy",               "galculator",
+                     "maxima",                  "valgrind",
+                     "gdb",                     "meld",
+                     "texlive-core",            "texlive-fontsrecommended",
+                     "texlive-latexextra",      "texlive-publishers",
+                     "texlive-pstricks",        "texlive-luatex",
+                     "texlive-langspanish",     "texlive-langfrench",
+                     "graphviz",                "texlive-binextra",
+                     "evince",                  "doxygen",
+                     "wget",                    "firefox",
+                     "firefox-i18n-es-es",      "firefox-ublock-origin",
+                     "thunderbird",             "thunderbird-i18n-es-es",
+                     "imagemagick",             "gimp",
+                     "mpv",                     "libreoffice-still",
+                     "libreoffice-still-es",    "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -434,43 +440,45 @@ if ($os eq "Linux")
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
+        @find    = ("pacman", "-Ss");
         @packages = (
-                     "patch",                   "autoconf",
-                     "automake",                "pkgconf",
-                     "gcc",                     "gcc-fortran",
-                     "clang",                   "make",
-                     "git",                     "subversion",
-                     "libxml2",                 "glib2",
-                     "json-glib",               "sqlite",
-                     "gsl",                     "libgtop",
-                     "gtk3",                    "gtk4",
-                     "freeglut",                "glfw-x11",
-                     "sdl2",                    "gnu-free-fonts",
-                     "glew",                    "vulkan-headers",
-                     "openmpi",                 "xf86-video-vesa",
-                     "xorg-server",             "pulseaudio",
-                     "pulseaudio-alsa",         "pavucontrol",
-                     "xfce4",                   "lightdm",
-                     "lightdm-gtk-greeter",     "xfce4-screensaver",
-                     "xfce4-cpugraph-plugin",   "xfce4-netload-plugin",
-                     "xfce4-systemload-plugin", "xfce4-weather-plugin",
-                     "xfce4-xkb-plugin",        "xfce4-pulseaudio-plugin",
-                     "gvim",                    "indent",
-                     "perl-tidy",               "galculator",
-                     "maxima",                  "valgrind",
-                     "gdb",                     "meld",
-                     "texlive-core",            "texlive-fontsrecommended",
-                     "texlive-latexextra",      "texlive-publishers",
-                     "texlive-pstricks",        "texlive-luatex",
-                     "texlive-langspanish",     "texlive-langfrench",
-                     "graphviz",                "texlive-binextra",
-                     "evince",                  "doxygen",
-                     "wget",                    "firefox",
-                     "firefox-i18n-es-es",      "firefox-ublock-origin",
-                     "thunderbird",             "thunderbird-i18n-es-es",
-                     "imagemagick",             "gimp",
-                     "mpv",                     "libreoffice-still",
-                     "libreoffice-still-es",    "spamassassin"
+                     "patch",                    "autoconf",
+                     "automake",                 "pkgconf",
+                     "gcc",                      "gcc-fortran",
+                     "clang",                    "make",
+                     "meson",                    "git",
+                     "subversion",               "libxml2",
+                     "glib2",                    "json-glib",
+                     "sqlite",                   "gsl",
+                     "libgtop",                  "gtk3",
+                     "gtk4",                     "glfw-x11",
+                     "sdl2",                     "sdl3",
+                     "gnu-free-fonts",           "glew",
+                     "vulkan-headers",           "openmpi",
+                     "xf86-video-vesa",          "xorg-server",
+                     "pulseaudio",               "pulseaudio-alsa",
+                     "pavucontrol",              "xfce4",
+                     "lightdm",                  "lightdm-gtk-greeter",
+                     "xfce4-screensaver",        "xfce4-cpugraph-plugin",
+                     "xfce4-netload-plugin",     "xfce4-systemload-plugin",
+                     "xfce4-weather-plugin",     "xfce4-xkb-plugin",
+                     "xfce4-pulseaudio-plugin",  "gvim",
+                     "indent",                   "perl-tidy",
+                     "galculator",               "maxima",
+                     "valgrind",                 "gdb",
+                     "meld",                     "texlive-core",
+                     "texlive-fontsrecommended", "texlive-latexextra",
+                     "texlive-publishers",       "texlive-pstricks",
+                     "texlive-luatex",           "texlive-langspanish",
+                     "texlive-langfrench",       "graphviz",
+                     "texlive-binextra",         "evince",
+                     "doxygen",                  "wget",
+                     "firefox",                  "firefox-i18n-es-es",
+                     "firefox-ublock-origin",    "thunderbird",
+                     "thunderbird-i18n-es-es",   "imagemagick",
+                     "gimp",                     "mpv",
+                     "libreoffice-still",        "libreoffice-still-es",
+                     "spamassassin"
                     );
         @postinstall = ("systemctl enable lightdm.service");
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
@@ -496,44 +504,46 @@ if ($os eq "Linux")
                     "dnf",            "upgrade",
                     "--refresh;",     "dnf",
                     "system-upgrade", "download",
-                    "--release=41;",  "dnf",
-                    "system-upgrade", "reboot"
+                    "--releasever",   "42;",
+                    "dnf",            "system-upgrade",
+                    "reboot"
                    );
+        @find       = ("dnf", "search");
         @preinstall = "dnf group install gnome-desktop"
           if (!(-x "/usr/bin/gnome-shell"));
         @packages = (
-                 "dnf-plugin-system-upgrade",   "patch",
-                 "autoconf",                    "automake",
-                 "pkgconf",                     "gcc",
-                 "gcc-c++",                     "gcc-gfortran",
-                 "clang",                       "make",
-                 "git",                         "subversion",
-                 "libxml2-devel",               "glib-devel",
-                 "gettext-devel",               "json-glib-devel",
-                 "sqlite-devel",                "gsl-devel",
-                 "libgtop2-devel",              "gtk3-devel",
-                 "gtk4-devel",                  "freeglut-devel",
-                 "glfw-devel",                  "SDL2-devel",
-                 "texlive-gnu-freefont",        "glew-devel",
-                 "vulkan-headers",              "vulkan-loader",
-                 "vulkan-validation-layers",    "vulkan-tools",
-                 "glslang",                     "mpich-devel",
-                 "nedit",                       "vim-enhanced",
-                 "vim-X11",                     "indent",
-                 "perltidy",                    "maxima-gui",
-                 "valgrind",                    "ddd",
-                 "meld",                        "texlive",
-                 "texlive-latex",               "texlive-collection-publishers",
-                 "texlive-collection-pstricks", "texlive-newunicodechar",
-                 "texlive-hanging",             "texlive-stackengine",
-                 "graphviz",                    "texlive-latexdiff",
-                 "evince",                      "doxygen",
-                 "wget",                        "firefox",
-                 "mozilla-ublock-origin",       "thunderbird",
-                 "ImageMagick",                 "gimp",
-                 "ufraw-gimp",                  "totem",
-                 "libreoffice",                 "libreoffice-langpack-es",
-                 "spamassassin"
+                 "dnf-plugin-system-upgrade",     "patch",
+                 "autoconf",                      "automake",
+                 "pkgconf",                       "gcc",
+                 "gcc-c++",                       "gcc-gfortran",
+                 "clang",                         "make",
+                 "meson",                         "git",
+                 "subversion",                    "libxml2-devel",
+                 "glib-devel",                    "gettext-devel",
+                 "json-glib-devel",               "sqlite-devel",
+                 "gsl-devel",                     "libgtop2-devel",
+                 "gtk3-devel",                    "gtk4-devel",
+                 "glfw-devel",                    "SDL2-devel",
+                 "SDL3-devel",                    "texlive-gnu-freefont",
+                 "glew-devel",                    "vulkan-headers",
+                 "vulkan-loader",                 "vulkan-validation-layers",
+                 "vulkan-tools",                  "glslang",
+                 "mpich-devel",                   "nedit",
+                 "vim-enhanced",                  "vim-X11",
+                 "indent",                        "perltidy",
+                 "maxima-gui",                    "valgrind",
+                 "ddd",                           "meld",
+                 "texlive",                       "texlive-latex",
+                 "texlive-collection-publishers", "texlive-collection-pstricks",
+                 "texlive-newunicodechar",        "texlive-hanging",
+                 "texlive-stackengine",           "graphviz",
+                 "texlive-latexdiff",             "evince",
+                 "doxygen",                       "wget",
+                 "firefox",                       "mozilla-ublock-origin",
+                 "thunderbird",                   "ImageMagick",
+                 "gimp",                          "ufraw-gimp",
+                 "totem",                         "libreoffice",
+                 "libreoffice-langpack-es",       "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -554,44 +564,45 @@ if ($os eq "Linux")
         @install = ("zypper", "install");
         @clean   = ("zypper", "clean", "-a");
         @update  = ("zypper", "patch");
+        @find    = ("zypper", "search");
         @upgrade = (
                     "zypper",            "--relasever=15.6",
                     "refresh;",          "zypper",
                     "--releasever=15.6", "dup"
                    );
         @packages = (
-                     "patch",                         "autoconf",
-                     "automake",                      "pkg-config",
-                     "gcc12",                         "gcc12-c++",
-                     "gcc12-fortran",                 "clang",
-                     "llvm",                          "make",
-                     "git-core",                      "subversion",
-                     "libxml2-devel",                 "glib2-devel",
-                     "gettext-tools",                 "json-glib-devel",
-                     "sqlite3-devel",                 "gsl-devel",
-                     "libgtop-devel",                 "gtk3-devel",
-                     "gtk4-devel",                    "freeglut-devel",
-                     "libglfw-devel",                 "libSDL2-devel",
-                     "gnu-free-fonts",                "glew-devel",
-                     "vulkan",                        "vulkan-devel",
-                     "glslang-devel",                 "mpich-devel",
-                     "xf86-input-keyboard",           "xf86-input-mouse",
-                     "xf86-input-evdev",              "xf86-video-vesa",
-                     "xorg-x11",                      "xfce4-session",
-                     "xfce4-terminal",                "lightdm",
-                     "xfce4-panel-plugin-pulseaudio", "nedit",
-                     "gvim",                          "indent",
-                     "perl-Perl-Tidy",                "galculator",
-                     "maxima-xmaxima",                "valgrind",
-                     "ddd",                           "meld",
-                     "texlive",                       "texlive-latex",
-                     "texlive-collection-publishers", "texlive-pstricks",
-                     "graphviz",                      "evince",
-                     "doxygen",                       "wget",
-                     "MozillaFirefox",                "MozillaThunderbird",
-                     "ImageMagick",                   "gimp",
-                     "mpv",                           "libreoffice",
-                     "libreoffice-l10n-es",           "spamassassin"
+                     "patch",              "autoconf",
+                     "automake",           "pkg-config",
+                     "gcc12",              "gcc12-c++",
+                     "gcc12-fortran",      "clang",
+                     "llvm",               "make",
+                     "git-core",           "subversion",
+                     "libxml2-devel",      "glib2-devel",
+                     "gettext-tools",      "json-glib-devel",
+                     "sqlite3-devel",      "gsl-devel",
+                     "libgtop-devel",      "gtk3-devel",
+                     "gtk4-devel",         "libglfw-devel",
+                     "libSDL2-devel",      "gnu-free-fonts",
+                     "glew-devel",         "vulkan",
+                     "vulkan-devel",       "glslang-devel",
+                     "mpich-devel",        "xf86-input-keyboard",
+                     "xf86-input-mouse",   "xf86-input-evdev",
+                     "xf86-video-vesa",    "xorg-x11",
+                     "xfce4-session",      "xfce4-terminal",
+                     "lightdm",            "xfce4-panel-plugin-pulseaudio",
+                     "nedit",              "gvim",
+                     "indent",             "perl-Perl-Tidy",
+                     "galculator",         "maxima-xmaxima",
+                     "valgrind",           "ddd",
+                     "meld",               "texlive",
+                     "texlive-latex",      "texlive-collection-publishers",
+                     "texlive-pstricks",   "graphviz",
+                     "evince",             "doxygen",
+                     "wget",               "MozillaFirefox",
+                     "MozillaThunderbird", "ImageMagick",
+                     "gimp",               "mpv",
+                     "libreoffice",        "libreoffice-l10n-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -617,7 +628,9 @@ if ($os eq "Linux")
                   "--depclean",  ";",
                   "eclean-dist", "--deep",
                   ";",           "eclean-kernel",
-                  "-n",          "2"
+                  "-n",          "2",
+                  ";",           "rm",
+                  "/var/cache/distfiles/*"
                  );
         @update = ("emerge", "--sync");
         @upgrade = (
@@ -640,7 +653,6 @@ if ($os eq "Linux")
                      "gnome-base/libgtop",
                      "x11-libs/gtk+",
                      "gui-libs/gtk",
-                     "media-libs/freeglut",
                      "media-libs/glfw",
                      "media-libs/libsdl2",
                      "media-libs/glew",
@@ -711,6 +723,76 @@ if ($os eq "Linux")
                           );
         }
     }
+    elsif ($dist eq "Bianbu")
+    {
+        system("apt", "install", "aptitude")
+          if (!(-x "/usr/bin/aptitude"));
+        @install = ("aptitude", "install");
+        @clean   = ("aptitude", "clean");
+        @update  = ("aptitude", "update");
+        @upgrade = ("aptitude", "upgrade");
+        @find    = ("aptitude", "search");
+        @packages = (
+                     "autoconf",
+                     "clang",
+                     "git",
+                     "subversion",
+                     "libglib2.0-dev",
+                     "libjson-glib-dev",
+                     "libsqlite3-dev",
+                     "libgsl-dev",
+                     "libgtop2-dev",
+                     "libgtk-3-dev",
+                     "libgtk-4-dev",
+                     "libglfw3-dev",
+                     "libsdl2-dev",
+                     "fonts-freefont-otf",
+                     "libglew-dev",
+                     "glslang-tools",
+                     "mpich",
+                     "vim-gtk3",
+                     "indent",
+                     "perltidy",
+                     "galculator",
+                     "xmaxima",
+                     "ddd",
+                     "meld",
+                     "texlive-latex-extra",
+                     "texlive-luatex",
+                     "texlive-publishers",
+                     "texlive-fonts-recommended",
+                     "texlive-lang-spanish",
+                     "texlive-lang-french",
+                     "texlive-lang-english",
+                     "texlive-lang-italian",
+                     "texlive-pstricks",
+                     "graphviz",
+                     "latexdiff",
+                     "doxygen",
+                     "webext-ublock-origin-chromium",
+                     "thunderbird",
+                     "imagemagick",
+                     "gimp",
+                     "gnumeric",
+                     "libreoffice",
+                     "libreoffice-l10n-es",
+                     "spamassassin"
+                    );
+        system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
+        $mach = `virt-what`;
+        $mach =~ s/\n//g;
+        print "Mach=" . $mach . "\n";
+
+        if ($mach eq "virtualbox")
+        {
+            push @packages, "virtualbox-guest-x11";
+        }
+        elsif ($mach eq "kvm")
+        {
+            push @packages, "qemu-guest-agent";
+            push @packages, "xserver-xorg-video-qxl";
+        }
+    }
     else
     {
         print "Unsupported Linux distribution\n";
@@ -726,44 +808,46 @@ elsif ($os eq "FreeBSD")
                "pkg",            "update;", "pkg",            "upgrade"
               );
     @upgrade = (
-                "freebsd-update", "-r", "14.1-RELEASE", "upgrade;",
+                "freebsd-update", "-r", "14.2-RELEASE", "upgrade;",
                 "freebsd-update", "install"
                );
+    @find = ("pkg", "search");
     @packages = (
-                 "utouch-kmod",                "gsed",
-                 "patch",                      "bash",
-                 "autoconf",                   "automake",
-                 "pkgconf",                    "gcc14",
-                 "gmake",                      "git",
-                 "subversion",                 "libxml2",
-                 "gettext-tools",              "glib",
-                 "json-glib",                  "sqlite3",
-                 "gsl",                        "libgtop",
-                 "gtk3",                       "gtk4",
-                 "freeglut",                   "glfw",
-                 "sdl2",                       "freefont-ttf",
-                 "glew",                       "vulkan-headers",
-                 "vulkan-loader",              "vulkan-validation-layers",
-                 "glslang",                    "mpich",
-                 "xf86-input-evdev",           "xorg-minimal",
-                 "xfce",                       "lightdm",
-                 "lightdm-gtk-greeter",        "lightdm-gtk-greeter-settings",
-                 "xfce4-screensaver",          "xfce4-cpugraph-plugin",
-                 "xfce4-netload-plugin",       "xfce4-systemload-plugin",
-                 "xfce4-weather-plugin",       "xfce4-xkb-plugin",
-                 "xfce4-terminal",             "xfce4-pulseaudio-plugin",
-                 "xfce4-screenshooter-plugin", "vim-gtk3",
-                 "nedit",                      "gindent",
-                 "p5-Perl-Tidy",               "galculator",
-                 "maxima",                     "gdb",
-                 "valgrind",                   "meld",
-                 "latex-beamer",               "graphviz",
-                 "tex-dvipsk",                 "evince",
-                 "doxygen",                    "wget",
-                 "firefox-esr",                "thunderbird",
-                 "ImageMagick7",               "gimp",
-                 "mpv",                        "libreoffice",
-                 "es-libreoffice",             "spamassassin"
+                 "utouch-kmod",                  "gsed",
+                 "patch",                        "bash",
+                 "autoconf",                     "automake",
+                 "pkgconf",                      "gcc14",
+                 "gmake",                        "meson",
+                 "git",                          "subversion",
+                 "libxml2",                      "gettext-tools",
+                 "glib",                         "json-glib",
+                 "sqlite3",                      "gsl",
+                 "libgtop",                      "gtk3",
+                 "gtk4",                         "glfw",
+                 "sdl2",                         "sdl3",
+                 "freefont-ttf",                 "glew",
+                 "vulkan-headers",               "vulkan-loader",
+                 "vulkan-validation-layers",     "glslang",
+                 "mpich",                        "xf86-input-evdev",
+                 "xorg-minimal",                 "xfce",
+                 "lightdm",                      "lightdm-gtk-greeter",
+                 "lightdm-gtk-greeter-settings", "xfce4-screensaver",
+                 "xfce4-cpugraph-plugin",        "xfce4-netload-plugin",
+                 "xfce4-systemload-plugin",      "xfce4-weather-plugin",
+                 "xfce4-xkb-plugin",             "xfce4-terminal",
+                 "xfce4-pulseaudio-plugin",      "xfce4-screenshooter-plugin",
+                 "vim-gtk3",                     "nedit",
+                 "gindent",                      "p5-Perl-Tidy",
+                 "galculator",                   "maxima",
+                 "gdb",                          "valgrind",
+                 "meld",                         "latex-beamer",
+                 "graphviz",                     "tex-dvipsk",
+                 "evince",                       "latexdiff",
+                 "doxygen",                      "wget",
+                 "firefox-esr",                  "thunderbird",
+                 "ImageMagick7",                 "gimp",
+                 "mpv",                          "libreoffice",
+                 "es-libreoffice",               "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
@@ -799,6 +883,7 @@ elsif ($os eq "NetBSD")
     @install = ("pkg_add");
     @update  = ("pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
+    @find    = ("pkgin", "search");
     @packages = (
                  "pkgin",
                  "sysupgrade",
@@ -811,6 +896,7 @@ elsif ($os eq "NetBSD")
                  "gcc14",
                  "clang",
                  "gmake",
+                 "meson",
                  "git",
                  "subversion",
                  "libxml2",
@@ -822,7 +908,6 @@ elsif ($os eq "NetBSD")
                  "libgtop",
                  "gtk3+",
                  "gtk4",
-                 "freeglut",
                  "glfw",
                  "SDL2",
                  "freefont-ttf",
@@ -905,18 +990,19 @@ elsif ($os eq "OpenBSD")
     @install = ("pkg_add");
     @update  = ("syspatch;", "pkg_add", "-u");
     @upgrade = ("sysupgrade");
+    @find    = ("pkg_info", "-aQ");
     @packages = (
                  "gsed",                   "gpatch",
                  "bash",                   "autoconf",
                  "automake",               "pkgconf",
                  "gcc",                    "llvm",
-                 "gmake",                  "git",
-                 "subversion",             "libxml",
-                 "gettext-tools",          "glib2",
-                 "json-glib",              "sqlite3",
-                 "gsl",                    "libgtop2",
-                 "gtk+3",                  "gtk+4",
-                 "freeglut",               "glfw",
+                 "gmake",                  "meson",
+                 "git",                    "subversion",
+                 "libxml",                 "gettext-tools",
+                 "glib2",                  "json-glib",
+                 "sqlite3",                "gsl",
+                 "libgtop2",               "gtk+3",
+                 "gtk+4",                  "glfw",
                  "sdl2",                   "freefont-ttf",
                  "glew",                   "vulkan-headers",
                  "vulkan-loader",          "vulkan-validation-layers",
@@ -948,39 +1034,41 @@ elsif ($os eq "DragonFly")
     @install = ("pkg", "install");
     @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
     @update  = ("pkg", "update;",     "pkg", "upgrade");
+    @find    = ("pkg", "search");
     @packages = (
-                 "gsed",                 "patch",
-                 "bash",                 "autoconf",
-                 "automake",             "pkgconf",
-                 "gcc12",                "llvm16",
-                 "gmake",                "git-lite",
-                 "subversion",           "libxml2",
-                 "gettext-tools",        "glib",
-                 "json-glib",            "sqlite3",
-                 "gsl",                  "libgtop",
-                 "gtk3",                 "gtk4",
-                 "freeglut",             "glfw",
-                 "sdl2",                 "freefont-ttf",
-                 "glew",                 "vulkan-headers",
-                 "vulkan-loader",        "vulkan-tools",
-                 "glslang",              "mpich",
-                 "xf86-input-keyboard",  "xf86-input-mouse",
-                 "xorg-minimal",         "xfce",
-                 "xfce4-screensaver",    "xfce4-cpugraph-plugin",
-                 "xfce4-netload-plugin", "xfce4-systemload-plugin",
-                 "xfce4-weather-plugin", "xfce4-xkb-plugin",
-                 "xfce4-terminal",       "xfce4-screenshooter-plugin",
-                 "vim-gtk3",             "nedit",
-                 "gindent",              "p5-Perl-Tidy",
-                 "galculator",           "maxima",
-                 "gdb",                  "valgrind",
-                 "meld",                 "latex-beamer",
-                 "graphviz",             "evince",
-                 "doxygen",              "wget",
-                 "firefox-esr",          "thunderbird",
-                 "ImageMagick7",         "gimp",
-                 "mpv",                  "libreoffice",
-                 "es-libreoffice",       "spamassassin"
+                 "gsed",                       "patch",
+                 "bash",                       "autoconf",
+                 "automake",                   "pkgconf",
+                 "gcc12",                      "llvm16",
+                 "gmake",                      "meson",
+                 "git-lite",                   "subversion",
+                 "libxml2",                    "gettext-tools",
+                 "glib",                       "json-glib",
+                 "sqlite3",                    "gsl",
+                 "libgtop",                    "gtk3",
+                 "gtk4",                       "glfw",
+                 "sdl2",                       "sdl3",
+                 "freefont-ttf",               "glew",
+                 "vulkan-headers",             "vulkan-loader",
+                 "vulkan-tools",               "glslang",
+                 "mpich",                      "xf86-input-keyboard",
+                 "xf86-input-mouse",           "xorg-minimal",
+                 "xfce",                       "xfce4-screensaver",
+                 "xfce4-cpugraph-plugin",      "xfce4-netload-plugin",
+                 "xfce4-systemload-plugin",    "xfce4-weather-plugin",
+                 "xfce4-xkb-plugin",           "xfce4-terminal",
+                 "xfce4-screenshooter-plugin", "vim-gtk3",
+                 "nedit",                      "gindent",
+                 "p5-Perl-Tidy",               "galculator",
+                 "maxima",                     "gdb",
+                 "valgrind",                   "meld",
+                 "latex-beamer",               "graphviz",
+                 "evince",                     "doxygen",
+                 "wget",                       "firefox-esr",
+                 "thunderbird",                "ImageMagick7",
+                 "gimp",                       "mpv",
+                 "libreoffice",                "es-libreoffice",
+                 "spamassassin"
                 );
 
     #@postinstall=("echo dbus_enable=\"YES\" >> /etc/rc.conf");
@@ -1000,27 +1088,28 @@ elsif ($os eq "SunOS")
     @install = ("pkg",   "install");
     @clean   = ("beadm", "list", "-a");
     @update  = ("pkg",   "update;");
+    @find    = ("pkg",   "search");
     system("pkg", "install", "mate_install")
       if (!(-x "/usr/bin/mate-session"));
     @packages = (
                  "gnu-patch",                       "gnu-sed",
                  "autoconf",                        "automake",
                  "pkg-config",                      "gcc-14",
-                 "developer/clang-18",              "git",
+                 "developer/clang-19",              "developer/build/meson",
+                 "ninja",                           "git",
                  "developer/versioning/subversion", "gettext",
                  "json-glib",                       "gsl",
                  "library/mpich/gcc",               "gtk3",
                  "gtk4",                            "libglew",
-                 "freeglut",                        "sdl2",
-                 "valgrind",                        "gnome-fonts",
-                 "mate_install",                    "gvim",
-                 "gnu-indent",                      "perl-tidy",
-                 "gnuplot",                         "meld",
-                 "evince",                          "doxygen",
-                 "wget",                            "firefox",
-                 "thunderbird",                     "imagemagick",
-                 "gimp",                            "gnumeric",
-                 "libreoffice"
+                 "sdl2",                            "valgrind",
+                 "gnome-fonts",                     "mate_install",
+                 "gvim",                            "gnu-indent",
+                 "perl-tidy",                       "gnuplot",
+                 "meld",                            "evince",
+                 "doxygen",                         "wget",
+                 "firefox",                         "thunderbird",
+                 "imagemagick",                     "gimp",
+                 "gnumeric",                        "libreoffice"
                 );
     $tlf = "install-tl-unx.tar.gz";
     system("wget", "http://mirror.ctan.org/systems/texlive/tlnet/" . $tlf)
@@ -1036,39 +1125,39 @@ elsif ($os eq "GNU")
     @clean   = ("apt", "autoremove;", "apt", "clean");
     @update  = ("apt", "update");
     @upgrade = ("apt", "upgrade");
+    @find    = ("apt", "search");
     @packages = (
-                 "patch",                     "autoconf",
-                 "automake",                  "pkg-config",
-                 "g++",                       "gfortran",
-                 "clang",                     "make",
-                 "git",                       "subversion",
-                 "libxml2-dev",               "libglib2.0-dev",
-                 "libjson-glib-dev",          "gettext",
-                 "libsqlite3-dev",            "libgsl-dev",
-                 "libgtop2-dev",              "libgtk-3-dev",
-                 "libgtk-4-dev",              "freeglut3-dev",
-                 "libglfw3-dev",              "libsdl2-dev",
-                 "fonts-freefont-otf",        "glslang-tools",
-                 "libglew-dev",               "mpich",
-                 "libmpich-dev",              "xserver-xorg-input-kbd",
-                 "xserver-xorg-input-mouse",  "xserver-xorg-video-vesa",
-                 "xorg",                      "xfce4",
-                 "xfce4-screensaver",         "xfce4-weather-plugin",
-                 "xfce4-xkb-plugin",          "xfce4-terminal",
-                 "gstreamer1.0-plugins-good", "gstreamer1.0-pulseaudio",
-                 "xfce4-pulseaudio-plugin",   "xfce4-screenshooter",
-                 "nedit",                     "vim-gtk3",
-                 "indent",                    "perltidy",
-                 "galculator",                "ddd",
-                 "meld",                      "texlive-latex-extra",
-                 "texlive-luatex",            "texlive-publishers",
-                 "texlive-fonts-recommended", "texlive-lang-spanish",
-                 "texlive-lang-french",       "texlive-lang-english",
-                 "texlive-lang-italian",      "texlive-pstricks",
-                 "graphviz",                  "latexdiff",
-                 "evince",                    "doxygen",
-                 "wget",                      "imagemagick",
-                 "gimp"
+                 "patch",                   "autoconf",
+                 "automake",                "pkg-config",
+                 "g++",                     "gfortran",
+                 "clang",                   "make",
+                 "git",                     "subversion",
+                 "libxml2-dev",             "libglib2.0-dev",
+                 "libjson-glib-dev",        "gettext",
+                 "libsqlite3-dev",          "libgsl-dev",
+                 "libgtop2-dev",            "libgtk-3-dev",
+                 "libgtk-4-dev",            "libglfw3-dev",
+                 "libsdl2-dev",             "fonts-freefont-otf",
+                 "glslang-tools",           "libglew-dev",
+                 "mpich",                   "libmpich-dev",
+                 "xserver-xorg-input-kbd",  "xserver-xorg-input-mouse",
+                 "xserver-xorg-video-vesa", "xorg",
+                 "xfce4",                   "xfce4-screensaver",
+                 "xfce4-weather-plugin",    "xfce4-xkb-plugin",
+                 "xfce4-terminal",          "gstreamer1.0-plugins-good",
+                 "gstreamer1.0-pulseaudio", "xfce4-pulseaudio-plugin",
+                 "xfce4-screenshooter",     "nedit",
+                 "vim-gtk3",                "indent",
+                 "perltidy",                "galculator",
+                 "ddd",                     "meld",
+                 "texlive-latex-extra",     "texlive-luatex",
+                 "texlive-publishers",      "texlive-fonts-recommended",
+                 "texlive-lang-spanish",    "texlive-lang-french",
+                 "texlive-lang-english",    "texlive-lang-italian",
+                 "texlive-pstricks",        "graphviz",
+                 "latexdiff",               "evince",
+                 "doxygen",                 "wget",
+                 "imagemagick",             "gimp"
                 );
     system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
     $mach = `virt-what`;
@@ -1085,17 +1174,19 @@ elsif ($os eq "Haiku")
     print "OS=" . $os . "\n";
     @install = ("pkgman", "install");
     @update  = ("pkgman", "full-sync");
+    @find    = ("pkgman", "search");
     @packages = (
                  "patch",               "autoconf",
                  "automake",            "pkgconfig",
                  "gcc",                 "gcc_fortran",
                  "llvm18_clang",        "make",
-                 "git",                 "subversion",
-                 "libxml2_devel",       "glib2_devel",
-                 "json_glib_devel",     "gettext",
-                 "sqlite_devel",        "gsl_devel",
-                 "gtk3_devel",          "glfw_devel",
-                 "libsdl2_devel",       "glew_devel",
+                 "meson",               "git",
+                 "subversion",          "libxml2_devel",
+                 "glib2_devel",         "json_glib_devel",
+                 "gettext",             "sqlite_devel",
+                 "gsl_devel",           "gtk3_devel",
+                 "glfw_devel",          "libsdl2_devel",
+                 "libsdl3_devel",       "glew_devel",
                  "vim",                 "indent",
                  "gnuplot",             "tk",
                  "sbcl",                "maxima",
@@ -1119,6 +1210,7 @@ elsif ($os eq "Darwin")
     @clean       = ("brew", "cleanup;", "brew", "cleanup", "cask");
     @update      = ("brew", "update");
     @upgrade = ("brew", "upgrade;", "brew", "upgrade", "--cask", "--greedy");
+    @find    = ("brew", "search");
     system(
         "/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
       )
@@ -1129,26 +1221,27 @@ elsif ($os eq "Darwin")
                     );
     @preinstall = ("@installcask @packagescask");
     @packages = (
-                 "gnu-sed",        "gpatch",
-                 "autoconf",       "automake",
-                 "pkgconf",        "gcc",
-                 "llvm",           "make",
-                 "git",            "subversion",
-                 "libxml2",        "gettext",
-                 "glib",           "json-glib",
-                 "sqlite",         "gsl",
-                 "libgtop",        "gtk+3",
-                 "gtk4",           "freeglut",
-                 "glfw",           "sdl2",
-                 "glew",           "glslang",
-                 "mpich",          "font-freefont",
-                 "font-open-sans", "nedit",
-                 "gnu-indent",     "perltidy",
-                 "maxima",         "ddd",
-                 "graphviz",       "texlive",
-                 "latexdiff",      "evince",
-                 "doxygen",        "wget",
-                 "imagemagick",    "mpv"
+                 "gnu-sed",       "gpatch",
+                 "autoconf",      "automake",
+                 "pkgconf",       "gcc",
+                 "llvm",          "make",
+                 "meson",         "git",
+                 "subversion",    "libxml2",
+                 "gettext",       "glib",
+                 "json-glib",     "sqlite",
+                 "gsl",           "libgtop",
+                 "gtk+3",         "gtk4",
+                 "glfw",          "sdl2",
+                 "sdl3",          "glew",
+                 "glslang",       "mpich",
+                 "font-freefont", "font-open-sans",
+                 "nedit",         "gnu-indent",
+                 "perltidy",      "maxima",
+                 "ddd",           "graphviz",
+                 "texlive",       "latexdiff",
+                 "evince",        "doxygen",
+                 "wget",          "imagemagick",
+                 "mpv"
                 );
 }
 else
@@ -1163,6 +1256,7 @@ else
         @install = ("pacman", "-S");
         @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
         @update  = ("pacman", "-Syu");
+        @find    = ("pacman", "-Ss");
         if ($mach eq "x86_64")
         {
             $mingw = "ucrt64/mingw-w64-ucrt-x86_64-";
@@ -1184,6 +1278,7 @@ else
                      $mingw . "gcc-fortran",
                      $mingw . "clang",
                      "pkgconf",
+                     $mingw . "meson",
                      "git",
                      "subversion",
                      $mingw . "libxml2",
@@ -1194,9 +1289,9 @@ else
                      $mingw . "gettext",
                      $mingw . "gtk3",
                      $mingw . "gtk4",
-                     $mingw . "freeglut",
                      $mingw . "glfw",
                      $mingw . "SDL2",
+                     $mingw . "sdl3",
                      $mingw . "glew",
                      $mingw . "vulkan-loader",
                      $mingw . "vulkan-headers",
@@ -1261,4 +1356,9 @@ if (@upgrade)
     print UPGRADE "@upgrade\n";
     close(UPGRADE);
 }
-
+if (@find)
+{
+    open(FIND, ">find.sh");
+    print FIND "@find \$1\n";
+    close(FIND);
+}

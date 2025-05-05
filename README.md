@@ -14,6 +14,7 @@ Tools list
   * C, C++ and FORTRAN compilers
   * Autoconf, Automake
   * Make  
+  * Meson
 
 * Control versions:
   * Git
@@ -99,23 +100,24 @@ Supported UNIX type systems
 Currently the following UNIX type systems are supported:
 
 * Arch Linux
+* Bianbu Linux 2.1
 * Debian Hurd 13
 * Debian Linux 12 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
-* Fedora Linux 41
-* FreeBSD 14.1
+* Fedora Linux 42
+* FreeBSD 14.2
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 6
 * MacOS Sequoia + Homebrew
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
-* NetBSD 10.0
-* OpenBSD 7.6
+* NetBSD 10.1
+* OpenBSD 7.7
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.6
-* Xubuntu Linux 24.10
+* Xubuntu Linux 25.04
 
 Other versions of these operative systems or other distributions could work but 
 it has not been tested.
