@@ -58,7 +58,7 @@
 #18 Haiku
 #14 Linux Mint
 #20 MacOS Sequoia + Homebrew
-#18 Manjaro Linux
+#19 Manjaro Linux
 #18 Microsoft Windows + MSYS2
 #17 NetBSD
 #16 OpenBSD
