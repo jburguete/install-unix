@@ -30,7 +30,7 @@
 #14 Debian Hurd
 #12 Debian Linux
 #12 Devuan Linux
-#12 Dragonfly BSD
+#14 Dragonfly BSD
 #15 Fedora Linux
 #14 FreeBSD
 #14 Gentoo Linux
@@ -51,7 +51,7 @@
 #19 Debian Hurd
 #14 Debian Linux
 #14 Devuan Linux
-#16 Dragonfly BSD
+#18 Dragonfly BSD
 #20 Fedora Linux
 #18 FreeBSD
 #19 Gentoo Linux
