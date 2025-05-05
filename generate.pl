@@ -60,7 +60,7 @@
 #20 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
 #18 Microsoft Windows + MSYS2
-#17 NetBSD
+#18 NetBSD
 #16 OpenBSD
 #19 OpenIndiana
 #15 OpenSUSE Linux
