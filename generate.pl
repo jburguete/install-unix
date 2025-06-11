@@ -8,7 +8,7 @@
 #Devuan Linux 5
 #Dragonfly BSD 6.4
 #Fedora Linux 42
-#FreeBSD 14.2
+#FreeBSD 14.3
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 6
@@ -53,7 +53,7 @@
 #14 Devuan Linux
 #18 Dragonfly BSD
 #20 Fedora Linux
-#18 FreeBSD
+#19 FreeBSD
 #19 Gentoo Linux
 #18 Haiku
 #14 Linux Mint

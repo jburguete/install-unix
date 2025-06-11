@@ -44,7 +44,7 @@ figures = $(msys2_eps) $(latex_eps)
 ../tutorial.pdf: tutorial.tex makefile $(figures)
 	latex tutorial
 	latex tutorial
-	dvipdfmx -o ../tutorial.pdf tutorial.dvi
+	dvipdf -o ../tutorial.pdf tutorial.dvi
 
 $(msys2_eps): $(msys2_png)
 	./script MSYS2
