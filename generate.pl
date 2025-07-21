@@ -21,9 +21,6 @@
 #OpenSUSE Leap Linux 15.6
 #Xubuntu Linux 25.04
 
-#Without GTK4:
-#Haiku
-
 #GCC versions
 #15 Arch Linux
 #14 Bianbu Linux
@@ -1184,7 +1181,7 @@ elsif ($os eq "Haiku")
                  "subversion",          "libxml2_devel",
                  "glib2_devel",         "json_glib_devel",
                  "gettext",             "sqlite_devel",
-                 "gsl_devel",           "gtk3_devel",
+                 "gsl_devel",           "gtk3_devel", "gtk4_devel",
                  "glfw_devel",          "libsdl2_devel",
                  "libsdl3_devel",       "glew_devel",
                  "vim",                 "indent",
