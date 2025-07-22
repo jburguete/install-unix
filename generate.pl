@@ -33,7 +33,7 @@
 #14 Gentoo Linux
 #13 Haiku
 #12 Linux Mint
-#14 MacOS Sequoia + Homebrew
+#15 MacOS Sequoia + Homebrew
 #14 Manjaro Linux
 #15 Microsoft Windows + MSYS2
 #14 NetBSD
