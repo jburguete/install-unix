@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 
 #Supported systems
+#Alpine Linux
 #Arch Linux
 #Bianbu Linux 2.1"
 #Debian Hurd 13
@@ -22,6 +23,7 @@
 #Xubuntu Linux 25.04
 
 #GCC versions
+#14 Alpine Linux
 #15 Arch Linux
 #14 Bianbu Linux
 #14 Debian Hurd
@@ -43,6 +45,7 @@
 #14 Xubuntu Linux
 
 #CLang versions
+#20 Alpine Linux
 #19 Arch Linux
 #18 Bianbu Linux
 #19 Debian Hurd
@@ -89,6 +92,10 @@ if ($os eq "Linux")
         elsif (-x "/usr/bin/emerge")
         {
             system("emerge --ask sys-apps/lsb-release");
+        }
+        elsif (-x "/sbin/apk")
+        {
+            system("apk add lsb-release-minimal");
         }
     }
     $dist = `lsb_release -i -s`;
@@ -788,6 +795,72 @@ if ($os eq "Linux")
         {
             push @packages, "qemu-guest-agent";
             push @packages, "xserver-xorg-video-qxl";
+        }
+    }
+    elsif ($dist eq "Alpine")
+    {
+        @install = ("apk", "add");
+        @update  = ("apk", "update");
+        @upgrade = ("apk", "upgrade");
+        @find    = ("apk", "search");
+        @packages = (
+                     "patch",
+                     "autoconf",
+                     "automake",
+                     "g++",
+                     "gfortran",
+                     "clang",
+                     "make",
+                     "meson",
+                     "git",
+                     "subversion",
+                     "libxml2-dev",
+                     "glib-dev",
+                     "json-glib-dev",
+                     "gsl-dev",
+                     "libgtop-dev",
+                     "gtk+3.0-dev",
+                     "gtk4.0-dev",
+                     "glfw-dev",
+                     "sdl2-dev",
+                     "sdl3-dev",
+                     "font-freefont",
+                     "glew-dev",
+                     "glslang",
+                     "openmpi-dev",
+                     "gvim",
+                     "indent",
+                     "perl-tidy",
+                     "galculator",
+                     "valgrind",
+                     "gdb",
+                     "meld",
+                     "texlive-most",
+                     "texlive-binextra",
+                     "graphviz",
+                     "doxygen",
+                     "ublock-origin",
+                     "thunderbird",
+                     "imagemagick",
+                     "gimp",
+                     "mpv",
+                     "gnumeric",
+                     "libreoffice",
+                     "spamassassin"
+                    );
+        system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
+        $mach = `virt-what`;
+        $mach =~ s/\n//g;
+        print "Mach=" . $mach . "\n";
+
+        if ($mach eq "virtualbox")
+        {
+            push @packages, "virtualbox-guest-additions";
+        }
+        elsif ($mach eq "kvm")
+        {
+            push @packages, "qemu-guest-agent";
+            push @packages, "xf86-video-qxl";
         }
     }
     else
