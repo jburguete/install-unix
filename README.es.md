@@ -102,8 +102,8 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Alpine Linux
 * Arch Linux
 * Bianbu Linux 2.1
-* Debian Hurd 13
-* Debian Linux 12 
+* Debian Hurd 14
+* Debian Linux 13 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
 * Fedora Linux 42

@@ -4,8 +4,8 @@
 #Alpine Linux
 #Arch Linux
 #Bianbu Linux 2.1"
-#Debian Hurd 13
-#Debian Linux 12
+#Debian Hurd 14
+#Debian Linux 13
 #Devuan Linux 5
 #Dragonfly BSD 6.4
 #Fedora Linux 42
@@ -27,7 +27,7 @@
 #15 Arch Linux
 #14 Bianbu Linux
 #14 Debian Hurd
-#12 Debian Linux
+#14 Debian Linux
 #12 Devuan Linux
 #14 Dragonfly BSD
 #15 Fedora Linux
@@ -49,7 +49,7 @@
 #19 Arch Linux
 #18 Bianbu Linux
 #19 Debian Hurd
-#14 Debian Linux
+#19 Debian Linux
 #14 Devuan Linux
 #18 Dragonfly BSD
 #20 Fedora Linux
@@ -134,6 +134,7 @@ if ($os eq "Linux")
                      "libgtk-4-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
+                     "libsdl3-dev",
                      "fonts-freefont-otf",
                      "libglew-dev",
                      "glslang-tools",
