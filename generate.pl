@@ -1152,15 +1152,16 @@ elsif ($os eq "SunOS")
                  "json-glib",                       "gsl",
                  "library/mpich/gcc",               "gtk3",
                  "gtk4",                            "libglew",
-                 "sdl2",                            "valgrind",
-                 "gnome-fonts",                     "mate_install",
-                 "gvim",                            "gnu-indent",
-                 "perl-tidy",                       "gnuplot",
-                 "meld",                            "evince",
-                 "doxygen",                         "wget",
-                 "firefox",                         "thunderbird",
-                 "imagemagick",                     "gimp",
-                 "gnumeric",                        "libreoffice"
+                 "sdl2",                            "sdl3",
+                 "valgrind",                        "gnome-fonts",
+                 "mate_install",                    "gvim",
+                 "gnu-indent",                      "perl-tidy",
+                 "gnuplot",                         "meld",
+                 "evince",                          "doxygen",
+                 "wget",                            "firefox",
+                 "thunderbird",                     "imagemagick",
+                 "gimp",                            "gnumeric",
+                 "libreoffice"
                 );
     $tlf = "install-tl-unx.tar.gz";
     system("wget", "http://mirror.ctan.org/systems/texlive/tlnet/" . $tlf)
