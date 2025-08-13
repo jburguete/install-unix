@@ -960,6 +960,7 @@ elsif ($os eq "NetBSD")
                  "gtk4",
                  "glfw",
                  "SDL2",
+                 "SDL3",
                  "freefont-ttf",
                  "glew",
                  "mpich",
