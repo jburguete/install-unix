@@ -54,7 +54,7 @@
 #18 Dragonfly BSD
 #20 Fedora Linux
 #19 FreeBSD
-#19 Gentoo Linux
+#20 Gentoo Linux
 #18 Haiku
 #14 Linux Mint
 #20 MacOS Sequoia + Homebrew
@@ -660,6 +660,7 @@ if ($os eq "Linux")
                      "gui-libs/gtk",
                      "media-libs/glfw",
                      "media-libs/libsdl2",
+                     "media-libs/libsdl3",
                      "media-libs/glew",
                      "media-fonts/freefont",
                      "x11-drivers/xf86-input-evdev",
