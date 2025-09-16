@@ -1137,10 +1137,11 @@ elsif ($os eq "SunOS")
     $dist = `uname -v`;
     $dist =~ s/\n//g;
     print "Dist=OpenIndiana\n";
-    @install = ("pkg",   "install");
-    @clean   = ("beadm", "list", "-a");
-    @update  = ("pkg",   "update;");
-    @find    = ("pkg",   "search");
+    $pkg     = "/var/pkg/publisher/openindiana.org/file/*;";
+    @install = ("pkg", "install");
+    @clean   = ("rm",  "-rf", $pkg, "beadm", "list", "-a");
+    @update  = ("pkg", "update;");
+    @find    = ("pkg", "search");
     system("pkg", "install", "mate_install")
       if (!(-x "/usr/bin/mate-session"));
     @packages = (
