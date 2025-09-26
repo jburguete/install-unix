@@ -138,6 +138,7 @@ if ($os eq "Linux")
                      "fonts-freefont-otf",
                      "libglew-dev",
                      "glslang-tools",
+		     "vulkan-validationlayers",
                      "mpich",
                      "libmpich-dev",
                      "xserver-xorg-input-kbd",
