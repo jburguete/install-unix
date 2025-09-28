@@ -331,6 +331,7 @@ if ($os eq "Linux")
                      "libgtk-4-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
+                     "libsdl3-dev",
                      "fonts-freefont-otf",
                      "libglew-dev",
                      "glslang-tools",
