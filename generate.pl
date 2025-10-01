@@ -105,11 +105,11 @@ if ($os eq "Linux")
     {
         system("apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
-        @install = ("aptitude", "install");
-        @clean   = ("aptitude", "clean");
-        @update  = ("aptitude", "update");
-        @upgrade = ("aptitude", "upgrade");
-        @find    = ("aptitude", "search");
+        @install = ("apt", "install");
+        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @update  = ("apt", "update");
+        @upgrade = ("apt", "upgrade");
+        @find    = ("apt", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -138,7 +138,7 @@ if ($os eq "Linux")
                      "fonts-freefont-otf",
                      "libglew-dev",
                      "glslang-tools",
-		     "vulkan-validationlayers",
+                     "vulkan-validationlayers",
                      "mpich",
                      "libmpich-dev",
                      "xserver-xorg-input-kbd",
@@ -215,11 +215,11 @@ if ($os eq "Linux")
     {
         system("apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
-        @install = ("aptitude", "install");
-        @clean   = ("aptitude", "clean");
-        @update  = ("aptitude", "update");
-        @upgrade = ("aptitude", "upgrade");
-        @find    = ("aptitude", "search");
+        @install = ("apt", "install");
+        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @update  = ("apt", "update");
+        @upgrade = ("apt", "upgrade");
+        @find    = ("apt", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -303,11 +303,11 @@ if ($os eq "Linux")
     {
         system("sudo", "apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
-        @install = ("aptitude", "install");
-        @clean   = ("aptitude", "clean");
-        @update  = ("aptitude", "update");
-        @upgrade = ("aptitude", "upgrade");
-        @find    = ("aptitude", "search");
+        @install = ("apt", "install");
+        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @update  = ("apt", "update");
+        @upgrade = ("apt", "upgrade");
+        @find    = ("apt", "search");
         @packages = (
                      "patch",
                      "autoconf",
@@ -317,7 +317,7 @@ if ($os eq "Linux")
                      "gfortran",
                      "clang",
                      "make",
-		     "meson",
+                     "meson",
                      "git",
                      "subversion",
                      "libxml2-dev",
@@ -736,11 +736,11 @@ if ($os eq "Linux")
     {
         system("apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
-        @install = ("aptitude", "install");
-        @clean   = ("aptitude", "clean");
-        @update  = ("aptitude", "update");
-        @upgrade = ("aptitude", "upgrade");
-        @find    = ("aptitude", "search");
+        @install = ("apt", "install");
+        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @update  = ("apt", "update");
+        @upgrade = ("apt", "upgrade");
+        @find    = ("apt", "search");
         @packages = (
                      "autoconf",
                      "clang",
@@ -1178,8 +1178,10 @@ elsif ($os eq "SunOS")
 elsif ($os eq "GNU")
 {
     print "OS=" . $os . "\n";
+    system("apt", "install", "aptitude")
+      if (!(-x "/usr/bin/aptitude"));
     @install = ("apt", "install");
-    @clean   = ("apt", "autoremove;", "apt", "clean");
+    @clean   = ("apt", "autoremove", "--purge;", "apt", "clean");
     @update  = ("apt", "update");
     @upgrade = ("apt", "upgrade");
     @find    = ("apt", "search");
