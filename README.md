@@ -117,7 +117,7 @@ Currently the following UNIX type systems are supported:
 * NetBSD 10.1
 * OpenBSD 7.7
 * OpenIndiana Hipster
-* OpenSUSE Linux Leap 15.6
+* OpenSUSE Linux Leap 16.0
 * Xubuntu Linux 25.04
 
 Other versions of these operative systems or other distributions could work but 

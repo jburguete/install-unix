@@ -19,7 +19,7 @@
 #NetBSD 10.1
 #OpenBSD 7.7
 #OpenIndiana Hipster
-#OpenSUSE Leap Linux 15.6
+#OpenSUSE Leap Linux 16.0
 #Xubuntu Linux 25.04
 
 #GCC versions
@@ -41,7 +41,7 @@
 #14 NetBSD
 #11 OpenBSD
 #14 OpenIndiana
-#13 OpenSUSE Linux
+#15 OpenSUSE Linux
 #14 Xubuntu Linux
 
 #CLang versions
@@ -63,7 +63,7 @@
 #18 NetBSD
 #19 OpenBSD
 #19 OpenIndiana
-#15 OpenSUSE Linux
+#19 OpenSUSE Linux
 #20 Xubuntu Linux
 
 use File::Copy 'move';
@@ -574,43 +574,43 @@ if ($os eq "Linux")
         @update  = ("zypper", "patch");
         @find    = ("zypper", "search");
         @upgrade = (
-                    "zypper",            "--relasever=15.6",
+                    "zypper",            "--releasever=16.0",
                     "refresh;",          "zypper",
-                    "--releasever=15.6", "dup"
+                    "--releasever=16.0", "dup"
                    );
         @packages = (
-                     "patch",              "autoconf",
-                     "automake",           "pkg-config",
-                     "gcc12",              "gcc12-c++",
-                     "gcc12-fortran",      "clang",
-                     "llvm",               "make",
-                     "git-core",           "subversion",
-                     "libxml2-devel",      "glib2-devel",
-                     "gettext-tools",      "json-glib-devel",
-                     "sqlite3-devel",      "gsl-devel",
-                     "libgtop-devel",      "gtk3-devel",
-                     "gtk4-devel",         "libglfw-devel",
-                     "libSDL2-devel",      "gnu-free-fonts",
-                     "glew-devel",         "vulkan",
-                     "vulkan-devel",       "glslang-devel",
-                     "mpich-devel",        "xf86-input-keyboard",
-                     "xf86-input-mouse",   "xf86-input-evdev",
-                     "xf86-video-vesa",    "xorg-x11",
-                     "xfce4-session",      "xfce4-terminal",
-                     "lightdm",            "xfce4-panel-plugin-pulseaudio",
-                     "nedit",              "gvim",
-                     "indent",             "perl-Perl-Tidy",
-                     "galculator",         "maxima-xmaxima",
-                     "valgrind",           "ddd",
-                     "meld",               "texlive",
-                     "texlive-latex",      "texlive-collection-publishers",
-                     "texlive-pstricks",   "graphviz",
-                     "evince",             "doxygen",
-                     "wget",               "MozillaFirefox",
-                     "MozillaThunderbird", "ImageMagick",
-                     "gimp",               "mpv",
-                     "libreoffice",        "libreoffice-l10n-es",
-                     "spamassassin"
+                     "patch",                         "autoconf",
+                     "automake",                      "pkg-config",
+                     "gcc",                           "gcc-c++",
+                     "gcc-fortran",                   "clang",
+                     "llvm",                          "make",
+                     "git-core",                      "subversion",
+                     "libxml2-devel",                 "glib2-devel",
+                     "gettext-tools",                 "json-glib-devel",
+                     "sqlite3-devel",                 "gsl-devel",
+                     "libgtop-devel",                 "gtk3-devel",
+                     "gtk4-devel",                    "libglfw-devel",
+                     "SDL2-devel",                    "SDL3-devel",
+                     "gnu-free-fonts",                "glew-devel",
+                     "vulkan",                        "vulkan-devel",
+                     "glslang-devel",                 "mpich-devel",
+                     "xf86-input-keyboard",           "xf86-input-mouse",
+                     "xf86-input-evdev",              "xf86-video-vesa",
+                     "xorg-x11",                      "xfce4-session",
+                     "xfce4-terminal",                "lightdm",
+                     "xfce4-panel-plugin-pulseaudio", "nedit",
+                     "gvim",                          "indent",
+                     "perl-Perl-Tidy",                "galculator",
+                     "maxima-xmaxima",                "valgrind",
+                     "ddd",                           "meld",
+                     "texlive",                       "texlive-latex",
+                     "texlive-collection-publishers", "texlive-pstricks",
+                     "graphviz",                      "evince",
+                     "doxygen",                       "wget",
+                     "MozillaFirefox",                "MozillaThunderbird",
+                     "ImageMagick",                   "gimp",
+                     "mpv",                           "libreoffice",
+                     "libreoffice-l10n-es",           "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
