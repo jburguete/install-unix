@@ -665,6 +665,7 @@ if ($os eq "Linux")
                      "media-libs/libsdl2",
                      "media-libs/libsdl3",
                      "media-libs/glew",
+                     "media-libs/vulkan-layers",
                      "media-fonts/freefont",
                      "x11-drivers/xf86-input-evdev",
                      "x11-drivers/xf86-input-libinput",
