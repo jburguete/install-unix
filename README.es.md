@@ -110,7 +110,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * FreeBSD 14.3
 * Gentoo Linux
 * Haiku
-* Linux Mint DE 6
+* Linux Mint DE 7
 * MacOS Sequoia + Homebrew
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2

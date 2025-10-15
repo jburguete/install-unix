@@ -12,7 +12,7 @@
 #FreeBSD 14.3
 #Gentoo Linux
 #Haiku
-#Linux Mint DE 6
+#Linux Mint DE 7
 #MacOS Sequoia + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
@@ -34,7 +34,7 @@
 #14 FreeBSD
 #14 Gentoo Linux
 #13 Haiku
-#12 Linux Mint
+#14 Linux Mint
 #15 MacOS Sequoia + Homebrew
 #14 Manjaro Linux
 #15 Microsoft Windows + MSYS2
@@ -56,7 +56,7 @@
 #19 FreeBSD
 #20 Gentoo Linux
 #18 Haiku
-#14 Linux Mint
+#19 Linux Mint
 #20 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
 #20 Microsoft Windows + MSYS2
