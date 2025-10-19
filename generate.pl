@@ -20,7 +20,7 @@
 #OpenBSD 7.7
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
-#Xubuntu Linux 25.04
+#Xubuntu Linux 25.10
 
 #GCC versions
 #14 Alpine Linux
@@ -57,7 +57,7 @@
 #20 Gentoo Linux
 #18 Haiku
 #19 Linux Mint
-#20 MacOS Sequoia + Homebrew
+#21 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
 #20 Microsoft Windows + MSYS2
 #18 NetBSD
