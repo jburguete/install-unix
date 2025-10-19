@@ -936,7 +936,9 @@ elsif ($os eq "NetBSD")
         "PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH"
     );
     @install = ("pkg_add");
-    @update  = ("pkgin", "update;",     "pkgin", "upgrade");
+    @update  = ("sysupgrade", "auto",
+	        "http://cdn.NetBSD.org/pub/$os/$os-$ver/$arch;",
+	        "pkgin", "update;",     "pkgin", "upgrade");
     @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
     @find    = ("pkgin", "search");
     @packages = (
