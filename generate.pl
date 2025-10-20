@@ -20,6 +20,7 @@
 #OpenBSD 7.7
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 15.6
+#RedoxOS 0.9
 #Xubuntu Linux 25.10
 
 #GCC versions
@@ -42,6 +43,7 @@
 #11 OpenBSD
 #14 OpenIndiana
 #13 OpenSUSE Linux
+#13 RedoxOS
 #14 Xubuntu Linux
 
 #CLang versions
@@ -64,6 +66,7 @@
 #19 OpenBSD
 #19 OpenIndiana
 #15 OpenSUSE Linux
+#-  RedoxOS
 #20 Xubuntu Linux
 
 use File::Copy 'move';
@@ -1264,6 +1267,19 @@ elsif ($os eq "Haiku")
                  "gnuplot",                  "doxygen",
                  "wget",                     "imagemagick",
                  "gimp",                     "epiphany"
+                );
+}
+elsif ($os eq "Redox")
+{
+    print "OS=" . $os . "\n";
+    @install = ("pkg", "install");
+    @update  = ("pkg", "update");
+    @find    = ("pkg", "search");
+    @packages = (
+                 "sed",      "patch",   "pkg-conf", "autoconf",
+                 "automake", "gcc13",   "llvm18",   "gnu-make",
+                 "git",      "libxml2", "gettext",  "glib",
+                 "sqlite3",  "sdl2",    "vim",
                 );
 }
 elsif ($os eq "Darwin")

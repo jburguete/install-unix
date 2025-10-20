@@ -118,6 +118,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * OpenBSD 7.7
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 15.6
+* RedoxOS 0.9
 * Xubuntu Linux 25.10
 
 Otras versiones de estos sistemas operativos u otras distribuciones podrían
