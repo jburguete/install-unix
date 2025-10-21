@@ -1255,7 +1255,7 @@ elsif ($os eq "Haiku")
                  "gsl_devel",                "gtk3_devel",
                  "gtk4_devel",               "glfw_devel",
                  "libsdl2_devel",            "libsdl3_devel",
-                 "glew_devel",               "vim",
+                 "glew_devel", "vulkan_devel", "glslang"               "vim",
                  "indent",                   "gnuplot",
                  "tk",                       "sbcl",
                  "maxima",                   "gdb",
