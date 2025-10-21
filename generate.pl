@@ -650,6 +650,7 @@ if ($os eq "Linux")
                     "--with-bdeps=y", "--newuse",
                     "\@world"
                    );
+        @find    = ("emerge", "--search");
         @packages = (
                      "app-portage/gentoolkit",
                      "app-admin/eclean-kernel",
