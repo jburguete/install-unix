@@ -394,7 +394,7 @@ if ($os eq "Linux")
     elsif ($dist eq "ManjaroLinux")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Scc");
         @update  = ("pacman", "-Syu");
         @find    = ("pacman", "-Ss");
         @packages = (
@@ -449,7 +449,7 @@ if ($os eq "Linux")
     elsif ($dist eq "Arch")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Scc");
         @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
         @find    = ("pacman", "-Ss");
         @packages = (
@@ -1334,7 +1334,7 @@ else
     if ($os eq "Msys")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Scc");
         @update  = ("pacman", "-Syu");
         @find    = ("pacman", "-Ss");
         if ($mach eq "x86_64")
