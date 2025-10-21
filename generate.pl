@@ -3,7 +3,7 @@
 #Supported systems
 #Alpine Linux
 #Arch Linux
-#Bianbu Linux 2.1"
+#Bianbu Linux 2.1
 #Debian Hurd 14
 #Debian Linux 13
 #Devuan Linux 5
@@ -650,7 +650,7 @@ if ($os eq "Linux")
                     "--with-bdeps=y", "--newuse",
                     "\@world"
                    );
-        @find    = ("emerge", "--search");
+        @find = ("emerge", "--search");
         @packages = (
                      "app-portage/gentoolkit",
                      "app-admin/eclean-kernel",
@@ -1255,7 +1255,8 @@ elsif ($os eq "Haiku")
                  "gsl_devel",                "gtk3_devel",
                  "gtk4_devel",               "glfw_devel",
                  "libsdl2_devel",            "libsdl3_devel",
-                 "glew_devel", "vulkan_devel", "glslang"               "vim",
+                 "glew_devel",               "vulkan_devel",
+                 "glslang",                  "vim",
                  "indent",                   "gnuplot",
                  "tk",                       "sbcl",
                  "maxima",                   "gdb",
