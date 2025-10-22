@@ -110,7 +110,7 @@ Currently the following UNIX type systems are supported:
 * FreeBSD 14.3
 * Gentoo Linux
 * Haiku
-* Linux Mint DE 6
+* Linux Mint DE 7
 * MacOS Sequoia + Homebrew
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
@@ -118,7 +118,8 @@ Currently the following UNIX type systems are supported:
 * OpenBSD 7.7
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
-* Xubuntu Linux 25.04
+* RedoxOS 0.9
+* Xubuntu Linux 25.10
 
 Other versions of these operative systems or other distributions could work but 
 it has not been tested.

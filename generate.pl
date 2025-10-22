@@ -3,7 +3,7 @@
 #Supported systems
 #Alpine Linux
 #Arch Linux
-#Bianbu Linux 2.1"
+#Bianbu Linux 2.1
 #Debian Hurd 14
 #Debian Linux 13
 #Devuan Linux 5
@@ -12,7 +12,7 @@
 #FreeBSD 14.3
 #Gentoo Linux
 #Haiku
-#Linux Mint DE 6
+#Linux Mint DE 7
 #MacOS Sequoia + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
@@ -20,7 +20,8 @@
 #OpenBSD 7.7
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 16.0
-#Xubuntu Linux 25.04
+#RedoxOS 0.9
+#Xubuntu Linux 25.10
 
 #GCC versions
 #14 Alpine Linux
@@ -34,7 +35,7 @@
 #14 FreeBSD
 #14 Gentoo Linux
 #13 Haiku
-#12 Linux Mint
+#14 Linux Mint
 #15 MacOS Sequoia + Homebrew
 #14 Manjaro Linux
 #15 Microsoft Windows + MSYS2
@@ -42,6 +43,7 @@
 #11 OpenBSD
 #14 OpenIndiana
 #15 OpenSUSE Linux
+#13 RedoxOS
 #14 Xubuntu Linux
 
 #CLang versions
@@ -56,14 +58,15 @@
 #19 FreeBSD
 #20 Gentoo Linux
 #18 Haiku
-#14 Linux Mint
-#20 MacOS Sequoia + Homebrew
+#19 Linux Mint
+#21 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
 #20 Microsoft Windows + MSYS2
 #18 NetBSD
 #19 OpenBSD
 #19 OpenIndiana
 #19 OpenSUSE Linux
+#-  RedoxOS
 #20 Xubuntu Linux
 
 use File::Copy 'move';
@@ -243,6 +246,7 @@ if ($os eq "Linux")
                      "libgtk-4-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
+                     "libsdl3-dev",
                      "fonts-freefont-otf",
                      "libglew-dev",
                      "glslang-tools",
@@ -391,7 +395,7 @@ if ($os eq "Linux")
     elsif ($dist eq "ManjaroLinux")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Scc");
         @update  = ("pacman", "-Syu");
         @find    = ("pacman", "-Ss");
         @packages = (
@@ -446,7 +450,7 @@ if ($os eq "Linux")
     elsif ($dist eq "Arch")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Scc");
         @update  = ("pacman", "-Sy", "archlinux-keyrng;", "pacman", "-Syu");
         @find    = ("pacman", "-Ss");
         @packages = (
@@ -647,6 +651,7 @@ if ($os eq "Linux")
                     "--with-bdeps=y", "--newuse",
                     "\@world"
                    );
+        @find = ("emerge", "--search");
         @packages = (
                      "app-portage/gentoolkit",
                      "app-admin/eclean-kernel",
@@ -936,9 +941,13 @@ elsif ($os eq "NetBSD")
         "PKG_PATH=\"http://cdn.NetBSD.org/pub/pkgsrc/packages/$os/$arch/$ver/All\"\nPATH=\"/usr/pkg/sbin:\$PATH\"\nexport PATH PKG_PATH"
     );
     @install = ("pkg_add");
-    @update  = ("pkgin", "update;",     "pkgin", "upgrade");
-    @clean   = ("pkgin", "autoremove;", "pkgin", "clean");
-    @find    = ("pkgin", "search");
+    @update = (
+               "sysupgrade", "auto",
+               "http://cdn.NetBSD.org/pub/$os/$os-$ver/$arch;",
+               "pkgin", "update;", "pkgin", "upgrade"
+              );
+    @clean = ("pkgin", "autoremove;", "pkgin", "clean");
+    @find  = ("pkgin", "search");
     @packages = (
                  "pkgin",
                  "sysupgrade",
@@ -1247,7 +1256,8 @@ elsif ($os eq "Haiku")
                  "gsl_devel",                "gtk3_devel",
                  "gtk4_devel",               "glfw_devel",
                  "libsdl2_devel",            "libsdl3_devel",
-                 "glew_devel",               "vim",
+                 "glew_devel",               "vulkan_devel",
+                 "glslang",                  "vim",
                  "indent",                   "gnuplot",
                  "tk",                       "sbcl",
                  "maxima",                   "gdb",
@@ -1260,6 +1270,19 @@ elsif ($os eq "Haiku")
                  "gnuplot",                  "doxygen",
                  "wget",                     "imagemagick",
                  "gimp",                     "epiphany"
+                );
+}
+elsif ($os eq "Redox")
+{
+    print "OS=" . $os . "\n";
+    @install = ("pkg", "install");
+    @update  = ("pkg", "update");
+    @find    = ("pkg", "search");
+    @packages = (
+                 "sed",      "patch",   "pkg-conf", "autoconf",
+                 "automake", "gcc13",   "llvm18",   "gnu-make",
+                 "git",      "libxml2", "gettext",  "glib",
+                 "sqlite3",  "sdl2",    "vim",
                 );
 }
 elsif ($os eq "Darwin")
@@ -1314,7 +1337,7 @@ else
     if ($os eq "Msys")
     {
         @install = ("pacman", "-S");
-        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Sc");
+        @clean   = ("pacman", "-Rs", "\$(pacman", "-Qdtq);", "pacman", "-Scc");
         @update  = ("pacman", "-Syu");
         @find    = ("pacman", "-Ss");
         if ($mach eq "x86_64")

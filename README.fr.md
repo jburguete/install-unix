@@ -110,7 +110,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * FreeBSD 14.3
 * Gentoo Linux
 * Haiku
-* Linux Mint DE 6
+* Linux Mint DE 7
 * MacOS Sequoia + Homebrew
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
@@ -118,7 +118,8 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * OpenBSD 7.7
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
-* Xubuntu Linux 25.04
+* RedoxOS 0.9
+* Xubuntu Linux 25.10
 
 D'autres versions de ces systèmes d'exploitation ou d'autres distributions
 pourraient travailler mais on n'a pas été prouvé.
