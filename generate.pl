@@ -17,7 +17,7 @@
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD 10.1
-#OpenBSD 7.7
+#OpenBSD 7.8
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 16.0
 #RedoxOS 0.9

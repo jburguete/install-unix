@@ -115,7 +115,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
 * NetBSD 10.1
-* OpenBSD 7.7
+* OpenBSD 7.8
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
 * RedoxOS 0.9
