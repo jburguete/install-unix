@@ -27,7 +27,7 @@
 #14 Alpine Linux
 #15 Arch Linux
 #14 Bianbu Linux
-#14 Debian Hurd
+#15 Debian Hurd
 #14 Debian Linux
 #12 Devuan Linux
 #14 Dragonfly BSD
