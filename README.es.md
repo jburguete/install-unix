@@ -21,17 +21,17 @@ Lista de utilidades
   * Subversion
 
 * Bibliotecas de desarrollo:
-  * Libxml2
+  * Libxml
   * GLib
   * JSON-GLib
-  * SQLite3
+  * SQLite
   * GSL
   * OpenMPI or MPICH
-  * GTK+3
+  * GTK
   * FreeGLUT
   * GLEW
   * GLFW
-  * SDL2
+  * SDL
 
 * Entornos de ventanas:
   * XFCE, Mate, GNOME, Cinnamon, Microsoft Windows o Apple MacOS
@@ -106,7 +106,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Debian Linux 13 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
-* Fedora Linux 42
+* Fedora Linux 43
 * FreeBSD 14.3
 * Gentoo Linux
 * Haiku

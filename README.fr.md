@@ -21,17 +21,17 @@ Liste d'outils
   * Subversion
 
 * Bibliothèques de développement:
-  * Libxml2
+  * Libxml
   * GLib
   * JSON-GLib
-  * SQLite3
+  * SQLite
   * GSL
   * OpenMPI or MPICH
-  * GTK+3
+  * GTK
   * FreeGLUT
   * GLEW
   * GLFW
-  * SDL2
+  * SDL
 
 * Système de fenêtres:
   * XFCE, Mate, GNOME, Cinnamon, Microsoft Windows ou Apple MacOS
@@ -106,7 +106,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Debian Linux 13 
 * Devuan Linux 5
 * Dragonfly BSD 6.4
-* Fedora Linux 42
+* Fedora Linux 43
 * FreeBSD 14.3
 * Gentoo Linux
 * Haiku
