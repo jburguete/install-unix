@@ -3,7 +3,7 @@
 #Supported systems
 #Alpine Linux
 #Arch Linux
-#Bianbu Linux 2.1
+#Bianbu Linux 3.0
 #Debian Hurd 14
 #Debian Linux 13
 #Devuan Linux 5
@@ -49,7 +49,7 @@
 #CLang versions
 #20 Alpine Linux
 #19 Arch Linux
-#18 Bianbu Linux
+#20 Bianbu Linux
 #19 Debian Hurd
 #19 Debian Linux
 #14 Devuan Linux
@@ -761,6 +761,7 @@ if ($os eq "Linux")
                      "libgtk-4-dev",
                      "libglfw3-dev",
                      "libsdl2-dev",
+                     "libsdl3-dev",
                      "fonts-freefont-otf",
                      "libglew-dev",
                      "glslang-tools",
@@ -785,7 +786,6 @@ if ($os eq "Linux")
                      "latexdiff",
                      "doxygen",
                      "webext-ublock-origin-chromium",
-                     "thunderbird",
                      "imagemagick",
                      "gimp",
                      "gnumeric",

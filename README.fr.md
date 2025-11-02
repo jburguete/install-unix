@@ -101,7 +101,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 
 * Alpine Linux
 * Arch Linux
-* Bianbu Linux 2.1
+* Bianbu Linux 3.0
 * Debian Hurd 14
 * Debian Linux 13 
 * Devuan Linux 5
