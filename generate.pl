@@ -6,7 +6,7 @@
 #Bianbu Linux 3.0
 #Debian Hurd 14
 #Debian Linux 13
-#Devuan Linux 5
+#Devuan Linux 6
 #Dragonfly BSD 6.4
 #Fedora Linux 43
 #FreeBSD 14.3
@@ -29,7 +29,7 @@
 #14 Bianbu Linux
 #15 Debian Hurd
 #14 Debian Linux
-#12 Devuan Linux
+#14 Devuan Linux
 #14 Dragonfly BSD
 #15 Fedora Linux
 #14 FreeBSD
@@ -52,7 +52,7 @@
 #20 Bianbu Linux
 #19 Debian Hurd
 #19 Debian Linux
-#14 Devuan Linux
+#19 Devuan Linux
 #18 Dragonfly BSD
 #21 Fedora Linux
 #19 FreeBSD

@@ -104,7 +104,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Bianbu Linux 3.0
 * Debian Hurd 14
 * Debian Linux 13 
-* Devuan Linux 5
+* Devuan Linux 6
 * Dragonfly BSD 6.4
 * Fedora Linux 43
 * FreeBSD 14.3
