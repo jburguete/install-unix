@@ -868,7 +868,7 @@ elsif ($os eq "FreeBSD")
                "pkg",            "update;", "pkg",            "upgrade"
               );
     @upgrade = (
-                "freebsd-update", "-r", "14.2-RELEASE", "upgrade;",
+                "freebsd-update", "-r", "14.3-RELEASE", "upgrade;",
                 "freebsd-update", "install"
                );
     @find = ("pkg", "search");
