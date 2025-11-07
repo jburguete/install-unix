@@ -862,7 +862,10 @@ elsif ($os eq "FreeBSD")
 {
     print "OS=" . $os . "\n";
     @install = ("pkg", "install");
-    @clean   = ("pkg", "autoremove;", "pkg", "clean", "-a");
+    @clean = (
+              "rm",  "-rf",   "/var/db/freebsd-update/*;", "pkg", "autoremove;",
+              "pkg", "clean", "-a"
+             );
     @update = (
                "freebsd-update", "fetch;",  "freebsd-update", "install;",
                "pkg",            "update;", "pkg",            "upgrade"
