@@ -1260,7 +1260,7 @@ elsif ($os eq "Haiku")
     @find    = ("pkgman", "search");
     @packages = (
                  "patch",               "autoconf",
-                 "autoconf-archive",    "automake",
+                 "autoconf_archive",    "automake",
                  "pkgconfig",           "gcc",
                  "gcc_fortran",         "llvm18_clang",
                  "make",                "meson",
