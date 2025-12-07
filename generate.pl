@@ -819,7 +819,7 @@ if ($os eq "Linux")
     {
         @install = ("apk", "add");
         @update  = ("apk", "update");
-        @upgrade = ("apk", "upgrade");
+        @upgrade = ("apk", "upgrade", "--available");
         @find    = ("apk", "search");
         @packages = (
                      "patch",            "autoconf",
