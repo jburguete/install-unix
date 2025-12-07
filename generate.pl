@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 #Supported systems
-#Alpine Linux
+#Alpine Linux 3.23
 #Arch Linux
 #Bianbu Linux 3.0
 #Debian Hurd 14
@@ -24,7 +24,7 @@
 #Xubuntu Linux 25.10
 
 #GCC versions
-#14 Alpine Linux
+#15 Alpine Linux
 #15 Arch Linux
 #14 Bianbu Linux
 #15 Debian Hurd
@@ -47,7 +47,7 @@
 #14 Xubuntu Linux
 
 #CLang versions
-#20 Alpine Linux
+#21 Alpine Linux
 #19 Arch Linux
 #20 Bianbu Linux
 #19 Debian Hurd
