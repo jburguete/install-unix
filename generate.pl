@@ -32,7 +32,7 @@
 #14 Devuan Linux
 #14 Dragonfly BSD
 #15 Fedora Linux
-#14 FreeBSD
+#15 FreeBSD
 #14 Gentoo Linux
 #13 Haiku
 #14 Linux Mint
@@ -888,7 +888,7 @@ elsif ($os eq "FreeBSD")
                  "patch",                      "bash",
                  "autoconf",                   "autoconf-archive",
                  "automake",                   "pkgconf",
-                 "gcc14",                      "gmake",
+                 "gcc15",                      "gmake",
                  "meson",                      "git",
                  "subversion",                 "libxml2",
                  "gettext-tools",              "glib",
@@ -913,13 +913,13 @@ elsif ($os eq "FreeBSD")
                  "maxima",                     "gdb",
                  "valgrind",                   "meld",
                  "latex-beamer",               "graphviz",
-                 "tex-dvipsk",                 "evince",
-                 "latexdiff",                  "doxygen",
-                 "wget",                       "firefox-esr",
-                 "thunderbird",                "ImageMagick7",
-                 "gimp",                       "mpv",
-                 "libreoffice",                "es-libreoffice",
-                 "spamassassin"
+                 "tex-dvipsk",                 "tex-luatex",
+                 "evince",                     "latexdiff",
+                 "doxygen",                    "wget",
+                 "firefox-esr",                "thunderbird",
+                 "ImageMagick7",               "gimp",
+                 "mpv",                        "libreoffice",
+                 "es-libreoffice",             "spamassassin"
                 );
     @postinstall = ("echo dbus_enable=\"YES\" >> /etc/rc.conf");
     system(@install, "virt-what") if (!(-x "/usr/local/sbin/virt-what"));
