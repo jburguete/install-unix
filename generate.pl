@@ -9,7 +9,7 @@
 #Devuan Linux 6
 #Dragonfly BSD 6.4
 #Fedora Linux 43
-#FreeBSD 15.0
+#FreeBSD 15.1
 #Gentoo Linux
 #Haiku
 #Linux Mint DE 7
