@@ -99,7 +99,7 @@ Systèmes de type UNIX pris en charge
 
 Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 
-* Alpine Linux 3.23
+* Alpine Linux 3.24
 * Arch Linux
 * Bianbu Linux 3.0
 * Debian Hurd 14

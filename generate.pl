@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 #Supported systems
-#Alpine Linux 3.23
+#Alpine Linux 3.24
 #Arch Linux
 #Bianbu Linux 3.0
 #Debian Hurd 14
@@ -47,7 +47,7 @@
 #14 Xubuntu Linux
 
 #CLang versions
-#21 Alpine Linux
+#22 Alpine Linux
 #19 Arch Linux
 #20 Bianbu Linux
 #19 Debian Hurd
@@ -819,8 +819,11 @@ if ($os eq "Linux")
     {
         @install = ("apk", "add");
         @update  = ("apk", "update");
-        @upgrade = ("apk", "upgrade", "--available");
-        @find    = ("apk", "search");
+        @upgrade = (
+                    "echo", "'To", "upgrade", "change", "version", "in",
+                    "/etc/apk/repositories';", "apk", "upgrade", "--available"
+                   );
+        @find = ("apk", "search");
         @packages = (
                      "patch",            "autoconf",
                      "autoconf-archive", "automake",

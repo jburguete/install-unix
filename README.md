@@ -99,7 +99,7 @@ Supported UNIX type systems
 
 Currently the following UNIX type systems are supported:
 
-* Alpine Linux 3.23
+* Alpine Linux 3.24
 * Arch Linux
 * Bianbu Linux 3.0
 * Debian Hurd 14

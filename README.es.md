@@ -99,7 +99,7 @@ Sistemas de tipo UNIX soportados
 
 Actualmente están soportados los siguientes sistemas de tipo UNIX:
 
-* Alpine Linux 3.23
+* Alpine Linux 3.24
 * Arch Linux
 * Bianbu Linux 3.0
 * Debian Hurd 14
