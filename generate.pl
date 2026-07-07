@@ -25,7 +25,7 @@
 
 #GCC versions
 #15 Alpine Linux
-#15 Arch Linux
+#16 Arch Linux
 #14 Bianbu Linux
 #15 Debian Hurd
 #14 Debian Linux
@@ -48,7 +48,7 @@
 
 #CLang versions
 #22 Alpine Linux
-#19 Arch Linux
+#22 Arch Linux
 #20 Bianbu Linux
 #19 Debian Hurd
 #19 Debian Linux
