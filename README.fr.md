@@ -106,7 +106,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Debian Linux 13 
 * Devuan Linux 6
 * Dragonfly BSD 6.4
-* Fedora Linux 43
+* Fedora Linux 44
 * FreeBSD 15.1
 * Gentoo Linux
 * Haiku

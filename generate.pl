@@ -8,7 +8,7 @@
 #Debian Linux 13
 #Devuan Linux 6
 #Dragonfly BSD 6.4
-#Fedora Linux 43
+#Fedora Linux 44
 #FreeBSD 15.1
 #Gentoo Linux
 #Haiku
@@ -31,7 +31,7 @@
 #14 Debian Linux
 #14 Devuan Linux
 #14 Dragonfly BSD
-#15 Fedora Linux
+#16 Fedora Linux
 #15 FreeBSD
 #15 Gentoo Linux
 #13 Haiku
@@ -54,7 +54,7 @@
 #19 Debian Linux
 #19 Devuan Linux
 #18 Dragonfly BSD
-#21 Fedora Linux
+#22 Fedora Linux
 #19 FreeBSD
 #20 Gentoo Linux
 #18 Haiku
@@ -86,7 +86,7 @@ if ($os eq "Linux")
         }
         elsif (-x "/usr/bin/dnf")
         {
-            system("dnf install redhat-lsb-core");
+            system("dnf install lsb_release");
         }
         elsif (-x "/usr/bin/zypper")
         {
@@ -558,7 +558,7 @@ if ($os eq "Linux")
                  "wget",                        "firefox",
                  "mozilla-ublock-origin",       "thunderbird",
                  "ImageMagick",                 "gimp",
-                 "ufraw-gimp",                  "totem",
+                 "totem",
                  "libreoffice",                 "libreoffice-langpack-es",
                  "spamassassin"
                     );

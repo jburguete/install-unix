@@ -106,7 +106,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Debian Linux 13 
 * Devuan Linux 6
 * Dragonfly BSD 6.4
-* Fedora Linux 43
+* Fedora Linux 44
 * FreeBSD 15.1
 * Gentoo Linux
 * Haiku
