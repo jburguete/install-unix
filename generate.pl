@@ -520,7 +520,7 @@ if ($os eq "Linux")
                     "dnf",            "upgrade",
                     "--refresh;",     "dnf",
                     "system-upgrade", "download",
-                    "--releasever",   "43;",
+                    "--releasever",   "44;",
                     "dnf",            "system-upgrade",
                     "reboot"
                    );
