@@ -32,7 +32,7 @@
 #14 Devuan Linux
 #14 Dragonfly BSD
 #16 Fedora Linux
-#15 FreeBSD
+#16 FreeBSD
 #15 Gentoo Linux
 #13 Haiku
 #14 Linux Mint
@@ -891,7 +891,7 @@ elsif ($os eq "FreeBSD")
                  "patch",                      "bash",
                  "autoconf",                   "autoconf-archive",
                  "automake",                   "pkgconf",
-                 "gcc15",                      "gmake",
+                 "gcc16",                      "gmake",
                  "meson",                      "git",
                  "subversion",                 "libxml2",
                  "gettext-tools",              "glib",
