@@ -57,7 +57,7 @@
 #22 Fedora Linux
 #19 FreeBSD
 #20 Gentoo Linux
-#18 Haiku
+#23 Haiku
 #19 Linux Mint
 #21 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
@@ -1261,7 +1261,7 @@ elsif ($os eq "Haiku")
                  "patch",               "autoconf",
                  "autoconf_archive",    "automake",
                  "pkgconfig",           "gcc",
-                 "gcc_fortran",         "llvm18_clang",
+                 "gcc_fortran",         "llvm23_clang",
                  "make",                "meson",
                  "git",                 "subversion",
                  "libxml2_devel",       "glib2_devel",
