@@ -16,7 +16,7 @@
 #MacOS Sequoia + Homebrew
 #Manjaro Linux
 #Microsoft Windows + MSYS2
-#NetBSD 10.1
+#NetBSD 11.0
 #OpenBSD 7.9
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 16.0
@@ -62,7 +62,7 @@
 #21 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
 #20 Microsoft Windows + MSYS2
-#18 NetBSD
+#21 NetBSD
 #21 OpenBSD
 #19 OpenIndiana
 #19 OpenSUSE Linux
@@ -1039,7 +1039,6 @@ elsif ($os eq "NetBSD")
                  "tex-luatex85",
                  "tex-trimspaces",
                  "tex-babel-english",
-                 "texlive-collection-english",
                  "texlive-collection-langspanish",
                  "texlive-collection-langfrench",
                  "graphviz",

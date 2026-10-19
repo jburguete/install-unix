@@ -114,7 +114,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * MacOS Sequoia + Homebrew
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
-* NetBSD 10.1
+* NetBSD 11.0
 * OpenBSD 7.9
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
