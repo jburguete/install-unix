@@ -111,7 +111,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 7
-* MacOS Sequoia + Homebrew
+* MacOS Tahoe + MacPorts
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
 * NetBSD 11.0

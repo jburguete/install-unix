@@ -59,7 +59,7 @@
 #22 Gentoo Linux
 #23 Haiku
 #19 Linux Mint
-#21 MacOS Sequoia + Homebrew
+#23 MacOS Sequoia + Homebrew
 #19 Manjaro Linux
 #20 Microsoft Windows + MSYS2
 #21 NetBSD
@@ -528,39 +528,70 @@ if ($os eq "Linux")
         @preinstall = "dnf group install gnome-desktop"
           if (!(-x "/usr/bin/gnome-shell"));
         @packages = (
-                 "dnf-plugin-system-upgrade",   "patch",
-                 "autoconf",                    "autoconf-archive",
-                 "automake",                    "pkgconf",
-                 "gcc",                         "gcc-c++",
-                 "gcc-gfortran",                "clang",
-                 "make",                        "meson",
-                 "git",                         "subversion",
-                 "libxml2-devel",               "glib-devel",
-                 "gettext-devel",               "json-glib-devel",
-                 "sqlite-devel",                "gsl-devel",
-                 "libgtop2-devel",              "gtk3-devel",
-                 "gtk4-devel",                  "glfw-devel",
-                 "SDL2-devel",                  "SDL3-devel",
-                 "texlive-gnu-freefont",        "glew-devel",
-                 "vulkan-headers",              "vulkan-loader",
-                 "vulkan-validation-layers",    "vulkan-tools",
-                 "glslang",                     "mpich-devel",
-                 "nedit",                       "vim-enhanced",
-                 "vim-X11",                     "indent",
-                 "perltidy",                    "maxima-gui",
-                 "valgrind",                    "ddd",
-                 "meld",                        "texlive",
-                 "texlive-latex",               "texlive-collection-publishers",
-                 "texlive-collection-pstricks", "texlive-newunicodechar",
-                 "texlive-hanging",             "texlive-stackengine",
-                 "graphviz",                    "texlive-latexdiff",
-                 "evince",                      "doxygen",
-                 "wget",                        "firefox",
-                 "mozilla-ublock-origin",       "thunderbird",
-                 "ImageMagick",                 "gimp",
-                 "totem",
-                 "libreoffice",                 "libreoffice-langpack-es",
-                 "spamassassin"
+                     "dnf-plugin-system-upgrade",
+                     "patch",
+                     "autoconf",
+                     "autoconf-archive",
+                     "automake",
+                     "pkgconf",
+                     "gcc",
+                     "gcc-c++",
+                     "gcc-gfortran",
+                     "clang",
+                     "make",
+                     "meson",
+                     "git",
+                     "subversion",
+                     "libxml2-devel",
+                     "glib-devel",
+                     "gettext-devel",
+                     "json-glib-devel",
+                     "sqlite-devel",
+                     "gsl-devel",
+                     "libgtop2-devel",
+                     "gtk3-devel",
+                     "gtk4-devel",
+                     "glfw-devel",
+                     "SDL2-devel",
+                     "SDL3-devel",
+                     "texlive-gnu-freefont",
+                     "glew-devel",
+                     "vulkan-headers",
+                     "vulkan-loader",
+                     "vulkan-validation-layers",
+                     "vulkan-tools",
+                     "glslang",
+                     "mpich-devel",
+                     "nedit",
+                     "vim-enhanced",
+                     "vim-X11",
+                     "indent",
+                     "perltidy",
+                     "maxima-gui",
+                     "valgrind",
+                     "ddd",
+                     "meld",
+                     "texlive",
+                     "texlive-latex",
+                     "texlive-collection-publishers",
+                     "texlive-collection-pstricks",
+                     "texlive-newunicodechar",
+                     "texlive-hanging",
+                     "texlive-stackengine",
+                     "graphviz",
+                     "texlive-latexdiff",
+                     "evince",
+                     "doxygen",
+                     "wget",
+                     "firefox",
+                     "mozilla-ublock-origin",
+                     "thunderbird",
+                     "ImageMagick",
+                     "gimp",
+                     "totem",
+                     "libreoffice",
+                     "libreoffice-langpack-es",
+                     "spamassassin"
                     );
         system(@install, "virt-what") if (!(-x "/usr/sbin/virt-what"));
         $mach = `virt-what`;
@@ -1301,43 +1332,41 @@ elsif ($os eq "Redox")
 elsif ($os eq "Darwin")
 {
     print "OS=" . $os . "\n";
-    @install     = ("brew", "install");
-    @installcask = ("brew", "install");
-    @clean       = ("brew", "cleanup;", "brew", "cleanup", "cask");
-    @update      = ("brew", "update");
-    @upgrade = ("brew", "upgrade;", "brew", "upgrade", "--cask", "--greedy");
-    @find    = ("brew", "search");
-    system(
-        "/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
-      )
-      if (!(-x "/usr/local/bin/brew"));
-    @packagescask = (
-                     "xquartz",     "macvim", "meld", "firefox",
-                     "thunderbird", "gimp",   "libreoffice"
-                    );
-    @preinstall = ("@installcask @packagescask");
+    @install = ("sudo", "port", "install");
+    @clean = (
+              "sudo", "port", "uninstall", "inactive;",
+              "sudo", "port", "uninstall", "leaves;",
+              "sudo", "port", "clean",     "--all",
+              "all"
+             );
+    @update  = ("sudo", "port", "selfupdate");
+    @upgrade = ("sudo", "port", "upgrade", "outdated");
+    @find    = ("port", "search");
     @packages = (
-                 "gnu-sed",        "gpatch",
-                 "autoconf",       "autoconf-archive",
-                 "automake",       "pkgconf",
-                 "gcc",            "llvm",
-                 "make",           "meson",
-                 "git",            "subversion",
-                 "libxml2",        "gettext",
-                 "glib",           "json-glib",
-                 "sqlite",         "gsl",
-                 "libgtop",        "gtk+3",
-                 "gtk4",           "glfw",
-                 "sdl2",           "sdl3",
-                 "glew",           "glslang",
-                 "mpich",          "font-freefont",
-                 "font-open-sans", "nedit",
-                 "gnu-indent",     "perltidy",
-                 "maxima",         "ddd",
-                 "graphviz",       "texlive",
-                 "latexdiff",      "evince",
-                 "doxygen",        "wget",
-                 "imagemagick",    "mpv"
+                 "gsed",        "gpatch",
+                 "autoconf",    "autoconf-archive",
+                 "automake",    "pkgconfig",
+                 "gcc15",       "clang-23",
+                 "gmake",       "meson",
+                 "git",         "subversion",
+                 "libxml2",     "gettext",
+                 "glib2",       "json-glib",
+                 "sqlite3",     "gsl",
+                 "libgtop",     "mpich",
+                 "xorg-server", "gtk3",
+                 "gtk4",        "mesa",
+                 "glfw",        "libsdl2",
+                 "SDL3",        "glew",
+                 "glslang",     "freefont-ttf",
+                 "MacVim",      "nedit",
+                 "gindent",     "p5-perl-tidy",
+                 "meld",        "maxima",
+                 "ddd",         "graphviz",
+                 "texlive",     "texlive-pstricks",
+                 "latexdiff",   "evince",
+                 "doxygen",     "wget",
+                 "ImageMagick", "gimp",
+                 "mpv",         "libreoffice"
                 );
 }
 else

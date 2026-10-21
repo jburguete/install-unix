@@ -111,7 +111,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * Gentoo Linux
 * Haiku
 * Linux Mint DE 7
-* MacOS Sequoia + Homebrew
+* MacOS Tahoe + MacPorts
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
 * NetBSD 11.0
