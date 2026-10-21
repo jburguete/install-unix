@@ -115,7 +115,7 @@ Currently the following UNIX type systems are supported:
 * Manjaro Linux
 * Microsoft Windows 11 + MSYS2
 * NetBSD 11.0
-* OpenBSD 7.9
+* OpenBSD 8.0
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
 * RedoxOS 0.9

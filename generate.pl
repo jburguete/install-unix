@@ -17,7 +17,7 @@
 #Manjaro Linux
 #Microsoft Windows + MSYS2
 #NetBSD 11.0
-#OpenBSD 7.9
+#OpenBSD 8.0
 #OpenIndiana Hipster
 #OpenSUSE Leap Linux 16.0
 #RedoxOS 0.9
@@ -40,7 +40,7 @@
 #14 Manjaro Linux
 #15 Microsoft Windows + MSYS2
 #14 NetBSD
-#15 OpenBSD
+#16 OpenBSD
 #14 OpenIndiana
 #15 OpenSUSE Linux
 #13 RedoxOS
@@ -63,7 +63,7 @@
 #19 Manjaro Linux
 #20 Microsoft Windows + MSYS2
 #21 NetBSD
-#21 OpenBSD
+#22 OpenBSD
 #19 OpenIndiana
 #19 OpenSUSE Linux
 #-  RedoxOS
