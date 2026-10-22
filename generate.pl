@@ -41,7 +41,7 @@
 #15 Microsoft Windows + MSYS2
 #14 NetBSD
 #16 OpenBSD
-#14 OpenIndiana
+#15 OpenIndiana
 #15 OpenSUSE Linux
 #13 RedoxOS
 #14 Xubuntu Linux
@@ -64,7 +64,7 @@
 #20 Microsoft Windows + MSYS2
 #21 NetBSD
 #22 OpenBSD
-#19 OpenIndiana
+#21 OpenIndiana
 #19 OpenSUSE Linux
 #-  RedoxOS
 #20 Xubuntu Linux
@@ -1205,25 +1205,26 @@ elsif ($os eq "SunOS")
     system("pkg", "install", "mate_install")
       if (!(-x "/usr/bin/mate-session"));
     @packages = (
-                 "gnu-patch",             "gnu-sed",
-                 "autoconf",              "autoconf-archive",
-                 "automake",              "pkg-config",
-                 "gcc-14",                "developer/clang-19",
-                 "developer/build/meson", "ninja",
-                 "git",                   "developer/versioning/subversion",
-                 "gettext",               "json-glib",
-                 "gsl",                   "library/mpich/gcc",
-                 "gtk3",                  "gtk4",
-                 "libglew",               "sdl2",
-                 "sdl3",                  "valgrind",
-                 "gnome-fonts",           "mate_install",
-                 "gvim",                  "gnu-indent",
-                 "perl-tidy",             "gnuplot",
-                 "meld",                  "evince",
-                 "doxygen",               "wget",
-                 "firefox",               "thunderbird",
-                 "imagemagick",           "gimp",
-                 "gnumeric",              "libreoffice"
+                 "gnu-patch",                       "gnu-sed",
+                 "autoconf",                        "autoconf-archive",
+                 "automake",                        "pkg-config",
+                 "gcc-15",                          "developer/clang-21",
+                 "gnu-make",                        "developer/build/meson",
+                 "ninja",                           "git",
+                 "developer/versioning/subversion", "gettext",
+                 "json-glib",                       "gsl",
+                 "library/mpich/gcc",               "gtk3",
+                 "gtk4",                            "libglew",
+                 "sdl2",                            "sdl3",
+                 "system/font/freefont",            "valgrind",
+                 "gnome-fonts",                     "mate_install",
+                 "gvim",                            "gnu-indent",
+                 "perl-tidy",                       "gnuplot",
+                 "meld",                            "evince",
+                 "doxygen",                         "wget",
+                 "firefox",                         "thunderbird",
+                 "imagemagick",                     "gimp",
+                 "gnumeric",                        "libreoffice"
                 );
     $tlf = "install-tl-unx.tar.gz";
     system("wget", "http://mirror.ctan.org/systems/texlive/tlnet/" . $tlf)
