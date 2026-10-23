@@ -44,7 +44,7 @@
 #15 OpenIndiana
 #15 OpenSUSE Linux
 #13 RedoxOS
-#14 Xubuntu Linux
+#16 Xubuntu Linux
 
 #CLang versions
 #22 Alpine Linux
@@ -67,7 +67,7 @@
 #21 OpenIndiana
 #19 OpenSUSE Linux
 #-  RedoxOS
-#20 Xubuntu Linux
+#22 Xubuntu Linux
 
 use File::Copy 'move';
 $os = `uname -s`;

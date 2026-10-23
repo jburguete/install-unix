@@ -119,7 +119,7 @@ Actuellement, les suivants systèmes d'exploitation sont pris en charge:
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
 * RedoxOS 0.9
-* Xubuntu Linux 25.10
+* Xubuntu Linux 26.10
 
 D'autres versions de ces systèmes d'exploitation ou d'autres distributions
 pourraient travailler mais on n'a pas été prouvé.

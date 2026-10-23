@@ -119,7 +119,7 @@ Actualmente están soportados los siguientes sistemas de tipo UNIX:
 * OpenIndiana Hipster
 * OpenSUSE Linux Leap 16.0
 * RedoxOS 0.9
-* Xubuntu Linux 25.10
+* Xubuntu Linux 26.10
 
 Otras versiones de estos sistemas operativos u otras distribuciones podrían
 funcionar pero no han sido probadas.
