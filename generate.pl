@@ -109,7 +109,7 @@ if ($os eq "Linux")
         system("apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
         @install = ("apt", "install");
-        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @clean   = ("apt", "autoremove", "--purge;", "apt", "clean");
         @update  = ("apt", "update");
         @upgrade = ("apt", "upgrade");
         @find    = ("apt", "search");
@@ -220,7 +220,7 @@ if ($os eq "Linux")
         system("apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
         @install = ("apt", "install");
-        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @clean   = ("apt", "autoremove", "--purge;", "apt", "clean");
         @update  = ("apt", "update");
         @upgrade = ("apt", "upgrade");
         @find    = ("apt", "search");
@@ -310,7 +310,7 @@ if ($os eq "Linux")
         system("sudo", "apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
         @install = ("apt", "install");
-        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @clean   = ("apt", "autoremove", "--purge;", "apt", "clean");
         @update  = ("apt", "update");
         @upgrade = ("apt", "upgrade");
         @find    = ("apt", "search");
@@ -781,7 +781,7 @@ if ($os eq "Linux")
         system("apt", "install", "aptitude")
           if (!(-x "/usr/bin/aptitude"));
         @install = ("apt", "install");
-        @clean   = ("apt", "autoremove", "--clean;", "apt", "clean");
+        @clean   = ("apt", "autoremove", "--purge;", "apt", "clean");
         @update  = ("apt", "update");
         @upgrade = ("apt", "upgrade");
         @find    = ("apt", "search");
